@@ -862,8 +862,6 @@ stream = SubResource("AudioStreamRandomizer_or4qq")
 [node name="PlayerHitAudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerAudio"]
 stream = ExtResource("73_kcq4v")
 
-[node name="GunNoBulletsAudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerAudio"]
-
 [node name="Madness" type="Node" parent="." groups=["load"]]
 script = ExtResource("30_b8hi5")
 bar_animatino_time = 7.0

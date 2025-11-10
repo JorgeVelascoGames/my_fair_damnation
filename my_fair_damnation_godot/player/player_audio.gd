@@ -16,7 +16,6 @@ class_name PlayerAudio
 @onready var gun_shoot_audio_streamer: AudioStreamPlayer = $GunShootAudioStreamer
 @onready var gun_shoot_and_hit_audio_streamer: AudioStreamPlayer = $GunShootAndHitAudioStreamer
 @onready var player_hit_audio_stream_player: AudioStreamPlayer = $PlayerHitAudioStreamPlayer
-@onready var gun_no_bullets_audio_stream_player: AudioStreamPlayer = $GunNoBulletsAudioStreamPlayer
 
 
 func _ready() -> void:
@@ -60,7 +59,7 @@ func shoot() -> void:
 
 
 func try_shoot_no_bullets() -> void:
-	pass
+	gun_no_ammo_load_audio_streamer.play()
 
 
 func shoot_hit() -> void:

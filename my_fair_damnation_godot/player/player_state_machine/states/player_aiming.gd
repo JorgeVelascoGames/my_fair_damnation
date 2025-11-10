@@ -68,10 +68,10 @@ func _on_randomize_sensitivity_timer_timeout() -> void:
 func try_shoot() -> void:
 	if shot_cd_timer.time_left > 0:
 		return
+	shot_cd_timer.start(cd_between_shots)
 	if player_inventory.try_take_item(BULLET):
 		shoot()
 		player.player_audio.shoot()
-		shot_cd_timer.start(cd_between_shots)
 	else:
 		player.player_audio.try_shoot_no_bullets()
 
