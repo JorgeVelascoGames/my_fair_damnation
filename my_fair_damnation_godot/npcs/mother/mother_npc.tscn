@@ -1,0 +1,355 @@
+[gd_scene load_steps=58 format=3 uid="uid://cld6geaee54c"]
+
+[ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_alp1m"]
+[ext_resource type="Resource" uid="uid://cag0803yvtwoy" path="res://npcs/ids/mother_id.tres" id="2_ly0fg"]
+[ext_resource type="PackedScene" uid="uid://dkqfew7ssu6mm" path="res://npcs/npc_instance.tscn" id="3_jrg2v"]
+[ext_resource type="Resource" uid="uid://drc8ptmk32h2l" path="res://events/events_resources/med_events/mother_missing_meds.tres" id="4_gliu6"]
+[ext_resource type="Script" uid="uid://c00m8ojonc6s4" path="res://conversations/dialog.gd" id="4_o43ut"]
+[ext_resource type="Resource" uid="uid://cvpr7oexdoi05" path="res://events/events_resources/quests/mother_and_auntie_are_in_peace.tres" id="4_pd8jw"]
+[ext_resource type="Script" uid="uid://7l1ps0yokllm" path="res://conversations/conversation.gd" id="5_0tynl"]
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="6_ke6ky"]
+[ext_resource type="PackedScene" uid="uid://d2vdwdvdx8tn6" path="res://npcs/mother/mother_model.tscn" id="6_o43ut"]
+[ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="7_h6wsf"]
+[ext_resource type="Script" uid="uid://bdfriqua1vdjs" path="res://npcs/npc_id.gd" id="8_klkhp"]
+[ext_resource type="Resource" uid="uid://bfvop75ghqdf7" path="res://items/item_vault/pills.tres" id="9_5v5w3"]
+[ext_resource type="Resource" uid="uid://dgj1ii3xwebw0" path="res://items/item_vault/quest_items/paternity_test.tres" id="9_r3l10"]
+[ext_resource type="Resource" uid="uid://bladg3yfktohg" path="res://events/events_resources/quests/mother_confess.tres" id="11_2ebga"]
+[ext_resource type="Resource" uid="uid://d3ypttnlofyfp" path="res://events/events_resources/quests/tomy_doesnt_take_pills.tres" id="11_wr7yy"]
+[ext_resource type="Resource" uid="uid://cd3ofktdiln67" path="res://items/item_vault/handkerchief.tres" id="12_dfa7d"]
+[ext_resource type="Resource" uid="uid://c7qcdy14kb4m8" path="res://items/item_vault/quest_items/tobias_photo.tres" id="13_wr7yy"]
+[ext_resource type="Resource" uid="uid://bcpttqy5pw4m7" path="res://events/events_resources/finals/sarah_free.tres" id="15_dfa7d"]
+[ext_resource type="Resource" uid="uid://6tcwkrk6gfwd" path="res://events/events_resources/quests/mother_talks_about_tommy.tres" id="15_dw3rr"]
+[ext_resource type="Resource" uid="uid://bep2sok5h22wc" path="res://events/events_resources/quests/tommy_request.tres" id="15_hrhp0"]
+[ext_resource type="PackedScene" uid="uid://bohm0tfnu2igo" path="res://npcs/mother/mother_enemy.tscn" id="17_gliu6"]
+[ext_resource type="Resource" uid="uid://ciwk70bxfnjh5" path="res://items/item_vault/tranquilizer_pills.tres" id="19_7p55u"]
+[ext_resource type="AudioStream" uid="uid://c2nkjhb7nwfim" path="res://assets/audio/npcs/mother/mom_talk_01.wav" id="21_4mta5"]
+[ext_resource type="Shader" uid="uid://lhmt1ugdk0qn" path="res://shaders/dissolve.gdshader" id="21_rnnjh"]
+[ext_resource type="Texture2D" uid="uid://bc15rkjlmtti" path="res://assets/npcs/mother_mother.png" id="22_hjqrl"]
+[ext_resource type="AudioStream" uid="uid://dav3abb2ehrxa" path="res://assets/audio/npcs/mother/mom_talk_02.wav" id="22_t26vf"]
+[ext_resource type="AudioStream" uid="uid://but7m0xsahbon" path="res://assets/audio/npcs/mother/mom_talk_03.wav" id="23_ml71i"]
+[ext_resource type="AudioStream" uid="uid://v7g4rkdluo14" path="res://assets/audio/npcs/mother/mom_talk_04.wav" id="24_6bsg3"]
+[ext_resource type="AudioStream" uid="uid://bp6lmtcnsn4vs" path="res://assets/audio/npcs/mother/mom_talk_05.wav" id="25_1gmpr"]
+[ext_resource type="AudioStream" uid="uid://d4jjocgwryoyk" path="res://assets/audio/npcs/celestial.wav" id="29_t26vf"]
+
+[sub_resource type="Resource" id="Resource_0tynl"]
+script = ExtResource("4_o43ut")
+dialog_description = "Es un placer señora"
+characters_per_second = 20.0
+dialog_id = "MOTHER_01_A_Q1"
+player_dialog_option = "MOTHER_01_A_Q1"
+dialog_text = Array[String](["MOTHER_01_A_Q1_001", "MOTHER_01_A_Q1_002", "MOTHER_01_A_Q1_003", "MOTHER_01_A_Q1_004", "MOTHER_01_A_Q1_005", "MOTHER_01_A_Q1_006", "MOTHER_01_A_Q1_007", "MOTHER_01_A_Q1_008", "MOTHER_01_A_Q1_009", "MOTHER_01_A_Q1_010"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_nfw5g"]
+script = ExtResource("4_o43ut")
+dialog_description = "Las pastillas"
+dialog_id = "MOTHER_01_A_Q2"
+player_dialog_option = "MOTHER_01_A_Q2"
+dialog_text = Array[String](["MOTHER_01_A_Q2_001", "MOTHER_01_A_Q2_002"])
+one_time_dialog = false
+once_per_day_dialog = true
+events_to_push = Array[ExtResource("6_ke6ky")]([ExtResource("4_gliu6")])
+items_to_unclok_dialog = Array[ExtResource("7_h6wsf")]([ExtResource("9_5v5w3")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_r3l10"]
+script = ExtResource("4_o43ut")
+dialog_description = "Quien son sus hijos?"
+dialog_id = "MOTHER_01_A_Q3"
+player_dialog_option = "MOTHER_01_A_Q3"
+dialog_text = Array[String](["MOTHER_01_A_Q3_001", "MOTHER_01_A_Q3_002", "MOTHER_01_A_Q3_003", "MOTHER_01_A_Q3_004", "MOTHER_01_A_Q3_005", "MOTHER_01_A_Q3_006", "MOTHER_01_A_Q3_007", "MOTHER_01_A_Q3_008", "MOTHER_01_A_Q3_009"])
+dialogs_to_unlock = Array[ExtResource("4_o43ut")]([SubResource("Resource_0tynl")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_wr7yy"]
+script = ExtResource("4_o43ut")
+dialog_description = "Quien más hay por aquí?"
+dialog_id = "MOTHER_01_A_Q4"
+player_dialog_option = "MOTHER_01_A_Q4"
+dialog_text = Array[String](["MOTHER_01_A_Q4_001", "MOTHER_01_A_Q4_002", "MOTHER_01_A_Q4_003"])
+dialogs_to_unlock = Array[ExtResource("4_o43ut")]([SubResource("Resource_0tynl"), SubResource("Resource_r3l10")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_dfa7d"]
+script = ExtResource("4_o43ut")
+dialog_description = "Hay algun problema con su cuñada?"
+dialog_id = "MOTHER_01_A_Q5"
+player_dialog_option = "MOTHER_01_A_Q5"
+dialog_text = Array[String](["MOTHER_01_A_Q5_001", "MOTHER_01_A_Q5_002", "MOTHER_01_A_Q5_003", "MOTHER_01_A_Q5_004", "MOTHER_01_A_Q5_005", "MOTHER_01_A_Q5_006", "MOTHER_01_A_Q5_007", "MOTHER_01_A_Q5_008", "MOTHER_01_A_Q5_009", "MOTHER_01_A_Q5_010", "MOTHER_01_A_Q5_011"])
+dialogs_to_unlock = Array[ExtResource("4_o43ut")]([SubResource("Resource_wr7yy")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_gliu6"]
+script = ExtResource("4_o43ut")
+dialog_id = "MOTHER_01_B_Q1"
+player_dialog_option = "MOTHER_01_B_Q1"
+dialog_text = Array[String](["MOTHER_01_B_Q1_001"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_2ebga"]
+script = ExtResource("4_o43ut")
+dialog_id = "MOTHER_01_B_Q2"
+player_dialog_option = "MOTHER_01_B_Q2"
+dialog_text = Array[String](["MOTHER_01_B_Q2_001", "MOTHER_01_B_Q2_002", "MOTHER_01_B_Q2_003", "MOTHER_01_B_Q2_004", "MOTHER_01_B_Q2_005", "MOTHER_01_B_Q2_006", "MOTHER_01_B_Q2_007", "MOTHER_01_B_Q2_008", "MOTHER_01_B_Q2_009"])
+dialogs_to_unlock = Array[ExtResource("4_o43ut")]([SubResource("Resource_gliu6")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_dw3rr"]
+script = ExtResource("4_o43ut")
+dialog_id = "MOTHER_01_B_Q3"
+player_dialog_option = "MOTHER_01_B_Q3"
+dialog_text = Array[String](["MOTHER_01_B_Q3_001", "MOTHER_01_B_Q3_002", "MOTHER_01_B_Q3_003", "MOTHER_01_B_Q3_004", "MOTHER_01_B_Q3_005", "MOTHER_01_B_Q3_006", "MOTHER_01_B_Q3_007", "MOTHER_01_B_Q3_008"])
+dialogs_to_unlock = Array[ExtResource("4_o43ut")]([SubResource("Resource_gliu6")])
+events_to_push = Array[ExtResource("6_ke6ky")]([ExtResource("11_2ebga")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_hrhp0"]
+script = ExtResource("5_0tynl")
+dialog_options = Array[ExtResource("4_o43ut")]([SubResource("Resource_gliu6"), SubResource("Resource_2ebga"), SubResource("Resource_dw3rr")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
+[sub_resource type="Resource" id="Resource_pd8jw"]
+script = ExtResource("4_o43ut")
+dialog_description = "Sé lo de Tomy"
+dialog_id = "MOTHER_01_A_Q6"
+player_dialog_option = "MOTHER_01_A_Q6"
+dialog_text = Array[String](["MOTHER_01_A_Q6_001"])
+response_conversation = SubResource("Resource_hrhp0")
+items_to_unclok_dialog = Array[ExtResource("7_h6wsf")]([ExtResource("9_r3l10")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_7p55u"]
+script = ExtResource("4_o43ut")
+dialog_description = "Tomy no se toma la medicacion"
+dialog_id = "MOTHER_01_A_Q7"
+player_dialog_option = "MOTHER_01_A_Q7"
+dialog_text = Array[String](["MOTHER_01_A_Q7_001", "MOTHER_01_A_Q7_002", "MOTHER_01_A_Q7_003", "MOTHER_01_A_Q7_004"])
+current_event_to_trigger_conversation = ExtResource("11_wr7yy")
+gained_item = ExtResource("12_dfa7d")
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_05j2u"]
+script = ExtResource("4_o43ut")
+dialog_id = "MOTHER_01_C_Q1"
+player_dialog_option = "MOTHER_01_C_Q1"
+dialog_text = Array[String](["MOTHER_01_C_Q1_001", "MOTHER_01_C_Q1_002", "MOTHER_01_C_Q1_003"])
+events_to_push = Array[ExtResource("6_ke6ky")]([ExtResource("15_dw3rr")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_rnnjh"]
+script = ExtResource("5_0tynl")
+dialog_options = Array[ExtResource("4_o43ut")]([SubResource("Resource_05j2u")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
+[sub_resource type="Resource" id="Resource_hjqrl"]
+script = ExtResource("4_o43ut")
+dialog_description = "Tomy parece triste"
+dialog_id = "MOTHER_01_A_Q8"
+player_dialog_option = "MOTHER_01_A_Q8"
+dialog_text = Array[String](["MOTHER_01_A_Q8_001"])
+response_conversation = SubResource("Resource_rnnjh")
+current_events_to_trigger_conversation = Array[ExtResource("6_ke6ky")]([ExtResource("15_hrhp0")])
+reputation_with_player_changed = 20.0
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_kanhf"]
+script = ExtResource("4_o43ut")
+dialog_id = "MOTHER_01_D_Q1"
+player_dialog_option = "MOTHER_01_D_Q1"
+dialog_text = Array[String](["MOTHER_01_D_Q1_001", "MOTHER_01_D_Q1_002", "MOTHER_01_D_Q1_003", "MOTHER_01_D_Q1_004", "MOTHER_01_D_Q1_005", "MOTHER_01_D_Q1_006", "MOTHER_01_D_Q1_007", "MOTHER_01_D_Q1_008", "MOTHER_01_D_Q1_009"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_5w1l4"]
+script = ExtResource("5_0tynl")
+dialog_options = Array[ExtResource("4_o43ut")]([SubResource("Resource_kanhf")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
+[sub_resource type="Resource" id="Resource_p4cmc"]
+script = ExtResource("4_o43ut")
+dialog_description = "Darle la foto de Tobias"
+dialog_id = "MOTHER_01_A_Q9"
+player_dialog_option = "MOTHER_01_A_Q9"
+dialog_text = Array[String](["MOTHER_01_A_Q9_001", "MOTHER_01_A_Q9_002"])
+response_conversation = SubResource("Resource_5w1l4")
+items_to_unclok_dialog = Array[ExtResource("7_h6wsf")]([ExtResource("13_wr7yy")])
+take_unlock_item = true
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_t26vf"]
+script = ExtResource("4_o43ut")
+dialog_description = "Dar tranquilizantes"
+dialog_id = "give_pills_sarah"
+player_dialog_option = "give_pills_sarah"
+dialog_text = Array[String](["npc_thanks_sarah"])
+one_time_dialog = false
+items_to_unclok_dialog = Array[ExtResource("7_h6wsf")]([ExtResource("19_7p55u")])
+take_unlock_item = true
+reputation_with_player_changed = 20.0
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_ml71i"]
+script = ExtResource("4_o43ut")
+dialog_description = "Adios"
+dialog_id = "mother_bye"
+player_dialog_option = "nurse_bye"
+finish_conversation = true
+one_time_dialog = false
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_h6wsf"]
+script = ExtResource("5_0tynl")
+dialog_options = Array[ExtResource("4_o43ut")]([SubResource("Resource_0tynl"), SubResource("Resource_nfw5g"), SubResource("Resource_r3l10"), SubResource("Resource_wr7yy"), SubResource("Resource_dfa7d"), SubResource("Resource_pd8jw"), SubResource("Resource_7p55u"), SubResource("Resource_hjqrl"), SubResource("Resource_p4cmc"), SubResource("Resource_t26vf"), SubResource("Resource_ml71i")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
+[sub_resource type="Resource" id="Resource_klkhp"]
+script = ExtResource("4_o43ut")
+characters_per_second = 20.0
+dialog_id = "MOTHER_WELLCOME_B"
+dialog_text = Array[String](["MOTHER_WELLCOME_B"])
+randomize_dialog = true
+one_time_dialog = false
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_5v5w3"]
+script = ExtResource("4_o43ut")
+dialog_id = "MOTHER_WELLCOME_A_001"
+dialog_text = Array[String](["MOTHER_WELLCOME_A_001", "MOTHER_WELLCOME_A_002", "MOTHER_WELLCOME_A_003", "MOTHER_WELLCOME_A_004", "MOTHER_WELLCOME_A_005", "MOTHER_WELLCOME_A_006"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jk25q"]
+size = Vector3(1.02637, 2.87491, 0.440918)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2ityi"]
+streams_count = 5
+stream_0/stream = ExtResource("21_4mta5")
+stream_1/stream = ExtResource("22_t26vf")
+stream_2/stream = ExtResource("23_ml71i")
+stream_3/stream = ExtResource("24_6bsg3")
+stream_4/stream = ExtResource("25_1gmpr")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1xcji"]
+render_priority = 0
+shader = ExtResource("21_rnnjh")
+shader_parameter/baseColor = Color(1, 1, 1, 1)
+shader_parameter/baseColorTexture = ExtResource("22_hjqrl")
+shader_parameter/dissolveSlider = 0.0
+shader_parameter/dissolveNoiseScale = 2.0
+shader_parameter/edgeNoiseScale = 0.0
+shader_parameter/edgesThickness = 0.0210000009975
+shader_parameter/edgeColor = Color(0.7107048, 0.62008995, 0.41088966, 1)
+shader_parameter/edgeEmissionSlider = 1.6899999622251198
+shader_parameter/enable_dissolve_animation = false
+shader_parameter/animation_speed = 1.0
+shader_parameter/animation_intensity = 0.2
+
+[sub_resource type="Resource" id="Resource_4mta5"]
+script = ExtResource("4_o43ut")
+dialog_id = "MOTHER_WELLCOME_FINAL_01"
+dialog_text = Array[String](["MOTHER_WELLCOME_FINAL_01", "MOTHER_WELLCOME_FINAL_02", "MOTHER_WELLCOME_FINAL_03", "MOTHER_WELLCOME_FINAL_04", "MOTHER_WELLCOME_FINAL_05", "MOTHER_WELLCOME_FINAL_06", "MOTHER_WELLCOME_FINAL_07", "MOTHER_WELLCOME_FINAL_08"])
+finish_conversation = true
+events_to_push = Array[ExtResource("6_ke6ky")]([ExtResource("15_dfa7d")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t26vf"]
+
+[node name="MotherNpc" instance=ExtResource("1_alp1m")]
+id = ExtResource("2_ly0fg")
+
+[node name="NpcInstanceController" parent="." index="0" node_paths=PackedStringArray("main_instance", "enemy_instance", "instance_by_current_event")]
+main_instance = NodePath("NpcInstance")
+meds_event = ExtResource("4_gliu6")
+missing_meds_message = "medication_sarah_missing"
+behaviour_at_night = 1
+enemy_instance = NodePath("../MotherEnemy")
+use_current_event_instance_array = true
+instance_by_current_event = {
+ExtResource("4_pd8jw"): NodePath("MotherFinalInstance")
+}
+
+[node name="NpcInstance" parent="NpcInstanceController" index="0" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("3_jrg2v")]
+look_at_position = NodePath("ModelContainer/MotherModel/Armature-mother/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
+look_at_modifier = NodePath("ModelContainer/MotherModel/Armature-mother/Skeleton3D/LookAtModifier3D")
+
+[node name="NpcConversation" parent="NpcInstanceController/NpcInstance" index="0"]
+conversation = SubResource("Resource_h6wsf")
+neutral_wellcome_dialog = SubResource("Resource_klkhp")
+override_wellcome_dialog = SubResource("Resource_5v5w3")
+
+[node name="MotherModel" parent="NpcInstanceController/NpcInstance/ModelContainer" index="0" instance=ExtResource("6_o43ut")]
+
+[node name="Skeleton3D" parent="NpcInstanceController/NpcInstance/ModelContainer/MotherModel/Armature-mother" index="0"]
+bones/0/position = Vector3(1.8337516e-15, 1.3093659, -0.12723732)
+bones/0/rotation = Quaternion(-0.007966145, 1.19205474e-07, -9.496347e-10, 0.9999683)
+bones/1/position = Vector3(0.34824434, 0.031201264, -0.16820368)
+bones/1/rotation = Quaternion(-0.0068326322, 0.14074412, 0.986919, -0.07832883)
+bones/2/rotation = Quaternion(-0.28867245, 0.014878984, 0.012263865, 0.9572338)
+bones/3/rotation = Quaternion(0.6392242, -0.044553068, -0.079581335, 0.7635931)
+bones/4/position = Vector3(-0.34824428, 0.031201323, -0.16820388)
+bones/4/rotation = Quaternion(0.0068324795, 0.14074415, 0.9869189, 0.078328826)
+bones/5/rotation = Quaternion(-0.2886724, -0.014879005, -0.012263815, 0.9572337)
+bones/6/rotation = Quaternion(0.6392242, 0.044553187, 0.079581186, 0.7635931)
+bones/7/rotation = Quaternion(0.007966113, 2.1203364e-14, 1.899269e-09, 0.9999683)
+bones/8/position = Vector3(0.45805448, 0.98804176, -0.22902669)
+bones/8/rotation = Quaternion(0.0057117916, -0.047015473, 0.97786415, -0.20381047)
+bones/9/rotation = Quaternion(0.21548823, -0.0024426493, -0.053262524, 0.97504973)
+bones/10/position = Vector3(-0.35202324, 0.973904, -0.22902687)
+bones/10/rotation = Quaternion(-0.0026002857, -0.046146598, 0.96367735, 0.26303947)
+bones/11/rotation = Quaternion(0.21381219, 0.015633933, 0.11259071, 0.97023886)
+
+[node name="BoneAttachment3D" parent="NpcInstanceController/NpcInstance/ModelContainer/MotherModel/Armature-mother/Skeleton3D" index="2"]
+transform = Transform3D(1, -6.661338e-15, 2.3841855e-07, -8.416878e-15, 0.99999994, 6.3329935e-08, -2.3841855e-07, -6.3329935e-08, 0.99999994, -7.27053e-15, 2.3740864, -0.14420237)
+
+[node name="AnimationPlayer" parent="NpcInstanceController/NpcInstance/ModelContainer/MotherModel" index="1"]
+autoplay = "idle"
+
+[node name="Interactable" parent="NpcInstanceController/NpcInstance" index="2"]
+interactable_hint = "Talk"
+
+[node name="CollisionShape3D" parent="NpcInstanceController/NpcInstance/Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0131836, 1.43019, 0.128174)
+shape = SubResource("BoxShape3D_jk25q")
+
+[node name="DialogAudioStreamPlayer3D" parent="NpcInstanceController/NpcInstance/NpcInstanceAudioController" index="1"]
+stream = SubResource("AudioStreamRandomizer_2ityi")
+volume_db = -8.0
+
+[node name="MotherFinalInstance" parent="NpcInstanceController" index="1" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("3_jrg2v")]
+instance_id = 1
+look_at_position = NodePath("ModelContainer/MotherModel/Armature-mother/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
+look_at_modifier = NodePath("ModelContainer/MotherModel/Armature-mother/Skeleton3D/LookAtModifier3D")
+need_meds = false
+materials_to_dislove = Array[Material]([SubResource("ShaderMaterial_1xcji")])
+
+[node name="NpcConversation" parent="NpcInstanceController/MotherFinalInstance" index="0" node_paths=PackedStringArray("npc_instance")]
+npc_instance = NodePath("..")
+override_wellcome_dialog = SubResource("Resource_4mta5")
+
+[node name="MotherModel" parent="NpcInstanceController/MotherFinalInstance/ModelContainer" index="0" instance=ExtResource("6_o43ut")]
+
+[node name="CollisionShape3D" parent="NpcInstanceController/MotherFinalInstance/Interactable" index="0"]
+shape = SubResource("BoxShape3D_t26vf")
+
+[node name="NpcInstanceAudioController" parent="NpcInstanceController/MotherFinalInstance" index="5"]
+idle_sound_during_conversation = true
+
+[node name="NpcIdleAudioStreamPlayer3D" parent="NpcInstanceController/MotherFinalInstance/NpcInstanceAudioController" index="0"]
+stream = ExtResource("29_t26vf")
+volume_db = -4.0
+unit_size = 2.5
+
+[node name="NpcReputation" parent="." index="1"]
+reputation_with_player = 12.0
+reputation_change_message = Dictionary[int, String]({
+0: "reputation_sarah_hostile",
+1: "reputation_sarah_neutral",
+2: "reputation_sarah_positive"
+})
+
+[node name="MotherEnemy" parent="." index="4" instance=ExtResource("17_gliu6")]
+
+[editable path="NpcInstanceController/NpcInstance"]
+[editable path="NpcInstanceController/NpcInstance/ModelContainer/MotherModel"]
+[editable path="NpcInstanceController/NpcInstance/Interactable"]
+[editable path="NpcInstanceController/MotherFinalInstance"]
+[editable path="NpcInstanceController/MotherFinalInstance/ModelContainer/MotherModel"]
+[editable path="NpcInstanceController/MotherFinalInstance/Interactable"]

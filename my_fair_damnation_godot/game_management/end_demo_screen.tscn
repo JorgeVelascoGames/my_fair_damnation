@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbj1filsv27sp"]
+
+[ext_resource type="Script" uid="uid://bttpns8c6wdp5" path="res://game_management/end_demo_screen.gd" id="1_duepy"]
+[ext_resource type="Texture2D" uid="uid://emxnvvjtxui3" path="res://assets/ui/metal_background.jpg" id="1_hyek8"]
+[ext_resource type="LabelSettings" uid="uid://csob6ho87rhlq" path="res://ui/basic_label.tres" id="2_xhkck"]
+[ext_resource type="Theme" uid="uid://oxf8w7asp4eg" path="res://ui/main_theme.tres" id="3_xhkck"]
+
+[node name="EndDemoScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_duepy")
+steam_url = "https://store.steampowered.com/app/2881170/What_remains_of_my_sins/"
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="TextureRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hyek8")
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.04532849, 0.01295557, 0.015805764, 0.5372549)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 34
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "demo_end_warning"
+label_settings = ExtResource("2_xhkck")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "demo_end_thanks"
+label_settings = ExtResource("2_xhkck")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="GoSteamButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+theme = ExtResource("3_xhkck")
+text = "go_steam"
+
+[node name="ExitButton" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(95, 0)
+layout_mode = 2
+theme = ExtResource("3_xhkck")
+text = "MENU_04"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/GoSteamButton" to="." method="_on_go_steam_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

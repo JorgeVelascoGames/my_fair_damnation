@@ -1,0 +1,71 @@
+[gd_scene load_steps=7 format=3 uid="uid://kcjc0rxp83kc"]
+
+[ext_resource type="Script" uid="uid://ta5nvgrbv5ea" path="res://mechanics/transition_doors/transition_door.gd" id="1_fddek"]
+[ext_resource type="PackedScene" uid="uid://dup8g2hg5x2f8" path="res://scripts/interactable/interactable.tscn" id="1_tbt4p"]
+[ext_resource type="Texture2D" uid="uid://d2c52dq74ms7r" path="res://assets/screen_overlays/screen_overlay_danger_03.png" id="3_hgru6"]
+[ext_resource type="AudioStream" uid="uid://dwf5co1vacrxs" path="res://assets/audio/unlock_door.wav" id="4_h78vu"]
+[ext_resource type="AudioStream" uid="uid://2kgho3phg2ke" path="res://assets/audio/close_door.wav" id="5_1x3of"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fddek"]
+size = Vector3(1, 2.69189, 0.27063)
+
+[node name="TransitionDoor" type="Node3D"]
+script = ExtResource("1_fddek")
+
+[node name="Interactable" parent="." instance=ExtResource("1_tbt4p")]
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+shape = SubResource("BoxShape3D_fddek")
+
+[node name="TransitionCanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+visible = false
+
+[node name="Control" type="Control" parent="TransitionCanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="FadeEffect" type="ColorRect" parent="TransitionCanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.278539, 0.255661, 0.227693, 1)
+
+[node name="TextureBackground" type="ColorRect" parent="TransitionCanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.278539, 0.255661, 0.227693, 1)
+
+[node name="TextureRect" type="TextureRect" parent="TransitionCanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_hgru6")
+
+[node name="UnlockAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_h78vu")
+
+[node name="CloseAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_1x3of")
+
+[node name="DestinationMarker3D" type="Marker3D" parent="."]
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+
+[editable path="Interactable"]

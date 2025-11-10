@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://c7eaihgjk47a7"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_r3hrt"]
+
+[resource]
+script = ExtResource("1_r3hrt")
+event_name = "nurse enlighted"
+event_description = "Cuando le entregas el cruficijo a la enfermera"
+event_is_trigger = false
+is_one_day_only = false
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

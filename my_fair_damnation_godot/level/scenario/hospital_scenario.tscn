@@ -1,0 +1,80 @@
+[gd_scene load_steps=12 format=3 uid="uid://dqk45r48r427t"]
+
+[ext_resource type="PackedScene" uid="uid://bs5er1dreu6u1" path="res://level/scenario/hospital_scenario.blend" id="1_ldfa7"]
+[ext_resource type="Material" uid="uid://dst813utgj4hq" path="res://materials/walls_mat.tres" id="2_acyha"]
+[ext_resource type="Texture2D" uid="uid://df35nb7gptddd" path="res://assets/textures/environment/dirt_texture_overlay_highres.png" id="2_rtkmx"]
+[ext_resource type="Material" uid="uid://crg8cijrbcnfr" path="res://materials/floor_mat.tres" id="3_f0p8v"]
+[ext_resource type="Texture2D" uid="uid://5xj1mcqttx2n" path="res://assets/textures/environment/metal_background.jpg" id="4_4cm6p"]
+[ext_resource type="Material" uid="uid://cehysutb1sgal" path="res://materials/cealing_mat.tres" id="4_6iimo"]
+[ext_resource type="Texture2D" uid="uid://dmjewg4jgvmv2" path="res://assets/textures/environment/wall_top.png" id="5_w2o3h"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xrsb0"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0.847059)
+albedo_texture = ExtResource("2_rtkmx")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_offset = Vector3(0.7, 0, 0)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e2w2f"]
+albedo_texture = ExtResource("4_4cm6p")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vcnk"]
+albedo_texture = ExtResource("5_w2o3h")
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a44v5"]
+transparency = 1
+albedo_color = Color(1, 1, 1, 0)
+
+[node name="HospitalScenario" instance=ExtResource("1_ldfa7")]
+
+[node name="floor" parent="." index="0" groups=["navigation"]]
+layers = 524289
+material_overlay = SubResource("StandardMaterial3D_xrsb0")
+surface_material_override/0 = ExtResource("2_acyha")
+surface_material_override/1 = ExtResource("3_f0p8v")
+surface_material_override/2 = SubResource("StandardMaterial3D_e2w2f")
+surface_material_override/3 = SubResource("StandardMaterial3D_4vcnk")
+
+[node name="StaticBody3D" parent="floor" index="0"]
+collision_layer = 3
+collision_mask = 0
+
+[node name="cealing" parent="." index="1"]
+layers = 524289
+surface_material_override/0 = ExtResource("4_6iimo")
+
+[node name="room" parent="." index="2"]
+layers = 524289
+
+[node name="stairs_01" parent="." index="3"]
+surface_material_override/0 = ExtResource("3_f0p8v")
+
+[node name="stairs_03" parent="." index="4"]
+surface_material_override/0 = ExtResource("3_f0p8v")
+
+[node name="stairs_04" parent="." index="5"]
+surface_material_override/0 = ExtResource("3_f0p8v")
+
+[node name="stairs_02" parent="." index="6"]
+surface_material_override/0 = ExtResource("3_f0p8v")
+
+[node name="stairs_05" parent="." index="7"]
+surface_material_override/0 = ExtResource("3_f0p8v")
+
+[node name="cealing_top" parent="." index="8"]
+surface_material_override/0 = ExtResource("4_6iimo")
+
+[node name="transparent_stairs" parent="." index="9" groups=["navigation"]]
+surface_material_override/0 = SubResource("StandardMaterial3D_a44v5")
+
+[node name="StaticBody3D" parent="transparent_stairs" index="0" groups=["stairs"]]
+collision_layer = 3
+collision_mask = 0
+
+[node name="CollisionShape3D" parent="transparent_stairs/StaticBody3D" index="0" groups=["navigation"]]

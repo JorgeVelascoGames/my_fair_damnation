@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://cp8i44jjsdcg3"]
+
+[ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="1_px2oc"]
+
+[resource]
+script = ExtResource("1_px2oc")
+item_name = "Carta de Lynda para Skyler"
+ui_item_name = "item_letter_lynda_name"
+ui_item_description = "item_letter_lynda_desc"
+metadata/_custom_type_script = "uid://bo8skdwgushde"

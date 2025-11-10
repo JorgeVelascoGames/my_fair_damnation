@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dvhlfxajaqexu"]
+
+[ext_resource type="PackedScene" uid="uid://b1o2r61trk4jq" path="res://assets/environment_props/round_table/round_table_model.tscn" id="1_0nlcu"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5o5sh"]
+height = 1.26392
+radius = 1.00098
+
+[node name="RoundTable" type="Node3D"]
+
+[node name="RoundTableModel" parent="." instance=ExtResource("1_0nlcu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.699217, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="RoundTableModel"]
+collision_layer = 129
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RoundTableModel/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0628662, 0)
+shape = SubResource("CylinderShape3D_5o5sh")

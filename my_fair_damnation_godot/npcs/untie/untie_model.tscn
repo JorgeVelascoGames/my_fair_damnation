@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkxp1onnn6je4"]
+
+[ext_resource type="PackedScene" uid="uid://v0ruh1kpmcfm" path="res://assets/npcs/untie.glb" id="1_p2wvn"]
+[ext_resource type="Shader" uid="uid://lhmt1ugdk0qn" path="res://shaders/dissolve.gdshader" id="2_vwtc3"]
+[ext_resource type="Texture2D" uid="uid://bdkoifekpd5n2" path="res://assets/npcs/untie_butcher.png" id="3_5ds8f"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ombt2"]
+render_priority = 0
+shader = ExtResource("2_vwtc3")
+shader_parameter/baseColor = Color(1, 1, 1, 1)
+shader_parameter/baseColorTexture = ExtResource("3_5ds8f")
+shader_parameter/dissolveSlider = 0.0
+shader_parameter/dissolveNoiseScale = 2.0
+shader_parameter/edgeNoiseScale = 0.0
+shader_parameter/edgesThickness = 0.0210000009975
+shader_parameter/edgeColor = Color(0.7107048, 0.62008995, 0.41088966, 1)
+shader_parameter/edgeEmissionSlider = 1.6899999622251198
+shader_parameter/enable_dissolve_animation = false
+shader_parameter/animation_speed = 1.0
+shader_parameter/animation_intensity = 0.2
+
+[node name="UntieModel" instance=ExtResource("1_p2wvn")]
+
+[node name="Armature_001" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="untie" parent="Armature_001/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_ombt2")
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Armature_001/Skeleton3D" index="1"]
+bone_name = "Bone.009"
+bone = 5
+forward_axis = 2
+primary_rotation_axis = 0
+duration = 1.5
+transition_type = 10
+ease_type = 1
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 1.5708
+primary_damp_threshold = 0.0
+secondary_limit_angle = 6.28319
+secondary_damp_threshold = 1.0
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature_001/Skeleton3D" index="2"]
+transform = Transform3D(1, 4.973799e-14, 2.3841847e-07, 2.3800705e-07, 0.05872199, -0.9982742, -1.4000385e-08, 0.99827415, 0.05872166, -1.2460775e-08, 4.6683946, -0.6401229)
+bone_name = "Bone.009"
+bone_idx = 5
+
+[node name="LookAtMarker3D" type="Marker3D" parent="Armature_001/Skeleton3D/BoneAttachment3D" index="0"]
+transform = Transform3D(1, 0, -1.83187e-14, 0, 1, 0, 9.76996e-15, 0, 1, -1.57092e-08, 1.12011, 0.0658889)

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://hosojy7f1b7a"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_ma23k"]
+
+[resource]
+script = ExtResource("1_ma23k")
+event_name = "Stew cooking"
+event_description = "El estofado ha empezado a hacerse. Este evento es de un solo día, para que al dia siguiente ya se pueda recoger"
+is_one_day_only = true
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://glw8u4bqu4gr"]
+
+[ext_resource type="PackedScene" uid="uid://bua0cjqu0pvj8" path="res://assets/environment_props/filing_cabinet/filling_cabinet_animated.glb" id="1_62ls5"]
+
+[node name="FillingCabinetModel" instance=ExtResource("1_62ls5")]
+
+[node name="filing_cabinet" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0216827, 0.741568, -0.187923)

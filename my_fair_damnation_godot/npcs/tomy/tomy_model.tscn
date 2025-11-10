@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://b7evkupfryad"]
+
+[ext_resource type="PackedScene" uid="uid://tqp245avlou3" path="res://assets/npcs/tomy.glb" id="1_lwlvv"]
+[ext_resource type="Shader" uid="uid://lhmt1ugdk0qn" path="res://shaders/dissolve.gdshader" id="2_fmoo2"]
+[ext_resource type="Texture2D" uid="uid://3akc2hs6kgh" path="res://assets/textures/environment/blood/blood_3.png" id="2_xsfdd"]
+[ext_resource type="Texture2D" uid="uid://bc61adxilwlco" path="res://assets/npcs/tomy_tomy.png" id="3_xsfdd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qrnsu"]
+transparency = 1
+albedo_color = Color(0.78352344, 0.7835234, 0.7835234, 1)
+albedo_texture = ExtResource("2_xsfdd")
+uv1_scale = Vector3(1.885, 1.885, 1.885)
+uv1_offset = Vector3(0.105, -0.055, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qrnsu"]
+render_priority = 0
+shader = ExtResource("2_fmoo2")
+shader_parameter/baseColor = Color(0.6789437, 0.6789437, 0.6789437, 1)
+shader_parameter/baseColorTexture = ExtResource("3_xsfdd")
+shader_parameter/dissolveSlider = 0.0
+shader_parameter/dissolveNoiseScale = 2.0
+shader_parameter/edgeNoiseScale = 0.0
+shader_parameter/edgesThickness = 0.0210000009975
+shader_parameter/edgeColor = Color(0.7107048, 0.62008995, 0.41088966, 1)
+shader_parameter/edgeEmissionSlider = 1.6899999622251198
+shader_parameter/enable_dissolve_animation = false
+shader_parameter/animation_speed = 1.0
+shader_parameter/animation_intensity = 0.2
+
+[node name="TomyModel" instance=ExtResource("1_lwlvv")]
+
+[node name="Tomy_001" parent="." index="0"]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0, 0, 0)
+
+[node name="Tomy" parent="Tomy_001/Skeleton3D" index="0"]
+material_overlay = SubResource("StandardMaterial3D_qrnsu")
+surface_material_override/0 = SubResource("ShaderMaterial_qrnsu")
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Tomy_001/Skeleton3D" index="1"]
+bone_name = "DEF-spine.006"
+bone = 7
+use_secondary_rotation = false
+duration = 1.5
+transition_type = 10
+ease_type = 1
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 1.5708
+primary_damp_threshold = 0.0
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Tomy_001/Skeleton3D" index="2"]
+transform = Transform3D(1, -2.3457632e-14, -4.7850162e-14, 9.870775e-15, 0.99999964, -5.9604645e-08, 4.122083e-14, -2.9802322e-08, 0.99999976, -2.6429068e-14, 1.9234792, 0.026671313)
+bone_name = "DEF-spine.006"
+bone_idx = 7
+
+[node name="LookAtMarker3D" type="Marker3D" parent="Tomy_001/Skeleton3D/BoneAttachment3D" index="0"]
+transform = Transform3D(1, 1.69407e-21, 0, 0, 1, 0, 1.42109e-14, 0, 1, 0, 0, 0)

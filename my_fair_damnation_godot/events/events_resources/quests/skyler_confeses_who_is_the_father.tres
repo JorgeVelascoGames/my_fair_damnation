@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://cpkc8dwohnly6"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_ougy4"]
+
+[resource]
+script = ExtResource("1_ougy4")
+event_name = "Skyler confeses"
+event_description = "Se lanza cuando Skyler confiesa quien es el padre del espantapájaros"
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkqfew7ssu6mm"]
+
+[ext_resource type="Script" uid="uid://def2ibd1pyuen" path="res://npcs/npc_instance.gd" id="1_52scd"]
+[ext_resource type="Script" uid="uid://nqjb5bv6q7yi" path="res://npcs/npc_conversation.gd" id="2_uhrec"]
+[ext_resource type="PackedScene" uid="uid://dup8g2hg5x2f8" path="res://scripts/interactable/interactable.tscn" id="3_a1ncy"]
+[ext_resource type="Script" uid="uid://bxjw36rw1byvf" path="res://npcs/npc_instance_animator.gd" id="4_gkmce"]
+[ext_resource type="Script" uid="uid://dfdyh7y4oe6ul" path="res://npcs/npc_instance_audio_controller.gd" id="5_q6k3m"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_gkmce"]
+height = 3.3544922
+radius = 0.6
+
+[node name="NpcInstance" type="Node3D"]
+script = ExtResource("1_52scd")
+
+[node name="NpcConversation" type="Node" parent="."]
+script = ExtResource("2_uhrec")
+metadata/_custom_type_script = "uid://nqjb5bv6q7yi"
+
+[node name="ModelContainer" type="Node3D" parent="."]
+
+[node name="Interactable" parent="." instance=ExtResource("3_a1ncy")]
+
+[node name="InstanceAnimatorController" type="Node" parent="."]
+script = ExtResource("4_gkmce")
+
+[node name="NpcStaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NpcStaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.93648463, 0)
+shape = SubResource("CylinderShape3D_gkmce")
+
+[node name="NpcInstanceAudioController" type="Node3D" parent="."]
+script = ExtResource("5_q6k3m")
+
+[node name="NpcIdleAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="NpcInstanceAudioController"]
+unit_size = 5.0
+
+[node name="DialogAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="NpcInstanceAudioController"]
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

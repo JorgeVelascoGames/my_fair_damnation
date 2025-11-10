@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://bep2sok5h22wc"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_uqwbp"]
+
+[resource]
+script = ExtResource("1_uqwbp")
+event_name = "Tommy te dice que esta asustado"
+event_description = "Esto lo lanza Tommy con la conversación de que tiene miedo para comenzar su misión"
+event_is_trigger = false
+is_one_day_only = false
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

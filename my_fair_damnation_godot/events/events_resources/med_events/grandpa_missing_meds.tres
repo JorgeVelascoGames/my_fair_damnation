@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://dklrya8uji4jp"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_ml7xb"]
+
+[resource]
+script = ExtResource("1_ml7xb")
+event_name = "Grandpa missing meds"
+event_description = "Salta cuando le damos la medicación . Esto hace que no se pierda reputación al final del día. El propio programa se encarga de elminarlo de la lista de current"
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

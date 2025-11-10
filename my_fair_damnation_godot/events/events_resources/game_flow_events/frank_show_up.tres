@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://oqs8tliaf0y4"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_0cia4"]
+
+[resource]
+script = ExtResource("1_0cia4")
+event_name = "Frank show up event"
+event_description = "Este evento debe lanzarse si frank aparece de noche en la recepción"
+is_one_day_only = true
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

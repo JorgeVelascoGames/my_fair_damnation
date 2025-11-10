@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://be07igll7nwoj"]
+
+[ext_resource type="PackedScene" uid="uid://bir87rdscgj2n" path="res://assets/props/walker/walker.fbx" id="1_mtdia"]
+[ext_resource type="Texture2D" uid="uid://bu8vu75fka0yh" path="res://assets/props/walker/walker_walker_BaseColor.1001.png" id="2_7m8se"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4at2q"]
+albedo_texture = ExtResource("2_7m8se")
+
+[node name="walker" instance=ExtResource("1_mtdia")]
+
+[node name="walker" parent="." index="0"]
+transform = Transform3D(3.4944, 0, 0, 0, -4.16565e-07, 4.60243, 0, -3.4944, -5.48652e-07, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_4at2q")

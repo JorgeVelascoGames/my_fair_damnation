@@ -1,0 +1,125 @@
+[gd_scene load_steps=4 format=3 uid="uid://dip13h6cniito"]
+
+[ext_resource type="PackedScene" uid="uid://kvvoindymdyn" path="res://npcs/enemies/enemy.tscn" id="1_otmem"]
+[ext_resource type="PackedScene" uid="uid://bw1uq7kxvky44" path="res://npcs/enemies/behaviour/enemy_patrol_behaviour.tscn" id="2_kpapo"]
+[ext_resource type="PackedScene" uid="uid://dkxp1onnn6je4" path="res://npcs/untie/untie_model.tscn" id="3_0j2rj"]
+
+[node name="UntieEnemy" node_paths=PackedStringArray("enemy_model", "look_at_player") instance=ExtResource("1_otmem")]
+enemy_model = NodePath("EnemyModel/UntieModel")
+look_at_player = NodePath("EnemyModel/UntieModel/Armature_001/Skeleton3D/LookAtModifier3D")
+
+[node name="EnemyAttack" parent="StateMachine" index="6" node_paths=PackedStringArray("camera_look_at")]
+camera_look_at = NodePath("../../EnemyModel/UntieModel/Armature_001/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
+
+[node name="EnemyBehaviourManager" parent="." index="1" node_paths=PackedStringArray("enemy_behaviour")]
+enemy_behaviour = NodePath("PatrolBehaviour")
+
+[node name="PatrolBehaviour" parent="EnemyBehaviourManager" index="0" node_paths=PackedStringArray("state_machine", "enemy_detection") instance=ExtResource("2_kpapo")]
+random_patrol = true
+state_machine = NodePath("../../StateMachine")
+enemy_detection = NodePath("../../EnemyDetection")
+
+[node name="Marker3D" type="Marker3D" parent="EnemyBehaviourManager/PatrolBehaviour" index="0"]
+
+[node name="Marker3D2" type="Marker3D" parent="EnemyBehaviourManager/PatrolBehaviour" index="1"]
+
+[node name="MeshInstance3D" parent="." index="4"]
+visible = false
+
+[node name="EnemyAnimatorController" parent="." index="8" node_paths=PackedStringArray("animation")]
+animation = NodePath("../EnemyModel/UntieModel/AnimationPlayer")
+idle_anim = "butcher_idle"
+walk_anim = "butcher_walk"
+chase_anim = "butcher_walk"
+attack_anim = "butcher_walk"
+stun_anim = "butcher_idle"
+cooldown_anim = "butcher_idle"
+dying_anim = "butcher_idle"
+
+[node name="UntieModel" parent="EnemyModel" index="0" instance=ExtResource("3_0j2rj")]
+transform = Transform3D(-0.520464, 0, -4.55004e-08, 0, 0.520464, 0, 4.55004e-08, 0, -0.520464, 0, 0, 0)
+
+[node name="Skeleton3D" parent="EnemyModel/UntieModel/Armature_001" index="0"]
+bones/0/position = Vector3(2.95206e-16, 0.664743, 0.196961)
+bones/0/rotation = Quaternion(-0.2993, 1.13745e-07, -3.56793e-08, 0.954159)
+bones/1/rotation = Quaternion(-0.139821, 1.26149e-14, -3.3336e-08, 0.990177)
+bones/2/rotation = Quaternion(0.143209, 9.26791e-15, 3.41437e-08, 0.989693)
+bones/3/rotation = Quaternion(0.28701, 7.4175e-15, 6.84285e-08, 0.957928)
+bones/4/rotation = Quaternion(0.576329, -5.57431e-14, 1.37407e-07, 0.817218)
+bones/5/rotation = Quaternion(0.150648, 1.49945e-14, 3.59174e-08, 0.988587)
+bones/6/rotation = Quaternion(-1.84393e-07, 1.58051e-08, 0.707107, 0.707107)
+bones/7/rotation = Quaternion(0.143909, -2.9411e-09, 0.00846522, 0.989555)
+bones/8/rotation = Quaternion(0.0608711, -0.19992, -0.732213, 0.648221)
+bones/10/rotation = Quaternion(0.118962, 3.6934e-09, -0.00699772, 0.992874)
+bones/11/rotation = Quaternion(0.0657619, 0.117009, 0.74485, 0.653592)
+bones/12/rotation = Quaternion(-1.47514e-07, -2.10734e-08, 0.707107, 0.707107)
+bones/13/rotation = Quaternion(0.0417315, -2.22748e-08, -0.110466, 0.993003)
+bones/14/rotation = Quaternion(0.0457233, 2.17392e-08, -0.121032, 0.991595)
+bones/15/rotation = Quaternion(0.0329933, 7.40951e-09, -0.698473, 0.714876)
+bones/16/rotation = Quaternion(-0.00307725, -9.46231e-08, 0.0414281, 0.999137)
+bones/17/rotation = Quaternion(-0.000787973, 2.16419e-08, 0.0106073, 0.999943)
+bones/18/rotation = Quaternion(-0.000615194, -0.000615316, 0.738959, 0.67375)
+bones/19/rotation = Quaternion(0.151166, -0.00781183, -0.0370712, 0.987782)
+bones/20/rotation = Quaternion(0.330352, -0.00665268, 0.0143794, 0.943725)
+bones/22/rotation = Quaternion(0.00030095, -6.85471e-08, 0.0159508, 0.999873)
+bones/23/rotation = Quaternion(9.03292e-05, 4.14523e-08, 0.00478757, 0.999989)
+bones/24/rotation = Quaternion(-0.0856113, 0.0820974, 0.573483, 0.810585)
+bones/25/rotation = Quaternion(0.324928, 0.102152, 0.322193, 0.883277)
+bones/26/rotation = Quaternion(0.11754, 0.0587438, 0.197601, 0.971436)
+bones/27/rotation = Quaternion(-0.153203, 0.0886726, -0.576479, 0.797708)
+bones/28/rotation = Quaternion(0.349389, 0.0333051, -0.400919, 0.846216)
+bones/29/rotation = Quaternion(0.372587, 0.0399616, -0.244555, 0.894301)
+bones/30/rotation = Quaternion(-0.0198114, 0.102086, 0.545455, 0.831664)
+bones/31/rotation = Quaternion(0.179742, 0.0878088, 0.444568, 0.873122)
+bones/32/rotation = Quaternion(0.0769795, 0.0434454, 0.142246, 0.985877)
+bones/33/rotation = Quaternion(-0.1393, 0.12309, -0.530094, 0.827312)
+bones/34/rotation = Quaternion(0.326623, 0.0353729, -0.464693, 0.822269)
+bones/35/rotation = Quaternion(0.28178, 0.0405384, -0.354737, 0.890572)
+bones/36/rotation = Quaternion(0.031246, 0.0349855, 0.63429, 0.771671)
+bones/37/rotation = Quaternion(0.253133, 0.0971899, 0.126049, 0.954248)
+bones/38/rotation = Quaternion(0.150265, 0.0543561, 0.214929, 0.963469)
+bones/39/rotation = Quaternion(-0.149547, 0.198575, -0.60538, 0.756121)
+bones/40/rotation = Quaternion(0.47136, 0.0333661, -0.261781, 0.841533)
+bones/41/rotation = Quaternion(0.386606, 0.0149342, -0.203351, 0.899423)
+bones/42/position = Vector3(1.47603e-16, 0.664743, 0.196961)
+bones/42/rotation = Quaternion(0.907463, -5.41045e-17, -5.41045e-17, -0.420132)
+bones/43/rotation = Quaternion(0.309224, 8.69811e-25, -6.86615e-17, 0.950989)
+bones/44/rotation = Quaternion(0.0374212, -1.42289e-25, -8.30917e-18, 0.9993)
+bones/45/rotation = Quaternion(0.056334, -1.66209e-24, -1.25087e-17, 0.998412)
+bones/46/rotation = Quaternion(0.270374, 0.226075, 0.588528, 0.727614)
+bones/47/rotation = Quaternion(-0.321009, -0.0306471, 0.0598854, 0.944684)
+bones/48/rotation = Quaternion(-0.0102776, -3.48792e-08, -0.00848857, 0.999911)
+bones/49/rotation = Quaternion(0.124265, -0.236521, -0.61223, 0.744171)
+bones/50/rotation = Quaternion(-0.227613, -0.00642653, -0.0685425, 0.971315)
+bones/51/rotation = Quaternion(-0.247498, 0.017227, 0.0384828, 0.96797)
+bones/52/rotation = Quaternion(0.184924, 0.243869, 0.59007, 0.747094)
+bones/53/rotation = Quaternion(-0.253475, -0.0495252, 0.0794843, 0.962798)
+bones/54/rotation = Quaternion(-0.0193257, 6.05311e-08, -0.0241426, 0.999522)
+bones/55/rotation = Quaternion(0.178033, -0.220407, -0.573972, 0.768298)
+bones/56/rotation = Quaternion(-0.247802, 0.0504833, -0.068729, 0.96505)
+bones/57/rotation = Quaternion(-0.247691, 0.0179854, -0.0418809, 0.967766)
+bones/58/rotation = Quaternion(0.259237, 0.233054, 0.627166, 0.696524)
+bones/59/rotation = Quaternion(-0.314727, -0.0394825, 0.00816313, 0.948326)
+bones/60/rotation = Quaternion(-0.0101312, 5.47761e-08, -0.0124616, 0.999871)
+bones/61/rotation = Quaternion(0.175345, -0.302197, -0.582838, 0.733643)
+bones/62/rotation = Quaternion(-0.283266, 0.0571069, -0.0271757, 0.956954)
+bones/63/rotation = Quaternion(-0.24382, 0.0128973, -0.0321567, 0.969202)
+bones/64/rotation = Quaternion(0.249849, 0.193874, 0.760646, 0.566927)
+bones/65/rotation = Quaternion(-0.267402, -0.049444, -0.162835, 0.948439)
+bones/66/rotation = Quaternion(-4.66872e-05, 8.15093e-09, -0.000415956, 1)
+bones/67/rotation = Quaternion(0.1659, -0.203181, -0.741059, 0.618083)
+bones/68/rotation = Quaternion(-0.194238, 0.039906, 0.0917385, 0.97584)
+bones/69/rotation = Quaternion(-0.117805, 0.0205616, 0.14061, 0.982816)
+bones/70/position = Vector3(-0.0623416, 0.674415, 0.196961)
+bones/70/rotation = Quaternion(0.484674, -0.517657, -0.4476, -0.544772)
+bones/71/rotation = Quaternion(0.0964763, 0.0884278, 0.317085, 0.939324)
+bones/72/rotation = Quaternion(-0.022806, 0.0770839, 0.214117, 0.973495)
+bones/73/position = Vector3(0.290522, 0.664743, 0.151341)
+bones/73/rotation = Quaternion(-0.630357, -0.340252, -0.380395, 0.58496)
+bones/74/rotation = Quaternion(0.0196373, 0.0303031, -0.482372, 0.875222)
+bones/75/rotation = Quaternion(0.0304056, 0.00423267, -0.429552, 0.90252)
+
+[node name="BoneAttachment3D" parent="EnemyModel/UntieModel/Armature_001/Skeleton3D" index="2"]
+transform = Transform3D(1, 1.0516032e-12, 2.384174e-07, 2.3800595e-07, 0.058721572, -0.9982743, -1.4001171e-08, 0.99827427, 0.058721125, -1.2459325e-08, 4.6683946, -0.64012015)
+
+[editable path="EnemyModel/UntieModel"]

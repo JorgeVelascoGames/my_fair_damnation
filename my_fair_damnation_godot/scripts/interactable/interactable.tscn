@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dup8g2hg5x2f8"]
+
+[ext_resource type="Script" uid="uid://ctth7s2y2yypt" path="res://scripts/interactable/interactable.gd" id="1_8p6r8"]
+
+[node name="Interactable" type="Area3D"]
+collision_layer = 256
+collision_mask = 0
+script = ExtResource("1_8p6r8")
+metadata/_custom_type_script = "uid://ctth7s2y2yypt"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="InteractedAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="HoldInteractionAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]

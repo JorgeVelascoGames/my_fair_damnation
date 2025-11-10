@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://cl7r2y17ym7wu"]
+
+[ext_resource type="PackedScene" uid="uid://rd6woanfk4nl" path="res://assets/environment_props/emergency_light/emergency_light_model.tscn" id="1_xt15q"]
+
+[sub_resource type="Animation" id="Animation_xt15q"]
+resource_name = "tweak_light"
+length = 4.0
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("emergency_light_model/OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.8, 0.02]
+}
+
+[sub_resource type="Animation" id="Animation_x488x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("emergency_light_model/OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.8]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wdcu1"]
+_data = {
+&"RESET": SubResource("Animation_x488x"),
+&"tweak_light": SubResource("Animation_xt15q")
+}
+
+[node name="EmergencyLight" type="Node3D"]
+
+[node name="emergency_light_model" parent="." instance=ExtResource("1_xt15q")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="emergency_light_model"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.308587, -1.34888e-08)
+light_color = Color(0.827451, 0.235294, 0.270588, 1)
+light_energy = 0.8
+light_indirect_energy = 2.0
+shadow_enabled = true
+omni_range = 47.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_wdcu1")
+}
+autoplay = "tweak_light"

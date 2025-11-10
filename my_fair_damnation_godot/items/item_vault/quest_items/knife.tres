@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://567nywdinxh1"]
+
+[ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="1_4f7uo"]
+
+[resource]
+script = ExtResource("1_4f7uo")
+item_name = "Knife"
+ui_item_name = "item_grandpa_knife_name"
+ui_item_description = "item_grandpa_knife_desc"
+metadata/_custom_type_script = "uid://bo8skdwgushde"

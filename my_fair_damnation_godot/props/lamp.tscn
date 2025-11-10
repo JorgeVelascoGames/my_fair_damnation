@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://c5u5jdhaqxf4a"]
+
+[ext_resource type="PackedScene" uid="uid://175qhmdk25l2" path="res://assets/environment_props/lamp/lamp_model.tscn" id="1_c8l6h"]
+[ext_resource type="Script" uid="uid://boxpjijobax0c" path="res://props/lamp.gd" id="1_ks20r"]
+
+[node name="LampLight" type="Node3D"]
+script = ExtResource("1_ks20r")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.78335947, 0)
+shadow_enabled = true
+spot_range = 17.594639
+spot_attenuation = 2.0
+spot_angle = 31.50858
+
+[node name="LampModel" parent="." instance=ExtResource("1_c8l6h")]
+transform = Transform3D(0.535683, 0, 0, 0, 0.535683, 0, 0, 0, 0.535683, 0, -0.469293, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(3.85799, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.847551, 0)
+light_energy = 0.2
+shadow_enabled = true
+omni_range = 7.0
+omni_attenuation = 0.3
+
+[node name="TwinkleLightTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="TwinkleCooldownTimer" type="Timer" parent="."]
+one_shot = true

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://dp37jpcob8wrw"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_woykh"]
+
+[resource]
+script = ExtResource("1_woykh")
+event_name = "Grandpa free"
+event_description = "Se lanza despues de hablar con el abuelo, cuando todos se han ido ya. Es el final bueno"
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

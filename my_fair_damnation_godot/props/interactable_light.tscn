@@ -1,0 +1,124 @@
+[gd_scene load_steps=18 format=3 uid="uid://bhxls1qltes7e"]
+
+[ext_resource type="Script" uid="uid://bq4h7qrbp52qq" path="res://props/light.gd" id="1_p18s3"]
+[ext_resource type="PackedScene" uid="uid://bvbwpj3cl6pdr" path="res://assets/environment_props/lights/lights.tscn" id="1_pq6tg"]
+[ext_resource type="PackedScene" uid="uid://bepj5mbs82d3y" path="res://assets/environment_props/swich/swich.tscn" id="2_p18s3"]
+[ext_resource type="PackedScene" uid="uid://dup8g2hg5x2f8" path="res://scripts/interactable/interactable.tscn" id="4_uwcid"]
+[ext_resource type="AudioStream" uid="uid://b8eobuyk0drp8" path="res://assets/audio/switch_action/button assorted 50.wav" id="5_0pyih"]
+[ext_resource type="AudioStream" uid="uid://cal18ohk6qgrb" path="res://assets/audio/switch_action/button assorted 42.wav" id="5_lle4w"]
+[ext_resource type="PackedScene" uid="uid://rd6woanfk4nl" path="res://assets/environment_props/emergency_light/emergency_light_model.tscn" id="5_mmjs2"]
+[ext_resource type="AudioStream" uid="uid://dvrmabqtiqhil" path="res://assets/audio/switch_action/button assorted 43.wav" id="6_3yq04"]
+[ext_resource type="PackedScene" uid="uid://ch3xl7xf8nmiv" path="res://npcs/frank_shadow.tscn" id="6_8ad1b"]
+[ext_resource type="AudioStream" uid="uid://7u2pbyv8kwml" path="res://assets/audio/switch_action/switch_long_interaction.wav" id="6_sabof"]
+[ext_resource type="AudioStream" uid="uid://djxgxa265ygcp" path="res://assets/audio/switch_action/button assorted 51.wav" id="8_h6gf3"]
+[ext_resource type="AudioStream" uid="uid://bgev4kcioi2c1" path="res://assets/audio/switch_action/button assorted 54.wav" id="9_y1fmb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mmjs2"]
+size = Vector3(0.534729, 0.763733, 0.333374)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ey0qh"]
+streams_count = 5
+stream_0/stream = ExtResource("5_lle4w")
+stream_1/stream = ExtResource("6_3yq04")
+stream_2/stream = ExtResource("5_0pyih")
+stream_3/stream = ExtResource("8_h6gf3")
+stream_4/stream = ExtResource("9_y1fmb")
+
+[sub_resource type="Animation" id="Animation_8ad1b"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.4]
+}
+
+[sub_resource type="Animation" id="Animation_mmjs2"]
+resource_name = "position_light"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.4, 0.0, 0.4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vlsrj"]
+_data = {
+&"RESET": SubResource("Animation_8ad1b"),
+&"position_light": SubResource("Animation_mmjs2")
+}
+
+[node name="InteractableLight" type="Node3D" node_paths=PackedStringArray("position_lights") groups=["load"]]
+script = ExtResource("1_p18s3")
+is_tweaking_light = true
+light_original_intensity = 3.0
+position_lights = NodePath("switch/PositionLight")
+
+[node name="lights" parent="." instance=ExtResource("1_pq6tg")]
+
+[node name="switch" parent="." instance=ExtResource("2_p18s3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.30778, 0)
+
+[node name="Interactable" parent="switch" instance=ExtResource("4_uwcid")]
+interaction_duration = 3.0
+interactable_hint = "hold_interact_lights"
+
+[node name="CollisionShape3D" parent="switch/Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00326538, 0.0332947, 0.0275269)
+shape = SubResource("BoxShape3D_mmjs2")
+
+[node name="InteractedAudioStreamPlayer3D" parent="switch/Interactable" index="1"]
+stream = SubResource("AudioStreamRandomizer_ey0qh")
+
+[node name="HoldInteractionAudioStreamPlayer3D" parent="switch/Interactable" index="2"]
+stream = ExtResource("6_sabof")
+
+[node name="SwitchAudio" type="AudioStreamPlayer3D" parent="switch"]
+
+[node name="ForcingAudio" type="AudioStreamPlayer3D" parent="switch"]
+
+[node name="emergency_light" parent="switch" instance=ExtResource("5_mmjs2")]
+transform = Transform3D(0.600316, 0, 0, 0, -2.62407e-08, -0.600316, 0, 0.600316, -2.62407e-08, 0, 0.745598, -0.135275)
+
+[node name="PositionLight" type="OmniLight3D" parent="switch"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.744288, 0.0313834)
+light_color = Color(0.960784, 0, 0.12549, 1)
+light_energy = 0.4
+omni_range = 0.6
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="switch/PositionLight"]
+libraries = {
+&"": SubResource("AnimationLibrary_vlsrj")
+}
+autoplay = "position_light"
+
+[node name="MainLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.238274, 0)
+shadow_enabled = true
+omni_range = 9.0
+omni_attenuation = 1.745
+
+[node name="ShadowsContainer" type="Node3D" parent="."]
+
+[node name="FrankShadow" parent="ShadowsContainer" instance=ExtResource("6_8ad1b")]
+
+[connection signal="interacted" from="switch/Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="interrupt_interacting" from="switch/Interactable" to="." method="_on_interactable_interrupt_interacting"]
+[connection signal="start_interacting" from="switch/Interactable" to="." method="_on_interactable_start_interacting"]
+
+[editable path="switch"]
+[editable path="switch/Interactable"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://bhowl2dvadj1l"]
+
+[ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="1_eyrqs"]
+
+[resource]
+script = ExtResource("1_eyrqs")
+item_name = "war medal"
+ui_item_name = "WAR_MEDAL_NAME"
+ui_item_description = "WAR_MEDAL_DESCRIPTION"
+metadata/_custom_type_script = "uid://bo8skdwgushde"

@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://x2iim7qlvpg7"
+path="res://.godot/imported/gun fired no bullets 5.wav-5c68397d58d25afb1d6916f768092e6a.sample"
+
+[deps]
+
+source_file="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 5.wav"
+dest_files=["res://.godot/imported/gun fired no bullets 5.wav-5c68397d58d25afb1d6916f768092e6a.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

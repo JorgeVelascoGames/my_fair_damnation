@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://c7t6qcto16iac"]
+
+[ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="1_8f8vj"]
+
+[resource]
+script = ExtResource("1_8f8vj")
+item_name = "Fotos de Skyler"
+ui_item_name = "item_photo_skyler_sarah_name"
+ui_item_description = "item_photo_skyler_sarah_desc"
+metadata/_custom_type_script = "uid://bo8skdwgushde"

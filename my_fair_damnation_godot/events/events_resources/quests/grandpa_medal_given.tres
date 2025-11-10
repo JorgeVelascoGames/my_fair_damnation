@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://410u6q6uxm4x"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_t67kj"]
+
+[resource]
+script = ExtResource("1_t67kj")
+event_name = "grandpa medal asked"
+event_description = "Este evento hace que el vecino muestre el diálogo para pedir la medalla"
+event_is_trigger = false
+is_one_day_only = true
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

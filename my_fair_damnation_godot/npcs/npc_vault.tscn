@@ -1,0 +1,11 @@
+[gd_scene load_steps=5 format=3 uid="uid://d4kjm3iubwjbn"]
+
+[ext_resource type="Script" uid="uid://gmckj34c0ggb" path="res://npcs/npc_vault.gd" id="1_day0t"]
+[ext_resource type="Script" uid="uid://bdfriqua1vdjs" path="res://npcs/npc_id.gd" id="2_07q7e"]
+[ext_resource type="Resource" uid="uid://1h6u8i4m330e" path="res://npcs/ids/nurse_id.tres" id="3_12vlp"]
+[ext_resource type="Resource" uid="uid://cag0803yvtwoy" path="res://npcs/ids/mother_id.tres" id="4_eijwl"]
+
+[node name="NpcVault" type="Node"]
+script = ExtResource("1_day0t")
+npcs_folders_paths = Array[String](["res://npcs/ids/"])
+all_npcs = Array[ExtResource("2_07q7e")]([ExtResource("3_12vlp"), ExtResource("4_eijwl")])

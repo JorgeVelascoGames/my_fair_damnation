@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dedc5kyfigoge"
+path="res://.godot/imported/bounce on 2.wav-0edb8a00646ffba384f9a98a07694046.sample"
+
+[deps]
+
+source_file="res://assets/audio/player/pick_flashlight_vfx/bounce on 2.wav"
+dest_files=["res://.godot/imported/bounce on 2.wav-0edb8a00646ffba384f9a98a07694046.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

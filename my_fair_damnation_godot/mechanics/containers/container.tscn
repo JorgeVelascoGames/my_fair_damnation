@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cktuwjf7idcjx"]
+
+[ext_resource type="Script" uid="uid://dd27hla27w5o8" path="res://mechanics/containers/searchable_container.gd" id="1_6wsjw"]
+[ext_resource type="Script" uid="uid://ctth7s2y2yypt" path="res://scripts/interactable/interactable.gd" id="2_746mw"]
+
+[node name="SearchableContainer" type="Node3D"]
+script = ExtResource("1_6wsjw")
+
+[node name="Interactable" type="Area3D" parent="."]
+script = ExtResource("2_746mw")
+metadata/_custom_type_script = "uid://ctth7s2y2yypt"
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

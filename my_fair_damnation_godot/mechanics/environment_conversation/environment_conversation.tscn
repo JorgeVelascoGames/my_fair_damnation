@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://bu70msjvbrnct"]
+
+[ext_resource type="Script" uid="uid://nqjb5bv6q7yi" path="res://npcs/npc_conversation.gd" id="1_5dncd"]
+[ext_resource type="Script" uid="uid://bqorgulircry7" path="res://mechanics/environment_conversation/environment_conversation.gd" id="1_w1qhj"]
+[ext_resource type="PackedScene" uid="uid://dup8g2hg5x2f8" path="res://scripts/interactable/interactable.tscn" id="2_w1qhj"]
+
+[node name="EnvironmentConversation" type="Node3D"]
+script = ExtResource("1_w1qhj")
+
+[node name="NpcConversation" type="Node" parent="."]
+script = ExtResource("1_5dncd")
+metadata/_custom_type_script = "uid://nqjb5bv6q7yi"
+
+[node name="Interactable" parent="." instance=ExtResource("2_w1qhj")]
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]

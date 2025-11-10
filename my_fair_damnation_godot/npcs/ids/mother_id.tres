@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="NpcId" load_steps=2 format=3 uid="uid://cag0803yvtwoy"]
+
+[ext_resource type="Script" uid="uid://bdfriqua1vdjs" path="res://npcs/npc_id.gd" id="1_wola2"]
+
+[resource]
+script = ExtResource("1_wola2")
+npc_name = "Mother"
+npc_id = 2
+metadata/_custom_type_script = "uid://bdfriqua1vdjs"

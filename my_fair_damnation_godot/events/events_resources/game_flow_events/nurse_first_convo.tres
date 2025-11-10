@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://r2bd3e83g4wa"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_6607o"]
+
+[resource]
+script = ExtResource("1_6607o")
+event_name = "Nurse first conversation finished"
+event_description = "Salta cuando acabamos la primera conversación con la enfermera y nos da la llave de la habitación"
+event_is_trigger = true
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

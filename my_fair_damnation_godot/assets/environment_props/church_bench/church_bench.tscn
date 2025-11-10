@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://btdwdafvyjak"]
+
+[ext_resource type="PackedScene" uid="uid://tqoke0wythfe" path="res://assets/environment_props/church_bench/church_bench.glb" id="1_fcua8"]
+[ext_resource type="Texture2D" uid="uid://byynh3amsauol" path="res://assets/environment_props/kitchen/kitchen_props_farm_forniture_lowres.jpg" id="2_ey2qx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t1mmf"]
+albedo_color = Color(1, 0.7841728, 0.75268227, 1)
+albedo_texture = ExtResource("2_ey2qx")
+uv1_triplanar = true
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fcua8"]
+size = Vector3(0.8330078, 1.3198242, 6.307617)
+
+[node name="church_bench" instance=ExtResource("1_fcua8")]
+
+[node name="Cube" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_t1mmf")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+collision_layer = 5
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.083496094, -0.15991211, 0.04638672)
+shape = SubResource("BoxShape3D_fcua8")

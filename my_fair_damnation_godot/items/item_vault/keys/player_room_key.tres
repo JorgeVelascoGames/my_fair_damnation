@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://dcgspu1cqpnx5"]
+
+[ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="1_y6rf7"]
+
+[resource]
+script = ExtResource("1_y6rf7")
+item_name = "Player room key"
+ui_item_name = "PLAYER_ROOM_KEY_NAME"
+ui_item_description = "PLAYER_ROOM_KEY_DESCRIPTION"
+metadata/_custom_type_script = "uid://bo8skdwgushde"

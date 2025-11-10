@@ -1,0 +1,35 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5cmp8bk30iq7"]
+
+[ext_resource type="Shader" uid="uid://c5m8wp1r7k50a" path="res://shaders/psx_postprocesing_shader.gdshader" id="1_1puvi"]
+[ext_resource type="Script" uid="uid://oiv4esdx6xmr" path="res://game_management/game_manager.gd" id="1_ehlgi"]
+[ext_resource type="PackedScene" uid="uid://catpqj0ow83bo" path="res://game_management/screen_flow/screen_flow_manager.tscn" id="3_ehlgi"]
+[ext_resource type="PackedScene" uid="uid://bbj1filsv27sp" path="res://game_management/end_demo_screen.tscn" id="4_ix8ys"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d8vyc"]
+shader = ExtResource("1_1puvi")
+shader_parameter/enabled = true
+shader_parameter/dithering = true
+shader_parameter/colors = 12
+shader_parameter/dither_size = 1
+
+[node name="Game" type="Node3D"]
+script = ExtResource("1_ehlgi")
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_d8vyc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+audio_listener_enable_3d = true
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="ScreenFlowManager" parent="SubViewportContainer/SubViewport" groups=["screen_flow_manager"] instance=ExtResource("3_ehlgi")]
+unique_name_in_owner = true
+end_demo_screen = ExtResource("4_ix8ys")

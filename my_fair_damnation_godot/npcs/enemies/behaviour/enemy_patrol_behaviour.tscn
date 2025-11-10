@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw1uq7kxvky44"]
+
+[ext_resource type="Script" uid="uid://dtd83icdm8275" path="res://npcs/enemies/behaviour/enemy_behaviour_patrol.gd" id="1_m2eyq"]
+
+[node name="PatrolBehaviour" type="Node3D"]
+script = ExtResource("1_m2eyq")
+metadata/_custom_type_script = "uid://dtd83icdm8275"

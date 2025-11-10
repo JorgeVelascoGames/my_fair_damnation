@@ -1,0 +1,139 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="My fair damnation"
+run/main_scene="uid://b5cmp8bk30iq7"
+config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/fullsize=false
+boot_splash/use_filter=false
+boot_splash/image="uid://b0v4g4ty7xo0d"
+config/icon="uid://bceway0jnh45s"
+config/windows_native_icon="res://assets/ui/gameicon.ico"
+boot_splash/minimum_display_time=2000
+
+[autoload]
+
+PathfindingManager="*res://scripts/pathfinding_manager.tscn"
+EventManager="*res://events/event_manager.gd"
+ReputationManager="*res://npcs/reputation_manager.gd"
+DayNightCycleController="*res://game_management/day_night_cycle/day_night_cycle_controller.tscn"
+EventVault="*res://events/event_vault/event_vault.tscn"
+SteamManager="*res://steam/steam_manager.gd"
+ItemVault="*res://items/item_vault.tscn"
+NpcVault="*res://npcs/npc_vault.tscn"
+SaveDataServer="*res://save_system/save_data_server.tscn"
+EventShooter="*res://scripts/event_shooter/event_shooter.tscn"
+AppManager="*res://scripts/app_manager.gd"
+
+[display]
+
+window/size/viewport_width=640
+window/size/viewport_height=360
+window/size/mode=3
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="viewport"
+mouse_cursor/custom_image="uid://c4nood24tctv8"
+
+[global_group]
+
+navigation="Used by the navigation region to bake the navmesh"
+load=""
+screen_flow_manager=""
+stairs=""
+player_teleport_debug=""
+
+[input]
+
+ui_accept={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194309,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":4194310,"physical_keycode":0,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+move_left={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":97,"location":0,"echo":false,"script":null)
+]
+}
+move_right={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"location":0,"echo":false,"script":null)
+]
+}
+move_forward={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":119,"location":0,"echo":false,"script":null)
+]
+}
+move_back={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)
+]
+}
+test={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":84,"key_label":0,"unicode":116,"location":0,"echo":false,"script":null)
+]
+}
+interact={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":69,"key_label":0,"unicode":101,"location":0,"echo":false,"script":null)
+]
+}
+aim={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":2,"position":Vector2(327, 16),"global_position":Vector2(336, 64),"factor":1.0,"button_index":2,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+shoot={
+"deadzone": 0.2,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(120, 16),"global_position":Vector2(129, 64),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
+]
+}
+sprint={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194325,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
+]
+}
+turn_on_flashlight={
+"deadzone": 0.2,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":32,"key_label":0,"unicode":32,"location":0,"echo":false,"script":null)
+]
+}
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://localization_template.es.translation", "res://localization_template.en.translation")
+
+[layer_names]
+
+3d_render/layer_5="dark_layer"
+3d_physics/layer_1="world"
+3d_physics/layer_2="ground"
+3d_physics/layer_3="walls"
+3d_physics/layer_4="player"
+3d_physics/layer_5="player_hitbox"
+3d_physics/layer_6="enemy"
+3d_physics/layer_7="enemy_hitbox"
+3d_physics/layer_8="obstacle"
+3d_physics/layer_9="interactable"
+3d_physics/layer_10="npc"
+
+[navigation]
+
+3d/default_edge_connection_margin=2.0
+
+[steam]
+
+initialization/app_id=2881170

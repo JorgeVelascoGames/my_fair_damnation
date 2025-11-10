@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://cuyeiji6ohnvx"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_80h6b"]
+
+[resource]
+script = ExtResource("1_80h6b")
+event_name = "Thomas goes after frank "
+event_description = "Esto salta cuando le cuentas a Thomas lo de frank y Tobias en la capilla. Matará a Frank y habrá redención"
+event_is_trigger = false
+is_one_day_only = false
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

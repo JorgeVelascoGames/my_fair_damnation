@@ -1,0 +1,27 @@
+-Abrir cajones
+-Rumiar en los cajones
+-Abrir nevera.
+-Rumiar en nevera
+-Sonido perverso Thomas
+-Hablar thomas
+-Respiracion thomas.
+-Hablar madre.
+-Respiración madre.
+-Hablar tia
+-Respiración tia
+-Hablar Tommy
+-Respiración Tommy
+-Hablar jeremias
+-Respiracion jeremias
+-Hablar espantapajaros
+-Hablar frank
+-Ataque frank
+-Respiración frank
+-Hablar lynda
+-Respiraciones linda
+-Tragar pastillas
+
+
+-Sonidos ambientales.
+-Pisadas
+-Daño con pistola

@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://clenntgdb7hk0"
+path.s3tc="res://.godot/imported/Waiting Chair_1.png-0c5f08f9188e62aa238452f473d81a5d.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "95843702b3ee683495d459a1341b9c1a"
+}
+
+[deps]
+
+source_file="res://assets/environment_props/waiting_chair/Waiting Chair_1.png"
+dest_files=["res://.godot/imported/Waiting Chair_1.png-0c5f08f9188e62aa238452f473d81a5d.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://assets/environment_props/waiting_chair/Waiting Chair_1.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

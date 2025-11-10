@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://dmckabwafpx6n"]
+
+[ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="1_63agl"]
+
+[resource]
+script = ExtResource("1_63agl")
+item_name = "Basement key"
+ui_item_name = "item_basement_key_name"
+ui_item_description = "item_basement_key_desc"
+metadata/_custom_type_script = "uid://bo8skdwgushde"

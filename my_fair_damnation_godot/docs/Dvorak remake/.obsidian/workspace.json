@@ -1,0 +1,241 @@
+{
+  "main": {
+    "id": "9e1e7d27aa603128",
+    "type": "split",
+    "children": [
+      {
+        "id": "632ec88863c9c2b1",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "024924aa3953d327",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "To do.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "To do"
+            }
+          },
+          {
+            "id": "ed050159cbd4211c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "To do.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "To do"
+            }
+          },
+          {
+            "id": "73b1b389f1e849ae",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "To do.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "To do"
+            }
+          }
+        ],
+        "currentTab": 2
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "4de68ec67a242605",
+    "type": "split",
+    "children": [
+      {
+        "id": "343762c127e40bb7",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c5798ac201bd4394",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "Explorador de archivos"
+            }
+          },
+          {
+            "id": "614d1e289ac02751",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "Buscar"
+            }
+          },
+          {
+            "id": "aff0ea755de247b3",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "Marcadores"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 262.5
+  },
+  "right": {
+    "id": "6ce56d8db1168b1a",
+    "type": "split",
+    "children": [
+      {
+        "id": "d65b4b48e7ed6474",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "d94d844e5bf14f85",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "To do.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "Enlaces entrantes de To do"
+            }
+          },
+          {
+            "id": "f72c795e511af608",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "To do.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "Enlaces salientes de To do"
+            }
+          },
+          {
+            "id": "de43fd7b3068feca",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "Etiquetas"
+            }
+          },
+          {
+            "id": "cd821aa975b69907",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "To do.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "Esquema de To do"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "bases:Crear nueva base": false,
+      "switcher:Abrir selector rápido": false,
+      "graph:Abrir vista gráfica": false,
+      "canvas:Crear nuevo lienzo": false,
+      "daily-notes:Abrir la nota de hoy": false,
+      "templates:Insertar plantilla": false,
+      "command-palette:Abrir paleta de comandos": false
+    }
+  },
+  "active": "73b1b389f1e849ae",
+  "lastOpenFiles": [
+    "Pasted image 20251011111759.png.import",
+    "Pasted image 20251011111759.png",
+    "Sonidos necesarios.md",
+    "To do.md",
+    "Personajes/Dialogos/Tía/Tía misiones.md",
+    "Personajes/Dialogos/Tía/Tia.md",
+    "Logros.md",
+    "Narrativa/Misiones/Tía.md",
+    "Personajes/Dialogos/Tommy/Tomy.md",
+    "Personajes/Dialogos/Madre/Madre diálogo.md",
+    "Personajes/Dialogos/Vecino/Vecino misiones.md",
+    "Narrativa/Misiones/Tomy.md",
+    "Personajes/Dialogos/Abuelo/Abuelo misiones.md",
+    "Narrativa/Misiones/Enfermera.md",
+    "Personajes/Dialogos/Enfermera/Enfermera misión.md",
+    "Personajes/Dialogos/Enfermera/Conversación base.md",
+    "Personajes/Dialogos/Skyler/Skyler misión.md",
+    "Personajes/Dialogos/Abuelo/Abuelo.md",
+    "Personajes/Dialogos/Enfermera/Lista para huir.md",
+    "Personajes/Dialogos/Enfermera/Primera conversación.md",
+    "Personajes/Dialogos/Vecino/Vecino conversación.md",
+    "Personajes/Leo Frank/Leo Frank diálogos.md",
+    "Personajes/Dialogos/Espantapájaros.md",
+    "Personajes/Dialogos/Skyler/Skyler diálogos.md",
+    "Personajes/Leo Frank",
+    "Personajes/Dialogos/Tommy",
+    "Personajes/Dialogos/Madre",
+    "Personajes/Dialogos/Tía",
+    "Personajes/Mejora de reputación con el jugador.md",
+    "Narrativa/Misiones/Espantapájaros.md",
+    "Personajes/Dialogos/Abuelo",
+    "Narrativa/Misiones/Skyler.md",
+    "Personajes/Dialogos/Skyler",
+    "Personajes/Dialogos/Vecino",
+    "Narrativa/Misiones",
+    "Personajes/Misiones",
+    "Personajes/Dialogos/Enfermera"
+  ]
+}

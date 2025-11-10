@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://dnf5ujsw2kovg"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_2tcti"]
+
+[resource]
+script = ExtResource("1_2tcti")
+event_name = "Tomy goes with mom"
+event_description = "Salta cuando Tomy se va con su mama"
+event_is_trigger = false
+is_one_day_only = false
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

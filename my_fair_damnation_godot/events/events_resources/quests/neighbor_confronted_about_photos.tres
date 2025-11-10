@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://b6eba8oseik1y"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_4grmf"]
+
+[resource]
+script = ExtResource("1_4grmf")
+event_name = "Thomas confronted about photos"
+event_description = "Salta cuando ya le has dado a Thomas la nueva foto de Skyler. Hace falta para pasar a la capilla"
+event_is_trigger = false
+is_one_day_only = false
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwr3p5l21rf3j"]
+
+[ext_resource type="Script" uid="uid://c2kjs0s4yotwo" path="res://mechanics/message_displayer/message_displayer.gd" id="1_8s15o"]
+
+[node name="MessageDisplayer" type="Node3D" groups=["load"]]
+script = ExtResource("1_8s15o")
+
+[node name="CDTimer" type="Timer" parent="."]
+one_shot = true

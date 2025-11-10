@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://cala81ixy7ose"]
+
+[ext_resource type="Script" uid="uid://dhi40fmf3e0vt" path="res://npcs/npc.gd" id="1_cqejd"]
+[ext_resource type="Script" uid="uid://b31adunk67ww5" path="res://npcs/npc_instance_controller.gd" id="2_novm3"]
+[ext_resource type="Script" uid="uid://bsp0cko365qx5" path="res://npcs/npc_reputation.gd" id="4_mea8m"]
+[ext_resource type="Script" uid="uid://6cnvae0evw5l" path="res://npcs/npc_events.gd" id="5_atlxo"]
+[ext_resource type="Script" uid="uid://b24n5sco0a4jh" path="res://npcs/npc_day_night.gd" id="6_p37wn"]
+
+[node name="Npc" type="Node3D"]
+script = ExtResource("1_cqejd")
+
+[node name="NpcInstanceController" type="Node3D" parent="." groups=["load"]]
+script = ExtResource("2_novm3")
+
+[node name="NpcReputation" type="Node3D" parent="." groups=["load"]]
+script = ExtResource("4_mea8m")
+
+[node name="NpcEvents" type="Node3D" parent="."]
+script = ExtResource("5_atlxo")
+metadata/_custom_type_script = "uid://d2vpf8mqniivs"
+
+[node name="NpcDayNight" type="Node3D" parent="."]
+script = ExtResource("6_p37wn")
+metadata/_custom_type_script = "uid://d2vpf8mqniivs"

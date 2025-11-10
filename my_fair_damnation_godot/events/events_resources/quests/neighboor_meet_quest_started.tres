@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://dgeuytvvhjquv"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_2c5oj"]
+
+[resource]
+script = ExtResource("1_2c5oj")
+event_name = "Neighboor meat quest started"
+event_description = "Este evento se lanza cuando has iniciado la misión de traer carne al hablar con el vecino"
+event_is_trigger = false
+is_one_day_only = false
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

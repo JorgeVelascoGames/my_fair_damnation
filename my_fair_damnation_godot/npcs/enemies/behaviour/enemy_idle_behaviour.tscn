@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://k5mrx5ra31oo"]
+
+[ext_resource type="Script" uid="uid://b3fecd6tykk1t" path="res://enemy/behaviour/enemy_behaviour_idle.gd" id="1_jtb1h"]
+
+[node name="EnemyIdleBehaviour" type="Node3D"]
+script = ExtResource("1_jtb1h")
+
+[node name="IdleSpot" type="Marker3D" parent="."]
+editor_description = "Duplicate this node on inherited scenes to create new spots automaticly"
+top_level = true

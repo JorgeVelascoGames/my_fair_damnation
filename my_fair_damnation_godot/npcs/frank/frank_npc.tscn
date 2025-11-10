@@ -1,0 +1,354 @@
+[gd_scene load_steps=33 format=3 uid="uid://b1aluneqea42g"]
+
+[ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_2dx5o"]
+[ext_resource type="PackedScene" uid="uid://dkqfew7ssu6mm" path="res://npcs/npc_instance.tscn" id="2_8g5fp"]
+[ext_resource type="Script" uid="uid://7b804g8y526i" path="res://npcs/frank/frank_npc_instance_controller.gd" id="2_klx64"]
+[ext_resource type="Resource" uid="uid://dl16gvgceem4p" path="res://npcs/ids/frank_id.tres" id="2_todh6"]
+[ext_resource type="Script" uid="uid://c00m8ojonc6s4" path="res://conversations/dialog.gd" id="3_lxggu"]
+[ext_resource type="Script" uid="uid://7l1ps0yokllm" path="res://conversations/conversation.gd" id="4_1jk8c"]
+[ext_resource type="Resource" uid="uid://oqs8tliaf0y4" path="res://events/events_resources/game_flow_events/frank_show_up.tres" id="4_yrler"]
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="5_klx64"]
+[ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="6_bq1e1"]
+[ext_resource type="Resource" uid="uid://cb4ixr41qfv6j" path="res://events/events_resources/game_flow_events/get_chapel_key.tres" id="6_ip3oj"]
+[ext_resource type="Resource" uid="uid://dmckabwafpx6n" path="res://items/item_vault/keys/basement_key.tres" id="7_lxggu"]
+[ext_resource type="Script" uid="uid://bdfriqua1vdjs" path="res://npcs/npc_id.gd" id="7_yrler"]
+[ext_resource type="PackedScene" uid="uid://dvi64yvc4ll8k" path="res://npcs/frank/frank_model.tscn" id="8_8g5fp"]
+[ext_resource type="Resource" uid="uid://bbfh3kognhcun" path="res://events/events_resources/quests/frank_tells_truth_tobias.tres" id="10_1jk8c"]
+[ext_resource type="Script" uid="uid://cvlnlhk3l8nla" path="res://npcs/player_catcher.gd" id="11_bq1e1"]
+
+[sub_resource type="Resource" id="Resource_2dx5o"]
+script = ExtResource("3_lxggu")
+dialog_description = "Que quieres?"
+dialog_id = "FRANK_Q1_"
+player_dialog_option = "FRANK_Q1_"
+dialog_text = Array[String](["FRANK_Q1_001", "FRANK_Q1_002", "FRANK_Q1_003", "FRANK_Q1_004", "FRANK_Q1_005"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_8g5fp"]
+script = ExtResource("3_lxggu")
+dialog_description = "Les arruinaste la vida"
+dialog_id = "FRANK_Q2_"
+player_dialog_option = "FRANK_Q2_"
+dialog_text = Array[String](["FRANK_Q2_001", "FRANK_Q2_002", "FRANK_Q2_003"])
+dialogs_to_unlock = Array[ExtResource("3_lxggu")]([SubResource("Resource_2dx5o")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_lxggu"]
+script = ExtResource("3_lxggu")
+dialog_description = "Como lo sabes? (mi nombre)"
+dialog_id = "FRANK_Q3_"
+player_dialog_option = "FRANK_Q3_"
+dialog_text = Array[String](["FRANK_Q3_001", "FRANK_Q3_002", "FRANK_Q3_003", "FRANK_Q3_004", "FRANK_Q3_005", "FRANK_Q3_006", "FRANK_Q3_007", "FRANK_Q3_008", "FRANK_Q3_009"])
+finish_conversation = true
+dialogs_to_unlock = Array[ExtResource("3_lxggu")]([SubResource("Resource_8g5fp")])
+events_to_push = Array[ExtResource("5_klx64")]([ExtResource("4_yrler")])
+gained_item = ExtResource("7_lxggu")
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_todh6"]
+script = ExtResource("4_1jk8c")
+dialog_options = Array[ExtResource("3_lxggu")]([SubResource("Resource_2dx5o"), SubResource("Resource_8g5fp"), SubResource("Resource_lxggu")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
+[sub_resource type="Resource" id="Resource_ip3oj"]
+script = ExtResource("3_lxggu")
+dialog_id = "FRANK_WELLCOME_"
+dialog_text = Array[String](["FRANK_WELLCOME_", "FRANK_WELLCOME_001", "FRANK_WELLCOME_002", "FRANK_WELLCOME_003", "FRANK_WELLCOME_004"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_1jk8c"]
+script = ExtResource("3_lxggu")
+dialog_description = "Dialogo override para cuando ya se ha hablado una vez con él"
+characters_per_second = 70.0
+dialog_id = "frank_override"
+dialog_text = Array[String](["... ... ..."])
+finish_conversation = true
+one_time_dialog = false
+dialogs_to_unlock = Array[ExtResource("3_lxggu")]([SubResource("Resource_ip3oj")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yrler"]
+radius = 0.8491211
+height = 3.508789
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_todh6"]
+radius = 1.1279297
+height = 5.7246094
+
+[sub_resource type="Resource" id="Resource_klx64"]
+script = ExtResource("3_lxggu")
+dialog_description = "Que quieres de esta gente?"
+dialog_id = "FRANK_BASEMENT_Q1"
+player_dialog_option = "FRANK_BASEMENT_Q1"
+dialog_text = Array[String](["FRANK_BASEMENT_Q_001", "FRANK_BASEMENT_Q1_002"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_bq1e1"]
+script = ExtResource("3_lxggu")
+dialog_description = "Todo ha sido por tu culpa"
+dialog_id = "FRANK_BASEMENT_Q2"
+player_dialog_option = "FRANK_BASEMENT_Q2"
+dialog_text = Array[String](["FRANK_BASEMENT_Q2_002", "FRANK_BASEMENT_Q2_003", "FRANK_BASEMENT_Q2_004", "FRANK_BASEMENT_Q2_005", "FRANK_BASEMENT_Q2_006", "FRANK_BASEMENT_Q2_007", "FRANK_BASEMENT_Q2_008", "FRANK_BASEMENT_Q2_009", "FRANK_BASEMENT_Q2_010", "FRANK_BASEMENT_Q2_011", "FRANK_BASEMENT_Q2_012", "FRANK_BASEMENT_Q2_013", "FRANK_BASEMENT_Q2_014", "FRANK_BASEMENT_Q2_015"])
+dialogs_to_unlock = Array[ExtResource("3_lxggu")]([SubResource("Resource_klx64")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_yrler"]
+script = ExtResource("3_lxggu")
+dialog_description = "Lo planeaste todo?"
+dialog_id = "FRANK_BASEMENT_Q3_001"
+player_dialog_option = "FRANK_BASEMENT_Q3_001"
+dialog_text = Array[String](["FRANK_BASEMENT_Q3_002", "FRANK_BASEMENT_Q3_003", "FRANK_BASEMENT_Q3_004", "FRANK_BASEMENT_Q3_005"])
+dialogs_to_unlock = Array[ExtResource("3_lxggu")]([SubResource("Resource_bq1e1")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_nu5sg"]
+script = ExtResource("3_lxggu")
+dialog_description = "Mataste a Tobias?"
+dialog_id = "FRANK_BASEMENT_Q4_"
+player_dialog_option = "FRANK_BASEMENT_Q4_"
+dialog_text = Array[String](["FRANK_BASEMENT_Q4_001", "FRANK_BASEMENT_Q4_002", "FRANK_BASEMENT_Q4_003", "FRANK_BASEMENT_Q4_004", "FRANK_BASEMENT_Q4_005", "FRANK_BASEMENT_Q4_006"])
+dialogs_to_unlock = Array[ExtResource("3_lxggu")]([SubResource("Resource_yrler")])
+events_to_push = Array[ExtResource("5_klx64")]([ExtResource("10_1jk8c")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_kh03m"]
+script = ExtResource("3_lxggu")
+dialog_description = "Me voy"
+dialog_id = "FRANK_BASEMENT_BYE"
+player_dialog_option = "FRANK_BASEMENT_BYE"
+dialog_text = Array[String](["FRANK_BASEMENT_BYE_001", "FRANK_BASEMENT_BYE_002", "FRANK_BASEMENT_BYE_003"])
+finish_conversation = true
+one_time_dialog = false
+dialogs_to_unlock = Array[ExtResource("3_lxggu")]([SubResource("Resource_klx64")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_geoyh"]
+script = ExtResource("4_1jk8c")
+dialog_options = Array[ExtResource("3_lxggu")]([SubResource("Resource_klx64"), SubResource("Resource_bq1e1"), SubResource("Resource_yrler"), SubResource("Resource_nu5sg"), SubResource("Resource_kh03m")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
+[sub_resource type="Resource" id="Resource_mwixp"]
+script = ExtResource("3_lxggu")
+dialog_id = "frank..."
+dialog_text = Array[String](["..."])
+finish_conversation = true
+one_time_dialog = false
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_tfigv"]
+script = ExtResource("3_lxggu")
+dialog_id = "FRANK_BASEMENT_WELLCOME"
+dialog_text = Array[String](["FRANK_BASEMENT_WELLCOME", "FRANK_BASEMENT_WELLCOME_2"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lxggu"]
+size = Vector3(1, 4.691284, 0.8310547)
+
+[node name="FrankNpc" instance=ExtResource("1_2dx5o")]
+id = ExtResource("2_todh6")
+
+[node name="NpcInstanceController" parent="." index="0" node_paths=PackedStringArray("first_instance", "basement_instance")]
+script = ExtResource("2_klx64")
+first_instance = NodePath("NpcInstance")
+basement_instance = NodePath("FrankBasementInstance")
+basement_key = ExtResource("7_lxggu")
+show_up_event = ExtResource("4_yrler")
+hide_instances_event = ExtResource("6_ip3oj")
+behaviour_at_night = 1
+main_instance_as_default = false
+
+[node name="NpcInstance" parent="NpcInstanceController" index="0" node_paths=PackedStringArray("look_at_position", "look_at_modifier", "animation_player") instance=ExtResource("2_8g5fp")]
+look_at_position = NodePath("ModelContainer/FrankModel/Armature/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
+look_at_modifier = NodePath("ModelContainer/FrankModel/Armature/Skeleton3D/LookAtModifier3D")
+conversation_animation = "Idle"
+animation_player = NodePath("ModelContainer/FrankModel/AnimationPlayer")
+
+[node name="NpcConversation" parent="NpcInstanceController/NpcInstance" index="0" node_paths=PackedStringArray("npc_instance")]
+npc_instance = NodePath("..")
+conversation = SubResource("Resource_todh6")
+neutral_wellcome_dialog = SubResource("Resource_ip3oj")
+override_wellcome_dialog = SubResource("Resource_1jk8c")
+
+[node name="FrankModel" parent="NpcInstanceController/NpcInstance/ModelContainer" index="0" instance=ExtResource("8_8g5fp")]
+
+[node name="Skeleton3D" parent="NpcInstanceController/NpcInstance/ModelContainer/FrankModel/Armature" index="0"]
+bones/0/position = Vector3(0.14160849, 0.14526078, -0.01243259)
+bones/2/position = Vector3(0, -0.65498817, 0)
+bones/3/position = Vector3(-7.105428e-15, 0.08137944, 1.2491751)
+bones/3/rotation = Quaternion(0.7553563, -0.0043988097, -0.050315086, 0.6533651)
+bones/4/rotation = Quaternion(0.1950059, 0.030692738, -0.08451273, 0.97667205)
+bones/5/rotation = Quaternion(0.43541652, 0.09234248, 0.011222167, 0.8954102)
+bones/6/rotation = Quaternion(-0.10131377, 1.1785969e-07, -1.0832394e-08, 0.9948546)
+bones/7/rotation = Quaternion(0.014060382, -0.051149342, -0.0126222195, 0.99851227)
+bones/8/rotation = Quaternion(-0.5583582, -0.08523579, 0.030974606, 0.8246282)
+bones/9/position = Vector3(0.030009553, 0.059222605, -0.0033389446)
+bones/10/rotation = Quaternion(-0.40560275, 0.37437963, -0.599287, 0.57981163)
+bones/11/rotation = Quaternion(0.8737417, 0.043897852, 0.13630036, 0.4648339)
+bones/12/rotation = Quaternion(0.11165706, 0.0026763608, -0.28034198, 0.9533802)
+bones/13/rotation = Quaternion(0.0047229268, -0.04612741, -0.5022563, 0.8634747)
+bones/14/rotation = Quaternion(0.018414818, -0.04478885, -0.2055648, 0.9774446)
+bones/15/position = Vector3(0.004872976, 0.18522513, 0.044854913)
+bones/15/rotation = Quaternion(0.10887311, 0.06738658, -0.4595716, 0.87886274)
+bones/16/rotation = Quaternion(0.22748807, -0.19399545, -0.4703177, 0.83031106)
+bones/17/rotation = Quaternion(-0.21814093, 0.007860083, -0.60557085, 0.76526904)
+bones/18/rotation = Quaternion(0.043251116, 0.029183928, -0.57479155, 0.8166348)
+bones/19/position = Vector3(0.005249832, 0.17360905, -0.057225853)
+bones/19/rotation = Quaternion(-0.20296498, -0.12901784, -0.39297622, 0.8875412)
+bones/20/rotation = Quaternion(0.0955713, 0.04108707, -0.0008894162, 0.9945739)
+bones/21/position = Vector3(0.05089176, 0.45277104, 0.061068863)
+bones/21/rotation = Quaternion(0.3453576, 0.053413942, -0.30337605, 0.8864751)
+bones/22/position = Vector3(-0.030009553, 0.059222627, -0.0033389449)
+bones/23/rotation = Quaternion(0.4497447, 0.56218827, -0.5539065, -0.41816473)
+bones/24/rotation = Quaternion(0.8214488, 0.13146475, -0.26125717, 0.48957488)
+bones/25/rotation = Quaternion(0.030341895, -0.002447507, 0.029043294, 0.99911463)
+bones/26/rotation = Quaternion(0.04532693, 0.0035157604, -0.047237948, 0.9978486)
+bones/27/rotation = Quaternion(-0.05990132, 3.876857e-08, -0.017943356, 0.9980431)
+bones/28/rotation = Quaternion(0.12804013, 0.00018460667, -0.07318911, 0.98906475)
+bones/29/rotation = Quaternion(-0.07826858, -1.9481297e-08, 0.03981831, 0.9961369)
+bones/30/rotation = Quaternion(-0.057566553, 0.01527123, 0.027478965, 0.9978466)
+bones/31/rotation = Quaternion(0.0012971641, -1.925605e-07, -0.108053766, 0.99414426)
+bones/32/rotation = Quaternion(-0.23250629, 0.061491664, 0.10573228, 0.9648733)
+bones/33/rotation = Quaternion(0.057978176, 7.9908624e-08, -0.14985484, 0.9870067)
+bones/34/position = Vector3(-0.04138361, 0.46998227, 0.062427707)
+bones/34/rotation = Quaternion(0.3761738, -0.04325038, 0.22378078, 0.89807844)
+bones/35/rotation = Quaternion(-0.025371075, 0.43387708, 0.9003086, -0.023482032)
+bones/36/rotation = Quaternion(0.18981485, 0.07821514, 0.024710784, 0.97838753)
+bones/37/rotation = Quaternion(-0.05903561, -0.09707704, -0.03581725, 0.9928786)
+bones/38/rotation = Quaternion(-0.020571796, 0.067254245, 0.06447325, 0.99543804)
+bones/39/rotation = Quaternion(0.0046537463, 0.036893174, -0.046233643, 0.99823827)
+bones/40/rotation = Quaternion(0.0027620092, 0.1050349, 0.1037596, 0.9890369)
+bones/41/rotation = Quaternion(-0.054227468, -0.050398104, 0.0006235804, 0.99725586)
+bones/42/rotation = Quaternion(-0.10604928, -0.05278839, -0.03393131, 0.9923788)
+bones/43/rotation = Quaternion(0.06107958, 0.17878893, -0.010638959, 0.9819321)
+bones/44/position = Vector3(-0.06255246, 0.15694122, 0.03490262)
+bones/45/rotation = Quaternion(-0.044373907, 0.36610422, -0.048741605, 0.9282365)
+bones/46/position = Vector3(0.080611676, 0.33001664, 0.022731222)
+bones/46/rotation = Quaternion(0.0034948306, -0.45792797, -0.44604328, 0.7689832)
+bones/48/rotation = Quaternion(-0.4087867, -0.83580655, 0.34454688, 0.12493362)
+bones/49/rotation = Quaternion(0.93528295, -0.008651216, -0.004850987, 0.35376206)
+bones/51/rotation = Quaternion(0.5803664, -0.7168206, 0.38611495, -0.016077092)
+bones/52/rotation = Quaternion(0.9289276, 0.008564718, 0.0050021284, 0.37012863)
+bones/53/position = Vector3(0.14161786, 0.01241298, 0.8002709)
+bones/54/position = Vector3(0.29020682, -0.6587946, 0.4216846)
+bones/55/position = Vector3(-0.14161786, 0.01241298, 0.8002709)
+bones/56/position = Vector3(-0.12848544, -0.8042244, 0.4303965)
+bones/57/position = Vector3(-0.14161429, 0.1452627, -0.012430325)
+
+[node name="BoneAttachment3D" parent="NpcInstanceController/NpcInstance/ModelContainer/FrankModel/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.97754776, 0.19864713, -0.070282236, -0.20347348, 0.97658545, -0.06984857, 0.054761417, 0.082580715, 0.9950786, 0.10600438, 0.998355, 0.4816624)
+
+[node name="AnimationPlayer" parent="NpcInstanceController/NpcInstance/ModelContainer/FrankModel" index="1"]
+autoplay = "chuch_idle"
+
+[node name="Interactable" parent="NpcInstanceController/NpcInstance" index="2"]
+interactable_hint = "INTERACTABLE_001"
+
+[node name="CollisionShape3D" parent="NpcInstanceController/NpcInstance/Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6416016, 0.14639282)
+shape = SubResource("CapsuleShape3D_yrler")
+
+[node name="PlayerCatcher" type="Area3D" parent="NpcInstanceController/NpcInstance/Interactable" index="1" node_paths=PackedStringArray("interactable")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.7464576)
+script = ExtResource("11_bq1e1")
+interactable = NodePath("..")
+one_use_only = true
+metadata/_custom_type_script = "uid://cvlnlhk3l8nla"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NpcInstanceController/NpcInstance/Interactable/PlayerCatcher" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.734375, 0)
+shape = SubResource("CapsuleShape3D_todh6")
+
+[node name="InstanceAnimatorController" parent="NpcInstanceController/NpcInstance" index="3" node_paths=PackedStringArray("npc")]
+npc = NodePath("../../..")
+
+[node name="FrankBasementInstance" parent="NpcInstanceController" index="1" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("2_8g5fp")]
+look_at_position = NodePath("ModelContainer/FrankModel/Armature/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
+look_at_modifier = NodePath("ModelContainer/FrankModel/Armature/Skeleton3D/LookAtModifier3D")
+need_meds = false
+
+[node name="NpcConversation" parent="NpcInstanceController/FrankBasementInstance" index="0" node_paths=PackedStringArray("npc_instance")]
+npc_instance = NodePath("..")
+conversation = SubResource("Resource_geoyh")
+neutral_wellcome_dialog = SubResource("Resource_mwixp")
+override_wellcome_dialog = SubResource("Resource_tfigv")
+
+[node name="FrankModel" parent="NpcInstanceController/FrankBasementInstance/ModelContainer" index="0" instance=ExtResource("8_8g5fp")]
+
+[node name="Skeleton3D" parent="NpcInstanceController/FrankBasementInstance/ModelContainer/FrankModel/Armature" index="0"]
+bones/0/position = Vector3(0.29840097, 0.1411027, 0.056894124)
+bones/2/position = Vector3(0, -0.1523377, 0)
+bones/3/position = Vector3(-3.552714e-15, 0.08137945, 1.2491751)
+bones/4/rotation = Quaternion(-0.11224869, -0.042000428, -0.04666693, 0.99169475)
+bones/5/rotation = Quaternion(-0.14940323, 0.028770812, 0.056668393, 0.98673177)
+bones/6/rotation = Quaternion(-0.101313755, 1.1857073e-07, -1.2181029e-08, 0.9948546)
+bones/7/rotation = Quaternion(0.40654564, 0.022523785, -0.06707814, 0.9108863)
+bones/8/rotation = Quaternion(-0.24687353, -0.011302916, 0.07643199, 0.96596277)
+bones/9/position = Vector3(0.030009504, 0.05922254, -0.0033389851)
+bones/10/rotation = Quaternion(-0.6173345, 0.6002409, -0.42290542, 0.28241822)
+bones/11/rotation = Quaternion(0.03361978, -0.0013095768, -0.03890068, 0.99867654)
+bones/12/rotation = Quaternion(0.07641651, 0.6435284, 0.04475932, 0.76028174)
+bones/13/rotation = Quaternion(0.045326926, -0.0035157665, 0.047237962, 0.9978485)
+bones/14/rotation = Quaternion(-0.0599013, -2.0012664e-08, 0.017943358, 0.9980431)
+bones/15/position = Vector3(0.0048728753, 0.18522522, 0.044854797)
+bones/15/rotation = Quaternion(0.12804013, -0.00018464132, 0.073189124, 0.98906475)
+bones/16/rotation = Quaternion(-0.07826864, 3.84397e-09, -0.039818324, 0.9961368)
+bones/17/rotation = Quaternion(-0.057566572, -0.01527126, -0.027478926, 0.9978466)
+bones/18/rotation = Quaternion(0.0012971734, 2.1065453e-07, 0.10805373, 0.9941442)
+bones/19/position = Vector3(0.00524973, 0.17360914, -0.057225816)
+bones/19/rotation = Quaternion(-0.23250629, -0.061491687, -0.105732255, 0.9648733)
+bones/20/rotation = Quaternion(0.057978205, -7.097819e-08, 0.14985487, 0.9870067)
+bones/21/position = Vector3(0.06523206, 0.47707692, -0.010031406)
+bones/21/rotation = Quaternion(0.20506379, 0.6540425, -0.32990688, 0.64910614)
+bones/22/position = Vector3(-0.030009517, 0.059222743, -0.003338955)
+bones/23/rotation = Quaternion(0.52443546, 0.5635826, -0.49325502, -0.40502045)
+bones/24/rotation = Quaternion(0.51098216, 0.39223468, 0.11752548, 0.75580233)
+bones/25/rotation = Quaternion(0.030341899, -0.0024474973, 0.02904329, 0.99911463)
+bones/26/rotation = Quaternion(-0.06848713, -0.08838473, 0.344308, 0.93217474)
+bones/27/rotation = Quaternion(0.47282365, -0.38541308, 0.5837476, 0.53584814)
+bones/28/rotation = Quaternion(-0.12792696, -0.15760049, 0.25340772, 0.94582313)
+bones/29/rotation = Quaternion(0.043423746, -0.13852967, 0.5588188, 0.81648374)
+bones/30/rotation = Quaternion(-0.046341583, 0.037410993, 0.43184975, 0.8999771)
+bones/31/rotation = Quaternion(-0.018007126, -0.13095134, 0.58954734, 0.7968447)
+bones/32/rotation = Quaternion(0.08367265, -0.26969585, 0.035680603, 0.9586397)
+bones/33/rotation = Quaternion(0.05078221, -0.027975451, 0.34499297, 0.936813)
+bones/34/position = Vector3(-0.041383523, 0.46998248, 0.06242765)
+bones/34/rotation = Quaternion(0.07046312, 0.1426514, 0.111446165, 0.9809512)
+bones/35/rotation = Quaternion(-0.15476792, 0.7807424, 0.6023768, 0.060251404)
+bones/36/rotation = Quaternion(0.73909044, 0.14526238, 0.37200028, 0.54245734)
+bones/37/rotation = Quaternion(-0.059035607, -0.097077034, -0.03581726, 0.9928786)
+bones/38/rotation = Quaternion(0.37457213, 0.08726181, 0.032639116, 0.9225052)
+bones/39/rotation = Quaternion(0.4584674, 0.011808576, -0.057958715, 0.8867407)
+bones/40/rotation = Quaternion(0.6152421, 0.14673899, 0.01631256, 0.7743892)
+bones/41/rotation = Quaternion(0.3987428, -0.044766773, 0.023157995, 0.91567683)
+bones/42/rotation = Quaternion(0.24375238, -0.06126657, -0.013577811, 0.96780515)
+bones/43/rotation = Quaternion(0.48867363, 0.1556874, -0.08854438, 0.85388494)
+bones/44/position = Vector3(-0.06255241, 0.15694119, 0.034902506)
+bones/44/rotation = Quaternion(0.47707325, -0.35823876, -0.25302887, 0.76160514)
+bones/45/rotation = Quaternion(0.59297657, 0.23755117, -0.28280306, 0.7155212)
+bones/46/position = Vector3(0.08061165, 0.33001676, 0.02273116)
+bones/46/rotation = Quaternion(0.12941499, -0.82186806, -0.29802096, 0.46794036)
+bones/48/rotation = Quaternion(-0.53696686, -0.6510898, 0.4899718, 0.21834925)
+bones/49/rotation = Quaternion(0.43817055, -0.0029704322, -0.009463193, 0.89883715)
+bones/51/rotation = Quaternion(0.69518125, -0.52734685, 0.3850074, -0.30066195)
+bones/52/rotation = Quaternion(0.43817085, 0.0029704508, 0.009463208, 0.898837)
+bones/53/position = Vector3(0.2983977, -0.056893557, 0.29345784)
+bones/54/position = Vector3(-0.009554081, -0.7390684, 0.49025658)
+bones/55/position = Vector3(-0.2983977, -0.056893557, 0.29345784)
+bones/56/position = Vector3(0.42311525, -0.7390684, 0.5020689)
+bones/57/position = Vector3(-0.2984018, 0.1411027, 0.056894034)
+
+[node name="BoneAttachment3D" parent="NpcInstanceController/FrankBasementInstance/ModelContainer/FrankModel/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.99989843, -0.01383354, -0.003386586, 0.013841261, 0.9999013, 0.0022712052, 0.0033548065, -0.002317965, 0.9999914, 0.030539215, 1.8567102, -0.035116393)
+
+[node name="AnimationPlayer" parent="NpcInstanceController/FrankBasementInstance/ModelContainer/FrankModel" index="1"]
+autoplay = "Idle_2"
+
+[node name="CollisionShape3D" parent="NpcInstanceController/FrankBasementInstance/Interactable" index="0"]
+shape = SubResource("BoxShape3D_lxggu")
+
+[editable path="NpcInstanceController/NpcInstance"]
+[editable path="NpcInstanceController/NpcInstance/ModelContainer/FrankModel"]
+[editable path="NpcInstanceController/NpcInstance/Interactable"]
+[editable path="NpcInstanceController/FrankBasementInstance"]
+[editable path="NpcInstanceController/FrankBasementInstance/ModelContainer/FrankModel"]
+[editable path="NpcInstanceController/FrankBasementInstance/Interactable"]

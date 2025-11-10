@@ -1,0 +1,902 @@
+[gd_scene load_steps=106 format=3 uid="uid://d200mf5wwfllg"]
+
+[ext_resource type="Script" uid="uid://d2co7hfcjden7" path="res://player/smooth_camera.gd" id="1_oul6g"]
+[ext_resource type="Script" uid="uid://bcy0gh201xcgs" path="res://player/player.gd" id="1_rkbax"]
+[ext_resource type="Resource" uid="uid://e7kghipeqb6p" path="res://items/item_vault/flashlight.tres" id="2_pnw6m"]
+[ext_resource type="Script" uid="uid://bekh6aixy1kse" path="res://player/player_interaction.gd" id="2_rgyib"]
+[ext_resource type="Script" uid="uid://0fk11gt1vksn" path="res://player/player_ui.gd" id="3_g1dw6"]
+[ext_resource type="Script" uid="uid://b7xdwgnnk1m83" path="res://player/player_state_machine/states/player_idle.gd" id="4_qjkh3"]
+[ext_resource type="Script" uid="uid://dgfupw03ydujx" path="res://player/player_state_machine/player_state_machine.gd" id="4_yw30f"]
+[ext_resource type="LabelSettings" uid="uid://csob6ho87rhlq" path="res://ui/basic_label.tres" id="5_2uvqg"]
+[ext_resource type="Script" uid="uid://tmyxchhkaq32" path="res://player/player_state_machine/states/player_walk.gd" id="5_g6k8r"]
+[ext_resource type="Theme" uid="uid://oxf8w7asp4eg" path="res://ui/main_theme.tres" id="6_knn7v"]
+[ext_resource type="Texture2D" uid="uid://c31awiogbqgxe" path="res://assets/ui/inventory_background.png" id="7_ge24q"]
+[ext_resource type="Script" uid="uid://dwkxmiwaxombp" path="res://player/player_state_machine/states/player_interacting.gd" id="7_hg6s5"]
+[ext_resource type="Script" uid="uid://ciq53tsfkwh5r" path="res://player/player_state_machine/states/player_conversation.gd" id="8_yllr7"]
+[ext_resource type="Texture2D" uid="uid://emxnvvjtxui3" path="res://assets/ui/metal_background.jpg" id="9_2uvqg"]
+[ext_resource type="StyleBox" uid="uid://dx8u55oys5g01" path="res://ui/tutorial_pop_up_flat_style.tres" id="9_b8hi5"]
+[ext_resource type="PackedScene" uid="uid://dwp3f82uyo7dp" path="res://player/console.tscn" id="9_dx5ib"]
+[ext_resource type="Texture2D" uid="uid://dmvufckgp82la" path="res://assets/textures/ui/key_background.png" id="9_hg6s5"]
+[ext_resource type="Script" uid="uid://b1e7oa8kt6jxq" path="res://player/player_state_machine/states/player_open_inventory.gd" id="9_wodsf"]
+[ext_resource type="Script" uid="uid://b6v2m0eusteky" path="res://player/player_state_machine/states/player_prepare_gun.gd" id="10_65viv"]
+[ext_resource type="Script" uid="uid://b0pkb2jb6kna0" path="res://player/player_conversation_controller.gd" id="11_2ieo8"]
+[ext_resource type="Script" uid="uid://by3r1gu0ihwwa" path="res://player/inventory_ui.gd" id="11_kb6p2"]
+[ext_resource type="PackedScene" uid="uid://b26m1c712w8fe" path="res://game_management/main_menu/options.tscn" id="12_1so5t"]
+[ext_resource type="Script" uid="uid://doro7gultmxio" path="res://player/player_inventory.gd" id="12_ebec5"]
+[ext_resource type="Script" uid="uid://bla6772fugq7e" path="res://player/player_state_machine/states/player_aiming.gd" id="16_bjvpn"]
+[ext_resource type="Script" uid="uid://bhcar6r1846rg" path="res://player/player_state_machine/states/player_paralize.gd" id="18_7pqkx"]
+[ext_resource type="PackedScene" uid="uid://cpyss678yatou" path="res://assets/player_assets/gun/gun_model.tscn" id="21_x7c3f"]
+[ext_resource type="Script" uid="uid://cw3id2c10a2jp" path="res://player/player_state_machine/states/player_grabbed.gd" id="22_2uvqg"]
+[ext_resource type="Script" uid="uid://d2hwtsstxybnv" path="res://player/player_state_machine/states/player_message.gd" id="23_2uvqg"]
+[ext_resource type="Script" uid="uid://djepig5lg5bys" path="res://player/player_state_machine/states/player_run.gd" id="23_5ejfk"]
+[ext_resource type="Script" uid="uid://ibdyqxkjxk2r" path="res://player/player_audio.gd" id="23_s7qer"]
+[ext_resource type="AudioStream" uid="uid://cn6b3yjuqakb1" path="res://assets/audio/player/foot_step.wav" id="24_g4c7l"]
+[ext_resource type="Script" uid="uid://btqhxqhw5ff8c" path="res://player/player_state_machine/states/player_rest.gd" id="24_pnw6m"]
+[ext_resource type="Script" uid="uid://c2lk7tvip2nwb" path="res://player/player_state_machine/states/player_godmode.gd" id="25_q28gw"]
+[ext_resource type="Script" uid="uid://bqge72ilu65r7" path="res://player/player_state_machine/states/player_menu.gd" id="29_55jnj"]
+[ext_resource type="Script" uid="uid://bflyndd2y0fyy" path="res://player/madness.gd" id="30_b8hi5"]
+[ext_resource type="Script" uid="uid://cn1smc41202c3" path="res://player/player_stamina.gd" id="33_jd2rm"]
+[ext_resource type="Script" uid="uid://dux68mlwnw86q" path="res://player/player_day_night_cicle.gd" id="34_jd2rm"]
+[ext_resource type="Script" uid="uid://lybxloyff416" path="res://player/player_events.gd" id="35_q28gw"]
+[ext_resource type="AudioStream" uid="uid://cos1c6lu8sg7t" path="res://assets/audio/drop_item/umbrella close 1.wav" id="35_wpyo2"]
+[ext_resource type="AudioStream" uid="uid://cnh5ypauu7vll" path="res://assets/audio/drop_item/umbrella close 2.wav" id="36_7crtr"]
+[ext_resource type="Resource" uid="uid://bodawmb8aj5vy" path="res://events/events_resources/game_flow_events/game_over.tres" id="36_a2xo5"]
+[ext_resource type="AudioStream" uid="uid://dx0kspyvrq8vy" path="res://assets/audio/drop_item/umbrella close 3.wav" id="37_vgvch"]
+[ext_resource type="Resource" uid="uid://bwpf2qlqddytr" path="res://events/events_resources/game_flow_events/player_rest_to_day.tres" id="38_55jnj"]
+[ext_resource type="AudioStream" uid="uid://hlqq2q0t1glu" path="res://assets/audio/drop_item/umbrella close 4.wav" id="38_a1u5o"]
+[ext_resource type="AudioStream" uid="uid://u15lpj0lnd1i" path="res://assets/audio/drop_item/umbrella close 5.wav" id="39_3dxkp"]
+[ext_resource type="Resource" uid="uid://h2die4q5diq" path="res://events/events_resources/game_flow_events/player_rest_to_midnight.tres" id="39_dx5ib"]
+[ext_resource type="AudioStream" uid="uid://xjm466h0n431" path="res://assets/audio/inventory/book handled 1.wav" id="40_6wior"]
+[ext_resource type="AudioStream" uid="uid://q5y0ctvdg7hp" path="res://assets/audio/inventory/book handled 2.wav" id="41_p5tca"]
+[ext_resource type="AudioStream" uid="uid://cnpaeanog2cjs" path="res://assets/audio/inventory/book handled 3.wav" id="42_jbx34"]
+[ext_resource type="AudioStream" uid="uid://cw7sl1dwjuo2g" path="res://assets/audio/inventory/book handled 4.wav" id="43_s3g0c"]
+[ext_resource type="AudioStream" uid="uid://blrrbayy0mhs" path="res://assets/audio/inventory/book handled 5.wav" id="44_35wys"]
+[ext_resource type="AudioStream" uid="uid://7gxs6l1bnh7i" path="res://assets/audio/inventory/book throw 1.wav" id="45_pjwc4"]
+[ext_resource type="AudioStream" uid="uid://kuj7yvujy1rh" path="res://assets/audio/inventory/book throw 2.wav" id="46_or4qq"]
+[ext_resource type="AudioStream" uid="uid://dg6e0k644mgbg" path="res://assets/audio/inventory/book throw 3.wav" id="47_hggc2"]
+[ext_resource type="AudioStream" uid="uid://soi3g0gsbe3p" path="res://assets/audio/inventory/book throw 4.wav" id="48_b2j0d"]
+[ext_resource type="AudioStream" uid="uid://ciwvpuhyytg5p" path="res://assets/audio/gun_cocking/gun cocking 1.wav" id="49_6wior"]
+[ext_resource type="AudioStream" uid="uid://wwgix1pt038e" path="res://assets/audio/gun_cocking/gun cocking 2.wav" id="50_p5tca"]
+[ext_resource type="AudioStream" uid="uid://cfhe7t5uymr8k" path="res://assets/audio/gun_cocking/gun cocking 3.wav" id="51_jbx34"]
+[ext_resource type="AudioStream" uid="uid://c4x6rlkwqmcjy" path="res://assets/audio/gun_cocking/gun cocking 4.wav" id="52_s3g0c"]
+[ext_resource type="AudioStream" uid="uid://cavlf4mokaan5" path="res://assets/audio/gun_cocking/gun cocking 5.wav" id="53_35wys"]
+[ext_resource type="AudioStream" uid="uid://hri8nosrsv4e" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 1.wav" id="54_j420s"]
+[ext_resource type="AudioStream" uid="uid://dreq8ak8qvws3" path="res://assets/audio/player/gun_shot.wav" id="54_qavcc"]
+[ext_resource type="AudioStream" uid="uid://bsu4usamya3hn" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 2.wav" id="55_kcq4v"]
+[ext_resource type="AudioStream" uid="uid://byrb3e4xcs2ex" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 11.wav" id="56_qavcc"]
+[ext_resource type="AudioStream" uid="uid://dn1qovf4cnmaj" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 12.wav" id="57_bd26m"]
+[ext_resource type="AudioStream" uid="uid://dmtx040qnlbru" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 13.wav" id="58_lufic"]
+[ext_resource type="AudioStream" uid="uid://bgevtc1xv6mdt" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 14.wav" id="59_nxclr"]
+[ext_resource type="AudioStream" uid="uid://b4rstf3m3xqny" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 15.wav" id="60_onxu2"]
+[ext_resource type="AudioStream" uid="uid://ct6j67vx55dnd" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 16.wav" id="61_gci7n"]
+[ext_resource type="AudioStream" uid="uid://bllri32rcqc27" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 17.wav" id="62_tcwf7"]
+[ext_resource type="AudioStream" uid="uid://dr6kwrwyhol6k" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 18.wav" id="63_20bc7"]
+[ext_resource type="AudioStream" uid="uid://c7qtm2afvmofb" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 19.wav" id="64_jfgxe"]
+[ext_resource type="AudioStream" uid="uid://bea8gigu3p2gn" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 3.wav" id="65_yg0n1"]
+[ext_resource type="AudioStream" uid="uid://cr2u4kqvx3kk8" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 4.wav" id="66_qjt2w"]
+[ext_resource type="AudioStream" uid="uid://x2iim7qlvpg7" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 5.wav" id="67_2lfai"]
+[ext_resource type="AudioStream" uid="uid://unsd0trqiei" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 6.wav" id="68_j3o0i"]
+[ext_resource type="AudioStream" uid="uid://bn60hmbwprln3" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 7.wav" id="69_pgo6y"]
+[ext_resource type="AudioStream" uid="uid://xthpi6pyfgx5" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 8.wav" id="70_qm6yy"]
+[ext_resource type="AudioStream" uid="uid://b0bnd07hjvutj" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 9.wav" id="71_gcmgo"]
+[ext_resource type="AudioStream" uid="uid://chmjocp0yy6ko" path="res://assets/audio/player/gun_fire_no_bullets/gun fired no bullets 10.wav" id="72_rnncm"]
+[ext_resource type="AudioStream" uid="uid://d18oqw5yirm68" path="res://assets/audio/player/player_scream.wav" id="73_kcq4v"]
+
+[sub_resource type="Animation" id="Animation_bjvpn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GunModel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 1.87625, -0.355034)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GunModel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x7c3f"]
+resource_name = "prepare_gun"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("GunModel:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.49, 1, 1.67, 1.86, 1.98),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 2.266, -0.355), Vector3(0, 2.66486, -0.355034), Vector3(0, 2.66486, -0.355034), Vector3(0, 2.66486, -0.355034), Vector3(0, 2.74111, -0.355034), Vector3(0, 2.68312, -0.355034)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GunModel:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.49, 1, 1.67, 1.98),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 1.73339, 0), Vector3(0, 0.368456, 0), Vector3(0, 0.553234, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s7qer"]
+_data = {
+&"RESET": SubResource("Animation_bjvpn"),
+&"prepare_gun": SubResource("Animation_x7c3f")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_drvn0"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tp42p"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7yaiv"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.227451, 0.227451, 0.227451, 0.941176)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nm8a8"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.0430392, 0.0430392, 0.0430392, 0.858824)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tl3kj"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.136826, 0.136826, 0.136826, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pnw6m"]
+texture = ExtResource("7_ge24q")
+
+[sub_resource type="Theme" id="Theme_1so5t"]
+Button/colors/font_color = Color(0.629676, 0.629674, 0.629675, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 0
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 14
+Button/fonts/font = null
+Button/icons/icon = null
+Button/styles/disabled = SubResource("StyleBoxFlat_drvn0")
+Button/styles/focus = SubResource("StyleBoxFlat_tp42p")
+Button/styles/hover = SubResource("StyleBoxFlat_7yaiv")
+Button/styles/normal = SubResource("StyleBoxFlat_nm8a8")
+Button/styles/pressed = SubResource("StyleBoxFlat_tl3kj")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_pnw6m")
+VBoxContainer/constants/separation = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ejfk"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.340339, 0.340339, 0.340339, 1)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+shadow_color = Color(0.0475577, 0.0475576, 0.0475576, 0.6)
+shadow_size = 2
+anti_aliasing = false
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jd2rm"]
+bg_color = Color(0.295867, 0.295866, 0.295866, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(0.341176, 0.341176, 0.341176, 1)
+corner_radius_top_left = 9
+corner_radius_bottom_left = 9
+anti_aliasing = false
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_kqu6x"]
+radius = 0.6
+height = 3.4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kqu6x"]
+radius = 0.6
+height = 3.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ge24q"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7l6ig"]
+streams_count = 5
+stream_0/stream = ExtResource("35_wpyo2")
+stream_1/stream = ExtResource("36_7crtr")
+stream_2/stream = ExtResource("37_vgvch")
+stream_3/stream = ExtResource("38_a1u5o")
+stream_4/stream = ExtResource("39_3dxkp")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_j3r50"]
+streams_count = 5
+stream_0/stream = ExtResource("35_wpyo2")
+stream_1/stream = ExtResource("36_7crtr")
+stream_2/stream = ExtResource("37_vgvch")
+stream_3/stream = ExtResource("38_a1u5o")
+stream_4/stream = ExtResource("39_3dxkp")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_utr5e"]
+streams_count = 5
+stream_0/stream = ExtResource("40_6wior")
+stream_1/stream = ExtResource("41_p5tca")
+stream_2/stream = ExtResource("42_jbx34")
+stream_3/stream = ExtResource("43_s3g0c")
+stream_4/stream = ExtResource("44_35wys")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_kewli"]
+streams_count = 4
+stream_0/stream = ExtResource("45_pjwc4")
+stream_1/stream = ExtResource("46_or4qq")
+stream_2/stream = ExtResource("47_hggc2")
+stream_3/stream = ExtResource("48_b2j0d")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pjwc4"]
+streams_count = 5
+stream_0/stream = ExtResource("49_6wior")
+stream_1/stream = ExtResource("50_p5tca")
+stream_2/stream = ExtResource("51_jbx34")
+stream_3/stream = ExtResource("52_s3g0c")
+stream_4/stream = ExtResource("53_35wys")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_or4qq"]
+streams_count = 19
+stream_0/stream = ExtResource("54_j420s")
+stream_1/stream = ExtResource("55_kcq4v")
+stream_2/stream = ExtResource("65_yg0n1")
+stream_3/stream = ExtResource("66_qjt2w")
+stream_4/stream = ExtResource("67_2lfai")
+stream_5/stream = ExtResource("68_j3o0i")
+stream_6/stream = ExtResource("69_pgo6y")
+stream_7/stream = ExtResource("70_qm6yy")
+stream_8/stream = ExtResource("71_gcmgo")
+stream_9/stream = ExtResource("72_rnncm")
+stream_10/stream = ExtResource("56_qavcc")
+stream_11/stream = ExtResource("57_bd26m")
+stream_12/stream = ExtResource("58_lufic")
+stream_13/stream = ExtResource("59_nxclr")
+stream_14/stream = ExtResource("60_onxu2")
+stream_15/stream = ExtResource("61_gci7n")
+stream_16/stream = ExtResource("62_tcwf7")
+stream_17/stream = ExtResource("63_20bc7")
+stream_18/stream = ExtResource("64_jfgxe")
+
+[sub_resource type="Animation" id="Animation_2uvqg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%MadnessBar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b8hi5"]
+resource_name = "show_madness_bar"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%MadnessBar:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1s1yo"]
+_data = {
+&"RESET": SubResource("Animation_2uvqg"),
+&"show_madness_bar": SubResource("Animation_b8hi5")
+}
+
+[node name="Player" type="CharacterBody3D" groups=["load", "player"]]
+collision_layer = 8
+floor_max_angle = 1.13446
+script = ExtResource("1_rkbax")
+flashlight_item = ExtResource("2_pnw6m")
+
+[node name="PlayerUI" type="CanvasLayer" parent="."]
+unique_name_in_owner = true
+script = ExtResource("3_g1dw6")
+
+[node name="ItemDisplayer" type="SubViewportContainer" parent="PlayerUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="PlayerUI/ItemDisplayer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(640, 360)
+render_target_update_mode = 4
+
+[node name="ItemCamera" type="Camera3D" parent="PlayerUI/ItemDisplayer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.76752, 0)
+cull_mask = 514
+
+[node name="AnimatedCameraObjects" type="Node3D" parent="PlayerUI/ItemDisplayer/SubViewport/ItemCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.76752, 0)
+
+[node name="GunModel" parent="PlayerUI/ItemDisplayer/SubViewport/ItemCamera/AnimatedCameraObjects" instance=ExtResource("21_x7c3f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.87625, -0.355034)
+visible = false
+
+[node name="AnimatedObjectsAnimations" type="AnimationPlayer" parent="PlayerUI/ItemDisplayer/SubViewport/ItemCamera/AnimatedCameraObjects"]
+libraries = {
+&"": SubResource("AnimationLibrary_s7qer")
+}
+
+[node name="GunHolder" type="Node3D" parent="PlayerUI/ItemDisplayer/SubViewport/ItemCamera"]
+top_level = true
+
+[node name="GunModel" parent="PlayerUI/ItemDisplayer/SubViewport/ItemCamera/GunHolder" instance=ExtResource("21_x7c3f")]
+unique_name_in_owner = true
+transform = Transform3D(2.28768e-09, -0.0523359, 0.998629, -1, -4.37114e-08, 0, 4.36515e-08, -0.998629, -0.0523359, 0.0821124, -0.0670048, -0.337634)
+visible = false
+
+[node name="BulletRaycast3D" type="RayCast3D" parent="PlayerUI/ItemDisplayer/SubViewport/ItemCamera/GunHolder/GunModel"]
+transform = Transform3D(1, 0, -4.7767e-16, 0, 1, 0, -4.7767e-16, 0, 1, -0.0442464, 0, 1.31865e-09)
+target_position = Vector3(0, 24, 0)
+collision_mask = 65
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="StateLabel" type="Label" parent="PlayerUI"]
+offset_right = 134.0
+offset_bottom = 42.0
+
+[node name="ControlHints" type="MarginContainer" parent="PlayerUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 15
+
+[node name="HintContainer" type="Control" parent="PlayerUI/ControlHints"]
+layout_mode = 2
+mouse_filter = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI/ControlHints/HintContainer"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="InteractableHint" type="HBoxContainer" parent="PlayerUI/ControlHints/HintContainer/HBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/ControlHints/HintContainer/HBoxContainer/InteractableHint"]
+layout_mode = 2
+texture = ExtResource("9_hg6s5")
+expand_mode = 3
+
+[node name="InteractableKey" type="Label" parent="PlayerUI/ControlHints/HintContainer/HBoxContainer/InteractableHint/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="InteractableDescription" type="Label" parent="PlayerUI/ControlHints/HintContainer/HBoxContainer/InteractableHint"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 16
+text = "Description"
+label_settings = ExtResource("5_2uvqg")
+
+[node name="InventoryUI" type="MarginContainer" parent="PlayerUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+script = ExtResource("11_kb6p2")
+
+[node name="Inventory" type="PanelContainer" parent="PlayerUI/InventoryUI"]
+visible = false
+layout_mode = 2
+theme = SubResource("Theme_1so5t")
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/InventoryUI/Inventory"]
+layout_mode = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 22
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PlayerUI/InventoryUI/Inventory/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PlayerUI/InventoryUI/Inventory/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+horizontal_scroll_mode = 0
+
+[node name="ItemLabelsVBoxContainer" type="VBoxContainer" parent="PlayerUI/InventoryUI/Inventory/MarginContainer/HBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+
+[node name="ItemDescription" type="Label" parent="PlayerUI/InventoryUI/Inventory/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(248, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+label_settings = ExtResource("5_2uvqg")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Console" parent="PlayerUI" instance=ExtResource("9_dx5ib")]
+
+[node name="PlayerGameplayInfo" type="Control" parent="PlayerUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PlayerGameplayInfoTimer" type="Timer" parent="PlayerUI/PlayerGameplayInfo"]
+one_shot = true
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/PlayerGameplayInfo"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="PlayerGameplayInfoLabel" type="Label" parent="PlayerUI/PlayerGameplayInfo/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 2.555)
+layout_mode = 2
+label_settings = ExtResource("5_2uvqg")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="ConversationUI" type="MarginContainer" parent="PlayerUI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 21
+
+[node name="DialogOptionsScroll" type="ScrollContainer" parent="PlayerUI/ConversationUI"]
+visible = false
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="DialogOptions" type="VBoxContainer" parent="PlayerUI/ConversationUI/DialogOptionsScroll"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/ConversationUI"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 65
+
+[node name="NpcTextDisplay" type="Label" parent="PlayerUI/ConversationUI/MarginContainer"]
+unique_name_in_owner = true
+editor_description = "Here is shown the text of the npc's dialog"
+visible = false
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+size_flags_vertical = 8
+label_settings = ExtResource("5_2uvqg")
+autowrap_mode = 3
+
+[node name="MessageUI" type="MarginContainer" parent="PlayerUI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 55
+theme_override_constants/margin_top = 55
+theme_override_constants/margin_right = 55
+theme_override_constants/margin_bottom = 55
+
+[node name="PanelContainer" type="PanelContainer" parent="PlayerUI/MessageUI"]
+layout_mode = 2
+theme_override_styles/panel = ExtResource("9_b8hi5")
+
+[node name="TextureRect" type="TextureRect" parent="PlayerUI/MessageUI/PanelContainer"]
+layout_mode = 2
+texture = ExtResource("9_2uvqg")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PlayerUI/MessageUI/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 22
+
+[node name="MessageLabel" type="Label" parent="PlayerUI/MessageUI/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+label_settings = ExtResource("5_2uvqg")
+
+[node name="ContinueButton" type="Button" parent="PlayerUI/MessageUI/PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("6_knn7v")
+text = "Continue"
+
+[node name="MadnessContainer" type="MarginContainer" parent="PlayerUI"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 22
+
+[node name="Control" type="Control" parent="PlayerUI/MadnessContainer"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MadnessBar" type="ProgressBar" parent="PlayerUI/MadnessContainer/Control"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(256.21, 0)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -16.0
+offset_right = 128.21
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_5ejfk")
+theme_override_styles/fill = SubResource("StyleBoxFlat_jd2rm")
+value = 40.0
+show_percentage = false
+
+[node name="Options" parent="PlayerUI" instance=ExtResource("12_1so5t")]
+
+[node name="LenguageButton" parent="PlayerUI/Options/OptionsCenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer" index="0"]
+visible = false
+
+[node name="PlayerBlackScreen" type="ColorRect" parent="PlayerUI"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Capsule" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.68397, 0)
+visible = false
+mesh = SubResource("CapsuleMesh_kqu6x")
+
+[node name="PlayerCollision" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.69035, 0)
+shape = SubResource("CapsuleShape3D_kqu6x")
+
+[node name="PlayerInteractionManager" type="Node" parent="."]
+script = ExtResource("2_rgyib")
+metadata/_custom_type_script = "uid://bekh6aixy1kse"
+
+[node name="CameraPivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.76752, 0)
+
+[node name="WorldCamera" type="Camera3D" parent="CameraPivot" node_paths=PackedStringArray("gun")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.76752, 0)
+top_level = true
+cull_mask = 1048061
+current = true
+fov = 37.8493
+script = ExtResource("1_oul6g")
+speed = 20.0
+gun_following_speed = 30.0
+gun = NodePath("../../PlayerUI/ItemDisplayer/SubViewport/ItemCamera/GunHolder")
+
+[node name="ItemCameraRemoteTransform" type="RemoteTransform3D" parent="CameraPivot/WorldCamera"]
+remote_path = NodePath("../../../PlayerUI/ItemDisplayer/SubViewport/ItemCamera")
+
+[node name="InteractRaycast" type="RayCast3D" parent="CameraPivot/WorldCamera"]
+target_position = Vector3(0, 0, -2.4)
+collision_mask = 257
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="Flashlight" type="SpotLight3D" parent="CameraPivot/WorldCamera"]
+visible = false
+light_color = Color(0.752501, 0.745916, 0.6221, 1)
+light_energy = 2.0
+spot_range = 31.5786
+spot_angle = 19.0776
+
+[node name="PlayerHeadArea" type="Area3D" parent="CameraPivot/WorldCamera"]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraPivot/WorldCamera/PlayerHeadArea"]
+shape = SubResource("SphereShape3D_ge24q")
+
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("state_label")]
+unique_name_in_owner = true
+script = ExtResource("4_yw30f")
+state_label = NodePath("../PlayerUI/StateLabel")
+initial_state = NodePath("PlayerIdle")
+metadata/_custom_type_script = "uid://dgfupw03ydujx"
+
+[node name="PlayerIdle" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("4_qjkh3")
+metadata/_custom_type_script = "uid://b7xdwgnnk1m83"
+
+[node name="PlayerWalk" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("5_g6k8r")
+walking_speed = 2.0
+metadata/_custom_type_script = "uid://tmyxchhkaq32"
+
+[node name="PlayerInteracting" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("7_hg6s5")
+metadata/_custom_type_script = "uid://dwkxmiwaxombp"
+
+[node name="InteractionTimer" type="Timer" parent="PlayerStateMachine/PlayerInteracting"]
+one_shot = true
+
+[node name="PlayerConversation" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("8_yllr7")
+metadata/_custom_type_script = "uid://ciq53tsfkwh5r"
+
+[node name="PlayerOpenInventory" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("9_wodsf")
+metadata/_custom_type_script = "uid://b1e7oa8kt6jxq"
+
+[node name="PlayerPrepareGun" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("10_65viv")
+metadata/_custom_type_script = "uid://b6v2m0eusteky"
+
+[node name="PlayerAiming" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("16_bjvpn")
+metadata/_custom_type_script = "uid://bla6772fugq7e"
+
+[node name="RandomizeSensitivityTimer" type="Timer" parent="PlayerStateMachine/PlayerAiming"]
+
+[node name="ShotCDTimer" type="Timer" parent="PlayerStateMachine/PlayerAiming"]
+
+[node name="PlayerParalize" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("18_7pqkx")
+metadata/_custom_type_script = "uid://bhcar6r1846rg"
+
+[node name="PlayerMessage" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("23_2uvqg")
+metadata/_custom_type_script = "uid://d2hwtsstxybnv"
+
+[node name="PlayerGrabbed" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("22_2uvqg")
+metadata/_custom_type_script = "uid://cw3id2c10a2jp"
+
+[node name="PlayerRun" type="Node" parent="PlayerStateMachine" node_paths=PackedStringArray("head")]
+script = ExtResource("23_5ejfk")
+run_speed = 3.2
+head = NodePath("../../CameraPivot")
+metadata/_custom_type_script = "uid://djepig5lg5bys"
+
+[node name="PlayerRest" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("24_pnw6m")
+metadata/_custom_type_script = "uid://btqhxqhw5ff8c"
+
+[node name="PlayerGodmode" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("25_q28gw")
+metadata/_custom_type_script = "uid://c2lk7tvip2nwb"
+
+[node name="PlayerMenu" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("29_55jnj")
+metadata/_custom_type_script = "uid://bqge72ilu65r7"
+
+[node name="PlayerConversationController" type="Node" parent="." groups=["load"]]
+script = ExtResource("11_2ieo8")
+
+[node name="PlayerInventory" type="Node" parent="." groups=["load"]]
+script = ExtResource("12_ebec5")
+
+[node name="PlayerAudio" type="Node3D" parent="."]
+script = ExtResource("23_s7qer")
+
+[node name="ItemAudioStreamer" type="AudioStreamPlayer" parent="PlayerAudio"]
+
+[node name="FootstepsAudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerAudio"]
+stream = ExtResource("24_g4c7l")
+volume_db = -10.0
+
+[node name="GetItemAudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerAudio"]
+stream = SubResource("AudioStreamRandomizer_7l6ig")
+
+[node name="DropItemAudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerAudio"]
+stream = SubResource("AudioStreamRandomizer_j3r50")
+
+[node name="OpenInventoryAudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerAudio"]
+stream = SubResource("AudioStreamRandomizer_utr5e")
+
+[node name="CloseInventoryAudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerAudio"]
+stream = SubResource("AudioStreamRandomizer_kewli")
+
+[node name="AudioListener3D" type="AudioListener3D" parent="PlayerAudio"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7853193, 0)
+current = true
+
+[node name="FootstepsTimer" type="Timer" parent="PlayerAudio"]
+wait_time = 0.88
+
+[node name="GunLoadAudioStreamer" type="AudioStreamPlayer" parent="PlayerAudio"]
+stream = SubResource("AudioStreamRandomizer_pjwc4")
+
+[node name="GunShootAudioStreamer" type="AudioStreamPlayer" parent="PlayerAudio"]
+stream = ExtResource("54_qavcc")
+
+[node name="GunShootAndHitAudioStreamer" type="AudioStreamPlayer" parent="PlayerAudio"]
+
+[node name="GunNoAmmoLoadAudioStreamer" type="AudioStreamPlayer" parent="PlayerAudio"]
+stream = SubResource("AudioStreamRandomizer_or4qq")
+
+[node name="PlayerHitAudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerAudio"]
+stream = ExtResource("73_kcq4v")
+
+[node name="GunNoBulletsAudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerAudio"]
+
+[node name="Madness" type="Node" parent="." groups=["load"]]
+script = ExtResource("30_b8hi5")
+bar_animatino_time = 7.0
+game_over_event = ExtResource("36_a2xo5")
+
+[node name="MadnessAnimationPlayer" type="AnimationPlayer" parent="Madness"]
+libraries = {
+&"": SubResource("AnimationLibrary_1s1yo")
+}
+
+[node name="PlayerStamina" type="Node" parent="." groups=["load"]]
+script = ExtResource("33_jd2rm")
+
+[node name="StaminaTimer" type="Timer" parent="PlayerStamina"]
+one_shot = true
+
+[node name="PlayerDayNightCicle" type="Node" parent="."]
+script = ExtResource("34_jd2rm")
+
+[node name="PlayerEvents" type="Node" parent="."]
+script = ExtResource("35_q28gw")
+sleep_to_dawn = ExtResource("38_55jnj")
+rest_to_midnight = ExtResource("39_dx5ib")
+
+[node name="PlayerLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7610383, 0)
+light_energy = 0.4
+omni_range = 3.385489
+omni_attenuation = 2.0
+
+[connection signal="timeout" from="PlayerUI/PlayerGameplayInfo/PlayerGameplayInfoTimer" to="PlayerUI" method="_on_player_gameplay_info_timer_timeout"]
+[connection signal="timeout" from="PlayerStateMachine/PlayerInteracting/InteractionTimer" to="PlayerStateMachine/PlayerInteracting" method="_on_interaction_timer_timeout"]
+[connection signal="timeout" from="PlayerStateMachine/PlayerAiming/RandomizeSensitivityTimer" to="PlayerStateMachine/PlayerAiming" method="_on_randomize_sensitivity_timer_timeout"]
+[connection signal="timeout" from="PlayerStamina/StaminaTimer" to="PlayerStamina" method="_on_stamina_timer_timeout"]
+
+[editable path="PlayerUI/Options"]

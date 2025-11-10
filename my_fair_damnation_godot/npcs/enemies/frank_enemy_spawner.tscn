@@ -1,0 +1,18 @@
+[gd_scene load_steps=6 format=3 uid="uid://dqm28k7ibudy0"]
+
+[ext_resource type="Script" uid="uid://gtporlw1hwse" path="res://npcs/enemies/enemy_spawner.gd" id="1_eeiuo"]
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="2_df45l"]
+[ext_resource type="Resource" uid="uid://c7nwvuu6nn26s" path="res://events/events_resources/game_flow_events/night_time.tres" id="3_2q3cv"]
+[ext_resource type="Resource" uid="uid://bwpf2qlqddytr" path="res://events/events_resources/game_flow_events/player_rest_to_day.tres" id="4_0s836"]
+[ext_resource type="PackedScene" uid="uid://ds0p0i56i6bt1" path="res://npcs/frank/frank_regular_enemy.tscn" id="5_i8x67"]
+
+[node name="EnemySpawner" type="Node3D" node_paths=PackedStringArray("enemy_to_spawn", "enemy_parent")]
+script = ExtResource("1_eeiuo")
+enemy_to_spawn = NodePath("FrankRegularEnemy")
+enemy_parent = NodePath(".")
+spawn_triggering_events = Array[ExtResource("2_df45l")]([ExtResource("3_2q3cv")])
+despawn_triggering_events = Array[ExtResource("2_df45l")]([ExtResource("4_0s836")])
+metadata/_custom_type_script = "uid://gtporlw1hwse"
+
+[node name="FrankRegularEnemy" parent="." instance=ExtResource("5_i8x67")]
+floor_max_angle = 1.22173

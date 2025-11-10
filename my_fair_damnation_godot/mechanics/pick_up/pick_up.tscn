@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://h5xknfcagafd"]
+
+[ext_resource type="Script" uid="uid://n0g7bfutoy2n" path="res://mechanics/pick_up/pick_up.gd" id="1_23fdj"]
+[ext_resource type="PackedScene" uid="uid://dup8g2hg5x2f8" path="res://scripts/interactable/interactable.tscn" id="2_oa4jk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bbbv1"]
+
+[node name="PickUp" type="Node3D"]
+script = ExtResource("1_23fdj")
+
+[node name="Interactable" parent="." instance=ExtResource("2_oa4jk")]
+interactable_hint = "PICK_UP"
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+shape = SubResource("BoxShape3D_bbbv1")
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+
+[editable path="Interactable"]

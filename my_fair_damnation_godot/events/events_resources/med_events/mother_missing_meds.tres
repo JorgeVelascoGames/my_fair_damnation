@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://drc8ptmk32h2l"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_u67ww"]
+
+[resource]
+script = ExtResource("1_u67ww")
+event_name = "Mom missing meds"
+event_description = "Los npcs utilizan este evento para determinar si se les ha dado la medicación. Debe estar en el array de eventos actuales en ese momento para evitar la perdida de reputación"
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

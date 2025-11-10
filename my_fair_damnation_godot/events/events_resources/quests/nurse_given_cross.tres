@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://bcmk2xxj7egr8"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_nqf00"]
+
+[resource]
+script = ExtResource("1_nqf00")
+event_name = "nurse given cross"
+event_description = "Este evento salta cuando le damos la cruz a la enfermera y es \"Is one day only\". Esto permite que un diálogo aparezca al día siguiente de haberle dado la cruz, y no en el mismo día"
+event_is_trigger = false
+is_one_day_only = true
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

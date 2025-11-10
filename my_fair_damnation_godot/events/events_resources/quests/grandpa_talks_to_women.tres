@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://6i0y7ixag7kd"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_ihocw"]
+
+[resource]
+script = ExtResource("1_ihocw")
+event_name = "grandpa talks to women"
+event_description = "Salta cuando le pedimos al abuelo que intervenga entre la tia y la madre"
+event_is_trigger = false
+is_one_day_only = true
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

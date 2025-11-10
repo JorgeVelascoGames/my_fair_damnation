@@ -1,0 +1,90 @@
+[gd_scene load_steps=18 format=3 uid="uid://bepj5mbs82d3y"]
+
+[ext_resource type="PackedScene" uid="uid://h4rdpqvxxbsy" path="res://assets/props/swich/switch.glb" id="1_qn5u3"]
+[ext_resource type="Texture2D" uid="uid://b1xu8kk1ghur3" path="res://assets/props/swich/swich_DefaultMaterial_BaseColor.png" id="2_fdul5"]
+[ext_resource type="Script" uid="uid://djfb7gm1qvuum" path="res://assets/props/swich/switch_animation.gd" id="3_0k133"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjvfg"]
+albedo_texture = ExtResource("2_fdul5")
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_okt67"]
+animation = &"Moving"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cfwer"]
+animation = &"Off"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5gf18"]
+animation = &"On"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_27f3j"]
+animation = &"activating"
+use_custom_timeline = true
+timeline_length = 0.4
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_0eh4l"]
+animation = &"activating"
+play_mode = 1
+use_custom_timeline = true
+timeline_length = 0.4
+stretch_time_scale = true
+start_offset = 0.0
+loop_mode = 0
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_50xy8"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_41eke"]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_peit6"]
+xfade_time = 0.3
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yoqdu"]
+xfade_time = 0.2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yjr6t"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8b501"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_r84ru"]
+xfade_time = 0.1
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_f5hlq"]
+states/Moving/node = SubResource("AnimationNodeAnimation_okt67")
+states/Moving/position = Vector2(449, 24)
+states/Off/node = SubResource("AnimationNodeAnimation_cfwer")
+states/Off/position = Vector2(345, 100)
+states/On/node = SubResource("AnimationNodeAnimation_5gf18")
+states/On/position = Vector2(624, 136)
+states/activating/node = SubResource("AnimationNodeAnimation_27f3j")
+states/activating/position = Vector2(610, 24)
+states/deactivating/node = SubResource("AnimationNodeAnimation_0eh4l")
+states/deactivating/position = Vector2(484, 125)
+transitions = ["Start", "Off", SubResource("AnimationNodeStateMachineTransition_50xy8"), "Off", "Moving", SubResource("AnimationNodeStateMachineTransition_41eke"), "Moving", "Off", SubResource("AnimationNodeStateMachineTransition_peit6"), "Moving", "activating", SubResource("AnimationNodeStateMachineTransition_yoqdu"), "activating", "On", SubResource("AnimationNodeStateMachineTransition_yjr6t"), "On", "deactivating", SubResource("AnimationNodeStateMachineTransition_8b501"), "deactivating", "Off", SubResource("AnimationNodeStateMachineTransition_r84ru")]
+graph_offset = Vector2(34, -47)
+
+[node name="switch" instance=ExtResource("1_qn5u3")]
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(0, 0, 0)
+
+[node name="exit_gate_switch" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_wjvfg")
+
+[node name="AnimationPlayer" parent="." index="1"]
+autoplay = "Off"
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="2"]
+tree_root = SubResource("AnimationNodeStateMachine_f5hlq")
+anim_player = NodePath("../AnimationPlayer")
+script = ExtResource("3_0k133")

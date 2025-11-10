@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://skh15lxba5ak"]
+
+[ext_resource type="PackedScene" uid="uid://kvvoindymdyn" path="res://npcs/enemies/enemy.tscn" id="1_ill6o"]
+[ext_resource type="PackedScene" uid="uid://bsek7niojuln7" path="res://assets/environment_props/corpse/corpse.tscn" id="2_n6wc2"]
+
+[node name="FleshEater" node_paths=PackedStringArray("enemy_model") instance=ExtResource("1_ill6o")]
+enemy_model = NodePath("EnemyModel/corpse")
+
+[node name="MeshInstance3D" parent="." index="4"]
+visible = false
+
+[node name="EnemyAnimatorController" parent="." index="8" node_paths=PackedStringArray("animation")]
+animation = NodePath("../EnemyModel/corpse/AnimationPlayer")
+
+[node name="corpse" parent="EnemyModel" index="0" instance=ExtResource("2_n6wc2")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[editable path="EnemyModel/corpse"]

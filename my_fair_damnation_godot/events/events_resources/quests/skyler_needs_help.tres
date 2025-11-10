@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://boxkg7w3jbycv"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_0c06t"]
+
+[resource]
+script = ExtResource("1_0c06t")
+event_name = "skyler needs help"
+event_description = "Se lanza cuando el espantapajaros no se quiere reunir con ella, y debe triggerear el dialogo del abuelo para ir a llamar al espantapájaros"
+event_is_trigger = false
+is_one_day_only = true
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

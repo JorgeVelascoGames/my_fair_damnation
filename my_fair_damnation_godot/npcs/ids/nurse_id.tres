@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="NpcId" load_steps=2 format=3 uid="uid://1h6u8i4m330e"]
+
+[ext_resource type="Script" uid="uid://bdfriqua1vdjs" path="res://npcs/npc_id.gd" id="1_ldyjk"]
+
+[resource]
+script = ExtResource("1_ldyjk")
+npc_name = "Nurse"
+npc_id = 4
+metadata/_custom_type_script = "uid://bdfriqua1vdjs"

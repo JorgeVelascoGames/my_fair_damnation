@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://irwpbrn0k8ys"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_q6iq4"]
+
+[resource]
+script = ExtResource("1_q6iq4")
+event_name = "Start game"
+event_description = "This is pushed when the player sleeps for the first time in the bed after the first conversation with the nurse. This should trigger the day-night cycle and stuff like that"
+event_is_trigger = false
+is_one_day_only = false
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

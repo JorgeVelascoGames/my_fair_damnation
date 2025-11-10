@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgbt7kiwvic4w"]
+
+[ext_resource type="Script" uid="uid://5nwnha2ed1kq" path="res://save_system/save_data_server.gd" id="1_tdoy0"]
+
+[node name="SaveDataServer" type="Node"]
+script = ExtResource("1_tdoy0")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+ignore_time_scale = true

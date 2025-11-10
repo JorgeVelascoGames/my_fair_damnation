@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://0rfvfdrfclop"]
+
+[ext_resource type="PackedScene" uid="uid://3myl350ygrtc" path="res://assets/environment_props/waiting_chair/waiting_chair_model.tscn" id="1_t21fm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t21fm"]
+size = Vector3(1.97229, 0.49972534, 0.697617)
+
+[node name="WaitingChair" type="Node3D"]
+
+[node name="Waiting Chair" parent="." instance=ExtResource("1_t21fm")]
+transform = Transform3D(0.86, 0, 0, 0, 0.86, 0, 0, 0, 0.86, 0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["navigation"]]
+collision_layer = 129
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00592083, 0.25962868, 0.081688)
+shape = SubResource("BoxShape3D_t21fm")

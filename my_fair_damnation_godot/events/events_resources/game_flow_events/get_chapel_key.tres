@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://cb4ixr41qfv6j"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_eqc46"]
+
+[resource]
+script = ExtResource("1_eqc46")
+event_name = "Get chappel key"
+event_description = "Salta cuando pillas la llave de la capilla"
+event_is_trigger = true
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

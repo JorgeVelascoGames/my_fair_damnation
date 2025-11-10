@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://pmqi034rxj0e"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_n6bhq"]
+
+[resource]
+script = ExtResource("1_n6bhq")
+event_name = "nurse depress"
+event_description = "Cuando la enfermera descubre su relacion con skyler salta este evento. Debe bloquear el resto de diálogos hasta solucionar lo del crufijo"
+event_is_trigger = false
+is_one_day_only = false
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

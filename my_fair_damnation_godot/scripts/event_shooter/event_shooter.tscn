@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjcyp6f6ydx2y"]
+
+[ext_resource type="Script" uid="uid://ohp4fqrvroa7" path="res://scripts/event_shooter/event_pusher.gd" id="1_wvw4t"]
+
+[node name="EventShooter" type="Node"]
+script = ExtResource("1_wvw4t")

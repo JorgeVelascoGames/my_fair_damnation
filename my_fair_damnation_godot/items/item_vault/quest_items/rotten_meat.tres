@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://jg4ut8vflvc0"]
+
+[ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="1_dyd6x"]
+
+[resource]
+script = ExtResource("1_dyd6x")
+item_name = "Rotten_meat"
+ui_item_name = "ROTTEN_MEAT_NAME"
+ui_item_description = "ROTTEN_MEAT_DESCRIPTION"
+metadata/_custom_type_script = "uid://bo8skdwgushde"

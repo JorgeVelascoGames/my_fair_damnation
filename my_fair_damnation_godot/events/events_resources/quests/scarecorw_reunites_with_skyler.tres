@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://266f6kl0b8pc"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_s8jqo"]
+
+[resource]
+script = ExtResource("1_s8jqo")
+event_name = "scarecrow reunites with skyler"
+event_description = "Esto salta cuando el espantapájaros recibe su nombre y quiere ir a reunirse con Skyler
+"
+event_is_trigger = false
+is_one_day_only = false
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

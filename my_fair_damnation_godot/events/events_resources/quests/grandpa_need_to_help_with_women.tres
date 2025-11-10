@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://dy41gtqc087h8"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_7ylxa"]
+
+[resource]
+script = ExtResource("1_7ylxa")
+event_name = "grandpa needs to help women"
+event_description = "salta cuando tenemos que pedirle al abuelo que intervenga entre la tía y la madre"
+event_is_trigger = false
+is_one_day_only = true
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

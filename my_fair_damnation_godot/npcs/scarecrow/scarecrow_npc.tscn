@@ -1,0 +1,472 @@
+[gd_scene load_steps=59 format=3 uid="uid://b6q7iqyes0et8"]
+
+[ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_y3w1r"]
+[ext_resource type="Resource" uid="uid://dbgqxggaprl2l" path="res://npcs/ids/scarecrow.tres" id="2_1m2wu"]
+[ext_resource type="PackedScene" uid="uid://dkqfew7ssu6mm" path="res://npcs/npc_instance.tscn" id="2_xs00e"]
+[ext_resource type="Script" uid="uid://c00m8ojonc6s4" path="res://conversations/dialog.gd" id="3_2b01f"]
+[ext_resource type="Resource" uid="uid://ff4bfyrkypc2" path="res://events/events_resources/quests/skyler_asks_for_her_son.tres" id="3_gnqxn"]
+[ext_resource type="PackedScene" uid="uid://djh1wwab0hpr1" path="res://npcs/scarecrow/scarecrow_model.tscn" id="3_nibyw"]
+[ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="5_346np"]
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="5_v68yv"]
+[ext_resource type="Script" uid="uid://bdfriqua1vdjs" path="res://npcs/npc_id.gd" id="6_hkg7u"]
+[ext_resource type="Script" uid="uid://7l1ps0yokllm" path="res://conversations/conversation.gd" id="7_upuxj"]
+[ext_resource type="Resource" uid="uid://btnglwxpgb1ik" path="res://items/item_vault/quest_items/body.tres" id="8_346np"]
+[ext_resource type="Resource" uid="uid://dvaucdir0il84" path="res://events/events_resources/quests/scarecorw_doesnt_want_to_meet.tres" id="8_m4gnq"]
+[ext_resource type="Resource" uid="uid://cmcjbgoypvlaq" path="res://events/events_resources/quests/scarecrow_first_time_meet.tres" id="9_mse15"]
+[ext_resource type="Resource" uid="uid://bquk653f7j3xn" path="res://events/events_resources/quests/skyler_wants_to_meet_her_son.tres" id="9_upuxj"]
+[ext_resource type="Resource" uid="uid://dlpgb05xd6dk3" path="res://events/events_resources/quests/scarecorw_reunites_with_grandpa.tres" id="11_v4flx"]
+[ext_resource type="Resource" uid="uid://ceqbkfgqfcerh" path="res://events/events_resources/quests/grandpa_asks_for_grandson.tres" id="11_v68yv"]
+[ext_resource type="Resource" uid="uid://cxdv033rlomo6" path="res://events/events_resources/quests/scarecrow_wants_to_meet_mom.tres" id="14_v4flx"]
+[ext_resource type="Resource" uid="uid://266f6kl0b8pc" path="res://events/events_resources/quests/scarecorw_reunites_with_skyler.tres" id="15_v68yv"]
+[ext_resource type="AudioStream" uid="uid://d4jjocgwryoyk" path="res://assets/audio/npcs/celestial.wav" id="17_14yb7"]
+[ext_resource type="Shader" uid="uid://lhmt1ugdk0qn" path="res://shaders/dissolve.gdshader" id="17_mxua4"]
+[ext_resource type="Texture2D" uid="uid://bivf0w6vcgd67" path="res://assets/npcs/scarecrow_scarecrow.png" id="18_1m2wu"]
+
+[sub_resource type="Resource" id="Resource_m4gnq"]
+script = ExtResource("3_2b01f")
+dialog_description = "Cual es tu nombre?"
+dialog_id = "SCARECROW_B1_Q1_"
+player_dialog_option = "SCARECROW_B1_Q1_"
+dialog_text = Array[String](["SCARECROW_B1_Q1_001", "SCARECROW_B1_Q1_002", "SCARECROW_B1_Q1_003"])
+go_back_nested_conversation = true
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_v4flx"]
+script = ExtResource("7_upuxj")
+dialog_options = Array[ExtResource("3_2b01f")]([SubResource("Resource_m4gnq")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
+[sub_resource type="Resource" id="Resource_v68yv"]
+script = ExtResource("3_2b01f")
+dialog_description = "Quien eres?"
+dialog_id = "SCARECROW_A1_Q1_"
+player_dialog_option = "SCARECROW_A1_Q1_"
+dialog_text = Array[String](["SCARECROW_A1_Q1_001", "SCARECROW_A1_Q1_002"])
+response_conversation = SubResource("Resource_v4flx")
+events_to_push = Array[ExtResource("5_v68yv")]([ExtResource("9_mse15")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_gnqxn"]
+script = ExtResource("3_2b01f")
+dialog_description = "Por que estas aqui?"
+dialog_id = "SCARECROW_A1_Q2_"
+player_dialog_option = "SCARECROW_A1_Q2_"
+dialog_text = Array[String](["SCARECROW_A1_Q2_001", "SCARECROW_A1_Q2_002"])
+dialogs_to_unlock = Array[ExtResource("3_2b01f")]([SubResource("Resource_v68yv")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_8yex7"]
+script = ExtResource("3_2b01f")
+dialog_description = "Estas bien?"
+dialog_id = "SCARECROW_A1_Q3"
+player_dialog_option = "SCARECROW_A1_Q3"
+dialog_text = Array[String](["SCARECROW_A1_Q3_001", "SCARECROW_A1_Q3_002"])
+dialogs_to_unlock = Array[ExtResource("3_2b01f")]([SubResource("Resource_gnqxn")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_mxua4"]
+script = ExtResource("3_2b01f")
+dialog_description = "Nunca lloras? -A veces..."
+dialog_id = "SCARECROW_A1_Q4"
+player_dialog_option = "SCARECROW_A1_Q4"
+dialog_text = Array[String](["SCARECROW_A1_Q4_001"])
+dialogs_to_unlock = Array[ExtResource("3_2b01f")]([SubResource("Resource_8yex7")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_nvhaq"]
+script = ExtResource("3_2b01f")
+dialog_description = "cual es tu habitacion?"
+dialog_id = "SCARECROW_B1_Q1"
+player_dialog_option = "SCARECROW_B1_Q1"
+dialog_text = Array[String](["SCARECROW_B1_Q1_001", "SCARECROW_B1_Q1_002"])
+go_back_nested_conversation = true
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_pu7d3"]
+script = ExtResource("7_upuxj")
+dialog_options = Array[ExtResource("3_2b01f")]([SubResource("Resource_nvhaq")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
+[sub_resource type="Resource" id="Resource_1m2wu"]
+script = ExtResource("3_2b01f")
+dialog_description = "No tienes una habitación?"
+dialog_id = "SCARECROW_A1_Q5"
+player_dialog_option = "SCARECROW_A1_Q5"
+dialog_text = Array[String](["SCARECROW_A1_Q5_001", "SCARECROW_A1_Q5_002", "SCARECROW_A1_Q5_003", "SCARECROW_A1_Q5_004", "SCARECROW_A1_Q5_005"])
+response_conversation = SubResource("Resource_pu7d3")
+dialogs_to_unlock = Array[ExtResource("3_2b01f")]([SubResource("Resource_mxua4")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_lt6mc"]
+script = ExtResource("3_2b01f")
+dialog_description = "No es mio (el body), es de Skyler"
+dialog_id = "SCARECROW_C1_Q1_"
+player_dialog_option = "SCARECROW_C1_Q1_"
+dialog_text = Array[String](["SCARECROW_C1_Q1_001"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_qutpo"]
+script = ExtResource("3_2b01f")
+dialog_id = "SCARECROW_C1_Q2_"
+player_dialog_option = "SCARECROW_C1_Q2_"
+dialog_text = Array[String](["SCARECROW_C1_Q2_001", "SCARECROW_C1_Q2_002", "SCARECROW_C1_Q2_003", "SCARECROW_C1_Q2_004", "SCARECROW_C1_Q2_005"])
+go_back_nested_conversation = true
+dialogs_to_unlock = Array[ExtResource("3_2b01f")]([SubResource("Resource_lt6mc")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_ch2sq"]
+script = ExtResource("7_upuxj")
+dialog_options = Array[ExtResource("3_2b01f")]([SubResource("Resource_lt6mc"), SubResource("Resource_qutpo")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
+[sub_resource type="Resource" id="Resource_14yb7"]
+script = ExtResource("3_2b01f")
+dialog_description = "Esto es para ti (el body)"
+dialog_id = "SCARECROW_A1_Q6_"
+player_dialog_option = "SCARECROW_A1_Q6_"
+dialog_text = Array[String](["SCARECROW_A1_Q6_001", "SCARECROW_A1_Q6_002", "SCARECROW_A1_Q6_003", "SCARECROW_A1_Q6_004"])
+response_conversation = SubResource("Resource_ch2sq")
+events_to_push = Array[ExtResource("5_v68yv")]([ExtResource("8_m4gnq")])
+items_to_unclok_dialog = Array[ExtResource("5_346np")]([ExtResource("8_346np")])
+take_unlock_item = true
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_mse15"]
+script = ExtResource("3_2b01f")
+dialog_description = "Conoces a alguien aquí?"
+dialog_id = "SCARECROW_A1_Q7_"
+player_dialog_option = "SCARECROW_A1_Q7_"
+dialog_text = Array[String](["SCARECROW_A1_Q7_001", "SCARECROW_A1_Q7_002", "SCARECROW_A1_Q7_003"])
+dialogs_to_unlock = Array[ExtResource("3_2b01f")]([SubResource("Resource_mxua4")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_216e8"]
+script = ExtResource("3_2b01f")
+dialog_description = "Te separaron de ella?"
+dialog_id = "SCARECROW_D1_Q1_"
+player_dialog_option = "SCARECROW_D1_Q1_"
+dialog_text = Array[String](["SCARECROW_D1_Q1_001", "SCARECROW_D1_Q1_002", "SCARECROW_D1_Q1_003", "SCARECROW_D1_Q1_004", "SCARECROW_D1_Q1_005", "SCARECROW_D1_Q1_006"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_qml06"]
+script = ExtResource("3_2b01f")
+dialog_description = "Quien te avisó?"
+dialog_id = "SCARECROW_D1_Q2_"
+player_dialog_option = "SCARECROW_D1_Q2_"
+dialog_text = Array[String](["SCARECROW_D1_Q2_001", "SCARECROW_D1_Q2_002", "SCARECROW_D1_Q2_003", "SCARECROW_D1_Q2_004", "SCARECROW_D1_Q2_005"])
+dialogs_to_unlock = Array[ExtResource("3_2b01f")]([SubResource("Resource_216e8")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_dvftp"]
+script = ExtResource("3_2b01f")
+dialog_id = "SCARECROW_D1_Q3_"
+player_dialog_option = "SCARECROW_D1_Q3_"
+dialog_text = Array[String](["SCARECROW_D1_Q3_001", "SCARECROW_D1_Q3_002"])
+go_back_nested_conversation = true
+dialogs_to_unlock = Array[ExtResource("3_2b01f")]([SubResource("Resource_qml06")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_xoqb2"]
+script = ExtResource("7_upuxj")
+dialog_options = Array[ExtResource("3_2b01f")]([SubResource("Resource_216e8"), SubResource("Resource_qml06"), SubResource("Resource_dvftp")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
+[sub_resource type="Resource" id="Resource_tclpq"]
+script = ExtResource("3_2b01f")
+dialog_description = "Sobre la chica que llora"
+dialog_id = "SCARECROW_A1_Q8"
+player_dialog_option = "SCARECROW_A1_Q8"
+dialog_text = Array[String](["SCARECROW_A1_Q8_001", "SCARECROW_A1_Q8_002", "SCARECROW_A1_Q8_003", "SCARECROW_A1_Q8_004", "SCARECROW_A1_Q8_005", "SCARECROW_A1_Q8_006", "SCARECROW_A1_Q8_007", "SCARECROW_A1_Q8_008"])
+response_conversation = SubResource("Resource_xoqb2")
+dialogs_to_unlock = Array[ExtResource("3_2b01f")]([SubResource("Resource_mse15")])
+events_to_push = Array[ExtResource("5_v68yv")]([null])
+current_event_to_trigger_conversation = ExtResource("9_upuxj")
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_ayxlu"]
+script = ExtResource("3_2b01f")
+dialog_description = "Si, has visto al anciano?"
+dialog_id = "SCARECROW_E1_Q1_"
+player_dialog_option = "SCARECROW_E1_Q1_"
+dialog_text = Array[String](["SCARECROW_E1_Q1_001", "SCARECROW_E1_Q1_002", "SCARECROW_E1_Q1_003", "SCARECROW_E1_Q1_004", "SCARECROW_E1_Q1_005"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_goxae"]
+script = ExtResource("3_2b01f")
+dialog_description = "Te lo prometo, él me lo ha dicho"
+dialog_id = "SCARECROW_E1_Q2_"
+player_dialog_option = "SCARECROW_E1_Q2_"
+dialog_text = Array[String](["SCARECROW_E1_Q2_001", "SCARECROW_E1_Q2_002"])
+dialogs_to_unlock = Array[ExtResource("3_2b01f")]([SubResource("Resource_ayxlu")])
+events_to_push = Array[ExtResource("5_v68yv")]([ExtResource("11_v4flx")])
+events_to_finish = Array[ExtResource("5_v68yv")]([ExtResource("3_gnqxn")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_w57d3"]
+script = ExtResource("7_upuxj")
+dialog_options = Array[ExtResource("3_2b01f")]([SubResource("Resource_ayxlu"), SubResource("Resource_goxae")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
+[sub_resource type="Resource" id="Resource_tsdms"]
+script = ExtResource("3_2b01f")
+dialog_description = "Hay mucha gente que quiere estar contigo (el abuelo)"
+dialog_id = "SCARECROW_A1_Q9_"
+player_dialog_option = "SCARECROW_A1_Q9_"
+dialog_text = Array[String](["SCARECROW_A1_Q9_001"])
+response_conversation = SubResource("Resource_w57d3")
+current_event_to_trigger_conversation = ExtResource("11_v68yv")
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_yjycx"]
+script = ExtResource("3_2b01f")
+dialog_description = "Adios"
+dialog_id = "SACRECROW_BYE"
+player_dialog_option = "SACRECROW_BYE"
+dialog_text = Array[String](["SCARECROW_BYE_RESPONSE_1", "SCARECROW_BYE_RESPONSE_2", "SCARECROW_BYE_RESPONSE_3", "SCARECROW_BYE_RESPONSE_4"])
+randomize_dialog = true
+finish_conversation = true
+one_time_dialog = false
+dialogs_to_unlock = Array[ExtResource("3_2b01f")]([SubResource("Resource_1m2wu")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_m11rm"]
+script = ExtResource("7_upuxj")
+dialog_options = Array[ExtResource("3_2b01f")]([SubResource("Resource_v68yv"), SubResource("Resource_gnqxn"), SubResource("Resource_8yex7"), SubResource("Resource_mxua4"), SubResource("Resource_1m2wu"), SubResource("Resource_14yb7"), SubResource("Resource_mse15"), SubResource("Resource_tclpq"), SubResource("Resource_tsdms"), SubResource("Resource_yjycx")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
+[sub_resource type="Resource" id="Resource_jpch8"]
+script = ExtResource("3_2b01f")
+dialog_text = Array[String](["SCARECROW_WELLCOME_B_"])
+one_time_dialog = false
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_37c23"]
+script = ExtResource("3_2b01f")
+dialog_text = Array[String](["SCARECROW_WELLCOME_A_"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_pee12"]
+script = ExtResource("3_2b01f")
+dialog_description = "Hola, como estas?"
+dialog_id = "SCARECROW_A2_Q1_"
+player_dialog_option = "SCARECROW_A2_Q1_"
+dialog_text = Array[String](["SCARECROW_A2_Q1_001", "SCARECROW_A2_Q1_002"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_3i12k"]
+script = ExtResource("3_2b01f")
+dialog_description = "Eso es genial!"
+dialog_id = "SCARECROW_A2_Q2_"
+player_dialog_option = "SCARECROW_A2_Q2_"
+dialog_text = Array[String](["SCARECROW_A2_Q2_001", "SCARECROW_A2_Q2_002", "SCARECROW_A2_Q2_003"])
+dialogs_to_unlock = Array[ExtResource("3_2b01f")]([SubResource("Resource_pee12")])
+events_to_push = Array[ExtResource("5_v68yv")]([ExtResource("14_v4flx")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_ps1dy"]
+script = ExtResource("3_2b01f")
+dialog_description = "Tu nombre es Tobías"
+dialog_id = "SCARECROW_B2_Q1_"
+player_dialog_option = "SCARECROW_B2_Q1_"
+dialog_text = Array[String](["SCARECROW_B2_Q1_001"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_4yfgg"]
+script = ExtResource("3_2b01f")
+dialog_description = "De hecho, lo es"
+dialog_id = "SCARECROW_B2_Q2_"
+player_dialog_option = "SCARECROW_B2_Q2_"
+dialog_text = Array[String](["SCARECROW_B2_Q2_001", "SCARECROW_B2_Q2_002"])
+go_back_nested_conversation = true
+dialogs_to_unlock = Array[ExtResource("3_2b01f")]([SubResource("Resource_ps1dy")])
+events_to_push = Array[ExtResource("5_v68yv")]([ExtResource("15_v68yv")])
+events_to_finish = Array[ExtResource("5_v68yv")]([ExtResource("11_v4flx")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_nay8h"]
+script = ExtResource("7_upuxj")
+dialog_options = Array[ExtResource("3_2b01f")]([SubResource("Resource_ps1dy"), SubResource("Resource_4yfgg")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
+[sub_resource type="Resource" id="Resource_lmyqe"]
+script = ExtResource("3_2b01f")
+dialog_description = "Tu mama te ha dado un nombre"
+dialog_id = "SCARECROW_A2_Q3_"
+player_dialog_option = "SCARECROW_A2_Q3_"
+dialog_text = Array[String](["SCARECROW_A2_Q3_001", "SCARECROW_A2_Q3_002", "SCARECROW_A2_Q3_003"])
+response_conversation = SubResource("Resource_nay8h")
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_013gb"]
+script = ExtResource("3_2b01f")
+dialog_description = "SACRECROW_BYE
+"
+dialog_id = "SACRECROW_BYE"
+player_dialog_option = "SACRECROW_BYE"
+dialog_text = Array[String](["SCARECROW_BYE_RESPONSE_2"])
+randomize_dialog = true
+finish_conversation = true
+one_time_dialog = false
+dialogs_to_unlock = Array[ExtResource("3_2b01f")]([SubResource("Resource_3i12k")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_8kbm5"]
+script = ExtResource("7_upuxj")
+dialog_options = Array[ExtResource("3_2b01f")]([SubResource("Resource_pee12"), SubResource("Resource_3i12k"), SubResource("Resource_lmyqe"), SubResource("Resource_013gb")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m5ibb"]
+render_priority = 0
+shader = ExtResource("17_mxua4")
+shader_parameter/baseColor = Color(1, 1, 1, 1)
+shader_parameter/baseColorTexture = ExtResource("18_1m2wu")
+shader_parameter/dissolveSlider = 0.0
+shader_parameter/dissolveNoiseScale = 2.0
+shader_parameter/edgeNoiseScale = 0.0
+shader_parameter/edgesThickness = 0.0210000009975
+shader_parameter/edgeColor = Color(0.7107048, 0.62008995, 0.41088966, 1)
+shader_parameter/edgeEmissionSlider = 1.6899999622251198
+shader_parameter/enable_dissolve_animation = false
+shader_parameter/animation_speed = 1.0
+shader_parameter/animation_intensity = 0.2
+
+[sub_resource type="Resource" id="Resource_euky6"]
+script = ExtResource("3_2b01f")
+dialog_description = "Mami... mami..."
+dialog_id = "SCARECROW_FINAL"
+dialog_text = Array[String](["SCARECROW_FINAL"])
+finish_conversation = true
+one_time_dialog = false
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[node name="ScarecrowNpc" instance=ExtResource("1_y3w1r")]
+id = ExtResource("2_1m2wu")
+
+[node name="NpcInstanceController" parent="." index="0" node_paths=PackedStringArray("main_instance", "instance_by_current_event")]
+main_instance = NodePath("MainInstance")
+behaviour_at_night = 1
+main_instance_as_default = false
+use_current_event_instance_array = true
+instance_by_current_event = {
+ExtResource("11_v4flx"): NodePath("GrandpaInstance"),
+ExtResource("3_gnqxn"): NodePath("MainInstance"),
+ExtResource("15_v68yv"): NodePath("FinalInstance")
+}
+
+[node name="MainInstance" parent="NpcInstanceController" index="0" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("2_xs00e")]
+look_at_position = NodePath("ModelContainer/ScarecrowModel/Armature_002/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
+look_at_modifier = NodePath("ModelContainer/ScarecrowModel/Armature_002/Skeleton3D/LookAtModifier3D")
+need_meds = false
+
+[node name="NpcConversation" parent="NpcInstanceController/MainInstance" index="0" node_paths=PackedStringArray("npc_instance")]
+npc_instance = NodePath("..")
+conversation = SubResource("Resource_m11rm")
+neutral_wellcome_dialog = SubResource("Resource_jpch8")
+override_wellcome_dialog = SubResource("Resource_37c23")
+
+[node name="ScarecrowModel" parent="NpcInstanceController/MainInstance/ModelContainer" index="0" instance=ExtResource("3_nibyw")]
+
+[node name="Skeleton3D" parent="NpcInstanceController/MainInstance/ModelContainer/ScarecrowModel/Armature_002" index="0"]
+bones/0/position = Vector3(-6.8494916e-17, 0.23591018, -0.082694426)
+bones/0/rotation = Quaternion(-0.08210483, 7.296351e-18, 2.6788312e-17, 0.9966237)
+bones/1/rotation = Quaternion(0.37638217, 0.17007928, 0.12876375, 0.90157056)
+bones/2/rotation = Quaternion(0.27682504, -0.09446532, -0.9418086, 0.16565272)
+bones/3/rotation = Quaternion(0.06963607, -0.0026987235, 0.042819224, 0.9966495)
+bones/4/rotation = Quaternion(0.021550057, 0.9392025, 0.3425264, -0.010497217)
+bones/5/rotation = Quaternion(-0.88973665, 0.036989704, -0.002581841, 0.45496574)
+bones/6/rotation = Quaternion(0.44545895, -0.111470334, -0.09328433, 0.8834245)
+bones/7/rotation = Quaternion(0.27682504, 0.09446534, 0.9418086, 0.16565266)
+bones/8/rotation = Quaternion(0.069636084, 0.0026987235, -0.042819224, 0.9966495)
+bones/9/rotation = Quaternion(-0.021013273, 0.92137986, 0.38792354, 0.011536168)
+bones/10/rotation = Quaternion(-0.8120284, -0.03307002, 0.0030321754, 0.5826723)
+bones/11/rotation = Quaternion(0.4237136, 0.112821236, 0.090899624, 0.8941339)
+
+[node name="BoneAttachment3D" parent="NpcInstanceController/MainInstance/ModelContainer/ScarecrowModel/Armature_002/Skeleton3D" index="2"]
+transform = Transform3D(0.90898585, -0.104149565, 0.40360564, 0.32102588, 0.7925332, -0.5184911, -0.26587027, 0.600869, 0.75383633, -1.7541716e-16, 2.1680079, -0.40321368)
+
+[node name="AnimationPlayer" parent="NpcInstanceController/MainInstance/ModelContainer/ScarecrowModel" index="1"]
+autoplay = "scarecrow_sit_down"
+
+[node name="NpcIdleAudioStreamPlayer3D" parent="NpcInstanceController/MainInstance/NpcInstanceAudioController" index="0"]
+volume_db = -5.0
+unit_size = 13.0
+
+[node name="DialogAudioStreamPlayer3D" parent="NpcInstanceController/MainInstance/NpcInstanceAudioController" index="1"]
+stream = ExtResource("17_14yb7")
+volume_db = -9.0
+
+[node name="GrandpaInstance" parent="NpcInstanceController" index="1" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("2_xs00e")]
+instance_id = 1
+look_at_position = NodePath("ModelContainer/ScarecrowModel/Armature_002/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
+look_at_modifier = NodePath("ModelContainer/ScarecrowModel/Armature_002/Skeleton3D/LookAtModifier3D")
+need_meds = false
+
+[node name="NpcConversation" parent="NpcInstanceController/GrandpaInstance" index="0" node_paths=PackedStringArray("npc_instance")]
+npc_instance = NodePath("..")
+conversation = SubResource("Resource_8kbm5")
+
+[node name="ScarecrowModel" parent="NpcInstanceController/GrandpaInstance/ModelContainer" index="0" instance=ExtResource("3_nibyw")]
+
+[node name="Skeleton3D" parent="NpcInstanceController/GrandpaInstance/ModelContainer/ScarecrowModel/Armature_002" index="0"]
+bones/0/position = Vector3(-6.84949e-17, 0.23591, -0.0826944)
+bones/0/rotation = Quaternion(0.0523966, 3.63503e-18, 2.75252e-17, 0.998626)
+bones/1/rotation = Quaternion(-0.0142235, -6.44365e-18, -6.46722e-18, 0.999899)
+bones/2/rotation = Quaternion(0.219364, 0.0988589, -0.674647, 0.697823)
+bones/3/rotation = Quaternion(0.0696361, -0.00269872, 0.0428192, 0.99665)
+bones/4/rotation = Quaternion(0.015412, 0.718463, 0.695152, -0.0183591)
+bones/5/rotation = Quaternion(-0.578522, 0.0219087, -0.00377504, 0.815363)
+bones/6/rotation = Quaternion(0.445459, -0.11147, -0.0932843, 0.883424)
+bones/7/rotation = Quaternion(0.219364, -0.0988589, 0.674647, 0.697824)
+bones/8/rotation = Quaternion(0.0696361, 0.00269872, -0.0428192, 0.99665)
+bones/9/rotation = Quaternion(-0.014497, 0.683706, 0.729364, 0.0190922)
+bones/10/rotation = Quaternion(-0.812028, -0.03307, 0.00303218, 0.582672)
+bones/11/rotation = Quaternion(0.423714, 0.112821, 0.0908996, 0.894134)
+
+[node name="BoneAttachment3D" parent="NpcInstanceController/GrandpaInstance/ModelContainer/ScarecrowModel/Armature_002/Skeleton3D" index="2"]
+transform = Transform3D(1, -4.1743895e-17, -4.1144683e-18, 4.1308142e-17, 0.9970832, -0.076318994, 7.28832e-18, 0.07631898, 0.9970833, -1.7541716e-16, 2.183659, 0.12226154)
+
+[node name="DialogAudioStreamPlayer3D" parent="NpcInstanceController/GrandpaInstance/NpcInstanceAudioController" index="1"]
+stream = ExtResource("17_14yb7")
+volume_db = -9.0
+
+[node name="FinalInstance" parent="NpcInstanceController" index="2" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("2_xs00e")]
+instance_id = 2
+look_at_position = NodePath("ModelContainer/ScarecrowModel/Armature_002/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
+look_at_modifier = NodePath("ModelContainer/ScarecrowModel/Armature_002/Skeleton3D/LookAtModifier3D")
+need_meds = false
+materials_to_dislove = Array[Material]([SubResource("ShaderMaterial_m5ibb")])
+
+[node name="NpcConversation" parent="NpcInstanceController/FinalInstance" index="0" node_paths=PackedStringArray("npc_instance")]
+npc_instance = NodePath("..")
+override_wellcome_dialog = SubResource("Resource_euky6")
+
+[node name="ScarecrowModel" parent="NpcInstanceController/FinalInstance/ModelContainer" index="0" instance=ExtResource("3_nibyw")]
+
+[node name="Skeleton3D" parent="NpcInstanceController/FinalInstance/ModelContainer/ScarecrowModel/Armature_002" index="0"]
+bones/0/position = Vector3(2.49706e-17, 3.40926, -0.247407)
+bones/0/rotation = Quaternion(0.0123977, 6.45545e-18, 6.45545e-18, 0.999923)
+bones/1/rotation = Quaternion(-0.00199082, -0.10351, -0.115394, 0.98791)
+bones/2/rotation = Quaternion(-0.0333673, 0.0205168, -0.737332, 0.674393)
+bones/3/rotation = Quaternion(0.0696883, -0.00198399, -0.0493706, 0.996344)
+bones/4/rotation = Quaternion(0.483733, 0.0236462, 0.874882, -0.00507507)
+bones/5/rotation = Quaternion(-0.0792871, -0.000645119, -0.00409019, 0.996843)
+bones/6/rotation = Quaternion(0.3626, -0.116192, -0.0840601, 0.920844)
+bones/7/rotation = Quaternion(-0.0327787, -0.0207652, 0.747424, 0.663213)
+bones/8/rotation = Quaternion(0.0697012, 0.00253417, -0.0213621, 0.997336)
+bones/9/rotation = Quaternion(-0.000185703, 0.0615756, 0.998067, -0.00837542)
+bones/10/rotation = Quaternion(-0.0792871, 0.0006451, 0.00409019, 0.996843)
+bones/11/rotation = Quaternion(0.3626, 0.116192, 0.0840601, 0.920844)
+
+[node name="BoneAttachment3D" parent="NpcInstanceController/FinalInstance/ModelContainer/ScarecrowModel/Armature_002/Skeleton3D" index="2"]
+transform = Transform3D(0.9519398, 0.22840986, -0.20405763, -0.23259772, 0.9725663, 0.0035517998, 0.19927089, 0.04408223, 0.97895235, -8.271806e-24, 5.367161, -0.19884884)
+
+[node name="DialogAudioStreamPlayer3D" parent="NpcInstanceController/FinalInstance/NpcInstanceAudioController" index="1"]
+stream = ExtResource("17_14yb7")
+volume_db = -9.0
+
+[editable path="NpcInstanceController/MainInstance"]
+[editable path="NpcInstanceController/MainInstance/ModelContainer/ScarecrowModel"]
+[editable path="NpcInstanceController/GrandpaInstance"]
+[editable path="NpcInstanceController/GrandpaInstance/ModelContainer/ScarecrowModel"]
+[editable path="NpcInstanceController/FinalInstance"]
+[editable path="NpcInstanceController/FinalInstance/ModelContainer/ScarecrowModel"]

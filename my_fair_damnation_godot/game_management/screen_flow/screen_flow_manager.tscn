@@ -1,0 +1,21 @@
+[gd_scene load_steps=6 format=3 uid="uid://catpqj0ow83bo"]
+
+[ext_resource type="Script" uid="uid://cf3h2pud82c8" path="res://game_management/screen_flow/screen_flow_manager.gd" id="1_l6x48"]
+[ext_resource type="PackedScene" uid="uid://dh6gl16kfd242" path="res://game_management/main_menu/main_menu.tscn" id="2_uqb57"]
+[ext_resource type="PackedScene" uid="uid://ljdkh0400wl4" path="res://game_management/screen_flow/loading_screen.tscn" id="2_vy3rh"]
+[ext_resource type="PackedScene" uid="uid://unfth8w1gk4a" path="res://game_management/screen_flow/lenguage_screen.tscn" id="2_xku4o"]
+[ext_resource type="PackedScene" uid="uid://bmktuh2cguuxm" path="res://level/level.tscn" id="3_xku4o"]
+
+[node name="ScreenFlowManager" type="Node"]
+script = ExtResource("1_l6x48")
+lenguage_screen = ExtResource("2_xku4o")
+main_menu = ExtResource("2_uqb57")
+game = ExtResource("3_xku4o")
+
+[node name="LoadingScreenCanvas" type="CanvasLayer" parent="."]
+
+[node name="LoadingScreen" parent="LoadingScreenCanvas" instance=ExtResource("2_vy3rh")]
+unique_name_in_owner = true
+visible = false
+
+[node name="CurrentSceneContainer" type="Node3D" parent="."]

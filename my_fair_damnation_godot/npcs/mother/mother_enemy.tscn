@@ -1,0 +1,87 @@
+[gd_scene load_steps=4 format=3 uid="uid://bohm0tfnu2igo"]
+
+[ext_resource type="PackedScene" uid="uid://kvvoindymdyn" path="res://npcs/enemies/enemy.tscn" id="1_raur6"]
+[ext_resource type="PackedScene" uid="uid://bw1uq7kxvky44" path="res://npcs/enemies/behaviour/enemy_patrol_behaviour.tscn" id="2_be73q"]
+[ext_resource type="PackedScene" uid="uid://d2vdwdvdx8tn6" path="res://npcs/mother/mother_model.tscn" id="2_wcfrd"]
+
+[node name="MotherEnemy" node_paths=PackedStringArray("enemy_model", "look_at_player") instance=ExtResource("1_raur6")]
+enemy_model = NodePath("EnemyModel/MotherModel")
+look_at_player = NodePath("EnemyModel/MotherModel/Armature-mother/Skeleton3D/LookAtModifier3D")
+
+[node name="EnemyStuned" parent="StateMachine" index="3"]
+stun_duration = 5.0
+
+[node name="EnemyAttack" parent="StateMachine" index="6" node_paths=PackedStringArray("camera_look_at")]
+camera_look_at = NodePath("../../EnemyModel/MotherModel/Armature-mother/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
+
+[node name="EnemyCooldown" parent="StateMachine" index="7"]
+cooldown_duration = 5.0
+
+[node name="EnemyBehaviourManager" parent="." index="1" node_paths=PackedStringArray("enemy_behaviour")]
+enemy_behaviour = NodePath("PatrolBehaviour")
+
+[node name="PatrolBehaviour" parent="EnemyBehaviourManager" index="0" node_paths=PackedStringArray("state_machine", "enemy_detection") instance=ExtResource("2_be73q")]
+random_patrol = true
+state_machine = NodePath("../../StateMachine")
+enemy_detection = NodePath("../../EnemyDetection")
+
+[node name="Marker3D" type="Marker3D" parent="EnemyBehaviourManager/PatrolBehaviour" index="0"]
+
+[node name="Marker3D2" type="Marker3D" parent="EnemyBehaviourManager/PatrolBehaviour" index="1"]
+
+[node name="Marker3D3" type="Marker3D" parent="EnemyBehaviourManager/PatrolBehaviour" index="2"]
+
+[node name="EnemyDetection" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.98902, 0)
+
+[node name="CollisionShape3D" parent="EnemyDetection/Attack/AttackRange" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.666491, -1.37331)
+
+[node name="MeshInstance3D" parent="." index="4"]
+visible = false
+
+[node name="MeshInstance3D" parent="MeshInstance3D" index="0"]
+visible = false
+
+[node name="EnemyDebug" parent="." index="5"]
+debug_enemy = true
+
+[node name="StateLabel" parent="EnemyDebug" index="0"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 5.08331, 0)
+
+[node name="EnemyAnimatorController" parent="." index="8" node_paths=PackedStringArray("animation")]
+animation = NodePath("../EnemyModel/MotherModel/AnimationPlayer")
+idle_anim = "idle"
+walk_anim = "walk"
+chase_anim = "walk"
+attack_anim = "attack"
+stun_anim = "cooldown"
+cooldown_anim = "cooldown"
+dying_anim = "dying"
+
+[node name="MotherModel" parent="EnemyModel" index="0" instance=ExtResource("2_wcfrd")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="EnemyModel/MotherModel/Armature-mother" index="0"]
+bones/0/position = Vector3(1.83375e-15, 1.30937, -0.127237)
+bones/0/rotation = Quaternion(-0.00796614, 1.19205e-07, -9.49635e-10, 0.999968)
+bones/1/position = Vector3(0.348244, 0.0312013, -0.168204)
+bones/1/rotation = Quaternion(-0.00683263, 0.140744, 0.986919, -0.0783288)
+bones/2/rotation = Quaternion(-0.288672, 0.014879, 0.0122639, 0.957234)
+bones/3/rotation = Quaternion(0.639224, -0.0445531, -0.0795813, 0.763593)
+bones/4/position = Vector3(-0.348244, 0.0312013, -0.168204)
+bones/4/rotation = Quaternion(0.00683248, 0.140744, 0.986919, 0.0783288)
+bones/5/rotation = Quaternion(-0.288672, -0.014879, -0.0122638, 0.957234)
+bones/6/rotation = Quaternion(0.639224, 0.0445532, 0.0795812, 0.763593)
+bones/7/rotation = Quaternion(0.00796611, 2.12034e-14, 1.89927e-09, 0.999968)
+bones/8/position = Vector3(0.458054, 0.988042, -0.229027)
+bones/8/rotation = Quaternion(0.00571179, -0.0470155, 0.977864, -0.20381)
+bones/9/rotation = Quaternion(0.215488, -0.00244265, -0.0532625, 0.97505)
+bones/10/position = Vector3(-0.352023, 0.973904, -0.229027)
+bones/10/rotation = Quaternion(-0.00260029, -0.0461466, 0.963677, 0.263039)
+bones/11/rotation = Quaternion(0.213812, 0.0156339, 0.112591, 0.970239)
+
+[node name="BoneAttachment3D" parent="EnemyModel/MotherModel/Armature-mother/Skeleton3D" index="2"]
+transform = Transform3D(1, -1.5987212e-14, 2.3841767e-07, 1.3532469e-15, 0.99999994, 6.146729e-08, -2.3841767e-07, -6.146729e-08, 0.99999994, 1.9508401e-15, 2.3740907, -0.14420205)
+
+[editable path="EnemyModel/MotherModel"]

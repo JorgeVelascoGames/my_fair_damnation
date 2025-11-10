@@ -1,0 +1,84 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvb0u36uc1lth"]
+
+[ext_resource type="PackedScene" uid="uid://c6rj0qy2m56x0" path="res://assets/environment_props/heart_rate_monitor/heart_rate_monitor.fbx" id="1_2ms3k"]
+[ext_resource type="Texture2D" uid="uid://c7buqa4jxr64p" path="res://assets/environment_props/heart_rate_monitor/heart_rate_monitor.png" id="2_ma54m"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ow87a"]
+albedo_texture = ExtResource("2_ma54m")
+
+[node name="heart_rate_monitor" instance=ExtResource("1_2ms3k")]
+
+[node name="Vertical Pole" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="Legs" parent="." index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="Basket_Clinger" parent="." index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="Basket_Clinger2" parent="." index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="Basket" parent="." index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="Support Basket" parent="." index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="Support" parent="." index="6"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="Monitor" parent="." index="7"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="Button Platform" parent="." index="8"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="Button1" parent="." index="9"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="Button2" parent="." index="10"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="BigButton1" parent="." index="11"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="MediumButton1" parent="." index="12"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="MediumButton2" parent="." index="13"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="MediumButton3" parent="." index="14"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="MediumButton4" parent="." index="15"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="MediumButton5" parent="." index="16"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="MediumButton6" parent="." index="17"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="BigButton2" parent="." index="18"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="Cylinder_009" parent="." index="19"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="Cylinder_011" parent="." index="20"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="Cylinder_012" parent="." index="21"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="Cylinder_013" parent="." index="22"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="Cylinder_014" parent="." index="23"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")
+
+[node name="Power Prongs" parent="." index="24"]
+surface_material_override/0 = SubResource("StandardMaterial3D_ow87a")

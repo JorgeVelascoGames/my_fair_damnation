@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://c1dngsvaiphwh"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_luf06"]
+
+[resource]
+script = ExtResource("1_luf06")
+event_name = "skyler tells story"
+event_description = "Salta cuando Skyler cuenta lo de que no le conto nada su madre y fue a su tía. Esto hace falta para la cadena de la tía"
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

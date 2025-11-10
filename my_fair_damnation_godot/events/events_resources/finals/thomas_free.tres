@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://cphma3gik4daf"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_kqi13"]
+
+[resource]
+script = ExtResource("1_kqi13")
+event_name = "Thomas free"
+event_description = "Se lanza cuando Thomas se ha liberado del asilo"
+event_is_trigger = false
+is_one_day_only = false
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

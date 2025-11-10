@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://d18hturlgsw0e"]
+
+[ext_resource type="PackedScene" uid="uid://rr13g5jot5kd" path="res://assets/player_assets/flashlight/flashlight.glb" id="1_h7xpb"]
+[ext_resource type="Texture2D" uid="uid://dsxjuato5lh0l" path="res://assets/player_assets/flashlight/flaslight_flashlight_BaseColor.png" id="2_baiys"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1u3a6"]
+albedo_texture = ExtResource("2_baiys")
+
+[node name="flashlight" instance=ExtResource("1_h7xpb")]
+
+[node name="Flashlight" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_1u3a6")

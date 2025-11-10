@@ -1,0 +1,11 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://csob6ho87rhlq"]
+
+[ext_resource type="FontFile" uid="uid://box44m2xfyahn" path="res://assets/fonts/SpecialElite-Regular.ttf" id="1_w5idf"]
+
+[resource]
+line_spacing = 5.0
+font = ExtResource("1_w5idf")
+font_size = 18
+outline_size = 4
+outline_color = Color(0.164706, 0.164706, 0.164706, 0.776471)
+shadow_size = 4

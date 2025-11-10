@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://bquk653f7j3xn"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_vh3i0"]
+
+[resource]
+script = ExtResource("1_vh3i0")
+event_name = "Skyler wants to meet her son"
+event_description = "Salta cuando Skyler dice que quiere ver a su hijo, despues de que el body no haya funcionado"
+event_is_trigger = false
+is_one_day_only = true
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

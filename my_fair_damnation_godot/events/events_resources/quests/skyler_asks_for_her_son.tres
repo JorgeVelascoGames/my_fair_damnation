@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://ff4bfyrkypc2"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_xmkwm"]
+
+[resource]
+script = ExtResource("1_xmkwm")
+event_name = "Skyler asks for her son"
+event_description = "Salta cuando skyler te pide que busques a su hijo"
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

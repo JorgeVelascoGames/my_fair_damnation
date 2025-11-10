@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://dy7ulsr64jnrh"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_1whwn"]
+
+[resource]
+script = ExtResource("1_1whwn")
+event_name = "Thomas goes after frank unprepared"
+event_description = "Thomas va a por frank sin estar listo
+"
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

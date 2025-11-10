@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://de4juv0yvcd4c"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_mmk3m"]
+
+[resource]
+script = ExtResource("1_mmk3m")
+event_name = "grandpa making toy"
+event_description = "Esto salta cuando el abuelo está haciendo el juguete de Tommy"
+event_is_trigger = false
+is_one_day_only = true
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

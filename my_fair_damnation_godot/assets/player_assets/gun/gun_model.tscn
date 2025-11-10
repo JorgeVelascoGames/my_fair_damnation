@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpyss678yatou"]
+
+[ext_resource type="PackedScene" uid="uid://bxqpqcaa2n6vg" path="res://assets/player_assets/gun/gun.fbx" id="1_imnfh"]
+[ext_resource type="Texture2D" uid="uid://c3y73v2vw4ms5" path="res://assets/player_assets/gun/gun_gun_BaseColor.png" id="2_fiurq"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iig2w"]
+albedo_texture = ExtResource("2_fiurq")
+emission = Color(0.619882, 0.344036, 0.348103, 1)
+emission_energy_multiplier = 1.1
+emission_texture = ExtResource("2_fiurq")
+
+[node name="GunModel" instance=ExtResource("1_imnfh")]
+
+[node name="Gun" parent="." index="0"]
+transform = Transform3D(4.4, 0, 0, 0, 4.4, 0, 0, 0, 4.4, 0, 0, 0)
+layers = 2
+surface_material_override/0 = SubResource("StandardMaterial3D_iig2w")

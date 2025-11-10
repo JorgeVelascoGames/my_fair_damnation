@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://4dy5qypdyr01"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_q642j"]
+
+[resource]
+script = ExtResource("1_q642j")
+event_name = "Nurse scape"
+event_description = "Esto salta al acabar la partida escapando con la enfermera"
+event_is_trigger = false
+is_one_day_only = false
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

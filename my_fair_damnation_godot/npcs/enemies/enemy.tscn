@@ -1,0 +1,233 @@
+[gd_scene load_steps=28 format=3 uid="uid://kvvoindymdyn"]
+
+[ext_resource type="Script" uid="uid://csoqysh6haony" path="res://npcs/enemies/enemy.gd" id="1_2mvqj"]
+[ext_resource type="Script" uid="uid://cfpxc5rma3gwx" path="res://npcs/enemies/enemy_detection.gd" id="2_ofsxj"]
+[ext_resource type="Script" uid="uid://b3f0tsvpx1crw" path="res://npcs/enemies/enemy_navigation.gd" id="2_ppra6"]
+[ext_resource type="Script" uid="uid://ckl8soe85ww1" path="res://npcs/enemies/behaviour/enemy_behaviour_manager.gd" id="2_xoplw"]
+[ext_resource type="Script" uid="uid://bg3fbiqsn6lr1" path="res://scripts/state_machine/state_machine.gd" id="4_p200p"]
+[ext_resource type="Script" uid="uid://bea0182g7khbb" path="res://npcs/enemies/states/enemy_chasing.gd" id="5_5ffra"]
+[ext_resource type="Script" uid="uid://72s7scu7yyg3" path="res://npcs/enemies/states/enemy_dying.gd" id="6_e355f"]
+[ext_resource type="Script" uid="uid://dp06cusk8bfxi" path="res://npcs/enemies/states/enemy_idle.gd" id="7_78jik"]
+[ext_resource type="Script" uid="uid://chlifdilnl2b4" path="res://npcs/enemies/states/enemy_cooldown.gd" id="9_gf88j"]
+[ext_resource type="Script" uid="uid://c2vi8enjkwi25" path="res://npcs/enemies/states/enemy_stuned.gd" id="11_6yflr"]
+[ext_resource type="Script" uid="uid://rn04ebpcx7n0" path="res://npcs/enemies/enemy_debug.gd" id="11_o3pv7"]
+[ext_resource type="Script" uid="uid://bpj84h4tx21b4" path="res://npcs/enemies/states/enemy_walk.gd" id="11_xoplw"]
+[ext_resource type="Script" uid="uid://bocruyrvkv2g2" path="res://npcs/enemies/states/enemy_attack.gd" id="12_6yflr"]
+[ext_resource type="Script" uid="uid://bfj2714intmp5" path="res://npcs/enemies/enemy_status.gd" id="15_tbw0t"]
+[ext_resource type="Script" uid="uid://c2dppu0yjrily" path="res://npcs/enemies/enemy_animator_controller.gd" id="16_rovcg"]
+[ext_resource type="Script" uid="uid://dy1wmlv4nd50" path="res://npcs/enemies/enemy_hitbox.gd" id="16_wjonb"]
+[ext_resource type="Script" uid="uid://b3tubtc0o4lab" path="res://npcs/enemies/enemy_audio.gd" id="17_aorwd"]
+
+[sub_resource type="GDScript" id="GDScript_78jik"]
+script/source = "extends Node
+class_name EnemyInvestigating
+"
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aorwd"]
+radius = 7.4031034
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6yflr"]
+radius = 0.869481
+height = 3.60403
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_rt255"]
+radius = 0.962517
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ofsxj"]
+radius = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjonb"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_ofsxj"]
+radius = 0.2
+height = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ppra6"]
+albedo_color = Color(0.676158, 0.147459, 0.169667, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o3pv7"]
+radius = 0.50683594
+height = 2.24667
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gf88j"]
+radius = 0.71972656
+height = 2.7882743
+
+[node name="Enemy" type="CharacterBody3D"]
+collision_layer = 32
+collision_mask = 11
+axis_lock_angular_x = true
+floor_constant_speed = true
+floor_max_angle = 1.3962634
+script = ExtResource("1_2mvqj")
+
+[node name="StateMachine" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_p200p")
+initial_state = NodePath("EnemyIdle")
+metadata/_custom_type_script = "uid://bg3fbiqsn6lr1"
+
+[node name="EnemyChasing" type="Node" parent="StateMachine"]
+script = ExtResource("5_5ffra")
+metadata/_custom_type_script = "uid://bea0182g7khbb"
+
+[node name="EnemyDying" type="Node" parent="StateMachine"]
+script = ExtResource("6_e355f")
+metadata/_custom_type_script = "uid://72s7scu7yyg3"
+
+[node name="EnemyIdle" type="Node" parent="StateMachine"]
+script = ExtResource("7_78jik")
+metadata/_custom_type_script = "uid://dp06cusk8bfxi"
+
+[node name="EnemyStuned" type="Node" parent="StateMachine"]
+script = ExtResource("11_6yflr")
+metadata/_custom_type_script = "uid://c2vi8enjkwi25"
+
+[node name="EnemyInvestigating" type="Node" parent="StateMachine"]
+script = SubResource("GDScript_78jik")
+
+[node name="EnemyWalk" type="Node" parent="StateMachine"]
+script = ExtResource("11_xoplw")
+metadata/_custom_type_script = "uid://bpj84h4tx21b4"
+
+[node name="EnemyAttack" type="Node" parent="StateMachine"]
+script = ExtResource("12_6yflr")
+metadata/_custom_type_script = "uid://bocruyrvkv2g2"
+
+[node name="EnemyCooldown" type="Node" parent="StateMachine"]
+script = ExtResource("9_gf88j")
+metadata/_custom_type_script = "uid://chlifdilnl2b4"
+
+[node name="EnemyBehaviourManager" type="Node3D" parent="."]
+script = ExtResource("2_xoplw")
+
+[node name="EnemyNavigation" type="NavigationAgent3D" parent="."]
+path_desired_distance = 1.1
+target_desired_distance = 0.2
+path_max_distance = 5.01
+avoidance_enabled = true
+script = ExtResource("2_ppra6")
+momentum_multiplier = 3.0
+
+[node name="EnemyDetection" type="Node3D" parent="." groups=["enemy_detection"]]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65104, 0)
+script = ExtResource("2_ofsxj")
+time_to_lose_track = 20.0
+
+[node name="Vision" type="Node3D" parent="EnemyDetection"]
+
+[node name="VisionDetectionArea" type="Area3D" parent="EnemyDetection/Vision"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyDetection/Vision/VisionDetectionArea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -0.002143383)
+shape = SubResource("SphereShape3D_aorwd")
+
+[node name="LineOfSight" type="RayCast3D" parent="EnemyDetection/Vision"]
+editor_description = "This checks for the head of the player"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0671115, -0.411015)
+target_position = Vector3(0, 0, -15)
+collision_mask = 9
+hit_from_inside = true
+collide_with_areas = true
+
+[node name="LoseTrackTimer" type="Timer" parent="EnemyDetection"]
+wait_time = 7.0
+one_shot = true
+
+[node name="Attack" type="Node3D" parent="EnemyDetection"]
+
+[node name="AttackRange" type="Area3D" parent="EnemyDetection/Attack"]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyDetection/Attack/AttackRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.666491, -0.957598)
+shape = SubResource("CapsuleShape3D_6yflr")
+
+[node name="EnemyAutomaticDetection" type="Area3D" parent="EnemyDetection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.65104, 0)
+top_level = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyDetection/EnemyAutomaticDetection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.528687, 0)
+shape = SubResource("SphereShape3D_rt255")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="EnemyDetection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.05382, 0)
+aabb = AABB(-0.334116, -0.348643, -0.415661, 0.668231, 1.71877, 0.831323)
+
+[node name="PlayerVisionChecker" type="RayCast3D" parent="EnemyDetection/VisibleOnScreenNotifier3D"]
+editor_description = "Used to detect if the player is seeing the enemy. The origin of this ray must be placed in a reasonable spot"
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.953598, 0)
+target_position = Vector3(0, 0, -100)
+collision_mask = 13
+collide_with_areas = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_ofsxj")
+surface_material_override/0 = SubResource("StandardMaterial3D_wjonb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.837626, -0.218212)
+mesh = SubResource("SphereMesh_ofsxj")
+surface_material_override/0 = SubResource("StandardMaterial3D_ppra6")
+
+[node name="EnemyDebug" type="Node3D" parent="."]
+script = ExtResource("11_o3pv7")
+
+[node name="StateLabel" type="Label3D" parent="EnemyDebug"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 2.46756, 0)
+billboard = 1
+text = "STATE"
+font_size = 40
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_o3pv7")
+
+[node name="EnemyStatus" type="Node3D" parent="."]
+script = ExtResource("15_tbw0t")
+max_health = 100
+
+[node name="EnemyHitbox" type="Area3D" parent="EnemyStatus"]
+collision_layer = 64
+collision_mask = 0
+script = ExtResource("16_wjonb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyStatus/EnemyHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0395266, 0)
+shape = SubResource("CapsuleShape3D_gf88j")
+
+[node name="EnemyAnimatorController" type="Node" parent="."]
+editor_description = "Added instead of the animation tree to simplify development. Change it for animation tree in the future if needed"
+script = ExtResource("16_rovcg")
+
+[node name="EnemyModel" type="Node3D" parent="."]
+
+[node name="EnemyAudio" type="Node3D" parent="."]
+script = ExtResource("17_aorwd")
+
+[node name="FootstepsAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="EnemyAudio"]
+
+[node name="AttackAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="EnemyAudio"]
+
+[node name="StunAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="EnemyAudio"]
+
+[node name="GrowlAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="EnemyAudio"]
+
+[node name="FootstepsTimer" type="Timer" parent="EnemyAudio"]
+wait_time = 0.77
+
+[connection signal="velocity_computed" from="EnemyNavigation" to="EnemyNavigation" method="_on_velocity_computed"]
+[connection signal="timeout" from="EnemyDetection/LoseTrackTimer" to="EnemyDetection" method="_on_lose_track_timer_timeout"]
+[connection signal="body_entered" from="EnemyDetection/Attack/AttackRange" to="EnemyDetection" method="_on_attack_range_body_entered"]
+[connection signal="body_entered" from="EnemyDetection/EnemyAutomaticDetection" to="EnemyDetection" method="_on_enemy_automatic_detection_body_entered"]
+[connection signal="screen_entered" from="EnemyDetection/VisibleOnScreenNotifier3D" to="EnemyDetection" method="_on_visible_on_screen_notifier_3d_screen_entered"]
+[connection signal="screen_exited" from="EnemyDetection/VisibleOnScreenNotifier3D" to="EnemyDetection" method="_on_visible_on_screen_notifier_3d_screen_exited"]
+[connection signal="hitbox_damaged" from="EnemyStatus/EnemyHitbox" to="EnemyStatus" method="_on_enemy_hitbox_hitbox_damaged"]

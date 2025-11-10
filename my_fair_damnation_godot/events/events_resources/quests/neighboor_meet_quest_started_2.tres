@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://bfilue43wwds"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_xl4ed"]
+
+[resource]
+script = ExtResource("1_xl4ed")
+event_name = "Neighboor meat quest started"
+event_description = "Este evento se lanza cuando has iniciado la misión de traer carne por segunda vez. La idea es que al entregarle la carne por segunda vez, como se usa el mismo diálogo que para la primera, mandamos este dialogo al array de terminados para que salte luego la misión del estofado. Es importante hacerlo así y no con el primer evento de carne solo, ya que este ya estaria en el array de eventos pasados de la primera vez"
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

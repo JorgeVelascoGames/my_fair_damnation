@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd0235d1bpjoj"]
+
+[ext_resource type="PackedScene" uid="uid://c0yxr3cfcbqb7" path="res://assets/environment_props/kitchen/kitchen_props.glb" id="1_pmlv6"]
+
+[node name="kitchen_props" instance=ExtResource("1_pmlv6")]
+
+[node name="freezer" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="gas_stove" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="encimera" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

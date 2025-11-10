@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://c7qcdy14kb4m8"]
+
+[ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="1_qhdhg"]
+
+[resource]
+script = ExtResource("1_qhdhg")
+item_name = "Tobias photo"
+ui_item_name = "item_photo_tobias_name"
+ui_item_description = "item_photo_tobias_desc"
+metadata/_custom_type_script = "uid://bo8skdwgushde"

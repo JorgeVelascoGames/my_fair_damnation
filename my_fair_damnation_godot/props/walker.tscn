@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ck40lyerj5ml4"]
+
+[ext_resource type="PackedScene" uid="uid://be07igll7nwoj" path="res://assets/environment_props/walker/walker_model.tscn" id="1_mva74"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dlw70"]
+size = Vector3(1.19434, 1.44946, 1)
+
+[node name="Walker" type="Node3D"]
+
+[node name="walker" parent="." instance=ExtResource("1_mva74")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="walker"]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="walker/StaticBody3D"]
+transform = Transform3D(0.703922, 0, 0, 0, 0.703922, 0, 0, 0, 0.703922, 0.141781, 0.505515, 0)
+shape = SubResource("BoxShape3D_dlw70")

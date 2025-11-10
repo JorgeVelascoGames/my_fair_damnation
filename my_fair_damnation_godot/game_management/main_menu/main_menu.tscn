@@ -1,0 +1,445 @@
+[gd_scene load_steps=30 format=3 uid="uid://dh6gl16kfd242"]
+
+[ext_resource type="Script" uid="uid://btfbj6b7kwdof" path="res://game_management/main_menu/main_menu.gd" id="1_q1wtx"]
+[ext_resource type="Shader" uid="uid://bng72jehal8es" path="res://shaders/vhs.gdshader" id="2_gsxr2"]
+[ext_resource type="Texture2D" uid="uid://fbb2gvicdymv" path="res://assets/ui/game_title.png" id="2_n8dxx"]
+[ext_resource type="FontFile" uid="uid://cwwl7s03c4xdf" path="res://assets/fonts/roboto/Roboto-BoldItalic.ttf" id="3_3m42q"]
+[ext_resource type="Theme" uid="uid://oxf8w7asp4eg" path="res://ui/main_theme.tres" id="3_tf87f"]
+[ext_resource type="Texture2D" uid="uid://cynk6p5peot11" path="res://assets/ui/steam_logo_black.png" id="5_cnxsy"]
+[ext_resource type="PackedScene" uid="uid://dqk45r48r427t" path="res://level/scenario/hospital_scenario.tscn" id="5_wmhjm"]
+[ext_resource type="LabelSettings" uid="uid://cvt2g1u5ugp0o" path="res://ui/flavour_text_lable_settings.tres" id="7_3fjrc"]
+[ext_resource type="PackedScene" uid="uid://cl7r2y17ym7wu" path="res://props/emergency_light.tscn" id="7_41hr7"]
+[ext_resource type="PackedScene" uid="uid://b8gbxyaua8ftu" path="res://assets/environment_props/bed/bed_model.tscn" id="8_05chu"]
+[ext_resource type="PackedScene" uid="uid://skso2cv1orts" path="res://assets/environment_props/air_conditioning/air_conditioning.tscn" id="8_6q2tb"]
+[ext_resource type="PackedScene" uid="uid://be07igll7nwoj" path="res://assets/environment_props/walker/walker_model.tscn" id="8_aj43b"]
+[ext_resource type="PackedScene" uid="uid://lcvmhobixmp1" path="res://assets/player_assets/trolley/trolley.tscn" id="9_v51tn"]
+[ext_resource type="Environment" uid="uid://dgn6auhynv3ch" path="res://assets/world_environment_day.tres" id="9_wfyed"]
+[ext_resource type="PackedScene" uid="uid://bsek7niojuln7" path="res://assets/environment_props/corpse/corpse.tscn" id="10_dq126"]
+[ext_resource type="Texture2D" uid="uid://emxnvvjtxui3" path="res://assets/ui/metal_background.jpg" id="12_4ogfg"]
+[ext_resource type="PackedScene" uid="uid://ben5eoim6xgw2" path="res://assets/environment_props/wheelchair/wheelchair_model.tscn" id="12_fk255"]
+[ext_resource type="AudioStream" uid="uid://daq5sirppmwn" path="res://assets/audio/ambient/vhs_static_noise.wav" id="15_cfqho"]
+[ext_resource type="PackedScene" uid="uid://b26m1c712w8fe" path="res://game_management/main_menu/options.tscn" id="16_m6c1t"]
+[ext_resource type="PackedScene" uid="uid://c5u5jdhaqxf4a" path="res://props/lamp.tscn" id="18_d3ipp"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ma0a3"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_fla38"]
+noise = SubResource("FastNoiseLite_ma0a3")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1uv4"]
+shader = ExtResource("2_gsxr2")
+shader_parameter/vhs_resolution = Vector2(640, 360)
+shader_parameter/samples = 2
+shader_parameter/crease_noise = 1.8
+shader_parameter/crease_opacity = 0.5
+shader_parameter/filter_intensity = 0.1
+shader_parameter/tape_crease_smear = 0.1
+shader_parameter/tape_crease_intensity = 0.2
+shader_parameter/tape_crease_jitter = 0.1
+shader_parameter/tape_crease_speed = 0.5
+shader_parameter/tape_crease_discoloration = 1.0
+shader_parameter/bottom_border_thickness = 15.4
+shader_parameter/bottom_border_jitter = 18.5
+shader_parameter/noise_intensity = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_fla38")
+
+[sub_resource type="Animation" id="Animation_mdxx5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 362)]
+}
+
+[sub_resource type="Animation" id="Animation_kxou5"]
+resource_name = "roll_credits"
+length = 80.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MarginContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 79.4667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 362), Vector2(0, -2525)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gl8ud"]
+_data = {
+&"RESET": SubResource("Animation_mdxx5"),
+&"roll_credits": SubResource("Animation_kxou5")
+}
+
+[sub_resource type="Animation" id="Animation_6f0dt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenuUI/BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1c3yt"]
+resource_name = "fade"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MainMenuUI/BlackScreen:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_61gkd"]
+_data = {
+&"RESET": SubResource("Animation_6f0dt"),
+&"fade": SubResource("Animation_1c3yt")
+}
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_q1wtx")
+
+[node name="air conditioning_anim" parent="." instance=ExtResource("8_6q2tb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.82141, 1.75487, -17.4881)
+
+[node name="emergency_light" parent="." instance=ExtResource("7_41hr7")]
+transform = Transform3D(-1.07093e-08, -0.245, 9.76996e-15, 0.245, -1.07093e-08, 0, -3.70577e-22, 9.76996e-15, 0.245, -7.84907, 2.00702, -19.0917)
+
+[node name="walker" parent="." instance=ExtResource("8_aj43b")]
+transform = Transform3D(0.563637, 0, 0.542059, 0, 0.781994, 0, -0.542059, 0, 0.563637, -8.38469, -1.1921e-07, -17.8315)
+
+[node name="Bed" parent="." instance=ExtResource("8_05chu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.4812, 4.26326e-13, -17.9602)
+
+[node name="Trolley" parent="." instance=ExtResource("9_v51tn")]
+transform = Transform3D(0.955035, 0, -0.296492, 0, 1, 0, 0.296492, 0, 0.955035, -6.567, 2.38418e-07, -16.8615)
+
+[node name="corpse" parent="." instance=ExtResource("10_dq126")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, -5.51181, 0.572915, -17.8064)
+
+[node name="AnimationPlayer" parent="corpse" index="1"]
+autoplay = "sit_down"
+
+[node name="Wheelchair" parent="." instance=ExtResource("12_fk255")]
+transform = Transform3D(-0.197693, 0, -0.472531, 0, 0.512219, 0, 0.472531, 0, -0.197693, -5.31958, 0.00917119, -15.9148)
+
+[node name="MainMenuUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="MainMenuUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_n8dxx")
+
+[node name="VHSEffect" type="ColorRect" parent="MainMenuUI"]
+visible = false
+z_index = 1000
+material = SubResource("ShaderMaterial_d1uv4")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 22
+theme_override_constants/margin_top = 22
+theme_override_constants/margin_right = 22
+theme_override_constants/margin_bottom = 22
+
+[node name="PanelContainer" type="PanelContainer" parent="MainMenuUI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme = ExtResource("3_tf87f")
+
+[node name="TextureRect" type="TextureRect" parent="MainMenuUI/MarginContainer/PanelContainer"]
+modulate = Color(1, 1, 1, 0.4745098)
+layout_mode = 2
+texture = ExtResource("12_4ogfg")
+expand_mode = 5
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuUI/MarginContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/MarginContainer/PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="PlayButton" type="Button" parent="MainMenuUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_tf87f")
+text = "MENU_02"
+
+[node name="NewButton" type="Button" parent="MainMenuUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_tf87f")
+text = "MENU_01"
+
+[node name="CreditsButton" type="Button" parent="MainMenuUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_tf87f")
+text = "MENU_06"
+
+[node name="OptionsButton" type="Button" parent="MainMenuUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_tf87f")
+text = "MENU_03"
+
+[node name="ExitButton" type="Button" parent="MainMenuUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("3_tf87f")
+text = "MENU_04"
+
+[node name="SteamButton" type="Button" parent="MainMenuUI/MarginContainer"]
+custom_minimum_size = Vector2(217, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme = ExtResource("3_tf87f")
+theme_override_fonts/font = ExtResource("3_3m42q")
+text = "MENU_05"
+icon = ExtResource("5_cnxsy")
+expand_icon = true
+
+[node name="BuildVersionLabel" type="Label" parent="MainMenuUI/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_colors/font_color = Color(0.47788, 0.47788, 0.47788, 1)
+theme_override_font_sizes/font_size = 9
+text = "Demo Version 0.8.1 — Does not represent the final product"
+
+[node name="BlackScreen" type="ColorRect" parent="MainMenuUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Credits" type="ColorRect" parent="MainMenuUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="MainMenuUI/Credits"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 362.0
+offset_bottom = 73843.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 66
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 66
+theme_override_constants/margin_bottom = 12
+
+[node name="Label" type="Label" parent="MainMenuUI/Credits/MarginContainer"]
+custom_minimum_size = Vector2(12, 0)
+layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 9
+text = "What remains of my sins
+
+Solo developed by Jorge Velasco
+
+
+
+
+Special thanks to all the artists who made the following assets:
+
+
+Wheelchair: \"Wheelchair\" (https://skfb.ly/6BOwS) by Maxence Rouillet is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+Reload variation gun 3.OWI.wav by Legand569 -- https://freesound.org/s/659955/ -- License: Creative Commons 0
+
+Layered Gunshot 6.wav by Xenonn -- https://freesound.org/s/128298/ -- License: Creative Commons 0
+
+Machine_Gun_Reload.wav by ken788 -- https://freesound.org/s/386777/ -- License: Creative Commons 0
+
+swing 1136AM 2 231022_0626 by klankbeeld -- https://freesound.org/s/720463/ -- License: Attribution 4.0
+
+Intense Gore Sound: Opening Chest Cavity by MinecraftGamerLR -- https://freesound.org/s/728695/ -- License: Attribution 4.0
+
+Footsteps on slush by xkeril -- https://freesound.org/s/611278/ -- License: Creative Commons 0
+
+Gun trigger pull 5 by JakLocke -- https://freesound.org/s/412298/ -- License: Attribution 4.0
+
+Switch 28.wav by LG -- https://freesound.org/s/72181/ -- License: Attribution 4.0
+
+Baseboard and tutorial screen metal texture ```
+Created using <Metal 021> from ambientCG.com,
+licensed under the Creative Commons CC0 1.0 Universal License.
+	```
+
+\"Sewers - PSX\" (https://skfb.ly/p8LZY) by Elbolillo is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Hospital Trolley\" (https://skfb.ly/oOzKS) by creative_beast is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Air Conditioning Anim\" (https://skfb.ly/6WZ8C) by MKV245 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Heart Rate Monitor\" (https://skfb.ly/oTRvr) by Surgdan is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Waiting Chair\" (https://skfb.ly/oOwvZ) by creative_beast is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Hospital Stretcher\" (https://skfb.ly/6vALF) by Gunnar Correa is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Curtain -Emergency -Injection -Hospital - 14MB\" (https://skfb.ly/oWFFB) by Mehdi Shahsavan is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Low-poly Papers Set\" (https://skfb.ly/o8yVS) by Hox_Lira is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+\"Hospital direction sign\" (https://skfb.ly/ozJGq) by Sousinho is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+crying woman.wav by AlucardsBride -- https://freesound.org/s/172738/ -- License: Creative Commons 0
+
+100 survival horror asound FX by Psionic Games -- https://psionicgames.itch.io/100-survival-horror-sound-fx-wavs -- License: Creative Commons Attribution v4.0
+
+Rummaging in a drawer.mp3 by Caitlin_100 -- https://freesound.org/s/365532/ -- License: Creative Commons 0
+
+Crying newborn baby child 2.WAV by the_yura -- https://freesound.org/s/211528/ -- License: Creative Commons 0
+
+baby laughing around 6 months old by andreaskg -- https://freesound.org/s/537312/ -- License: Attribution 4.0
+
+\"Wheelchair 3.0\" (https://skfb.ly/Is9W) by neverfollow81 is licensed under Creative Commons Attribution (http://creativecommons.org/licenses/by/4.0/).
+
+Trying to open a locked door by Kodack -- https://freesound.org/s/256606/ -- License: Creative Commons 0
+
+mechanism.mp3 by Rhulk -- https://freesound.org/s/245462/ -- License: Creative Commons 0
+
+Bell 08.wav by Kyster -- https://freesound.org/s/79438/ -- License: Attribution 
+
+4.0Cabinet_Sliding_Drawers_Open__wooden_kitchen_02 by MattRuthSound -- https://freesound.org/s/550360/ -- License: Attribution 4.0
+
+Little woman screaming sound effect by Mastersoundboy2005 -- https://freesound.org/s/733539/ -- License: Creative Commons 0
+
+Scream- woman- pain 1 by Valerie-Vivegnis -- https://freesound.org/s/767887/ -- License: Attribution 4.0
+
+04.wav by edwin_p_manchester -- https://freesound.org/s/3216/ -- License: Attribution 4.0
+
+Pill Bottle & Pills.wav by SMuntsinger -- https://freesound.org/s/449606/ -- License: Creative Commons 0
+
+Empty Beer Bottles Clinking, Clanking.wav by Fugeni -- https://freesound.org/s/416288/ -- License: Creative Commons 0
+
+TakingPills.wav by n00bdesign -- https://freesound.org/s/337633/ -- License: Creative Commons 0
+
+Pound of Flesh 1 by magnuswaker -- https://freesound.org/s/522091/ -- License: Creative Commons 0
+
+creepy newborn cry by zacnie -- https://freesound.org/s/646299/ -- License: Attribution 4.0
+
+Great Factory Alarm by EinTon -- https://freesound.org/s/443271/ -- License: Attribution 3.0
+
+VHS VCR Static Noise and Glitches by SkyernAklea -- https://freesound.org/s/508187/ -- License: Attribution 4.0
+
+Alien is crawling-002.wav by tosha73 -- https://freesound.org/s/512952/ -- License: Attribution 4.0
+
+Inside the fridge by toam -- https://freesound.org/s/202634/ -- License: Attribution 3.0"
+label_settings = ExtResource("7_3fjrc")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="CreditsAnimator" type="AnimationPlayer" parent="MainMenuUI/Credits"]
+libraries = {
+&"": SubResource("AnimationLibrary_gl8ud")
+}
+
+[node name="Options" parent="MainMenuUI" instance=ExtResource("16_m6c1t")]
+layout_mode = 1
+
+[node name="BackToMainMenu" parent="MainMenuUI/Options/OptionsCenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" index="1"]
+visible = false
+
+[node name="ExitGameButton" parent="MainMenuUI/Options/OptionsCenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer" index="2"]
+visible = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.799035, 0, -0.601285, 0, 1, 0, 0.601285, 0, 0.799035, -7.98025, 1.11, -15.1581)
+
+[node name="LevelOneScenario" parent="." instance=ExtResource("5_wmhjm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.16621, 0, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("9_wfyed")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_cfqho")
+volume_db = -10.0
+autoplay = true
+
+[node name="BlackScreenAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_61gkd")
+}
+autoplay = "fade"
+
+[node name="LampLight2" parent="." instance=ExtResource("18_d3ipp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.242, 2.51996, -2.34609)
+
+[node name="OmniLight3D" parent="LampLight2" index="2"]
+omni_range = 2.92341
+
+[connection signal="pressed" from="MainMenuUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenuUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/NewButton" to="." method="_on_new_button_pressed"]
+[connection signal="pressed" from="MainMenuUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="MainMenuUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="MainMenuUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MainMenuUI/MarginContainer/SteamButton" to="." method="_on_steam_button_pressed"]
+
+[editable path="corpse"]
+[editable path="MainMenuUI/Options"]
+[editable path="LampLight2"]

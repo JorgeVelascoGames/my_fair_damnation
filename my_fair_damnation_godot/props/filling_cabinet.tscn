@@ -1,0 +1,59 @@
+[gd_scene load_steps=8 format=3 uid="uid://bm0vireoptb1m"]
+
+[ext_resource type="Script" uid="uid://o5rwit5v2bat" path="res://props/filling_cabinet.gd" id="1_mwmyy"]
+[ext_resource type="PackedScene" uid="uid://glw8u4bqu4gr" path="res://assets/environment_props/filing_cabinet/filling_cabinet_model.tscn" id="1_xojmn"]
+[ext_resource type="PackedScene" uid="uid://dup8g2hg5x2f8" path="res://scripts/interactable/interactable.tscn" id="3_sv6fg"]
+[ext_resource type="AudioStream" uid="uid://cygo34r27sjow" path="res://assets/audio/interactables/drawer_open.wav" id="4_35tq4"]
+[ext_resource type="AudioStream" uid="uid://c3ccca4w0oofx" path="res://assets/audio/interactables/rummaging_drawer.mp3" id="5_qbs7w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_im4ap"]
+size = Vector3(0.518, 0.9185791, 0.518)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hmvpp"]
+size = Vector3(0.57177734, 0.927948, 0.6032715)
+
+[node name="FillingCabinet" type="Node3D" groups=["load"]]
+transform = Transform3D(2.3, 0, 0, 0, 2.3, 0, 0, 0, 2.3, 0, 0, 0)
+script = ExtResource("1_mwmyy")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0653381, 0.43551674, 0.00390625)
+shape = SubResource("BoxShape3D_im4ap")
+
+[node name="FillingCabinetModel" parent="." instance=ExtResource("1_xojmn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0510795, 0, 0)
+
+[node name="Skeleton3D" parent="FillingCabinetModel/filing_cabinet" index="0"]
+bones/0/position = Vector3(2.1812505e-18, 1.1620379e-10, -0.0021590665)
+bones/0/rotation = Quaternion(0.7071068, 5.3385083e-08, 5.338509e-08, 0.7071068)
+
+[node name="Interactable" parent="." instance=ExtResource("3_sv6fg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7064692, 0.10707418)
+monitoring = false
+interaction_duration = 5.0
+interactable_hint = "hold_interact_cabinet"
+
+[node name="CollisionShape3D" parent="Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.062255856, -0.24511543, -0.08849173)
+shape = SubResource("BoxShape3D_hmvpp")
+
+[node name="InteractedAudioStreamPlayer3D" parent="Interactable" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05842352, 0.091453075, 0.11551714)
+stream = ExtResource("4_35tq4")
+
+[node name="HoldInteractionAudioStreamPlayer3D" parent="Interactable" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05842352, 0.091453075, 0.11551714)
+stream = ExtResource("5_qbs7w")
+volume_db = -30.0
+area_mask = 0
+parameters/looping = true
+
+[connection signal="interacted" from="Interactable" to="." method="_on_interactable_interacted"]
+[connection signal="interrupt_interacting" from="Interactable" to="." method="_on_interactable_interrupt_interacting"]
+[connection signal="start_interacting" from="Interactable" to="." method="_on_interactable_start_interacting"]
+
+[editable path="FillingCabinetModel"]
+[editable path="Interactable"]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://ceqbkfgqfcerh"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_a78sp"]
+
+[resource]
+script = ExtResource("1_a78sp")
+event_name = "grandpa asks for grandson"
+event_description = "Salta cuando el abuelo te pide que vayas a por su bisnieto"
+event_is_trigger = false
+is_one_day_only = true
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

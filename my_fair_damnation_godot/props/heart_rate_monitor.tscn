@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1kicdnpu7kyt"]
+
+[ext_resource type="PackedScene" uid="uid://cvb0u36uc1lth" path="res://assets/environment_props/heart_rate_monitor/heart_rate_monitor_model.tscn" id="1_inr3g"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1rju8"]
+height = 1.5451
+radius = 0.23
+
+[node name="HeartRateMonitor" type="Node3D"]
+
+[node name="heart_rate_monitor_model" parent="." instance=ExtResource("1_inr3g")]
+transform = Transform3D(0.0208438, 0, 0, 0, 0.0208438, 0, 0, 0, 0.0208438, 0, 0.385685, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["navigation"]]
+collision_layer = 129
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.749847, 0)
+shape = SubResource("CylinderShape3D_1rju8")

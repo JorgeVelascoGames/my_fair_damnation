@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Item" load_steps=2 format=3 uid="uid://ciwk70bxfnjh5"]
+
+[ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="1_2lov2"]
+
+[resource]
+script = ExtResource("1_2lov2")
+item_name = "Tranquilizantes"
+ui_item_name = "item_tranquilizer_pills_name"
+ui_item_description = "item_tranquilizer_pills_desc"
+metadata/_custom_type_script = "uid://bo8skdwgushde"

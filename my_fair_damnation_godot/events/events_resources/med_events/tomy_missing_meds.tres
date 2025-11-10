@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://b8n70uyjqbmoq"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_83l70"]
+
+[resource]
+script = ExtResource("1_83l70")
+event_name = "Tomy missing meds"
+event_description = "Salta cuando a tomy no le damos la medicación"
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

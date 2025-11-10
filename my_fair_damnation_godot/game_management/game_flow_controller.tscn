@@ -1,0 +1,343 @@
+[gd_scene load_steps=6 format=3 uid="uid://bn7xrfwp5w8t0"]
+
+[ext_resource type="Script" uid="uid://bqvuljwsaau7k" path="res://game_management/game_flow_controller.gd" id="1_t6vym"]
+[ext_resource type="Texture2D" uid="uid://emxnvvjtxui3" path="res://assets/ui/metal_background.jpg" id="2_kpj8h"]
+[ext_resource type="FontFile" uid="uid://box44m2xfyahn" path="res://assets/fonts/SpecialElite-Regular.ttf" id="3_gvbmq"]
+[ext_resource type="Theme" uid="uid://oxf8w7asp4eg" path="res://ui/main_theme.tres" id="4_gvbmq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3fq5o"]
+font = ExtResource("3_gvbmq")
+font_size = 25
+outline_size = 4
+outline_color = Color(0.164706, 0.164706, 0.164706, 0.776471)
+shadow_size = 4
+
+[node name="GameFlowController" type="Node"]
+script = ExtResource("1_t6vym")
+metadata/_custom_type_script = "uid://bqvuljwsaau7k"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 128
+
+[node name="GameEndingScreens" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="GoodEndingScreen" type="Control" parent="CanvasLayer/GameEndingScreens"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GoodEndingScreenBackground" type="ColorRect" parent="CanvasLayer/GameEndingScreens/GoodEndingScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameEndingScreens/GoodEndingScreen/GoodEndingScreenBackground"]
+modulate = Color(0.14902, 0.14902, 0.14902, 0.443137)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kpj8h")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameEndingScreens/GoodEndingScreen/GoodEndingScreenBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 122
+theme_override_constants/margin_top = 23
+theme_override_constants/margin_right = 122
+theme_override_constants/margin_bottom = 23
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameEndingScreens/GoodEndingScreen/GoodEndingScreenBackground/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="GoodEndingScreenLabel" type="Label" parent="CanvasLayer/GameEndingScreens/GoodEndingScreen/GoodEndingScreenBackground/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+text = "sdfasdfas"
+label_settings = SubResource("LabelSettings_3fq5o")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/GameEndingScreens/GoodEndingScreen/GoodEndingScreenBackground/MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="GoodEndingScreenButton" type="Button" parent="CanvasLayer/GameEndingScreens/GoodEndingScreen/GoodEndingScreenBackground/MarginContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_gvbmq")
+text = "MENU_02"
+
+[node name="GoodEndingOverlay" type="ColorRect" parent="CanvasLayer/GameEndingScreens/GoodEndingScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BadEndingScreen" type="Control" parent="CanvasLayer/GameEndingScreens"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BadEndingScreenBackground" type="ColorRect" parent="CanvasLayer/GameEndingScreens/BadEndingScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameEndingScreens/BadEndingScreen/BadEndingScreenBackground"]
+modulate = Color(0.14902, 0.14902, 0.14902, 0.443137)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kpj8h")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameEndingScreens/BadEndingScreen/BadEndingScreenBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 122
+theme_override_constants/margin_top = 23
+theme_override_constants/margin_right = 122
+theme_override_constants/margin_bottom = 23
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameEndingScreens/BadEndingScreen/BadEndingScreenBackground/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="BadEndingScreenLabel" type="Label" parent="CanvasLayer/GameEndingScreens/BadEndingScreen/BadEndingScreenBackground/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+text = "sdfasdfas"
+label_settings = SubResource("LabelSettings_3fq5o")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/GameEndingScreens/BadEndingScreen/BadEndingScreenBackground/MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="BadEndingScreenButton" type="Button" parent="CanvasLayer/GameEndingScreens/BadEndingScreen/BadEndingScreenBackground/MarginContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_gvbmq")
+text = "MENU_02"
+
+[node name="BadEndingOverlay" type="ColorRect" parent="CanvasLayer/GameEndingScreens/BadEndingScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NeutralEndingScreen" type="Control" parent="CanvasLayer/GameEndingScreens"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NeutralEndingScreenBackground" type="ColorRect" parent="CanvasLayer/GameEndingScreens/NeutralEndingScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameEndingScreens/NeutralEndingScreen/NeutralEndingScreenBackground"]
+modulate = Color(0.14902, 0.14902, 0.14902, 0.443137)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kpj8h")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameEndingScreens/NeutralEndingScreen/NeutralEndingScreenBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 122
+theme_override_constants/margin_top = 23
+theme_override_constants/margin_right = 122
+theme_override_constants/margin_bottom = 23
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameEndingScreens/NeutralEndingScreen/NeutralEndingScreenBackground/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="NeutralEndingLabel" type="Label" parent="CanvasLayer/GameEndingScreens/NeutralEndingScreen/NeutralEndingScreenBackground/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+text = "sdfasdfas"
+label_settings = SubResource("LabelSettings_3fq5o")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/GameEndingScreens/NeutralEndingScreen/NeutralEndingScreenBackground/MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="NeutralEndingButton" type="Button" parent="CanvasLayer/GameEndingScreens/NeutralEndingScreen/NeutralEndingScreenBackground/MarginContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_gvbmq")
+text = "MENU_02"
+
+[node name="NeutralEndingOverlay" type="ColorRect" parent="CanvasLayer/GameEndingScreens/NeutralEndingScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverEndingScreen" type="Control" parent="CanvasLayer/GameEndingScreens"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverEndingScreenBackground" type="ColorRect" parent="CanvasLayer/GameEndingScreens/GameOverEndingScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/GameEndingScreens/GameOverEndingScreen/GameOverEndingScreenBackground"]
+modulate = Color(0.14902, 0.14902, 0.14902, 0.443137)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_kpj8h")
+expand_mode = 2
+stretch_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/GameEndingScreens/GameOverEndingScreen/GameOverEndingScreenBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 122
+theme_override_constants/margin_top = 23
+theme_override_constants/margin_right = 122
+theme_override_constants/margin_bottom = 23
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/GameEndingScreens/GameOverEndingScreen/GameOverEndingScreenBackground/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="GameOverLabel" type="Label" parent="CanvasLayer/GameEndingScreens/GameOverEndingScreen/GameOverEndingScreenBackground/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+text = "sdfasdfas"
+label_settings = SubResource("LabelSettings_3fq5o")
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer/GameEndingScreens/GameOverEndingScreen/GameOverEndingScreenBackground/MarginContainer/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+
+[node name="GameOverButton" type="Button" parent="CanvasLayer/GameEndingScreens/GameOverEndingScreen/GameOverEndingScreenBackground/MarginContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_gvbmq")
+text = "MENU_02"
+
+[node name="GameOverOverlay" type="ColorRect" parent="CanvasLayer/GameEndingScreens/GameOverEndingScreen"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.44215223, 0, 0.011761615, 1)

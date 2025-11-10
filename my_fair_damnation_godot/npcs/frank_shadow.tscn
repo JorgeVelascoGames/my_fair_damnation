@@ -1,0 +1,66 @@
+[gd_scene load_steps=6 format=3 uid="uid://ch3xl7xf8nmiv"]
+
+[ext_resource type="Script" uid="uid://fs7a4u3qa38i" path="res://npcs/frank_shadow.gd" id="1_iritt"]
+[ext_resource type="Script" uid="uid://cvlnlhk3l8nla" path="res://npcs/player_catcher.gd" id="2_cgohk"]
+[ext_resource type="PackedScene" uid="uid://dvi64yvc4ll8k" path="res://npcs/frank/frank_model.tscn" id="3_cgohk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0nhrr"]
+size = Vector3(2.145, 3.5703788, 1.963)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cgohk"]
+transparency = 1
+albedo_color = Color(0, 0, 0, 1)
+disable_receive_shadows = true
+proximity_fade_distance = 120.03
+distance_fade_min_distance = 9.0
+distance_fade_max_distance = 3.0
+
+[node name="FrankShadow" type="Node3D"]
+script = ExtResource("1_iritt")
+
+[node name="PlayerCatcher" type="Area3D" parent="."]
+monitorable = false
+script = ExtResource("2_cgohk")
+metadata/_custom_type_script = "uid://cvlnlhk3l8nla"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerCatcher"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6788052, 0.48150635)
+shape = SubResource("BoxShape3D_0nhrr")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="FrankModel" parent="Model" instance=ExtResource("3_cgohk")]
+
+[node name="Mr Frank" parent="Model/FrankModel/Armature/Skeleton3D" index="0"]
+layers = 16
+material_override = SubResource("StandardMaterial3D_cgohk")
+cast_shadow = 0
+gi_mode = 0
+
+[node name="LookAtModifier3D" parent="Model/FrankModel/Armature/Skeleton3D" index="1"]
+target_node = NodePath("../../../../../PlayerCatcher")
+use_secondary_rotation = true
+primary_limit_angle = 1.9198622
+secondary_limit_angle = 6.2831855
+secondary_damp_threshold = 1.0
+
+[node name="BoneAttachment3D" parent="Model/FrankModel/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.74860305, 0.65973765, -0.0658763, -0.09396963, 0.00721927, -0.9955487, -0.65632534, 0.7514609, 0.06739983, 0.07581464, 1.8371414, -0.057410274)
+
+[node name="LookAtMarker3D" parent="Model/FrankModel/Armature/Skeleton3D/BoneAttachment3D" index="0"]
+transform = Transform3D(1, 1.69407e-21, 0, 0, 1, 0, 1.42109e-14, 0, 1, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="Model/FrankModel" index="1"]
+autoplay = "Idle_2"
+
+[node name="DisabledTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4445674, 0)
+layers = 1023
+aabb = AABB(-1, -2.5845892, -1, 2, 5.1691785, 2)
+
+[connection signal="player_detected" from="PlayerCatcher" to="." method="_on_player_catcher_player_detected"]
+
+[editable path="Model/FrankModel"]

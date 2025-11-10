@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdicnph1h5rnt"]
+
+[ext_resource type="Script" uid="uid://dg2oh4xsbqq40" path="res://player/player_ui/dialog_button.gd" id="1_ioqxd"]
+
+[node name="DialogButton" type="Button"]
+custom_minimum_size = Vector2(0, 15)
+size_flags_horizontal = 3
+text = "Hola"
+alignment = 0
+autowrap_mode = 3
+script = ExtResource("1_ioqxd")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

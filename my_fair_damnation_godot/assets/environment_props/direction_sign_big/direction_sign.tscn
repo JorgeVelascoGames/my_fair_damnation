@@ -1,0 +1,12 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqb1t6ixl2lse"]
+
+[ext_resource type="PackedScene" uid="uid://3lfc7kg2vmu3" path="res://assets/props/direction_sign_big/direction_sign.fbx" id="1_3w3i8"]
+[ext_resource type="Texture2D" uid="uid://b4x2kgg068ome" path="res://assets/props/direction_sign_big/direction_sign_T_direction_sign_2_1001_BaseColor.png" id="2_epth7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ryrc"]
+albedo_texture = ExtResource("2_epth7")
+
+[node name="direction_sign" instance=ExtResource("1_3w3i8")]
+
+[node name="SM_direction_sign_001" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_1ryrc")

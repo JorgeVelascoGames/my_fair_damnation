@@ -1,0 +1,108 @@
+[gd_scene load_steps=24 format=3 uid="uid://db0omdxo15tyr"]
+
+[ext_resource type="PackedScene" uid="uid://k3ltyvt2u11x" path="res://assets/environment_props/player_items.glb" id="1_yvu5r"]
+[ext_resource type="Script" uid="uid://bspt178yxt4lx" path="res://props/gun_box.gd" id="2_b4wls"]
+[ext_resource type="Texture2D" uid="uid://tu2h6uvhk2ms" path="res://assets/textures/metal_bare_128x128.png" id="2_i4i3x"]
+[ext_resource type="Texture2D" uid="uid://bvh0x6v2h2p4h" path="res://assets/textures/metal_bare_dark_64x64.png" id="3_i25vu"]
+[ext_resource type="Resource" uid="uid://oqs8tliaf0y4" path="res://events/events_resources/game_flow_events/frank_show_up.tres" id="4_ilyep"]
+[ext_resource type="PackedScene" uid="uid://bu70msjvbrnct" path="res://mechanics/environment_conversation/environment_conversation.tscn" id="5_dubjr"]
+[ext_resource type="Script" uid="uid://c00m8ojonc6s4" path="res://conversations/dialog.gd" id="6_kg41w"]
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="7_ilyep"]
+[ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="8_qx3oe"]
+[ext_resource type="Script" uid="uid://bdfriqua1vdjs" path="res://npcs/npc_id.gd" id="9_0uf4b"]
+[ext_resource type="Script" uid="uid://7l1ps0yokllm" path="res://conversations/conversation.gd" id="10_1nm7v"]
+[ext_resource type="Resource" uid="uid://disj0tsesscyo" path="res://items/item_vault/gun.tres" id="10_dubjr"]
+[ext_resource type="Resource" uid="uid://b7cmr2k0pnb51" path="res://items/item_vault/bullet.tres" id="11_kg41w"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwexi"]
+albedo_texture = ExtResource("2_i4i3x")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qy3xj"]
+albedo_texture = ExtResource("3_i25vu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_agdbr"]
+albedo_texture = ExtResource("2_i4i3x")
+
+[sub_resource type="Resource" id="Resource_yl2kn"]
+script = ExtResource("6_kg41w")
+dialog_description = "Salir"
+dialog_id = "CANCEL_DIALOG_BED_gun"
+player_dialog_option = "CANCEL_DIALOG_BED"
+finish_conversation = true
+one_time_dialog = false
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_ujkhy"]
+script = ExtResource("6_kg41w")
+dialog_description = "Coger pistola"
+dialog_id = "pistolbox_option_take"
+player_dialog_option = "pistolbox_option_take"
+finish_conversation = true
+one_time_dialog = false
+items_lock_dialog = Array[ExtResource("8_qx3oe")]([ExtResource("10_dubjr")])
+gained_item = ExtResource("10_dubjr")
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_dubjr"]
+script = ExtResource("6_kg41w")
+dialog_description = "Dejar pistola"
+dialog_id = "pistolbox_option_leave"
+player_dialog_option = "pistolbox_option_leave"
+finish_conversation = true
+one_time_dialog = false
+items_to_unclok_dialog = Array[ExtResource("8_qx3oe")]([ExtResource("10_dubjr")])
+take_unlock_item = true
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_ilyep"]
+script = ExtResource("6_kg41w")
+dialog_description = "Coger bala"
+dialog_id = "pistolbox_take_bullet"
+player_dialog_option = "pistolbox_take_bullet"
+gained_item = ExtResource("11_kg41w")
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_ncr6p"]
+script = ExtResource("10_1nm7v")
+dialog_options = Array[ExtResource("6_kg41w")]([SubResource("Resource_yl2kn"), SubResource("Resource_ujkhy"), SubResource("Resource_dubjr"), SubResource("Resource_ilyep")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
+[sub_resource type="Resource" id="Resource_kg41w"]
+script = ExtResource("6_kg41w")
+dialog_id = "pistolbox_flavour_001"
+player_dialog_option = "pistolbox_flavour_001"
+dialog_text = Array[String](["pistolbox_flavour_001", "pistolbox_flavour_002", "pistolbox_flavour_003"])
+randomize_dialog = true
+one_time_dialog = false
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y3mr6"]
+size = Vector3(2.34174, 2.51999, 2.30862)
+
+[node name="GunBox" groups=["load"] instance=ExtResource("1_yvu5r")]
+script = ExtResource("2_b4wls")
+block_events = Array[ExtResource("7_ilyep")]([ExtResource("4_ilyep")])
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0070329, 1.9411, -0.0136472)
+
+[node name="shotgun_bullets" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_kwexi")
+surface_material_override/1 = SubResource("StandardMaterial3D_qy3xj")
+surface_material_override/2 = SubResource("StandardMaterial3D_agdbr")
+
+[node name="EnvironmentConversation" parent="." index="2" instance=ExtResource("5_dubjr")]
+
+[node name="NpcConversation" parent="EnvironmentConversation" index="0"]
+conversation = SubResource("Resource_ncr6p")
+neutral_wellcome_dialog = SubResource("Resource_kg41w")
+
+[node name="Interactable" parent="EnvironmentConversation" index="1"]
+interactable_hint = "FREEZER_A_Q1"
+
+[node name="CollisionShape3D" parent="EnvironmentConversation/Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0137634, 0.759995, -0.0263214)
+shape = SubResource("BoxShape3D_y3mr6")
+
+[editable path="EnvironmentConversation"]
+[editable path="EnvironmentConversation/Interactable"]

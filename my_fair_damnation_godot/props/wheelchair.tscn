@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://uaadcyhabn2k"]
+
+[ext_resource type="PackedScene" uid="uid://ben5eoim6xgw2" path="res://assets/environment_props/wheelchair/wheelchair_model.tscn" id="1_e1ut3"]
+[ext_resource type="Shader" uid="uid://lhmt1ugdk0qn" path="res://shaders/dissolve.gdshader" id="2_3gxb7"]
+[ext_resource type="Texture2D" uid="uid://cvl7k86yxd8ye" path="res://assets/environment_props/wheelchair/wheelchair.png" id="3_rrups"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m61fw"]
+render_priority = 0
+shader = ExtResource("2_3gxb7")
+shader_parameter/baseColor = Color(1, 1, 1, 1)
+shader_parameter/baseColorTexture = ExtResource("3_rrups")
+shader_parameter/dissolveSlider = 0.0
+shader_parameter/dissolveNoiseScale = 2.0
+shader_parameter/edgeNoiseScale = 0.0
+shader_parameter/edgesThickness = 0.0210000009975
+shader_parameter/edgeColor = Color(0.7107048, 0.62008995, 0.41088966, 1)
+shader_parameter/edgeEmissionSlider = 1.6899999622251198
+shader_parameter/enable_dissolve_animation = false
+shader_parameter/animation_speed = 1.0
+shader_parameter/animation_intensity = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6grfo"]
+size = Vector3(0.581299, 0.837487, 0.547104)
+
+[node name="Wheelchair" type="Node3D"]
+
+[node name="Wheelchair" parent="." instance=ExtResource("1_e1ut3")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="defaultMaterial" parent="Wheelchair" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_m61fw")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." groups=["navigation"]]
+collision_layer = 129
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0531003, 0.406961, 0.012001)
+shape = SubResource("BoxShape3D_6grfo")
+
+[editable path="Wheelchair"]

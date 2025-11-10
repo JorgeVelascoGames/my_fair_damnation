@@ -1,0 +1,105 @@
+[gd_scene load_steps=4 format=3 uid="uid://dvi64yvc4ll8k"]
+
+[ext_resource type="PackedScene" uid="uid://du2y5uw5soa27" path="res://assets/npcs/frank.glb" id="1_sbxpj"]
+[ext_resource type="Texture2D" uid="uid://emxnvvjtxui3" path="res://assets/ui/metal_background.jpg" id="2_usk8n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sbxpj"]
+albedo_color = Color(0.670689, 0.67069, 0.670689, 1)
+albedo_texture = ExtResource("2_usk8n")
+
+[node name="FrankModel" instance=ExtResource("1_sbxpj")]
+
+[node name="Armature" parent="." index="0"]
+transform = Transform3D(1.8, 0, 0, 0, 1.8, 0, 0, 0, 1.8, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Armature" index="0"]
+bones/0/position = Vector3(0.15480748, 0.1390556, -0.14090142)
+bones/0/rotation = Quaternion(0.8926011, 0.034536853, -0.050795957, 0.44664338)
+bones/2/position = Vector3(0, -0.17497927, 0)
+bones/2/rotation = Quaternion(-0.7071068, 0, 0, 0.7071068)
+bones/3/position = Vector3(-3.552714e-15, 0.08137943, 1.2491752)
+bones/3/rotation = Quaternion(0.82999676, 6.649113e-08, 9.894332e-08, 0.55776817)
+bones/4/rotation = Quaternion(-0.115181655, -0.009853352, -0.061477493, 0.9913913)
+bones/5/rotation = Quaternion(-0.15326403, -1.1923485e-07, -1.8401506e-08, 0.9881853)
+bones/6/rotation = Quaternion(-0.10131376, 1.196597e-07, -1.312202e-08, 0.9948546)
+bones/7/rotation = Quaternion(0.33176702, 9.0276014e-10, 7.793606e-08, 0.94336146)
+bones/8/rotation = Quaternion(-0.16034433, -9.744605e-10, -4.2265064e-08, 0.98706114)
+bones/9/position = Vector3(0.030009523, 0.059222598, -0.00333898)
+bones/10/rotation = Quaternion(-0.10103795, 0.79043555, -0.5880819, -0.13842946)
+bones/11/rotation = Quaternion(0.37847424, 0.23236728, -0.017200023, 0.8958052)
+bones/12/rotation = Quaternion(0.11165705, 0.0026763813, -0.28034198, 0.9533802)
+bones/13/rotation = Quaternion(0.0047229454, -0.04612741, -0.5022563, 0.8634747)
+bones/14/rotation = Quaternion(0.018414803, -0.04478885, -0.2055648, 0.9774446)
+bones/15/position = Vector3(0.004873038, 0.18522522, 0.044854946)
+bones/15/rotation = Quaternion(0.108873114, 0.06738655, -0.45957154, 0.87886274)
+bones/16/rotation = Quaternion(0.22748804, -0.19399545, -0.4703177, 0.83031106)
+bones/17/rotation = Quaternion(-0.21814093, 0.007860098, -0.6055708, 0.7652691)
+bones/18/rotation = Quaternion(0.04325115, 0.029183915, -0.5747915, 0.8166348)
+bones/19/position = Vector3(0.005249755, 0.17360912, -0.057225883)
+bones/19/rotation = Quaternion(-0.20296499, -0.12901781, -0.3929762, 0.88754123)
+bones/20/rotation = Quaternion(0.09557131, 0.04108704, -0.00088943285, 0.9945739)
+bones/21/position = Vector3(0.050891653, 0.4527711, 0.061069004)
+bones/21/rotation = Quaternion(0.34535754, 0.05341398, -0.30337608, 0.88647515)
+bones/22/position = Vector3(-0.030009542, 0.05922241, -0.0033389295)
+bones/23/rotation = Quaternion(0.49090865, 0.6519223, -0.34220225, -0.46572918)
+bones/24/rotation = Quaternion(0.5024275, -0.12914617, 0.24633434, 0.8186619)
+bones/25/rotation = Quaternion(0.030341905, -0.002447502, 0.029043268, 0.99911463)
+bones/26/rotation = Quaternion(0.045326937, 0.0035157597, -0.04723795, 0.9978486)
+bones/27/rotation = Quaternion(-0.05990131, 5.372157e-08, -0.017943352, 0.9980431)
+bones/28/rotation = Quaternion(0.12804013, 0.00018463125, -0.073189124, 0.98906475)
+bones/29/rotation = Quaternion(-0.078268595, 2.1273556e-09, 0.03981831, 0.9961369)
+bones/30/rotation = Quaternion(-0.057566576, 0.015271255, 0.027478967, 0.9978466)
+bones/31/rotation = Quaternion(0.0012971802, -2.3551382e-07, -0.10805377, 0.99414426)
+bones/32/rotation = Quaternion(-0.23250628, 0.061491698, 0.10573227, 0.9648733)
+bones/33/rotation = Quaternion(0.057978153, 9.5585634e-08, -0.14985484, 0.9870067)
+bones/34/position = Vector3(-0.041383594, 0.4699824, 0.06242771)
+bones/34/rotation = Quaternion(0.3761738, -0.043250367, 0.2237808, 0.89807844)
+bones/35/rotation = Quaternion(-0.025371077, 0.43387708, 0.9003086, -0.023482032)
+bones/36/rotation = Quaternion(0.1898148, 0.07821514, 0.024710784, 0.97838753)
+bones/37/rotation = Quaternion(-0.059035625, -0.097077034, -0.035817254, 0.9928786)
+bones/38/rotation = Quaternion(-0.020571787, 0.06725425, 0.06447326, 0.99543804)
+bones/39/rotation = Quaternion(0.004653772, 0.03689319, -0.046233643, 0.99823827)
+bones/40/rotation = Quaternion(0.0027619787, 0.1050349, 0.103759624, 0.9890369)
+bones/41/rotation = Quaternion(-0.054227475, -0.0503981, 0.00062358286, 0.99725586)
+bones/42/rotation = Quaternion(-0.10604926, -0.05278839, -0.033931307, 0.9923788)
+bones/43/rotation = Quaternion(0.0610796, 0.17878893, -0.010638962, 0.9819321)
+bones/44/position = Vector3(-0.06255243, 0.15694124, 0.034902625)
+bones/45/rotation = Quaternion(-0.044373915, 0.36610422, -0.048741613, 0.9282365)
+bones/46/position = Vector3(0.08061168, 0.33001667, 0.022731254)
+bones/46/rotation = Quaternion(0.0034948345, -0.45792797, -0.44604328, 0.7689832)
+bones/47/rotation = Quaternion(0.41908804, 0.73733187, 0.27949363, -0.4501003)
+bones/48/rotation = Quaternion(-0.39234054, -0.65611315, 0.6226937, 0.16684455)
+bones/49/rotation = Quaternion(0.516151, -0.003797879, -0.009162509, 0.8564401)
+bones/51/rotation = Quaternion(0.5081117, -0.60179484, 0.5836047, -0.19766441)
+bones/52/rotation = Quaternion(0.5161509, 0.0037978974, 0.009162515, 0.8564402)
+bones/53/position = Vector3(0.1548085, 0.14089411, 0.31406653)
+bones/54/position = Vector3(0.29020682, -0.6587946, 0.42168468)
+bones/54/rotation = Quaternion(0.99997205, 0, 0.007475144, 0)
+bones/55/position = Vector3(-0.1548085, 0.14089411, 0.31406653)
+bones/56/position = Vector3(-0.12848541, -0.8042243, 0.4303966)
+bones/56/rotation = Quaternion(0.99997205, 0, -0.007475144, 0)
+bones/57/position = Vector3(-0.15480852, 0.1390555, -0.14090201)
+bones/57/rotation = Quaternion(0.8926011, -0.034536853, 0.050795957, 0.44664338)
+bones/58/rotation = Quaternion(-0.22447374, -0.07788732, -0.08020491, 0.9680456)
+
+[node name="Mr Frank" parent="Armature/Skeleton3D" index="0"]
+surface_material_override/1 = SubResource("StandardMaterial3D_sbxpj")
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Armature/Skeleton3D" index="1"]
+bone_name = "head"
+bone = 8
+use_secondary_rotation = false
+duration = 1.5
+transition_type = 10
+ease_type = 1
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 1.5708
+primary_damp_threshold = 0.0
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.99224687, 0.12348734, 0.014036853, -0.12349247, 0.99234504, -0.00050744414, -0.013992074, -0.0012300909, 0.999901, 0.07581464, 1.8371414, -0.057410274)
+bone_name = "head"
+bone_idx = 8
+
+[node name="LookAtMarker3D" type="Marker3D" parent="Armature/Skeleton3D/BoneAttachment3D" index="0"]

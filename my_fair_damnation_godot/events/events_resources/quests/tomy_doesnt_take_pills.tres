@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://d3ypttnlofyfp"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_h24f6"]
+
+[resource]
+script = ExtResource("1_h24f6")
+event_name = "Tomy no tomas pastis"
+event_description = "Salta cuando Tomy te dice que no quiere tomarse las pastillas"
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

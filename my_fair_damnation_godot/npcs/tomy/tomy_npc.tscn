@@ -1,0 +1,448 @@
+[gd_scene load_steps=38 format=3 uid="uid://bub5c73ky0qrd"]
+
+[ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_acklk"]
+[ext_resource type="Resource" uid="uid://cgt2sxeq3iqxt" path="res://npcs/ids/tomy_id.tres" id="2_6raq7"]
+[ext_resource type="Resource" uid="uid://b8n70uyjqbmoq" path="res://events/events_resources/med_events/tomy_missing_meds.tres" id="3_641uk"]
+[ext_resource type="PackedScene" uid="uid://dkqfew7ssu6mm" path="res://npcs/npc_instance.tscn" id="3_d1qlw"]
+[ext_resource type="PackedScene" uid="uid://b7evkupfryad" path="res://npcs/tomy/tomy_model.tscn" id="4_633dm"]
+[ext_resource type="Script" uid="uid://c00m8ojonc6s4" path="res://conversations/dialog.gd" id="4_l8imr"]
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="5_416md"]
+[ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="6_0xj2q"]
+[ext_resource type="Script" uid="uid://bdfriqua1vdjs" path="res://npcs/npc_id.gd" id="7_n5lrc"]
+[ext_resource type="Resource" uid="uid://bfvop75ghqdf7" path="res://items/item_vault/pills.tres" id="8_416md"]
+[ext_resource type="Script" uid="uid://7l1ps0yokllm" path="res://conversations/conversation.gd" id="8_uwh6o"]
+[ext_resource type="Resource" uid="uid://cd3ofktdiln67" path="res://items/item_vault/handkerchief.tres" id="9_0xj2q"]
+[ext_resource type="Resource" uid="uid://d3ypttnlofyfp" path="res://events/events_resources/quests/tomy_doesnt_take_pills.tres" id="10_ummwc"]
+[ext_resource type="Resource" uid="uid://lnu6535mdvdr" path="res://items/item_vault/quest_items/horse_toy.tres" id="10_uwh6o"]
+[ext_resource type="Resource" uid="uid://dnf5ujsw2kovg" path="res://events/events_resources/quests/tomy_goes_with_mom.tres" id="11_641uk"]
+[ext_resource type="Resource" uid="uid://ciwk70bxfnjh5" path="res://items/item_vault/tranquilizer_pills.tres" id="14_5h5ex"]
+[ext_resource type="Resource" uid="uid://dertt8nye463u" path="res://events/events_resources/game_flow_events/tommy_first_encounter.tres" id="14_ax716"]
+[ext_resource type="Script" uid="uid://ducygnsxn03i4" path="res://npcs/tomy/tomy_instance_animator_controller.gd" id="15_kv4o1"]
+[ext_resource type="Script" uid="uid://cvlnlhk3l8nla" path="res://npcs/player_catcher.gd" id="16_b4kjd"]
+[ext_resource type="AudioStream" uid="uid://b7nsniwclrwr3" path="res://assets/audio/npcs/tomy/tomy_idle.wav" id="20_84tq0"]
+
+[sub_resource type="Resource" id="Resource_641uk"]
+script = ExtResource("4_l8imr")
+dialog_description = "Hola Tomy"
+dialog_id = "TOMY_Q1_"
+player_dialog_option = "TOMY_Q1_"
+dialog_text = Array[String](["TOMY_Q1_001", "TOMY_Q1_002", "TOMY_Q1_003", "TOMY_Q1_004", "TOMY_Q1_005", "TOMY_Q1_006"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_l8imr"]
+script = ExtResource("4_l8imr")
+dialog_description = "Te tienes que tomar esto"
+dialog_id = "TOMY_Q2_"
+player_dialog_option = "TOMY_Q2_"
+dialog_text = Array[String](["TOMY_Q2_001", "TOMY_Q2_002"])
+dialogs_to_unlock = Array[ExtResource("4_l8imr")]([SubResource("Resource_641uk")])
+events_to_push = Array[ExtResource("5_416md")]([ExtResource("10_ummwc")])
+items_to_unclok_dialog = Array[ExtResource("6_0xj2q")]([ExtResource("8_416md")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_416md"]
+script = ExtResource("4_l8imr")
+dialog_description = "Tu mama me dijo que te tomases esto
+"
+dialog_id = "TOMY_Q3_"
+player_dialog_option = "TOMY_Q3_"
+dialog_text = Array[String](["TOMY_Q3_001"])
+one_time_dialog = false
+once_per_day_dialog = true
+events_to_push = Array[ExtResource("5_416md")]([ExtResource("3_641uk")])
+items_to_unclok_dialog = Array[ExtResource("6_0xj2q")]([ExtResource("9_0xj2q"), ExtResource("8_416md")])
+reputation_with_player_changed = 10.0
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_0xj2q"]
+script = ExtResource("4_l8imr")
+dialog_description = "Por que tienes miedo?"
+dialog_id = "TOMY_Q4_"
+player_dialog_option = "TOMY_Q4_"
+dialog_text = Array[String](["TOMY_Q4_", "TOMY_Q4_001", "TOMY_Q4_002", "TOMY_Q4_003", "TOMY_Q4_004"])
+min_day_to_see_dialog = 5
+events_to_push = Array[ExtResource("5_416md")]([null])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_uwh6o"]
+script = ExtResource("4_l8imr")
+dialog_description = "El abuelo lo hizo para ti"
+dialog_id = "TOMY_Q6_"
+player_dialog_option = "TOMY_Q6_"
+dialog_text = Array[String](["TOMY_Q6_001", "TOMY_Q6_002", "TOMY_Q6_003", "TOMY_Q6_004", "TOMY_Q6_005", "TOMY_Q6_006", "TOMY_Q6_007"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_84tq0"]
+script = ExtResource("4_l8imr")
+dialog_description = "Ve con mama"
+dialog_id = "TOMY_Q7_"
+player_dialog_option = "TOMY_Q7_"
+dialog_text = Array[String](["TOMY_Q7_001", "TOMY_Q7_002", "TOMY_Q7_003"])
+go_back_nested_conversation = true
+dialogs_to_unlock = Array[ExtResource("4_l8imr")]([SubResource("Resource_uwh6o")])
+events_to_push = Array[ExtResource("5_416md")]([ExtResource("11_641uk")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_jte60"]
+script = ExtResource("8_uwh6o")
+dialog_options = Array[ExtResource("4_l8imr")]([SubResource("Resource_uwh6o"), SubResource("Resource_84tq0")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
+[sub_resource type="Resource" id="Resource_n5lrc"]
+script = ExtResource("4_l8imr")
+dialog_description = "Tomy, mira lo que tengo"
+dialog_id = "TOMY_Q5_"
+player_dialog_option = "TOMY_Q5_"
+dialog_text = Array[String](["TOMY_Q5_001", "TOMY_Q5_002"])
+response_conversation = SubResource("Resource_jte60")
+items_to_unclok_dialog = Array[ExtResource("6_0xj2q")]([ExtResource("10_uwh6o")])
+take_unlock_item = true
+reputation_with_player_changed = 30.0
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_36cx2"]
+script = ExtResource("4_l8imr")
+dialog_description = "Dar tranquilizantes"
+dialog_id = "give_pills_tomy"
+player_dialog_option = "give_pills_tomy"
+dialog_text = Array[String](["npc_thanks_tomy"])
+one_time_dialog = false
+items_to_unclok_dialog = Array[ExtResource("6_0xj2q")]([ExtResource("14_5h5ex")])
+take_unlock_item = true
+reputation_with_player_changed = 20.0
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_o00yl"]
+script = ExtResource("4_l8imr")
+dialog_description = "Adios (salir)"
+dialog_id = "Tomy_adios"
+player_dialog_option = "nurse_bye"
+finish_conversation = true
+one_time_dialog = false
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_kv4o1"]
+script = ExtResource("8_uwh6o")
+dialog_options = Array[ExtResource("4_l8imr")]([SubResource("Resource_641uk"), SubResource("Resource_l8imr"), SubResource("Resource_416md"), SubResource("Resource_0xj2q"), SubResource("Resource_n5lrc"), SubResource("Resource_36cx2"), SubResource("Resource_o00yl")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
+[sub_resource type="Resource" id="Resource_ax716"]
+script = ExtResource("4_l8imr")
+dialog_id = "TOMY_WELLCOME_003"
+dialog_text = Array[String](["TOMY_WELLCOME_003"])
+one_time_dialog = false
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_b4kjd"]
+script = ExtResource("4_l8imr")
+dialog_id = "TOMY_WELLCOME_NEGATIVE"
+dialog_text = Array[String](["TOMY_WELLCOME_NEGATIVE", "TOMY_WELLCOME_NEGATIVE_001", "TOMY_WELLCOME_NEGATIVE_002"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_5h5ex"]
+script = ExtResource("4_l8imr")
+dialog_id = "TOMY_WELLCOME_004"
+dialog_text = Array[String](["TOMY_WELLCOME_004"])
+one_time_dialog = false
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_ummwc"]
+script = ExtResource("4_l8imr")
+dialog_id = "TOMY_WELLCOME_"
+dialog_text = Array[String](["TOMY_WELLCOME_", "TOMY_WELLCOME_001", "TOMY_WELLCOME_002"])
+events_to_push = Array[ExtResource("5_416md")]([ExtResource("14_ax716")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5h5ex"]
+size = Vector3(2.8782349, 4.734558, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ummwc"]
+size = Vector3(3.3076782, 5.0672607, 3.0028992)
+
+[node name="TomyNpc" instance=ExtResource("1_acklk")]
+id = ExtResource("2_6raq7")
+
+[node name="NpcInstanceController" parent="." index="0" node_paths=PackedStringArray("main_instance", "instance_by_current_event")]
+main_instance = NodePath("MainInstance")
+meds_event = ExtResource("3_641uk")
+missing_meds_message = "medication_tomy_missing"
+behaviour_at_night = 1
+use_current_event_instance_array = true
+instance_by_current_event = {
+ExtResource("11_641uk"): NodePath("FinalInstance")
+}
+
+[node name="MainInstance" parent="NpcInstanceController" index="0" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("3_d1qlw")]
+look_at_position = NodePath("ModelContainer/TomyModel/Tomy_001/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
+look_at_modifier = NodePath("ModelContainer/TomyModel/Tomy_001/Skeleton3D/LookAtModifier3D")
+
+[node name="NpcConversation" parent="NpcInstanceController/MainInstance" index="0" node_paths=PackedStringArray("npc_instance")]
+npc_instance = NodePath("..")
+conversation = SubResource("Resource_kv4o1")
+neutral_wellcome_dialog = SubResource("Resource_ax716")
+hostile_wellcome_dialog = SubResource("Resource_b4kjd")
+positive_wellcome_dialog = SubResource("Resource_5h5ex")
+override_wellcome_dialog = SubResource("Resource_ummwc")
+
+[node name="TomyModel" parent="NpcInstanceController/MainInstance/ModelContainer" index="0" instance=ExtResource("4_633dm")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="Skeleton3D" parent="NpcInstanceController/MainInstance/ModelContainer/TomyModel/Tomy_001" index="0"]
+bones/1/position = Vector3(-4.4408913e-15, 0.059605945, 1.0905081)
+bones/1/rotation = Quaternion(0.79045546, 7.3018015e-08, 9.422965e-08, 0.6125195)
+bones/2/rotation = Quaternion(-0.105694056, -1.1854158e-07, -1.2599713e-08, 0.9943987)
+bones/2/scale = Vector3(1.0064203, 0.987282, 1.0064203)
+bones/3/rotation = Quaternion(-0.13380662, 7.55808e-15, 3.5908526e-15, 0.9910075)
+bones/3/scale = Vector3(0.9879304, 1.0232257, 0.9892894)
+bones/4/rotation = Quaternion(0.099493325, 7.023492e-20, 4.2987088e-17, 0.9950382)
+bones/4/scale = Vector3(1.0057598, 0.989258, 1.0050918)
+bones/5/rotation = Quaternion(0.39885706, 0.045214396, 0.028000487, 0.9154697)
+bones/6/rotation = Quaternion(-0.09476623, 0.043744527, -0.004168486, 0.9945293)
+bones/7/rotation = Quaternion(0.13290665, 0.021268647, 0.057312153, 0.9892416)
+bones/8/position = Vector3(0.74511284, 0.0065095425, 1.6325773)
+bones/8/rotation = Quaternion(-0.3594067, 0.38424587, -0.049818844, 0.8489406)
+bones/8/scale = Vector3(0.9999999, 27.958858, 0.9999999)
+bones/9/position = Vector3(-0.6830308, 0.03375396, 1.3934641)
+bones/9/rotation = Quaternion(-0.28072083, -0.43948352, 0.049326867, 0.8518315)
+bones/9/scale = Vector3(0.9999999, 23.816017, 0.9999999)
+bones/10/position = Vector3(0.10582216, -0.030882778, 0.5800782)
+bones/10/rotation = Quaternion(0.99999774, 2.3479518e-07, -0.000110028486, -0.0021700982)
+bones/10/scale = Vector3(0.99999994, 19.27968, 0.99999994)
+bones/11/position = Vector3(-0.10582217, -0.030882897, 0.5800782)
+bones/11/rotation = Quaternion(0.99999774, 2.4664772e-07, -0.00011004033, -0.0021700982)
+bones/11/scale = Vector3(0.99999994, 19.279676, 0.99999994)
+bones/15/position = Vector3(2.1548072e-17, 0.010300562, 0.22249949)
+bones/18/rotation = Quaternion(-0.7493176, 0, 0, 0.6622108)
+bones/26/rotation = Quaternion(0.9848331, -1.284244e-08, 1.16823266e-07, 0.1735042)
+bones/27/rotation = Quaternion(0.09747374, -0.00010950875, -1.072533e-05, 0.9952382)
+bones/27/scale = Vector3(1, 0.99999994, 0.9999999)
+bones/28/rotation = Quaternion(-0.52736354, -0.00040371614, 0.0003666423, 0.8496396)
+bones/28/scale = Vector3(1, 1.0000002, 1.0000006)
+bones/29/position = Vector3(-2.253281e-08, 0.13956168, 7.754398e-08)
+bones/29/rotation = Quaternion(-0.0001613267, 0.9612487, -0.27568242, -0.00056251336)
+bones/33/scale = Vector3(1, 1.0000002, 1)
+bones/35/rotation = Quaternion(-5.0292243e-08, -0.00021826974, -7.1695143e-09, 1)
+bones/35/scale = Vector3(1.0000001, 1.0000006, 1.0000002)
+bones/37/scale = Vector3(1, 1.0000001, 1)
+bones/38/rotation = Quaternion(-3.352758e-08, -5.4885844e-05, 7.815427e-09, 1)
+bones/38/scale = Vector3(1, 1.0000005, 1.0000002)
+bones/40/rotation = Quaternion(0.9848331, -2.0668562e-08, 1.1740017e-07, 0.1735043)
+bones/40/scale = Vector3(1, 1, 1.0000002)
+bones/41/rotation = Quaternion(0.09747401, -0.00010950875, -1.07253e-05, 0.9952381)
+bones/41/scale = Vector3(1, 0.9999999, 0.9999998)
+bones/42/rotation = Quaternion(-0.5273637, -0.00040371265, 0.00036663533, 0.8496395)
+bones/42/scale = Vector3(1, 1.0000005, 1.0000007)
+bones/43/position = Vector3(1.4725481e-08, 0.13956168, 8.500892e-08)
+bones/43/rotation = Quaternion(-0.00016132671, 0.9612487, -0.27568242, -0.00056251325)
+bones/47/scale = Vector3(1, 1.0000001, 1)
+bones/49/rotation = Quaternion(9.313247e-09, -0.00021826578, -9.9845014e-11, 1)
+bones/49/scale = Vector3(1.0000001, 1, 1.0000002)
+bones/51/scale = Vector3(1, 0.99999994, 0.99999994)
+bones/52/rotation = Quaternion(-3.3527602e-08, -5.488585e-05, 1.621971e-08, 1)
+bones/52/scale = Vector3(1, 1.0000001, 1)
+bones/60/rotation = Quaternion(-0.00016133652, 0.9612487, -0.27568242, -0.00056247925)
+bones/63/rotation = Quaternion(-0.05038101, 3.961026e-10, -7.85216e-09, 0.99873006)
+bones/64/rotation = Quaternion(0.09747374, -0.00010950875, -1.072533e-05, 0.9952382)
+bones/64/scale = Vector3(1, 0.9999999, 0.9999999)
+bones/65/rotation = Quaternion(0.9848332, 1.9438044e-08, 1.103328e-07, 0.17350422)
+bones/67/rotation = Quaternion(0.9848332, -2.0683292e-08, 1.17401235e-07, 0.17350423)
+bones/67/scale = Vector3(1, 1, 1)
+bones/68/rotation = Quaternion(-7.4505895e-09, -1.187324e-11, 2.806648e-13, 1)
+bones/69/rotation = Quaternion(0.097473785, -0.00010950873, -1.0733202e-05, 0.9952381)
+bones/69/scale = Vector3(1, 0.9999997, 0.99999964)
+bones/70/rotation = Quaternion(-3.1665767e-08, -4.2463166e-09, -7.3048474e-09, 1)
+bones/71/rotation = Quaternion(-0.5273631, -0.00040368855, 0.00036669595, 0.84963983)
+bones/71/scale = Vector3(0.9999999, 0.9999998, 0.99999994)
+bones/72/rotation = Quaternion(-0.0001612757, 0.9612485, -0.27568284, -0.00056252815)
+bones/72/scale = Vector3(1, 0.9999999, 1)
+bones/79/rotation = Quaternion(-0.00016133647, 0.9612485, -0.27568248, -0.00056247914)
+bones/81/rotation = Quaternion(-0.705571, 1.28284094e-08, -1.28841915e-08, 0.70863926)
+bones/82/rotation = Quaternion(-0.05038105, 7.4360174e-13, -1.4775603e-11, 0.99873006)
+bones/82/scale = Vector3(1, 0.99999994, 1.0000001)
+bones/83/rotation = Quaternion(0.09747401, -0.00010950875, -1.0725298e-05, 0.9952381)
+bones/83/scale = Vector3(1, 0.9999999, 0.9999998)
+bones/84/rotation = Quaternion(0.9848331, -2.0683329e-08, 1.17401264e-07, 0.17350431)
+bones/86/rotation = Quaternion(0.9848331, -6.080464e-08, 1.2446972e-07, 0.17350434)
+bones/86/scale = Vector3(0.9999999, 1.0000002, 1)
+bones/87/rotation = Quaternion(9.313222e-09, -8.110819e-10, -2.4529964e-08, 1)
+bones/88/rotation = Quaternion(0.09747407, -0.00010950952, -1.0741533e-05, 0.9952381)
+bones/88/scale = Vector3(1, 1, 0.9999999)
+bones/89/rotation = Quaternion(4.4703484e-08, -2.673346e-10, -2.1084717e-11, 1)
+bones/90/rotation = Quaternion(-0.5273633, -0.0004037408, 0.00036659, 0.8496397)
+bones/90/scale = Vector3(1.0000001, 0.9999994, 1.0000007)
+bones/91/rotation = Quaternion(-0.0001613783, 0.96124846, -0.27568287, -0.00056249864)
+bones/91/scale = Vector3(0.9999997, 1.0000001, 0.99999994)
+bones/95/position = Vector3(1.0774036e-17, -0.01417849, 0.2242527)
+bones/97/position = Vector3(-5.387018e-18, 0.00048668074, 0.012261229)
+bones/97/rotation = Quaternion(0.077464156, 0, 0, 0.99699515)
+bones/100/position = Vector3(1.0774036e-17, 0.18571343, -0.02452245)
+bones/100/rotation = Quaternion(-0.6957685, 0, 0, 0.7182661)
+bones/102/rotation = Quaternion(0.39885712, 0.045214396, 0.028000487, 0.9154697)
+bones/103/rotation = Quaternion(-0.09476619, 0.04374452, -0.004168483, 0.99452925)
+bones/104/rotation = Quaternion(0.13290662, 0.021268647, 0.057312153, 0.9892416)
+bones/105/rotation = Quaternion(-0.69693625, 0, 0, 0.7171331)
+bones/106/rotation = Quaternion(0.905581, 0.010512731, 0.052132994, 0.4208265)
+bones/107/rotation = Quaternion(-0.9055809, -0.010512729, -0.05213301, 0.42082644)
+bones/108/rotation = Quaternion(0.9326517, -0.0004190207, 0.13193347, 0.33578914)
+bones/111/rotation = Quaternion(0.2166803, 0.047743976, 0.048048213, 0.9738899)
+bones/115/position = Vector3(0.027799634, 0.08924523, 0.08281307)
+bones/115/rotation = Quaternion(-0.60515463, -0.3458624, -0.35613444, 0.6223627)
+bones/116/rotation = Quaternion(0.121992305, 0.38715142, -0.303343, 0.8620991)
+bones/116/scale = Vector3(0.97474915, 0.97474957, 0.9747492)
+bones/117/rotation = Quaternion(0.59546524, -1.00492656e-07, 6.924563e-08, 0.803381)
+bones/117/scale = Vector3(0.9918084, 0.99180883, 0.99180806)
+bones/118/rotation = Quaternion(0.31089777, 0.0634585, 0.21683626, 0.9231997)
+bones/118/scale = Vector3(1.0343779, 1.0343779, 1.0343779)
+bones/121/scale = Vector3(1.0343784, 1.0343775, 1.0343783)
+bones/123/rotation = Quaternion(3.3923254e-08, 0.0329782, -2.4112567e-09, 0.99945617)
+bones/123/scale = Vector3(1.0343784, 1.0343776, 1.0343784)
+bones/125/scale = Vector3(1.0259053, 1.0259048, 1.0259049)
+bones/126/rotation = Quaternion(4.736921e-07, 0.016127579, 1.3745876e-07, 0.99986994)
+bones/126/scale = Vector3(1.0259053, 1.0259048, 1.025905)
+bones/131/rotation = Quaternion(0.17020029, 0.4465917, -0.66600055, 0.57274)
+bones/132/rotation = Quaternion(0.10012951, -6.3288546e-08, -8.29963e-09, 0.99497443)
+bones/134/rotation = Quaternion(1.6717242e-07, 2.9895457e-07, 2.4260956e-07, 1)
+bones/135/rotation = Quaternion(0.46468613, 0.09542392, -0.72788686, 0.4951182)
+bones/136/rotation = Quaternion(-0.26491278, -0.025079502, -0.006892645, 0.9639216)
+bones/136/scale = Vector3(0.97474885, 0.97474957, 0.974749)
+bones/137/rotation = Quaternion(0.59546524, -1.1383116e-07, 5.9195358e-08, 0.8033811)
+bones/137/scale = Vector3(0.99180835, 0.99180883, 0.9918082)
+bones/138/rotation = Quaternion(0.13076268, 0.41205895, -0.29966697, 0.85047543)
+bones/140/rotation = Quaternion(0.13076258, 0.41205865, -0.29966712, 0.8504755)
+bones/140/scale = Vector3(1.01287, 0.9747491, 1.0128698)
+bones/141/rotation = Quaternion(1.3007681e-07, -0.012956817, 1.8286656e-07, 0.9999161)
+bones/142/rotation = Quaternion(0.5953058, -0.012859289, 0.009582583, 0.80333924)
+bones/142/scale = Vector3(1.0041206, 0.95769423, 1.0401261)
+bones/143/rotation = Quaternion(9.006301e-09, 0.03269217, 4.334559e-08, 0.99946547)
+bones/144/rotation = Quaternion(0.30496842, 0.03220834, 0.2288919, 0.92388606)
+bones/144/scale = Vector3(0.993339, 1.0095359, 0.9987894)
+bones/145/position = Vector3(-0.027799636, 0.08924523, 0.08281308)
+bones/145/rotation = Quaternion(-0.60515463, 0.3458624, 0.35613444, 0.6223627)
+bones/146/rotation = Quaternion(-0.07477728, -0.47898564, 0.37079337, 0.79214483)
+bones/146/scale = Vector3(0.9723737, 0.9723736, 0.9723735)
+bones/147/rotation = Quaternion(0.688744, 7.4557114e-08, -4.7529085e-08, 0.7250047)
+bones/147/scale = Vector3(0.9909512, 0.9909511, 0.9909509)
+bones/148/rotation = Quaternion(0.1705692, -0.12091991, -0.18579866, 0.9600851)
+bones/148/scale = Vector3(1.0378026, 1.0378027, 1.0378026)
+bones/151/scale = Vector3(1.0378022, 1.0378025, 1.0378025)
+bones/153/rotation = Quaternion(1.348504e-07, -0.061573993, 8.512655e-09, 0.99810255)
+bones/153/scale = Vector3(1.0378028, 1.0378026, 1.037803)
+bones/155/scale = Vector3(1.0284114, 1.0284114, 1.0284115)
+bones/156/rotation = Quaternion(3.3809775e-07, 0.01618835, 1.1167086e-07, 0.999869)
+bones/156/scale = Vector3(1.0284109, 1.0284111, 1.0284115)
+bones/161/rotation = Quaternion(0.17020029, -0.4465917, 0.66600055, 0.57274)
+bones/162/rotation = Quaternion(0.10012951, 6.3288546e-08, 8.29963e-09, 0.99497443)
+bones/164/rotation = Quaternion(1.6717242e-07, -2.9895457e-07, -2.4260956e-07, 1)
+bones/165/rotation = Quaternion(0.34126747, -0.22023064, 0.8117303, 0.41967708)
+bones/166/rotation = Quaternion(-0.30954027, 0.024731092, 0.008053654, 0.9505305)
+bones/166/scale = Vector3(0.9723734, 0.9723736, 0.97237337)
+bones/167/rotation = Quaternion(0.688744, 7.321594e-08, -5.2346447e-08, 0.7250046)
+bones/167/scale = Vector3(0.9909511, 0.9909511, 0.990951)
+bones/168/rotation = Quaternion(-0.08510141, -0.4566805, 0.36856115, 0.8052102)
+bones/170/rotation = Quaternion(-0.08510131, -0.4566802, 0.36856097, 0.8052104)
+bones/170/scale = Vector3(1.0141068, 0.9723728, 1.0141068)
+bones/171/rotation = Quaternion(-1.6200734e-07, -0.011736702, 1.6852792e-07, 0.9999312)
+bones/171/scale = Vector3(0.9999994, 1, 0.9999998)
+bones/172/rotation = Quaternion(0.6886365, -0.011715042, 0.011150406, 0.7249264)
+bones/172/scale = Vector3(1.0045557, 0.95028, 1.0475593)
+bones/173/rotation = Quaternion(2.594646e-07, -0.06128847, -1.1697447e-07, 0.9981202)
+bones/174/rotation = Quaternion(0.15919898, -0.06112403, -0.19687824, 0.9654836)
+bones/174/scale = Vector3(0.99073106, 1.0246952, 0.98622197)
+bones/181/position = Vector3(0.027799634, 0.08924523, 0.08281307)
+bones/181/rotation = Quaternion(-0.60515463, -0.3458624, -0.35613444, 0.6223627)
+bones/182/position = Vector3(-0.027799636, 0.08924523, 0.08281308)
+bones/182/rotation = Quaternion(-0.60515463, 0.3458624, 0.35613444, 0.6223627)
+bones/185/position = Vector3(-0.28671685, -0.31035635, 0.5778062)
+bones/185/rotation = Quaternion(0.6480528, -0.5092501, -0.50170505, 0.26264808)
+bones/187/position = Vector3(0.52073133, 0.8731635, -0.86917627)
+bones/187/rotation = Quaternion(-0.7071068, -1.3559322e-10, 1.11361045e-10, 0.7071068)
+bones/190/position = Vector3(0.33111197, -0.31472445, 0.28563982)
+bones/190/rotation = Quaternion(0.5649741, 0.35722977, 0.6665707, 0.3299615)
+bones/192/position = Vector3(-0.52073133, 0.8731635, -0.86917627)
+bones/192/rotation = Quaternion(-0.7071068, 1.3559322e-10, -1.11361045e-10, 0.7071068)
+bones/202/rotation = Quaternion(0.96124864, 0.00016132648, -0.0005625127, -0.2756824)
+bones/205/rotation = Quaternion(5.8207626e-11, -3.0292596e-28, 1, -3.4694426e-18)
+bones/206/position = Vector3(0.10582215, 0.5759742, 0.9764831)
+bones/206/rotation = Quaternion(-0.7071068, 6.28037e-16, -6.28037e-16, 0.7071068)
+bones/216/rotation = Quaternion(0.96124864, 0.00016132653, -0.0005625127, -0.2756824)
+bones/219/rotation = Quaternion(5.8207626e-11, -3.0292596e-28, 1, -3.4694426e-18)
+bones/220/position = Vector3(-0.10582215, 0.5759742, 0.9764831)
+bones/220/rotation = Quaternion(-0.7071068, 6.28037e-16, -6.28037e-16, 0.7071068)
+
+[node name="BoneAttachment3D" parent="NpcInstanceController/MainInstance/ModelContainer/TomyModel/Tomy_001/Skeleton3D" index="2"]
+transform = Transform3D(0.9651868, -0.08938514, 0.24581456, 0.24649191, 0.6188333, -0.74282086, -0.089951925, 0.7714925, 0.6337311, -0.0034405845, 1.8912134, 0.025003403)
+
+[node name="AnimationPlayer" parent="NpcInstanceController/MainInstance/ModelContainer/TomyModel" index="1"]
+autoplay = "tommy_jumpscare_preparing"
+
+[node name="Interactable" parent="NpcInstanceController/MainInstance" index="2"]
+interactable_hint = "INTERACTABLE_001"
+
+[node name="CollisionShape3D" parent="NpcInstanceController/MainInstance/Interactable" index="0"]
+shape = SubResource("BoxShape3D_5h5ex")
+
+[node name="PlayerCatcher" type="Area3D" parent="NpcInstanceController/MainInstance/Interactable" index="1" node_paths=PackedStringArray("interactable")]
+script = ExtResource("16_b4kjd")
+interactable = NodePath("..")
+one_use_only = true
+metadata/_custom_type_script = "uid://cvlnlhk3l8nla"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NpcInstanceController/MainInstance/Interactable/PlayerCatcher" index="0"]
+shape = SubResource("BoxShape3D_ummwc")
+
+[node name="InstanceAnimatorController" parent="NpcInstanceController/MainInstance" index="3" node_paths=PackedStringArray("npc", "animation_player", "model")]
+script = ExtResource("15_kv4o1")
+first_encounter = ExtResource("14_ax716")
+trust_position = Vector3(0, 0, 0)
+trust_rotation = Vector3(0, 0, 0)
+distrust_position = Vector3(0, 0, 0)
+distrust_rotation = Vector3(0, 0, 0)
+active = true
+npc = NodePath("../../..")
+animation_mode = 2
+animation_player = NodePath("../ModelContainer/TomyModel/AnimationPlayer")
+model = NodePath("../ModelContainer")
+
+[node name="NpcInstanceAudioController" parent="NpcInstanceController/MainInstance" index="5"]
+idle_sound_during_conversation = true
+
+[node name="NpcIdleAudioStreamPlayer3D" parent="NpcInstanceController/MainInstance/NpcInstanceAudioController" index="0"]
+stream = ExtResource("20_84tq0")
+volume_db = -2.0
+unit_size = 10.0
+max_distance = 6.0
+
+[node name="DialogAudioStreamPlayer3D" parent="NpcInstanceController/MainInstance/NpcInstanceAudioController" index="1"]
+volume_db = -3.0
+
+[node name="FinalInstance" parent="NpcInstanceController" index="1" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("3_d1qlw")]
+instance_id = 1
+look_at_position = NodePath("ModelContainer/TomyModel/Tomy_001/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
+look_at_modifier = NodePath("ModelContainer/TomyModel/Tomy_001/Skeleton3D/LookAtModifier3D")
+
+[node name="NpcConversation" parent="NpcInstanceController/FinalInstance" index="0" node_paths=PackedStringArray("npc_instance")]
+npc_instance = NodePath("..")
+conversation = SubResource("Resource_kv4o1")
+neutral_wellcome_dialog = SubResource("Resource_ax716")
+hostile_wellcome_dialog = SubResource("Resource_b4kjd")
+positive_wellcome_dialog = SubResource("Resource_5h5ex")
+override_wellcome_dialog = SubResource("Resource_ummwc")
+
+[node name="TomyModel" parent="NpcInstanceController/FinalInstance/ModelContainer" index="0" instance=ExtResource("4_633dm")]
+transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="AnimationPlayer" parent="NpcInstanceController/FinalInstance/ModelContainer/TomyModel" index="1"]
+autoplay = "tommy_jumpscare_idle"
+
+[node name="NpcReputation" parent="." index="1"]
+reputation_change_message = Dictionary[int, String]({
+0: "reputation_tomy_hostile",
+1: "reputation_tomy_neutral",
+2: "reputation_tomy_positive"
+})
+
+[editable path="NpcInstanceController/MainInstance"]
+[editable path="NpcInstanceController/MainInstance/ModelContainer/TomyModel"]
+[editable path="NpcInstanceController/MainInstance/Interactable"]
+[editable path="NpcInstanceController/FinalInstance"]
+[editable path="NpcInstanceController/FinalInstance/ModelContainer/TomyModel"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0dkjcykl2xdc"]
+
+[ext_resource type="PackedScene" uid="uid://bua0cjqu0pvj8" path="res://assets/props/filing_cabinet/filling_cabinet_animated.glb" id="1_cvqxv"]
+[ext_resource type="Texture2D" uid="uid://b40grqfrv6ffq" path="res://assets/props/filing_cabinet/filling_cabinet_animated_filing_cabinet_DefaultMaterial_BaseColor.png" id="2_avrea"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mgnr8"]
+albedo_texture = ExtResource("2_avrea")
+
+[node name="FilingCabinetAnimated" instance=ExtResource("1_cvqxv")]
+
+[node name="filing_cabinet" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.742, -0.188)
+
+[node name="Skeleton3D" parent="filing_cabinet" index="0"]
+bones/0/position = Vector3(2.18125e-18, 1.16204e-10, -0.00215907)
+bones/0/rotation = Quaternion(0.707107, 5.33851e-08, 5.33851e-08, 0.707107)
+
+[node name="archivador_animated" parent="filing_cabinet/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_mgnr8")

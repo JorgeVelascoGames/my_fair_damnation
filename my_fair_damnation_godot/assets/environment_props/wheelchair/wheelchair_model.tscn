@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://ben5eoim6xgw2"]
+
+[ext_resource type="PackedScene" uid="uid://u7sfd8vdvy4r" path="res://assets/environment_props/wheelchair/wheelchair.fbx" id="1_msb3o"]
+[ext_resource type="Texture2D" uid="uid://cvl7k86yxd8ye" path="res://assets/environment_props/wheelchair/wheelchair.png" id="2_01fir"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_siptv"]
+albedo_texture = ExtResource("2_01fir")
+
+[node name="Wheelchair" instance=ExtResource("1_msb3o")]
+
+[node name="defaultMaterial" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.912687, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_siptv")

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://bodawmb8aj5vy"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_xorrt"]
+
+[resource]
+script = ExtResource("1_xorrt")
+event_name = "Game over"
+event_description = "Esto salta cuando mueres"
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"
