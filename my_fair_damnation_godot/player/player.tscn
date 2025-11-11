@@ -783,6 +783,7 @@ metadata/_custom_type_script = "uid://bla6772fugq7e"
 [node name="RandomizeSensitivityTimer" type="Timer" parent="PlayerStateMachine/PlayerAiming"]
 
 [node name="ShotCDTimer" type="Timer" parent="PlayerStateMachine/PlayerAiming"]
+one_shot = true
 
 [node name="PlayerParalize" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("18_7pqkx")
