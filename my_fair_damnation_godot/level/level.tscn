@@ -1,4 +1,4 @@
-[gd_scene load_steps=153 format=3 uid="uid://bmktuh2cguuxm"]
+[gd_scene load_steps=162 format=3 uid="uid://bmktuh2cguuxm"]
 
 [ext_resource type="Environment" uid="uid://dgn6auhynv3ch" path="res://assets/world_environment_day.tres" id="1_rhqlf"]
 [ext_resource type="Script" uid="uid://cxhbymvyqxl8f" path="res://level/level.gd" id="1_xii2b"]
@@ -36,15 +36,20 @@
 [ext_resource type="Resource" uid="uid://disj0tsesscyo" path="res://items/item_vault/gun.tres" id="20_h74y2"]
 [ext_resource type="Resource" uid="uid://e7kghipeqb6p" path="res://items/item_vault/flashlight.tres" id="21_7cdnq"]
 [ext_resource type="Script" uid="uid://cdvfx1y4bppxq" path="res://mechanics/destruction_on_event.gd" id="21_b7y0n"]
+[ext_resource type="Texture2D" uid="uid://bc61adxilwlco" path="res://assets/npcs/tomy_tomy.png" id="21_j3wyd"]
+[ext_resource type="Texture2D" uid="uid://ipiqhhc3tgko" path="res://assets/npcs/neighboor_fat.png" id="22_64i31"]
 [ext_resource type="PackedScene" uid="uid://7rrnupx3ogcl" path="res://props/bed.tscn" id="22_o0wo3"]
 [ext_resource type="PackedScene" uid="uid://uaadcyhabn2k" path="res://props/wheelchair.tscn" id="23_kdsbj"]
 [ext_resource type="Resource" uid="uid://d38flcksv7rqk" path="res://events/events_resources/game_flow_events/stole_stew_recipy.tres" id="24_3bd15"]
 [ext_resource type="PackedScene" uid="uid://dvhlfxajaqexu" path="res://props/round_table.tscn" id="24_ml0fe"]
 [ext_resource type="PackedScene" uid="uid://ck40lyerj5ml4" path="res://props/walker.tscn" id="25_kdsbj"]
+[ext_resource type="Texture2D" uid="uid://bdkoifekpd5n2" path="res://assets/npcs/untie_butcher.png" id="25_xhxav"]
 [ext_resource type="Resource" uid="uid://ff4bfyrkypc2" path="res://events/events_resources/quests/skyler_asks_for_her_son.tres" id="26_kdkvt"]
 [ext_resource type="PackedScene" uid="uid://bm0vireoptb1m" path="res://props/filling_cabinet.tscn" id="26_ml0fe"]
+[ext_resource type="Shader" uid="uid://lhmt1ugdk0qn" path="res://shaders/dissolve.gdshader" id="27_qjy74"]
 [ext_resource type="PackedScene" uid="uid://b1aluneqea42g" path="res://npcs/frank/frank_npc.tscn" id="28_5xilp"]
 [ext_resource type="Resource" uid="uid://jg4ut8vflvc0" path="res://items/item_vault/quest_items/rotten_meat.tres" id="28_xdahv"]
+[ext_resource type="Texture2D" uid="uid://cil67mksk8pdd" path="res://assets/npcs/infanticide_body_BaseColor.png" id="28_xhxav"]
 [ext_resource type="PackedScene" uid="uid://db0omdxo15tyr" path="res://props/gun_box.tscn" id="30_8yb03"]
 [ext_resource type="Resource" uid="uid://bfvop75ghqdf7" path="res://items/item_vault/pills.tres" id="37_t46wx"]
 [ext_resource type="PackedScene" uid="uid://bn7xrfwp5w8t0" path="res://game_management/game_flow_controller.tscn" id="38_u1dsc"]
@@ -121,11 +126,41 @@ radius = 0.69433594
 [sub_resource type="BoxShape3D" id="BoxShape3D_3bd15"]
 size = Vector3(4.029236, 1.7797852, 1.6121826)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qrnsu"]
+render_priority = 0
+shader = ExtResource("27_qjy74")
+shader_parameter/baseColor = Color(0.6789437, 0.6789437, 0.6789437, 1)
+shader_parameter/baseColorTexture = ExtResource("21_j3wyd")
+shader_parameter/dissolveSlider = 0.0
+shader_parameter/dissolveNoiseScale = 2.0
+shader_parameter/edgeNoiseScale = 0.0
+shader_parameter/edgesThickness = 0.0210000009975
+shader_parameter/edgeColor = Color(0.7107048, 0.62008995, 0.41088966, 1)
+shader_parameter/edgeEmissionSlider = 1.6899999622251198
+shader_parameter/enable_dissolve_animation = false
+shader_parameter/animation_speed = 1.0
+shader_parameter/animation_intensity = 0.2
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3bd15"]
 height = 2.0805664
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3xl46"]
 size = Vector3(1, 2.5151367, 1.341919)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_btutd"]
+render_priority = 0
+shader = ExtResource("27_qjy74")
+shader_parameter/baseColor = Color(1, 1, 1, 1)
+shader_parameter/baseColorTexture = ExtResource("22_64i31")
+shader_parameter/dissolveSlider = 0.0
+shader_parameter/dissolveNoiseScale = 2.0
+shader_parameter/edgeNoiseScale = 0.0
+shader_parameter/edgesThickness = 0.0210000009975
+shader_parameter/edgeColor = Color(0.7107048, 0.62008995, 0.41088966, 1)
+shader_parameter/edgeEmissionSlider = 1.6899999622251198
+shader_parameter/enable_dissolve_animation = false
+shader_parameter/animation_speed = 1.0
+shader_parameter/animation_intensity = 0.2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_t46wx"]
 height = 3.505371
@@ -133,6 +168,21 @@ radius = 1.2548828
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4tv08"]
 size = Vector3(0.8984375, 2.430725, 3.7885742)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ombt2"]
+render_priority = 0
+shader = ExtResource("27_qjy74")
+shader_parameter/baseColor = Color(1, 1, 1, 1)
+shader_parameter/baseColorTexture = ExtResource("25_xhxav")
+shader_parameter/dissolveSlider = 0.0
+shader_parameter/dissolveNoiseScale = 2.0
+shader_parameter/edgeNoiseScale = 0.0
+shader_parameter/edgesThickness = 0.0210000009975
+shader_parameter/edgeColor = Color(0.7107048, 0.62008995, 0.41088966, 1)
+shader_parameter/edgeEmissionSlider = 1.6899999622251198
+shader_parameter/enable_dissolve_animation = false
+shader_parameter/animation_speed = 1.0
+shader_parameter/animation_intensity = 0.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_illw2"]
 size = Vector3(1, 3.6506348, 2.777954)
@@ -142,6 +192,21 @@ radius = 1.1141039
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_t46wx"]
 height = 2.5039063
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yodqp"]
+render_priority = 0
+shader = ExtResource("27_qjy74")
+shader_parameter/baseColor = Color(1, 1, 1, 1)
+shader_parameter/baseColorTexture = ExtResource("28_xhxav")
+shader_parameter/dissolveSlider = 0.0
+shader_parameter/dissolveNoiseScale = 2.0
+shader_parameter/edgeNoiseScale = 0.0
+shader_parameter/edgesThickness = 0.0210000009975
+shader_parameter/edgeColor = Color(0.7107048, 0.62008995, 0.41088966, 1)
+shader_parameter/edgeEmissionSlider = 1.6899999622251198
+shader_parameter/enable_dissolve_animation = false
+shader_parameter/animation_speed = 1.0
+shader_parameter/animation_intensity = 0.2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gan73"]
 radius = 0.57470703
@@ -5297,6 +5362,7 @@ shape = SubResource("BoxShape3D_3bd15")
 [node name="FinalInstance" parent="Npcs/TomyNpc/NpcInstanceController" index="1"]
 transform = Transform3D(-0.6341235, 0, -0.77323186, 0, 1, 0, 0.77323186, 0, -0.6341235, -3.3869476, -8.713714, 0.58093834)
 instance_id = 2
+materials_to_dislove = Array[Material]([SubResource("ShaderMaterial_qrnsu")])
 
 [node name="NeighboorNpc" parent="Npcs" instance=ExtResource("13_qslh7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.71289, 0, -3.48979)
@@ -5988,6 +6054,7 @@ shape = SubResource("BoxShape3D_3xl46")
 
 [node name="NeighboorFinalInstance" parent="Npcs/NeighboorNpc/NpcInstanceController" index="2"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -23.928171, -13.9621, 0.7100067)
+materials_to_dislove = Array[Material]([SubResource("ShaderMaterial_btutd")])
 
 [node name="NeighboorModel" parent="Npcs/NeighboorNpc/NpcInstanceController/NeighboorFinalInstance/ModelContainer" index="0"]
 transform = Transform3D(1.75, 0, 0, 0, 1.75, 0, 0, 0, 1.75, 0, -0.081775665, -0.15908241)
@@ -7501,6 +7568,7 @@ one_use_only = true
 
 [node name="FinalInstance" parent="Npcs/UntieNpc/NpcInstanceController" index="2"]
 transform = Transform3D(-0.41937292, 0, 0.9078141, 0, 1, 0, -0.9078141, 0, -0.41937292, -9.974497, 10.193579, -7.724243)
+materials_to_dislove = Array[Material]([SubResource("ShaderMaterial_ombt2")])
 
 [node name="Skeleton3D" parent="Npcs/UntieNpc/NpcInstanceController/FinalInstance/ModelContainer/UntieModel/Armature_001" index="0"]
 bones/0/position = Vector3(0, 0.66474265, 0.19696079)
@@ -7791,6 +7859,9 @@ transform = Transform3D(0.147602, 0, 0.989047, 0, 1, 0, -0.989047, 0, 0.147602, 
 instance_by_current_event = {
 ExtResource("17_jkmtt"): NodePath("FinalInstance")
 }
+
+[node name="MainInstance" parent="Npcs/SkylerNpc/NpcInstanceController" index="0"]
+transform = Transform3D(0.10556988, 0, 0.99441195, 0, 1, 0, -0.99441195, 0, 0.10556988, -7.074036, 9.964368, -13.321098)
 
 [node name="Skeleton3D" parent="Npcs/SkylerNpc/NpcInstanceController/MainInstance/ModelContainer/SkylerModel/rig" index="0"]
 bones/1/position = Vector3(0, 0.053524673, 0.9792498)
@@ -8138,7 +8209,8 @@ transform = Transform3D(0.9999962, 0, -5.5134296e-07, 0, 1, 0, 5.5134296e-07, 0,
 transform = Transform3D(0.9999962, 0, -5.5134296e-07, 0, 1, 0, 5.5134296e-07, 0, 0.9999962, 0, 0.14522457, 0)
 
 [node name="FinalInstance" parent="Npcs/SkylerNpc/NpcInstanceController" index="1"]
-transform = Transform3D(-0.5170264, 0, -0.8559694, 0, 1, 0, 0.8559694, 0, -0.5170264, 9.12833, -0.16932869, 3.2116427)
+transform = Transform3D(0.840869, 0, -0.5412387, 0, 1, 0, 0.5412387, 0, 0.840869, -3.4087071, 9.970708, -20.967514)
+materials_to_dislove = Array[Material]([SubResource("ShaderMaterial_yodqp")])
 
 [node name="Interactable" parent="Npcs/SkylerNpc/NpcInstanceController/FinalInstance" index="2"]
 interactable_hint = "INTERACTABLE_001"
@@ -8965,6 +9037,7 @@ stream = ExtResource("86_ehj4q")
 [editable path="Npcs/SkylerNpc/NpcInstanceController/MainInstance/ModelContainer/SkylerModel"]
 [editable path="Npcs/SkylerNpc/NpcInstanceController/MainInstance/Interactable"]
 [editable path="Npcs/SkylerNpc/NpcInstanceController/FinalInstance"]
+[editable path="Npcs/SkylerNpc/NpcInstanceController/FinalInstance/ModelContainer/SkylerModel"]
 [editable path="Npcs/SkylerNpc/NpcInstanceController/FinalInstance/Interactable"]
 [editable path="Npcs/FrankNpc"]
 [editable path="Npcs/FrankNpc/NpcInstanceController/NpcInstance"]
