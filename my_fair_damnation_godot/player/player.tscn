@@ -838,9 +838,11 @@ stream = SubResource("AudioStreamRandomizer_j3r50")
 
 [node name="OpenInventoryAudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerAudio"]
 stream = SubResource("AudioStreamRandomizer_utr5e")
+volume_db = -12.0
 
 [node name="CloseInventoryAudioStreamPlayer" type="AudioStreamPlayer" parent="PlayerAudio"]
 stream = SubResource("AudioStreamRandomizer_kewli")
+volume_db = -12.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="PlayerAudio"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.7853193, 0)

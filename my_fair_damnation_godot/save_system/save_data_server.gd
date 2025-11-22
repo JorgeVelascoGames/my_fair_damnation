@@ -160,7 +160,6 @@ func save_day_night_cicle() -> void:
 
 
 func save_dialogs(consumed_dialogs : Array[Dialog], once_per_day_dialogs : Array[Dialog], seen_dialogs : Array[Dialog]) -> void:
-	local_saved_data.consumed_dialogs.clear()
 	for dialog in consumed_dialogs:
 		local_saved_data.consumed_dialogs.append(dialog.dialog_id)
 

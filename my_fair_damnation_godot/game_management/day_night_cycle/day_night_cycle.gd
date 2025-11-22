@@ -148,7 +148,7 @@ func _on_day_night_cycle_timer_timeout() -> void:
 			doom_started.emit()
 		DOOM:
 			message = exhaustion_messages.pick_random()
-			message_b = "run_exhaustion"
+			message_b = "time_exhaustion"
 			exhausted = true
 	player.player_ui.display_gameplay_text(tr(message) + "\n" + tr(message_b))
 	SaveDataServer.save_day_night_cicle()

@@ -34,7 +34,6 @@
 [sub_resource type="Resource" id="Resource_0tynl"]
 script = ExtResource("4_o43ut")
 dialog_description = "Es un placer señora"
-characters_per_second = 20.0
 dialog_id = "MOTHER_01_A_Q1"
 player_dialog_option = "MOTHER_01_A_Q1"
 dialog_text = Array[String](["MOTHER_01_A_Q1_001", "MOTHER_01_A_Q1_002", "MOTHER_01_A_Q1_003", "MOTHER_01_A_Q1_004", "MOTHER_01_A_Q1_005", "MOTHER_01_A_Q1_006", "MOTHER_01_A_Q1_007", "MOTHER_01_A_Q1_008", "MOTHER_01_A_Q1_009", "MOTHER_01_A_Q1_010"])
@@ -270,7 +269,8 @@ ExtResource("4_pd8jw"): NodePath("MotherFinalInstance")
 look_at_position = NodePath("ModelContainer/MotherModel/Armature-mother/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
 look_at_modifier = NodePath("ModelContainer/MotherModel/Armature-mother/Skeleton3D/LookAtModifier3D")
 
-[node name="NpcConversation" parent="NpcInstanceController/NpcInstance" index="0"]
+[node name="NpcConversation" parent="NpcInstanceController/NpcInstance" index="0" node_paths=PackedStringArray("npc_instance")]
+npc_instance = NodePath("..")
 conversation = SubResource("Resource_h6wsf")
 neutral_wellcome_dialog = SubResource("Resource_klkhp")
 override_wellcome_dialog = SubResource("Resource_5v5w3")

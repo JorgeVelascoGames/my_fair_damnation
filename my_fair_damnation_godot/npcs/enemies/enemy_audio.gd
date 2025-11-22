@@ -16,6 +16,13 @@ func _ready() -> void:
 	footsteps_timer.timeout.connect(footstep_sound)
 
 
+func shut_down_audio() -> void:
+	footsteps_audio_stream_player_3d.stop()
+	attack_audio_stream_player_3d.stop()
+	stun_audio_stream_player_3d.stop()
+	growl_audio_stream_player_3d.stop()
+
+
 func start_footsteps() -> void:
 	footsteps_timer.start(footsteps_walking_timer)
 

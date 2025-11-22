@@ -1060,9 +1060,6 @@ instance_by_current_event = {
 ExtResource("11_4gj6u"): NodePath("MotherFinalInstance")
 }
 
-[node name="NpcConversation" parent="Npcs/MotherNpc/NpcInstanceController/NpcInstance" index="0" node_paths=PackedStringArray("npc_instance")]
-npc_instance = NodePath("..")
-
 [node name="Interactable" parent="Npcs/MotherNpc/NpcInstanceController/NpcInstance" index="2"]
 interactable_hint = "INTERACTABLE_001"
 

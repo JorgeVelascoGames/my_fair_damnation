@@ -24,6 +24,7 @@ func _process(_delta: float) -> void:
 
 func on_day_started() -> void:
 	day_music_audio_stream_player.play()
+	doom_music_audio_stream_player.stop()
 
 
 func on_doom_started() -> void:

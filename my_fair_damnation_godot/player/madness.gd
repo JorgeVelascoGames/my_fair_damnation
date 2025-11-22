@@ -115,3 +115,4 @@ func save_madness() -> void:
 
 func _load(data : SavedData) -> void:
 	current_madness = data.player_madness
+	madness_bar.value = current_madness

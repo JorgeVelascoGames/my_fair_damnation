@@ -81,6 +81,7 @@ metadata/_custom_type_script = "uid://dp06cusk8bfxi"
 
 [node name="EnemyStuned" type="Node" parent="StateMachine"]
 script = ExtResource("11_6yflr")
+stun_duration = 8.0
 metadata/_custom_type_script = "uid://c2vi8enjkwi25"
 
 [node name="EnemyInvestigating" type="Node" parent="StateMachine"]
@@ -96,6 +97,7 @@ metadata/_custom_type_script = "uid://bocruyrvkv2g2"
 
 [node name="EnemyCooldown" type="Node" parent="StateMachine"]
 script = ExtResource("9_gf88j")
+cooldown_duration = 6.0
 metadata/_custom_type_script = "uid://chlifdilnl2b4"
 
 [node name="EnemyBehaviourManager" type="Node3D" parent="."]
@@ -214,6 +216,7 @@ script = ExtResource("16_rovcg")
 script = ExtResource("17_aorwd")
 
 [node name="FootstepsAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="EnemyAudio"]
+max_distance = 12.0
 
 [node name="AttackAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="EnemyAudio"]
 

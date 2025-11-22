@@ -69,6 +69,7 @@ func _activate_instance() -> void:
 
 
 func disable_instance() -> void:
+	enemy_audio.shut_down_audio()
 	global_position = original_pos
 	enemy_model.hide()
 	state_machine.process_mode = Node.PROCESS_MODE_DISABLED

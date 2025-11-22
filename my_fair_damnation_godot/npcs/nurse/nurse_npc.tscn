@@ -550,7 +550,7 @@ main_instance = NodePath("MainInstance")
 behaviour_at_night = 1
 use_passed_event_instance_array = true
 instance_by_passed_event = {
-ExtResource("19_4x07n"): NodePath("")
+ExtResource("19_4x07n"): null
 }
 
 [node name="MainInstance" parent="NpcInstanceController" index="0" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("2_dxg7u")]
@@ -1421,17 +1421,12 @@ interactable_hint = "INTERACTABLE_001"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5159, 0.0840454)
 shape = SubResource("BoxShape3D_r7tad")
 
-[node name="NpcInstanceAudioController" parent="NpcInstanceController/FirstDayInstance" index="5"]
-idle_sound_during_conversation = true
-
 [node name="NpcIdleAudioStreamPlayer3D" parent="NpcInstanceController/FirstDayInstance/NpcInstanceAudioController" index="0"]
 stream = ExtResource("26_3kl3i")
 unit_size = 3.5
 
 [node name="DialogAudioStreamPlayer3D" parent="NpcInstanceController/FirstDayInstance/NpcInstanceAudioController" index="1"]
 stream = SubResource("AudioStreamRandomizer_pdryo")
-volume_db = -9.0
-unit_size = 2.0
 
 [node name="FinalInstance" parent="NpcInstanceController" index="2" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("2_dxg7u")]
 instance_id = 2
