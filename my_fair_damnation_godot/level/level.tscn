@@ -167,7 +167,7 @@ height = 3.505371
 radius = 1.2548828
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4tv08"]
-size = Vector3(0.8984375, 2.430725, 3.7885742)
+size = Vector3(0.5942383, 2.430725, 3.7885742)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ombt2"]
 render_priority = 0
@@ -7461,14 +7461,17 @@ ExtResource("24_3bd15"): NodePath("SurpriseInstance")
 [node name="ModelContainer" parent="Npcs/UntieNpc/NpcInstanceController/MainInstance" index="1"]
 transform = Transform3D(-3.4828567e-08, 0.79678476, 0, -0.79678476, -3.4828567e-08, 0, 0, 0, 0.79678476, -2.836914, 3.2902024, 0.9630928)
 
+[node name="UntieModel" parent="Npcs/UntieNpc/NpcInstanceController/MainInstance/ModelContainer" index="0"]
+transform = Transform3D(0.539132, 0, 0, 0, 0.539132, 0, 0, 0, 0.539132, 2.9927838e-17, -0.062083375, 0)
+
 [node name="CollisionShape3D" parent="Npcs/UntieNpc/NpcInstanceController/MainInstance/Interactable" index="0"]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.7955074, 2.819137, 1.7953377)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.704687, 2.6346507, 2.6241302)
 
 [node name="NpcStaticBody3D" parent="Npcs/UntieNpc/NpcInstanceController/MainInstance" index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4803314, 0, 0)
 
 [node name="CollisionShape3D" parent="Npcs/UntieNpc/NpcInstanceController/MainInstance/NpcStaticBody3D" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.05078125, 3.2183144, 1.3942871)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20288086, 3.2183144, 1.3942871)
 shape = SubResource("BoxShape3D_4tv08")
 
 [node name="DialogAudioStreamPlayer3D" parent="Npcs/UntieNpc/NpcInstanceController/MainInstance/NpcInstanceAudioController" index="1"]

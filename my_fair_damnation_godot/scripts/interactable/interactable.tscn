@@ -13,3 +13,7 @@ metadata/_custom_type_script = "uid://ctth7s2y2yypt"
 [node name="InteractedAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 
 [node name="HoldInteractionAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+
+[node name="InteractionCDTimer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true

@@ -25,15 +25,22 @@ signal interacted
 
 @onready var interacted_audio_stream_player_3d: AudioStreamPlayer3D = $InteractedAudioStreamPlayer3D
 @onready var hold_interaction_audio_stream_player_3d: AudioStreamPlayer3D = $HoldInteractionAudioStreamPlayer3D
+@onready var interaction_cd_timer: Timer = $InteractionCDTimer
 
 
 func interact() -> void:
+	if interaction_cd_timer.time_left > 0:
+		return
+	interaction_cd_timer.start()
 	interacted.emit()
 	hold_interaction_audio_stream_player_3d.stop()
 	interacted_audio_stream_player_3d.play()
 
 
 func start_interaction() -> void:
+	if interaction_cd_timer.time_left > 0:
+		return
+	interaction_cd_timer.start()
 	start_interacting.emit()
 	hold_interaction_audio_stream_player_3d.play()
 

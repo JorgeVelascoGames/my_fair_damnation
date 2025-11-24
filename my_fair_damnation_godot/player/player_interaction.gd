@@ -10,6 +10,7 @@ var current_interactable : Interactable
 func try_interact() -> void:
 	var collision = interact_raycast.get_collider()
 	print(collision)
+	print("AAAAAAAAAAAAAAAAAAAAAÑSDJFÑAOSFJIAÑSOFJIAÑSOJIFASOÑ")
 	if collision is not Interactable:
 		return
 	

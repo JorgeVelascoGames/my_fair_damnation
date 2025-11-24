@@ -29,9 +29,9 @@ func _ready() -> void:
 
 
 func _on_interactable_start_interacting() -> void:
+	await get_tree().process_frame
 	if only_at_night and DayNightCycleController.current_period != DayNightCycleController.NIGHT:
 		player.player_state_machine.state.cancel_interaction()
-		interactable.interrupt_interaction()
 		player.player_ui.display_gameplay_text(tr("cant_open_at_day"))
 		return
 	if key_item != null:
