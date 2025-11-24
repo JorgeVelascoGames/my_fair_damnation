@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://bk7ejvoblj6yv"]
+[gd_scene load_steps=106 format=3 uid="uid://bk7ejvoblj6yv"]
 
 [ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_cgkc7"]
 [ext_resource type="Resource" uid="uid://dgcxpw5fber7m" path="res://npcs/ids/neighboor.tres" id="2_figll"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://jg4ut8vflvc0" path="res://items/item_vault/quest_items/rotten_meat.tres" id="10_r7hpq"]
 [ext_resource type="Resource" uid="uid://b5awmxn47fc65" path="res://events/events_resources/quests/neighboor_meal_quest_started.tres" id="11_lhaag"]
 [ext_resource type="Resource" uid="uid://c1pbnoh1usyr2" path="res://items/item_vault/quest_items/asado.tres" id="12_1njmq"]
+[ext_resource type="Script" uid="uid://cvxch8ou2bjsu" path="res://npcs/neighboor_main_instance.gd" id="12_qqlo8"]
 [ext_resource type="Resource" uid="uid://410u6q6uxm4x" path="res://events/events_resources/quests/grandpa_medal_given.tres" id="13_hff2b"]
 [ext_resource type="Resource" uid="uid://ctqrk64nxs82b" path="res://events/events_resources/quests/grandpa_medal_asked.tres" id="14_7pcrn"]
 [ext_resource type="Resource" uid="uid://bhowl2dvadj1l" path="res://items/item_vault/quest_items/war_medal.tres" id="15_yd4on"]
@@ -104,6 +105,7 @@ dialog_description = "El diálogo de \"por qué estas aquí\" que solo se puede 
 dialog_id = "VECINO_01_A_Q4_"
 player_dialog_option = "VECINO_01_A_Q4_"
 dialog_text = Array[String](["VECINO_01_A_Q4_001", "VECINO_01_A_Q4_002", "VECINO_01_A_Q4_003", "VECINO_01_A_Q4_004", "VECINO_01_A_Q4_005", "VECINO_01_A_Q4_006", "VECINO_01_A_Q4_007", "VECINO_01_A_Q4_008", "VECINO_01_A_Q4_009"])
+items_lock_dialog = Array[ExtResource("5_fky5q")]([ExtResource("21_kitnj")])
 reputation_level_to_unlock = Array[int]([0])
 reputation_with_player_changed = 5.0
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
@@ -591,6 +593,12 @@ free_event = ExtResource("28_lcq2t")
 
 [node name="NeighboorMainInstance" parent="NpcInstanceController" index="0" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("2_iqveq")]
 top_level = true
+script = ExtResource("12_qqlo8")
+skyler_photos = null
+depraved_position = Vector3(0, 0, 0)
+depraved_rotation = Vector3(0, 0, 0)
+sitting_position = Vector3(0, 0, 0)
+sittin_rotation = Vector3(0, 0, 0)
 look_at_position = NodePath("ModelContainer/NeighboorModel/rig/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
 look_at_modifier = NodePath("ModelContainer/NeighboorModel/rig/Skeleton3D/LookAtModifier3D")
 

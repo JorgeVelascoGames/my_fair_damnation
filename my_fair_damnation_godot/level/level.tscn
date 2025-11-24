@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://7rrnupx3ogcl" path="res://props/bed.tscn" id="22_o0wo3"]
 [ext_resource type="PackedScene" uid="uid://uaadcyhabn2k" path="res://props/wheelchair.tscn" id="23_kdsbj"]
 [ext_resource type="Resource" uid="uid://d38flcksv7rqk" path="res://events/events_resources/game_flow_events/stole_stew_recipy.tres" id="24_3bd15"]
+[ext_resource type="Shape3D" uid="uid://c5ra3cph4d0it" path="res://npcs/neighboor/neighboor_depraved_col.tres" id="24_eq1eu"]
 [ext_resource type="PackedScene" uid="uid://dvhlfxajaqexu" path="res://props/round_table.tscn" id="24_ml0fe"]
 [ext_resource type="PackedScene" uid="uid://ck40lyerj5ml4" path="res://props/walker.tscn" id="25_kdsbj"]
 [ext_resource type="Texture2D" uid="uid://bdkoifekpd5n2" path="res://assets/npcs/untie_butcher.png" id="25_xhxav"]
@@ -140,9 +141,6 @@ shader_parameter/edgeEmissionSlider = 1.6899999622251198
 shader_parameter/enable_dissolve_animation = false
 shader_parameter/animation_speed = 1.0
 shader_parameter/animation_intensity = 0.2
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3bd15"]
-height = 2.0805664
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3xl46"]
 size = Vector3(1, 2.5151367, 1.341919)
@@ -5364,8 +5362,14 @@ materials_to_dislove = Array[Material]([SubResource("ShaderMaterial_qrnsu")])
 [node name="NeighboorNpc" parent="Npcs" instance=ExtResource("13_qslh7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.71289, 0, -3.48979)
 
-[node name="NeighboorMainInstance" parent="Npcs/NeighboorNpc/NpcInstanceController" index="0"]
-transform = Transform3D(-1, 0, 8.742279e-08, 0, 1, 0, -8.742279e-08, 0, -1, 5.468745, 0, -8.034439)
+[node name="NeighboorMainInstance" parent="Npcs/NeighboorNpc/NpcInstanceController" index="0" node_paths=PackedStringArray("animation_player")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.469, 0, -8.034)
+skyler_photos = ExtResource("57_vw7b7")
+depraved_position = Vector3(5.469, 0, -8.034)
+depraved_rotation = Vector3(0, 180, 0)
+sitting_position = Vector3(7.6222324, 1.0664799, -6.5720806)
+sittin_rotation = Vector3(0, -90, 0)
+animation_player = NodePath("ModelContainer/NeighboorModel/AnimationPlayer")
 
 [node name="Skeleton3D" parent="Npcs/NeighboorNpc/NpcInstanceController/NeighboorMainInstance/ModelContainer/NeighboorModel/rig" index="0"]
 bones/1/position = Vector3(0, 0.061837893, 0.7785208)
@@ -5704,8 +5708,11 @@ bones/408/rotation = Quaternion(-0.64730245, 0, 0, 0.7622333)
 transform = Transform3D(0.9986352, 0.020894097, -0.00068252534, 0.0026406199, 0.62718755, -0.8109914, 0.011077531, 0.7819173, 0.5884197, -0.016378757, 1.332144, 0.32132652)
 
 [node name="CollisionShape3D" parent="Npcs/NeighboorNpc/NpcInstanceController/NeighboorMainInstance/Interactable" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11035395, 2.1525614, -0.06591797)
-shape = SubResource("CapsuleShape3D_3bd15")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11035395, 2.4067056, 0.2635932)
+shape = ExtResource("24_eq1eu")
+
+[node name="CollisionShape3D" parent="Npcs/NeighboorNpc/NpcInstanceController/NeighboorMainInstance/NpcStaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48506862, 0)
 
 [node name="NeighboorChapelInstance" parent="Npcs/NeighboorNpc/NpcInstanceController" index="1"]
 transform = Transform3D(-0.86058193, 0, -0.5093119, 0, 1, 0, 0.5093119, 0, -0.86058193, 27.612854, 10.019502, -59.76037)
