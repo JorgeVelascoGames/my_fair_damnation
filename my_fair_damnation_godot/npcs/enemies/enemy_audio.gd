@@ -17,6 +17,8 @@ func _ready() -> void:
 
 
 func shut_down_audio() -> void:
+	footsteps_timer.stop()
+	await get_tree().process_frame
 	footsteps_audio_stream_player_3d.stop()
 	attack_audio_stream_player_3d.stop()
 	stun_audio_stream_player_3d.stop()

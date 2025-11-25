@@ -8,13 +8,19 @@ class_name EnemyWalk
 var target_position: Vector3
 
 
+func _ready():
+	await get_tree().create_timer(4).timeout
+	target_position = enemy.global_position
+
+
 func enter(_msg = {}) -> void:
 	enemy.enemy_audio.start_footsteps()
 	enemy_animator_controller.play_walk_animation()
 	enemy.enemy_detection.found_player.connect(start_chasing)
 	enemy_navigation.avoidance_mask = 1
 	var my_name = owner.name
-	target_position = _msg["position"]
+	if is_instance_valid(_msg["position"]):
+		target_position = _msg["position"]
 	enemy.enemy_navigation.move_to(target_position, walk_speed)
 	enemy.enemy_navigation.target_reached.connect(position_reached)
 

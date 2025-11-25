@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://kvvoindymdyn"]
+[gd_scene load_steps=27 format=3 uid="uid://kvvoindymdyn"]
 
 [ext_resource type="Script" uid="uid://csoqysh6haony" path="res://npcs/enemies/enemy.gd" id="1_2mvqj"]
 [ext_resource type="Script" uid="uid://cfpxc5rma3gwx" path="res://npcs/enemies/enemy_detection.gd" id="2_ofsxj"]
@@ -17,11 +17,6 @@
 [ext_resource type="Script" uid="uid://c2dppu0yjrily" path="res://npcs/enemies/enemy_animator_controller.gd" id="16_rovcg"]
 [ext_resource type="Script" uid="uid://dy1wmlv4nd50" path="res://npcs/enemies/enemy_hitbox.gd" id="16_wjonb"]
 [ext_resource type="Script" uid="uid://b3tubtc0o4lab" path="res://npcs/enemies/enemy_audio.gd" id="17_aorwd"]
-
-[sub_resource type="GDScript" id="GDScript_78jik"]
-script/source = "extends Node
-class_name EnemyInvestigating
-"
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_aorwd"]
 radius = 7.4031034
@@ -67,37 +62,41 @@ script = ExtResource("4_p200p")
 initial_state = NodePath("EnemyIdle")
 metadata/_custom_type_script = "uid://bg3fbiqsn6lr1"
 
-[node name="EnemyChasing" type="Node" parent="StateMachine"]
+[node name="EnemyChasing" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("5_5ffra")
+enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://bea0182g7khbb"
 
-[node name="EnemyDying" type="Node" parent="StateMachine"]
+[node name="EnemyDying" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("6_e355f")
+enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://72s7scu7yyg3"
 
-[node name="EnemyIdle" type="Node" parent="StateMachine"]
+[node name="EnemyIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("7_78jik")
+enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://dp06cusk8bfxi"
 
-[node name="EnemyStuned" type="Node" parent="StateMachine"]
+[node name="EnemyStuned" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("11_6yflr")
 stun_duration = 8.0
+enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://c2vi8enjkwi25"
 
-[node name="EnemyInvestigating" type="Node" parent="StateMachine"]
-script = SubResource("GDScript_78jik")
-
-[node name="EnemyWalk" type="Node" parent="StateMachine"]
+[node name="EnemyWalk" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("11_xoplw")
+enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://bpj84h4tx21b4"
 
-[node name="EnemyAttack" type="Node" parent="StateMachine"]
+[node name="EnemyAttack" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("12_6yflr")
+enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://bocruyrvkv2g2"
 
-[node name="EnemyCooldown" type="Node" parent="StateMachine"]
+[node name="EnemyCooldown" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("9_gf88j")
 cooldown_duration = 6.0
+enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://chlifdilnl2b4"
 
 [node name="EnemyBehaviourManager" type="Node3D" parent="."]

@@ -24,7 +24,8 @@ var mat : StandardMaterial3D
 
 
 func _ready() -> void:
-	mat = mr_frank.material_override
+	mat = mr_frank.material_override.duplicate(true)
+	mr_frank.material_override = mat #Para que no pase eso de que todos compartan material y se disuelvan a la vez
 	await get_tree().create_timer(3).timeout
 	player = await PathfindingManager.get_player()
 	look_at_modifier_3d.target_node = player.player_head_area.get_path()

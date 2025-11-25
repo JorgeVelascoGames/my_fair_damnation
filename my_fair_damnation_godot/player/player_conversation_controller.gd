@@ -223,11 +223,11 @@ func can_show_dialog(dialog : Dialog) -> bool:
 				return false
 	
 	# Consumed
-	if consumed_dialogs.has(dialog):
+	if dialog.one_time_dialog and consumed_dialogs.has(dialog):
 		print("%s can't be shown: This dialog can only been seen once" % [dialog.dialog_id])
 		return false
 	# Once per day
-	if once_per_day_dialogs.has(dialog):
+	if dialog.once_per_day_dialog and once_per_day_dialogs.has(dialog):
 		print("%s can't be shown: This dialog can only been seen once per day" % [dialog.dialog_id])
 		return false
 	# Events related
@@ -274,19 +274,13 @@ func can_show_dialog(dialog : Dialog) -> bool:
 
 
 func finish_conversation() -> void:
-	dialog_options_scroll.hide()
-	player.player_ui.npc_text_display.hide()
-	save_dialogs()
-	npc_conversation.end_conversation.emit()
-	if npc_conversation.npc_instance:
-		npc_conversation.npc_instance.npc_instance_audio_controller._on_stop_conversation()
-	
-	await get_tree().process_frame
-	player.player_state_machine.transition_to(current_dialog.player_state_post_conversation, {})
+	#player.player_state_machine.transition_to(current_dialog.player_state_post_conversation, {})
+	player.player_state_machine.state.on_exit_conversation(current_dialog.player_state_post_conversation)
+
 
 func on_day_start() -> void:
 	once_per_day_dialogs.clear()
-	save_dialogs()
+	SaveDataServer.clean_once_per_day_dialogs()
 
 
 func save_dialogs() -> void:

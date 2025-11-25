@@ -162,14 +162,18 @@ func save_day_night_cicle() -> void:
 func save_dialogs(consumed_dialogs : Array[Dialog], once_per_day_dialogs : Array[Dialog], seen_dialogs : Array[Dialog]) -> void:
 	for dialog in consumed_dialogs:
 		local_saved_data.consumed_dialogs.append(dialog.dialog_id)
-
-	local_saved_data.once_per_day_dialogs.clear()
+	
 	for dialog in once_per_day_dialogs:
 		local_saved_data.once_per_day_dialogs.append(dialog.dialog_id)
 	
-	local_saved_data.seen_dialogs.clear()
 	for dialog in seen_dialogs:
 		local_saved_data.seen_dialogs.append(dialog.dialog_id)
+
+
+#Dont know why I do this instead of cleaning the array in the save_dialog method, but I fear a bug
+func clean_once_per_day_dialogs() -> void:
+	local_saved_data.once_per_day_dialogs.clear()
+	save_game()
 
 
 func save_localization(localization : String) -> void:

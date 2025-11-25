@@ -2,7 +2,7 @@ extends State
 class_name EnemyState
 
 
-var enemy : Enemy
+@export var enemy : Enemy
 
 @onready var enemy_animator_controller: EnemyAnimatorController = $"../../EnemyAnimatorController"
 

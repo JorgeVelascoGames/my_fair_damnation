@@ -144,6 +144,8 @@ func save_state() -> void:
 
 
 func _load(data : SavedData) -> void:
+	for shadow in shadows:
+		shadow.disable(false)
 	if not data.lights_state.keys().has(light_id):
 		return
 	if data.lights_state[light_id] == true:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=162 format=3 uid="uid://bmktuh2cguuxm"]
+[gd_scene load_steps=165 format=3 uid="uid://bmktuh2cguuxm"]
 
 [ext_resource type="Environment" uid="uid://dgn6auhynv3ch" path="res://assets/world_environment_day.tres" id="1_rhqlf"]
 [ext_resource type="Script" uid="uid://cxhbymvyqxl8f" path="res://level/level.gd" id="1_xii2b"]
@@ -121,6 +121,11 @@ geometry_source_group_name = &"stairs"
 agent_radius = 0.0
 agent_max_slope = 60.0
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_ofsxj"]
+radius = 0.3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wjonb"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kdkvt"]
 radius = 0.69433594
 
@@ -209,6 +214,10 @@ shader_parameter/animation_intensity = 0.2
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gan73"]
 radius = 0.57470703
 height = 1.6094971
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_eq1eu"]
+radius = 1.9106445
+height = 24.55774
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xilp"]
 size = Vector3(1.97, 4.691, 1.0560029)
@@ -734,10 +743,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.05886, -0.238274, 0)
 omni_range = 12.0
 
 [node name="FrankShadow" parent="Lights/InteractableLights/InteractableLight3/ShadowsContainer" index="0"]
-transform = Transform3D(-0.998624, 0, 0.052440573, 0, 1, 0, -0.052440573, 0, -0.998624, -5.0667076, -5.0373654, 3.2245135)
+transform = Transform3D(-0.998624, 0, 0.052440573, 0, 1, 0, -0.052440573, 0, -0.998624, -2.0862942, -5.0373654, 3.2245133)
 
 [node name="FrankShadow2" parent="Lights/InteractableLights/InteractableLight3/ShadowsContainer" index="1" instance=ExtResource("17_bm65w")]
-transform = Transform3D(-0.9139, 0, 0.40593928, 0, 1, 0, -0.40593928, 0, -0.9139, -33.30519, -5.0373654, 0.5939106)
+transform = Transform3D(-0.9139, 0, 0.40593928, 0, 1, 0, -0.40593928, 0, -0.9139, -30.60765, -5.0373654, -0.2026236)
 
 [node name="MainLight2" type="OmniLight3D" parent="Lights/InteractableLights/InteractableLight3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.38461, -0.238274, 0)
@@ -1079,6 +1088,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.201725, -0.61269844, -19.
 
 [node name="EnemyNavigation" parent="Npcs/MotherNpc/MotherEnemy" index="2"]
 path_desired_distance = 0.7
+
+[node name="MeshInstance3D" parent="Npcs/MotherNpc/MotherEnemy" index="4"]
+mesh = SubResource("CapsuleMesh_ofsxj")
+surface_material_override/0 = SubResource("StandardMaterial3D_wjonb")
 
 [node name="EnemyDebug" parent="Npcs/MotherNpc/MotherEnemy" index="5"]
 debug_enemy = false
@@ -4550,6 +4563,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 44.209053, 0.267043, -22.5094
 [node name="EnemyNavigation" parent="Npcs/GrandpaNpc/GrandpaEnemy" index="2"]
 path_desired_distance = 0.7
 
+[node name="MeshInstance3D" parent="Npcs/GrandpaNpc/GrandpaEnemy" index="4"]
+mesh = SubResource("CapsuleMesh_ofsxj")
+surface_material_override/0 = SubResource("StandardMaterial3D_wjonb")
+
 [node name="Skeleton3D" parent="Npcs/GrandpaNpc/GrandpaEnemy/EnemyModel/GrandpaModel/granpda-rig" index="0"]
 bones/1/position = Vector3(9.970025e-18, -0.05388564, 1.7363989)
 bones/1/rotation = Quaternion(0.70710677, 0, 0, 0.70710677)
@@ -7146,6 +7163,10 @@ floor_max_angle = 1.22173
 [node name="EnemyNavigation" parent="Npcs/NeighboorNpc/NeighboorEnemy" index="2"]
 path_desired_distance = 0.7
 
+[node name="MeshInstance3D" parent="Npcs/NeighboorNpc/NeighboorEnemy" index="4"]
+mesh = SubResource("CapsuleMesh_ofsxj")
+surface_material_override/0 = SubResource("StandardMaterial3D_wjonb")
+
 [node name="Skeleton3D" parent="Npcs/NeighboorNpc/NeighboorEnemy/EnemyModel/NeighboorModel/rig" index="0"]
 bones/1/position = Vector3(0, 0.051032066, 0.93364686)
 bones/1/rotation = Quaternion(0.79045534, 0, 0, 0.6125197)
@@ -7457,6 +7478,9 @@ bones/408/rotation = Quaternion(-0.70710677, 0, 0, 0.70710677)
 [node name="BoneAttachment3D" parent="Npcs/NeighboorNpc/NeighboorEnemy/EnemyModel/NeighboorModel/rig/Skeleton3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 0.9999999, 1.1920929e-07, 0, -1.1920929e-07, 0.99999994, 0, 1.6468016, 0.02283495)
 
+[node name="FootstepsAudioStreamPlayer3D" parent="Npcs/NeighboorNpc/NeighboorEnemy/EnemyAudio" index="0"]
+volume_db = 5.0
+
 [node name="UntieNpc" parent="Npcs" instance=ExtResource("14_kdj2k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.9525, 0, -40.0207)
 
@@ -7676,6 +7700,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8068924, 0.13523775, 25.557
 
 [node name="EnemyNavigation" parent="Npcs/UntieNpc/UntieEnemy" index="2"]
 path_desired_distance = 0.7
+
+[node name="MeshInstance3D" parent="Npcs/UntieNpc/UntieEnemy" index="4"]
+mesh = SubResource("CapsuleMesh_ofsxj")
+surface_material_override/0 = SubResource("StandardMaterial3D_wjonb")
 
 [node name="Skeleton3D" parent="Npcs/UntieNpc/UntieEnemy/EnemyModel/UntieModel/Armature_001" index="0"]
 bones/0/position = Vector3(0, 0.66474265, 0.19696079)
@@ -8227,9 +8255,26 @@ transform = Transform3D(1, 0, -2.9802322e-08, 0, 1, 0, 2.9802322e-08, 0, 1, 0, 1
 shape = SubResource("CapsuleShape3D_gan73")
 
 [node name="SkylerEnemy" parent="Npcs/SkylerNpc" index="4"]
-transform = Transform3D(0.2101987, 0, -0.9776585, 0, 1, 0, 0.9776585, 0, 0.2101987, -18.42558, -0.13815212, -7.5492783)
+transform = Transform3D(-4.3711374e-08, 0, 0.99999976, 0, 1, 0, -0.99999976, 0, -4.3711374e-08, 83.112885, -0.07494736, -26.096954)
 visible = true
 floor_max_angle = 1.22173
+
+[node name="EnemyChasing" parent="Npcs/SkylerNpc/SkylerEnemy/StateMachine" index="0"]
+chasing_speed = 1.2
+
+[node name="EnemyIdle" parent="Npcs/SkylerNpc/SkylerEnemy/StateMachine" index="2"]
+start_chase_delay = 9.0
+
+[node name="EnemyDetection" parent="Npcs/SkylerNpc/SkylerEnemy" index="3"]
+time_to_lose_track = 70.0
+
+[node name="CollisionShape3D" parent="Npcs/SkylerNpc/SkylerEnemy/EnemyDetection/Vision/VisionDetectionArea" index="0"]
+transform = Transform3D(0.999975, -1.1901591e-12, 4.1292856e-20, 0, -4.37114e-08, -1, 1.1901591e-12, 0.999975, -4.370991e-08, 0, 5.9604645e-07, -11.281006)
+shape = SubResource("CapsuleShape3D_eq1eu")
+
+[node name="MeshInstance3D" parent="Npcs/SkylerNpc/SkylerEnemy" index="4"]
+mesh = SubResource("CapsuleMesh_ofsxj")
+surface_material_override/0 = SubResource("StandardMaterial3D_wjonb")
 
 [node name="FrankNpc" parent="Npcs" instance=ExtResource("28_5xilp")]
 
@@ -8366,6 +8411,7 @@ volume_db = -5.0
 stream = ExtResource("47_j3wyd")
 volume_db = 8.0
 unit_size = 4.0
+autoplay = true
 max_distance = 2.0
 
 [node name="GunEnvironmentConversation" parent="Mechanics/ConversationsInteractables" instance=ExtResource("12_rhqlf")]
@@ -8638,6 +8684,10 @@ path_desired_distance = 0.7
 [node name="CollisionShape3D" parent="TrapEnemies/EnemySpawner/FrankRegularEnemy/EnemyDetection/Vision/VisionDetectionArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.861023e-06, 0, -21.511147)
 shape = SubResource("CapsuleShape3D_3xgxc")
+
+[node name="MeshInstance3D" parent="TrapEnemies/EnemySpawner/FrankRegularEnemy" index="4"]
+mesh = SubResource("CapsuleMesh_ofsxj")
+surface_material_override/0 = SubResource("StandardMaterial3D_wjonb")
 
 [node name="Skeleton3D" parent="TrapEnemies/EnemySpawner/FrankRegularEnemy/EnemyModel/FrankModel/Armature" index="0"]
 bones/0/position = Vector3(0.1548085, 0.17128342, -0.08892746)
@@ -9046,6 +9096,8 @@ stream = ExtResource("86_ehj4q")
 [editable path="Npcs/SkylerNpc/NpcInstanceController/FinalInstance"]
 [editable path="Npcs/SkylerNpc/NpcInstanceController/FinalInstance/ModelContainer/SkylerModel"]
 [editable path="Npcs/SkylerNpc/NpcInstanceController/FinalInstance/Interactable"]
+[editable path="Npcs/SkylerNpc/SkylerEnemy"]
+[editable path="Npcs/SkylerNpc/SkylerEnemy/EnemyModel/SkylerModel"]
 [editable path="Npcs/FrankNpc"]
 [editable path="Npcs/FrankNpc/NpcInstanceController/NpcInstance"]
 [editable path="Npcs/FrankNpc/NpcInstanceController/NpcInstance/ModelContainer/FrankModel"]

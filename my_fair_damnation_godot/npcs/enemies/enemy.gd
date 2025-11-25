@@ -9,6 +9,7 @@ class_name Enemy
 @onready var enemy_detection: EnemyDetection = $EnemyDetection
 @onready var state_machine: StateMachine = %StateMachine
 @onready var enemy_audio: EnemyAudio = $EnemyAudio
+@onready var enemy_behaviour_manager: EnemyBehaviourManager = $EnemyBehaviourManager
 
 var original_pos : Vector3
 
@@ -66,6 +67,7 @@ func _activate_instance() -> void:
 	state_machine.process_mode = Node.PROCESS_MODE_INHERIT
 	enemy_navigation.process_mode = Node.PROCESS_MODE_INHERIT
 	enemy_detection.process_mode = Node.PROCESS_MODE_INHERIT
+	enemy_behaviour_manager.activate_behaviour()
 
 
 func disable_instance() -> void:

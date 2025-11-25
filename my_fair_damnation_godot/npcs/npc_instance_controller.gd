@@ -165,7 +165,7 @@ func calculate_meds_reputation_change() -> void:
 	npc.npc_reputation.reputation_change(-15)
 	print_rich("[color=red]%s didn't get meds last day: reputation has changed[/color]" % npc.id.npc_name)
 	var player : Player = await PathfindingManager.get_player()
-	var player_ui : PlayerUI = player.player.ui
+	var player_ui : PlayerUI = player.player_ui
 	player_ui.display_gameplay_text(tr(missing_meds_message), 8.5)
 
 

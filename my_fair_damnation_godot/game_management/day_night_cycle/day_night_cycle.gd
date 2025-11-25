@@ -29,10 +29,10 @@ const NIGHT = period.NIGHT
 const MAX_DAYS := 15
 
 @export var day_count := 0
-@export var day_duration_in_seconds := 630.00
+@export var day_duration_in_seconds := 645.00
 @export var night_duration_in_seconds := 450.00
-@export var doom_duration_in_seconds := 40.00
-@export var madness_cost_per_second := 10.00
+@export var doom_duration_in_seconds := 50.00
+@export var madness_cost_per_second := 6.00
 
 @onready var day_night_cycle_timer: Timer = $DayNightCycleTimer
 
@@ -70,13 +70,13 @@ const night_time_over_messages = [
 
 ## Showed to the player when day or night time is over
 const exhaustion_messages = [
-	"run_exhaustion_001",
-	"run_exhaustion_002",
-	"run_exhaustion_003",
-	"run_exhaustion_004",
-	"run_exhaustion_005",
-	"run_exhaustion_006",
-	"run_exhaustion_007"
+	"exhaustion_001",
+	"exhaustion_002",
+	"exhaustion_003",
+	"exhaustion_004",
+	"exhaustion_005",
+	"exhaustion_006",
+	"exhaustion_007"
 ]
 
 

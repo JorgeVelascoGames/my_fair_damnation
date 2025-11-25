@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://bk7ejvoblj6yv"]
+[gd_scene load_steps=105 format=3 uid="uid://bk7ejvoblj6yv"]
 
 [ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_cgkc7"]
 [ext_resource type="Resource" uid="uid://dgcxpw5fber7m" path="res://npcs/ids/neighboor.tres" id="2_figll"]
@@ -514,13 +514,6 @@ stream_12/weight = 1.6
 stream_13/stream = ExtResource("53_7bhvw")
 stream_13/weight = 1.6
 
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_clq60"]
-streams_count = 4
-stream_0/stream = ExtResource("50_nwja0")
-stream_1/stream = ExtResource("51_y8vrv")
-stream_2/stream = ExtResource("52_jg4s3")
-stream_3/stream = ExtResource("53_7bhvw")
-
 [sub_resource type="Resource" id="Resource_1ms65"]
 script = ExtResource("3_tr737")
 dialog_description = "adios	"
@@ -949,22 +942,20 @@ interactable_hint = "INTERACTABLE_001"
 [node name="NpcInstanceAudioController" parent="NpcInstanceController/NeighboorMainInstance" index="5"]
 idle_sound_during_conversation = true
 
-[node name="NpcIdleAudioStreamPlayer3D" parent="NpcInstanceController/NeighboorMainInstance/NpcInstanceAudioController" index="0"]
-stream = ExtResource("54_u4wb5")
-volume_db = 2.0
-unit_size = 12.0
-max_distance = 18.0
-
 [node name="DialogAudioStreamPlayer3D" parent="NpcInstanceController/NeighboorMainInstance/NpcInstanceAudioController" index="1"]
 stream = SubResource("AudioStreamRandomizer_mqujp")
+volume_db = 3.0
 
-[node name="DepravedAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="NpcInstanceController/NeighboorMainInstance/NpcInstanceAudioController" index="2"]
-stream = SubResource("AudioStreamRandomizer_clq60")
+[node name="NormalIdleStreamPlayer3D" type="AudioStreamPlayer3D" parent="NpcInstanceController/NeighboorMainInstance/NpcInstanceAudioController" index="2"]
+stream = ExtResource("35_awr2w")
 volume_db = -3.0
 unit_size = 5.0
 
 [node name="IdleDepravedAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="NpcInstanceController/NeighboorMainInstance/NpcInstanceAudioController" index="3"]
 stream = ExtResource("54_u4wb5")
+volume_db = 2.0
+unit_size = 12.0
+max_distance = 18.0
 
 [node name="NeighboorChapelInstance" parent="NpcInstanceController" index="1" instance=ExtResource("2_iqveq")]
 top_level = true

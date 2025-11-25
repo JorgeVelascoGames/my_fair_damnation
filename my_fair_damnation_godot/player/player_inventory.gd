@@ -6,22 +6,24 @@ class_name PlayerInventory
 
 func give_item(item: Item) -> void:
 	items.append(item)
-	player.player_audio.drop_item()
-	player.player_ui.display_gameplay_text("%s %s(s)" % [tr("ITEM_OBTAIN"), tr(item.ui_item_name)])
+	player.player_audio.get_item()
+	player.player_ui.display_gameplay_text("%s %s" % [tr("ITEM_OBTAIN"), tr(item.ui_item_name)])
 	save_inventory()
 
 
 ## Adds the item to the array without triggering the text display
 func add_item_raw(item : Item) -> void:
 	items.append(item)
-	player.player_audio.get_item()
 	save_inventory()
 
 
+##Tries to take an item away from the inventory
 func try_take_item(item_to_take : Item) -> Item:
 	for item in items:
 		if item.item_name == item_to_take.item_name:
 			items.erase(item)
+			player.player_audio.drop_item()
+			player.player_ui.display_gameplay_text("%s %s" % [tr("ITEM_LOST"), tr(item.ui_item_name)])
 			save_inventory()
 			return item
 	return null

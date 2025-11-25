@@ -21,6 +21,6 @@ const UNRELENTING_CHASE := behaviour_types.UNRELENTING_CHASE
 @export var enemy_behaviour : EnemyBehaviour
 
 
-func _ready() -> void:
+func activate_behaviour() -> void:
 	enemy_behaviour.active_behaviour = true
 	enemy_behaviour.activate_behaviour()
