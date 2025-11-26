@@ -62,7 +62,7 @@ func _load(data : SavedData) -> void:
 
 
 func player_message_reputation_change() -> void:
-	player_ui = await PathfindingManager.get_player().player_ui
+	player_ui = PathfindingManager.player.player_ui
 	var rep_level = ReputationManager.get_reputation_level(reputation_with_player) 
 	player_ui.display_gameplay_text(tr(reputation_change_message[rep_level])) 
 

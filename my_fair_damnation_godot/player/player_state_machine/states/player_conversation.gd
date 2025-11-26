@@ -41,17 +41,18 @@ func _handle_input(event : InputEvent) -> void:
 
 
 func on_exit_conversation(state_post_conversation : String) -> void:
+	await get_tree().create_timer(.1).timeout #To make sure we cant break the game by spaming a key
+	state_machine.transition_to(state_post_conversation, {})
+
+
+func exit() -> void:
 	player_conversation_controller.dialog_options_scroll.hide()
 	player.player_ui.npc_text_display.hide()
 	player_conversation_controller.save_dialogs()
 	npc_conversation.end_conversation.emit()
 	if npc_conversation.npc_instance:
 		npc_conversation.npc_instance.npc_instance_audio_controller._on_stop_conversation()
-	await get_tree().create_timer(.1).timeout #To make sure we cant break the game by spaming a key
-	state_machine.transition_to(state_post_conversation, {})
-
-
-func exit() -> void:
+	
 	player.rotation.x = 0
 	player.rotation.z = 0
 	player.camera_pivot.rotation.y = 0

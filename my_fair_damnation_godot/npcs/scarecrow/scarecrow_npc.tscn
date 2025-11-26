@@ -18,9 +18,9 @@
 [ext_resource type="Resource" uid="uid://ceqbkfgqfcerh" path="res://events/events_resources/quests/grandpa_asks_for_grandson.tres" id="11_v68yv"]
 [ext_resource type="Resource" uid="uid://cxdv033rlomo6" path="res://events/events_resources/quests/scarecrow_wants_to_meet_mom.tres" id="14_v4flx"]
 [ext_resource type="Resource" uid="uid://266f6kl0b8pc" path="res://events/events_resources/quests/scarecorw_reunites_with_skyler.tres" id="15_v68yv"]
-[ext_resource type="AudioStream" uid="uid://d4jjocgwryoyk" path="res://assets/audio/npcs/celestial.wav" id="17_14yb7"]
 [ext_resource type="Shader" uid="uid://lhmt1ugdk0qn" path="res://shaders/dissolve.gdshader" id="17_mxua4"]
 [ext_resource type="Texture2D" uid="uid://bivf0w6vcgd67" path="res://assets/npcs/scarecrow_scarecrow.png" id="18_1m2wu"]
+[ext_resource type="AudioStream" uid="uid://b7nsniwclrwr3" path="res://assets/audio/npcs/tomy/tomy_idle.wav" id="18_mse15"]
 
 [sub_resource type="Resource" id="Resource_m4gnq"]
 script = ExtResource("3_2b01f")
@@ -387,13 +387,12 @@ transform = Transform3D(0.90898585, -0.104149565, 0.40360564, 0.32102588, 0.7925
 [node name="AnimationPlayer" parent="NpcInstanceController/MainInstance/ModelContainer/ScarecrowModel" index="1"]
 autoplay = "scarecrow_sit_down"
 
-[node name="NpcIdleAudioStreamPlayer3D" parent="NpcInstanceController/MainInstance/NpcInstanceAudioController" index="0"]
-volume_db = -5.0
-unit_size = 13.0
+[node name="NpcInstanceAudioController" parent="NpcInstanceController/MainInstance" index="5"]
+idle_sound_during_conversation = true
 
-[node name="DialogAudioStreamPlayer3D" parent="NpcInstanceController/MainInstance/NpcInstanceAudioController" index="1"]
-stream = ExtResource("17_14yb7")
-volume_db = -9.0
+[node name="NpcIdleAudioStreamPlayer3D" parent="NpcInstanceController/MainInstance/NpcInstanceAudioController" index="0"]
+stream = ExtResource("18_mse15")
+volume_db = 7.0
 
 [node name="GrandpaInstance" parent="NpcInstanceController" index="1" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("2_xs00e")]
 instance_id = 1
@@ -425,9 +424,12 @@ bones/11/rotation = Quaternion(0.423714, 0.112821, 0.0908996, 0.894134)
 [node name="BoneAttachment3D" parent="NpcInstanceController/GrandpaInstance/ModelContainer/ScarecrowModel/Armature_002/Skeleton3D" index="2"]
 transform = Transform3D(1, -4.1743895e-17, -4.1144683e-18, 4.1308142e-17, 0.9970832, -0.076318994, 7.28832e-18, 0.07631898, 0.9970833, -1.7541716e-16, 2.183659, 0.12226154)
 
-[node name="DialogAudioStreamPlayer3D" parent="NpcInstanceController/GrandpaInstance/NpcInstanceAudioController" index="1"]
-stream = ExtResource("17_14yb7")
-volume_db = -9.0
+[node name="NpcInstanceAudioController" parent="NpcInstanceController/GrandpaInstance" index="5"]
+idle_sound_during_conversation = true
+
+[node name="NpcIdleAudioStreamPlayer3D" parent="NpcInstanceController/GrandpaInstance/NpcInstanceAudioController" index="0"]
+stream = ExtResource("18_mse15")
+volume_db = 7.0
 
 [node name="FinalInstance" parent="NpcInstanceController" index="2" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("2_xs00e")]
 instance_id = 2
@@ -460,9 +462,12 @@ bones/11/rotation = Quaternion(0.3626, 0.116192, 0.0840601, 0.920844)
 [node name="BoneAttachment3D" parent="NpcInstanceController/FinalInstance/ModelContainer/ScarecrowModel/Armature_002/Skeleton3D" index="2"]
 transform = Transform3D(0.9519398, 0.22840986, -0.20405763, -0.23259772, 0.9725663, 0.0035517998, 0.19927089, 0.04408223, 0.97895235, -8.271806e-24, 5.367161, -0.19884884)
 
-[node name="DialogAudioStreamPlayer3D" parent="NpcInstanceController/FinalInstance/NpcInstanceAudioController" index="1"]
-stream = ExtResource("17_14yb7")
-volume_db = -9.0
+[node name="NpcInstanceAudioController" parent="NpcInstanceController/FinalInstance" index="5"]
+idle_sound_during_conversation = true
+
+[node name="NpcIdleAudioStreamPlayer3D" parent="NpcInstanceController/FinalInstance/NpcInstanceAudioController" index="0"]
+stream = ExtResource("18_mse15")
+volume_db = 7.0
 
 [editable path="NpcInstanceController/MainInstance"]
 [editable path="NpcInstanceController/MainInstance/ModelContainer/ScarecrowModel"]

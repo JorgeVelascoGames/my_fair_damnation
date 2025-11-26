@@ -300,6 +300,7 @@ dialog_description = "Inspeccionar"
 dialog_id = "FREEZER_A_Q1"
 player_dialog_option = "FREEZER_A_Q1"
 dialog_text = Array[String](["FREEZER_A_Q1_001", "FREEZER_A_Q1_002", "FREEZER_A_Q1_003", "FREEZER_A_Q1_004"])
+randomize_dialog = true
 finish_conversation = true
 madness_cost = 60.0
 one_time_dialog = false
@@ -8405,14 +8406,13 @@ shape = SubResource("BoxShape3D_u1dsc")
 
 [node name="InteractedAudioStreamPlayer3D" parent="Mechanics/ConversationsInteractables/FreezerEnvironmentConversation/Interactable" index="1"]
 stream = SubResource("AudioStreamRandomizer_san8s")
-volume_db = -5.0
+volume_db = -16.0
 
 [node name="StaticAudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Mechanics/ConversationsInteractables/FreezerEnvironmentConversation"]
 stream = ExtResource("47_j3wyd")
-volume_db = 8.0
-unit_size = 4.0
+pitch_scale = 0.8
 autoplay = true
-max_distance = 2.0
+max_distance = 6.0
 
 [node name="GunEnvironmentConversation" parent="Mechanics/ConversationsInteractables" instance=ExtResource("12_rhqlf")]
 

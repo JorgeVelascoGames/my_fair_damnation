@@ -74,6 +74,7 @@ func start_conversation(conversation : NpcConversation) -> void:
 
 ## Shows the conversation buttons
 func show_conversation() -> void:
+	player.player_ui.npc_text_display.text = ""
 	on_conversation_options = true
 	player.player_ui.hide_interactable_hint()
 	for button in dialog_options.get_children():

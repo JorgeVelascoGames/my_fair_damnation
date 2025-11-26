@@ -22,6 +22,7 @@ signal transitioned_throught_door
 #Audio
 @onready var unlock_audio_stream_player: AudioStreamPlayer = $UnlockAudioStreamPlayer
 @onready var close_audio_stream_player: AudioStreamPlayer = $CloseAudioStreamPlayer
+@onready var locked_door_audio_stream_player_3d: AudioStreamPlayer3D = $LockedDoorAudioStreamPlayer3D
 
 var player : Player
 
@@ -66,6 +67,7 @@ func transition() -> void:
 
 func _on_interactable_interacted() -> void:
 	if key_item != null and not key_item in player.player_inventory.items:
-		player.player_ui.display_gameplay_text("The door is locked")
+		player.player_ui.display_gameplay_text(tr("door_escape_locked"))
+		locked_door_audio_stream_player_3d.play()
 		return
 	transition()
