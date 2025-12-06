@@ -4,9 +4,8 @@ extends Node3D
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 @onready var credits: ColorRect = $MainMenuUI/Credits
 @onready var steam_button: Button = $MainMenuUI/MarginContainer/SteamButton
-@onready var build_version_label: Label = $MainMenuUI/MarginContainer/BuildVersionLabel
 
-var game_manager : GameManager
+var game_manager: GameManager
 
 const VHS_EJECTED = preload("res://assets/audio/ambient/vhs_ejected.mp3")
 
@@ -16,7 +15,6 @@ func _ready() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if not AppManager.is_demo:
 		steam_button.hide()
-		build_version_label.hide()
 	game_manager = get_tree().root.get_node("Game")
 	var data = SaveDataServer.get_saved_data()
 	if data == null or data.file_virgin:
@@ -41,9 +39,9 @@ func _on_play_button_pressed() -> void:
 	if data == null or data.file_virgin:
 		SaveDataServer.create_fresh_save()
 	else:
-		game_manager.is_fresh_game = false # Just in case there is some problem with the save 
-										   #system. If we load a fresh save, multiple values 
-										   #will become empty or 0, like stamina
+		game_manager.is_fresh_game = false # Just in case there is some problem with the save
+		#system. If we load a fresh save, multiple values
+		#will become empty or 0, like stamina
 	audio_stream_player.stop()
 	audio_stream_player.stream = VHS_EJECTED
 	audio_stream_player.play()
@@ -75,7 +73,7 @@ func _on_new_button_pressed() -> void:
 	# We delete any potential progress
 	SaveDataServer.create_fresh_save()
 	game_manager.is_fresh_game = true
-	
+
 	audio_stream_player.stop()
 	audio_stream_player.stream = VHS_EJECTED
 	audio_stream_player.play()
@@ -87,3 +85,8 @@ func _on_new_button_pressed() -> void:
 
 func _on_options_button_pressed() -> void:
 	$MainMenuUI/Options.open_options()
+
+
+func _on_discord_button_pressed() -> void:
+	if AppManager.discord_link != "":
+		OS.shell_open(AppManager.discord_link)

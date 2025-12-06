@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dh6gl16kfd242"]
+[gd_scene load_steps=31 format=3 uid="uid://dh6gl16kfd242"]
 
 [ext_resource type="Script" uid="uid://btfbj6b7kwdof" path="res://game_management/main_menu/main_menu.gd" id="1_q1wtx"]
 [ext_resource type="Shader" uid="uid://bng72jehal8es" path="res://shaders/vhs.gdshader" id="2_gsxr2"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://bsek7niojuln7" path="res://assets/environment_props/corpse/corpse.tscn" id="10_dq126"]
 [ext_resource type="Texture2D" uid="uid://emxnvvjtxui3" path="res://assets/ui/metal_background.jpg" id="12_4ogfg"]
 [ext_resource type="PackedScene" uid="uid://ben5eoim6xgw2" path="res://assets/environment_props/wheelchair/wheelchair_model.tscn" id="12_fk255"]
+[ext_resource type="Texture2D" uid="uid://dt86iyedo1621" path="res://ui/Discord icon.png" id="13_1i1oi"]
 [ext_resource type="AudioStream" uid="uid://daq5sirppmwn" path="res://assets/audio/ambient/vhs_static_noise.wav" id="15_cfqho"]
 [ext_resource type="PackedScene" uid="uid://b26m1c712w8fe" path="res://game_management/main_menu/options.tscn" id="16_m6c1t"]
 [ext_resource type="PackedScene" uid="uid://c5u5jdhaqxf4a" path="res://props/lamp.tscn" id="18_d3ipp"]
@@ -237,6 +238,14 @@ layout_mode = 2
 theme = ExtResource("3_tf87f")
 text = "MENU_04"
 
+[node name="DiscordButton" type="Button" parent="MainMenuUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 2
+theme = ExtResource("3_tf87f")
+icon = ExtResource("13_1i1oi")
+icon_alignment = 1
+expand_icon = true
+
 [node name="SteamButton" type="Button" parent="MainMenuUI/MarginContainer"]
 custom_minimum_size = Vector2(217, 0)
 layout_mode = 2
@@ -247,14 +256,6 @@ theme_override_fonts/font = ExtResource("3_3m42q")
 text = "MENU_05"
 icon = ExtResource("5_cnxsy")
 expand_icon = true
-
-[node name="BuildVersionLabel" type="Label" parent="MainMenuUI/MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 8
-theme_override_colors/font_color = Color(0.47788, 0.47788, 0.47788, 1)
-theme_override_font_sizes/font_size = 9
-text = "Demo Version 0.8.1 — Does not represent the final product"
 
 [node name="BlackScreen" type="ColorRect" parent="MainMenuUI"]
 layout_mode = 1
@@ -438,6 +439,7 @@ omni_range = 2.92341
 [connection signal="pressed" from="MainMenuUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/CreditsButton" to="." method="_on_credits_button_pressed"]
 [connection signal="pressed" from="MainMenuUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/OptionsButton" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="MainMenuUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="MainMenuUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/DiscordButton" to="." method="_on_discord_button_pressed"]
 [connection signal="pressed" from="MainMenuUI/MarginContainer/SteamButton" to="." method="_on_steam_button_pressed"]
 
 [editable path="corpse"]
