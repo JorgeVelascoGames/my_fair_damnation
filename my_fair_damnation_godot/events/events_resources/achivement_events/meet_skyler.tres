@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://b3unl0h6e616p"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_rhoi8"]
+
+[resource]
+script = ExtResource("1_rhoi8")
+event_name = "Meet Skyler"
+event_description = "Triggers the achivement \"Meet Skyler\""
+event_is_trigger = true
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

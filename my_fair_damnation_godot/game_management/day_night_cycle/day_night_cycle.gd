@@ -5,14 +5,14 @@ signal night_started
 signal doom_started
 signal player_sleeps_all_night
 
-enum period{
+enum period {
 	DAY,
 	NIGHT,
-	DOOM
+	DOOM,
 }
-enum environment_used{
+enum environment_used {
 	DAY,
-	NIGHT
+	NIGHT,
 }
 
 const PLAYER_REST_TO_DAY = preload("res://events/events_resources/game_flow_events/player_rest_to_day.tres")
@@ -33,19 +33,20 @@ const MAX_DAYS := 15
 @export var night_duration_in_seconds := 450.00
 @export var doom_duration_in_seconds := 50.00
 @export var madness_cost_per_second := 6.00
+@export var wellcome_achivement_event: Event
 
 @onready var day_night_cycle_timer: Timer = $DayNightCycleTimer
 
 #Events
-## Pushed to determine that we are at night 
+## Pushed to determine that we are at night
 const NIGHT_TIME = preload("res://events/events_resources/game_flow_events/night_time.tres")
 const START_GAME = preload("res://events/events_resources/game_flow_events/start_game.tres")
 
 var exhausted := false
 var current_period := DAY
 var current_environment := environment_used.DAY
-var environment : WorldEnvironment 
-var player : Player
+var environment: WorldEnvironment
+var player: Player
 
 ## For the player when day time is about to run out
 const day_time_over_messages = [
@@ -55,7 +56,7 @@ const day_time_over_messages = [
 	"day_time_over_004",
 	"day_time_over_005",
 	"day_time_over_006",
-	"day_time_over_007"
+	"day_time_over_007",
 ]
 
 ## For the player when night time is about to run out
@@ -65,7 +66,7 @@ const night_time_over_messages = [
 	"night_time_over_003",
 	"night_time_over_004",
 	"night_time_over_005",
-	"night_time_over_006"
+	"night_time_over_006",
 ]
 
 ## Showed to the player when day or night time is over
@@ -76,7 +77,7 @@ const exhaustion_messages = [
 	"exhaustion_004",
 	"exhaustion_005",
 	"exhaustion_006",
-	"exhaustion_007"
+	"exhaustion_007",
 ]
 
 
@@ -94,17 +95,18 @@ func _process(delta: float) -> void:
 
 
 func start_new_day() -> void:
+	EventManager.push_new_event(wellcome_achivement_event)
 	print("A new day begins...")
 	current_period = DAY
 	exhausted = false
 	day_night_cycle_timer.start(day_duration_in_seconds)
 	day_count += 1
 	day_started.emit()
-	
+
 	if day_count >= MAX_DAYS:
 		EventManager.push_new_event(BAD_ENDING)
 		return
-	
+
 	if environment == null:
 		environment = get_environment_node()
 	environment.environment = WORLD_ENVIRONMENT_DAY
@@ -132,7 +134,7 @@ func start_new_night() -> void:
 func _on_day_night_cycle_timer_timeout() -> void:
 	var message := ""
 	var message_b := ""
-	
+
 	match current_period:
 		DAY:
 			message = day_time_over_messages.pick_random()
@@ -165,7 +167,7 @@ func get_environment_node() -> WorldEnvironment:
 	return get_tree().get_first_node_in_group("world_environment")
 
 
-func _on_event(event : Event) -> void:
+func _on_event(event: Event) -> void:
 	match event:
 		PLAYER_REST_TO_DAY:
 			start_new_day()
@@ -178,7 +180,7 @@ func force_end_timer() -> void:
 	day_night_cycle_timer.timeout.emit()
 
 
-func _load(data : SavedData) -> void:
+func _load(data: SavedData) -> void:
 	day_count = data.day_count
 	current_period = data.day_night_period as period
 	if environment == null:
@@ -187,7 +189,7 @@ func _load(data : SavedData) -> void:
 		day_night_cycle_timer.start(data.time_remaining)
 	if current_period == DOOM and data.time_remaining <= 0:
 		exhausted = true
-	
+
 	environment = get_environment_node()
 	current_environment = data.environment as environment_used
 	if current_environment == environment_used.DAY:

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://dikjwrbp080sd"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_v0vuo"]
+
+[resource]
+script = ExtResource("1_v0vuo")
+event_name = "Meet Tomy"
+event_description = "Triggers the achivement \"Meet Tomy\""
+event_is_trigger = true
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

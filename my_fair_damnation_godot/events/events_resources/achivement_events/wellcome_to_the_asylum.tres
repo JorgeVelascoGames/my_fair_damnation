@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://cqkjr67bpttcv"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_gfgpo"]
+
+[resource]
+script = ExtResource("1_gfgpo")
+event_name = "Wellcome to the asylum"
+event_description = "Triggers the achivement \"Spend your first night in the asylum\""
+event_is_trigger = true
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

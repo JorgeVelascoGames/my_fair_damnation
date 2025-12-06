@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://dfn5t6vog06e4"]
+[gd_scene load_steps=63 format=3 uid="uid://dfn5t6vog06e4"]
 
 [ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_rk3pf"]
 [ext_resource type="Resource" uid="uid://njqmbf3r2y5q" path="res://npcs/ids/untie_id.tres" id="2_a1mwp"]
@@ -16,6 +16,7 @@
 [ext_resource type="Resource" uid="uid://c1dngsvaiphwh" path="res://events/events_resources/quests/skyler_tells_story.tres" id="8_f06gj"]
 [ext_resource type="Resource" uid="uid://cpkc8dwohnly6" path="res://events/events_resources/quests/skyler_confeses_who_is_the_father.tres" id="9_42xmc"]
 [ext_resource type="PackedScene" uid="uid://dip13h6cniito" path="res://npcs/untie/untie_enemy.tscn" id="9_cn3xv"]
+[ext_resource type="Resource" uid="uid://dbqmj0dy4sa3f" path="res://events/events_resources/achivement_events/meet_amelia.tres" id="9_yk5yy"]
 [ext_resource type="Resource" uid="uid://dy41gtqc087h8" path="res://events/events_resources/quests/grandpa_need_to_help_with_women.tres" id="10_i2u3c"]
 [ext_resource type="Resource" uid="uid://c7qcdy14kb4m8" path="res://items/item_vault/quest_items/tobias_photo.tres" id="11_weifw"]
 [ext_resource type="Script" uid="uid://cvlnlhk3l8nla" path="res://npcs/player_catcher.gd" id="16_qurpm"]
@@ -41,6 +42,7 @@ dialog_description = "Presentación"
 dialog_id = "UNTIE_01_A_Q1_00"
 player_dialog_option = "UNTIE_01_A_Q1_00"
 dialog_text = Array[String](["UNTIE_01_A_Q1_001", "UNTIE_01_A_Q1_002", "UNTIE_01_A_Q1_003", "UNTIE_01_A_Q1_004", "UNTIE_01_A_Q1_005", "UNTIE_01_A_Q1_006", "UNTIE_01_A_Q1_007"])
+events_to_push = Array[ExtResource("4_cn3xv")]([ExtResource("9_yk5yy")])
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
 
 [sub_resource type="Resource" id="Resource_i2u3c"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://b6q7iqyes0et8"]
+[gd_scene load_steps=60 format=3 uid="uid://b6q7iqyes0et8"]
 
 [ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_y3w1r"]
 [ext_resource type="Resource" uid="uid://dbgqxggaprl2l" path="res://npcs/ids/scarecrow.tres" id="2_1m2wu"]
@@ -19,6 +19,7 @@
 [ext_resource type="Resource" uid="uid://cxdv033rlomo6" path="res://events/events_resources/quests/scarecrow_wants_to_meet_mom.tres" id="14_v4flx"]
 [ext_resource type="Resource" uid="uid://266f6kl0b8pc" path="res://events/events_resources/quests/scarecorw_reunites_with_skyler.tres" id="15_v68yv"]
 [ext_resource type="Shader" uid="uid://lhmt1ugdk0qn" path="res://shaders/dissolve.gdshader" id="17_mxua4"]
+[ext_resource type="Resource" uid="uid://dwppycbyryvwy" path="res://events/events_resources/achivement_events/meet_nameless.tres" id="17_tclpq"]
 [ext_resource type="Texture2D" uid="uid://bivf0w6vcgd67" path="res://assets/npcs/scarecrow_scarecrow.png" id="18_1m2wu"]
 [ext_resource type="AudioStream" uid="uid://b7nsniwclrwr3" path="res://assets/audio/npcs/tomy/tomy_idle.wav" id="18_mse15"]
 
@@ -227,6 +228,7 @@ randomize_dialog = true
 finish_conversation = true
 one_time_dialog = false
 dialogs_to_unlock = Array[ExtResource("3_2b01f")]([SubResource("Resource_1m2wu")])
+events_to_push = Array[ExtResource("5_v68yv")]([ExtResource("17_tclpq")])
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
 
 [sub_resource type="Resource" id="Resource_m11rm"]

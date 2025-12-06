@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://bub5c73ky0qrd"]
+[gd_scene load_steps=39 format=3 uid="uid://bub5c73ky0qrd"]
 
 [ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_acklk"]
 [ext_resource type="Resource" uid="uid://cgt2sxeq3iqxt" path="res://npcs/ids/tomy_id.tres" id="2_6raq7"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="6_0xj2q"]
 [ext_resource type="Script" uid="uid://bdfriqua1vdjs" path="res://npcs/npc_id.gd" id="7_n5lrc"]
 [ext_resource type="Resource" uid="uid://bfvop75ghqdf7" path="res://items/item_vault/pills.tres" id="8_416md"]
+[ext_resource type="Resource" uid="uid://dikjwrbp080sd" path="res://events/events_resources/achivement_events/meet_tomy.tres" id="8_jte60"]
 [ext_resource type="Script" uid="uid://7l1ps0yokllm" path="res://conversations/conversation.gd" id="8_uwh6o"]
 [ext_resource type="Resource" uid="uid://cd3ofktdiln67" path="res://items/item_vault/handkerchief.tres" id="9_0xj2q"]
 [ext_resource type="Resource" uid="uid://d3ypttnlofyfp" path="res://events/events_resources/quests/tomy_doesnt_take_pills.tres" id="10_ummwc"]
@@ -27,6 +28,7 @@ dialog_description = "Hola Tomy"
 dialog_id = "TOMY_Q1_"
 player_dialog_option = "TOMY_Q1_"
 dialog_text = Array[String](["TOMY_Q1_001", "TOMY_Q1_002", "TOMY_Q1_003", "TOMY_Q1_004", "TOMY_Q1_005", "TOMY_Q1_006"])
+events_to_push = Array[ExtResource("5_416md")]([ExtResource("8_jte60")])
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
 
 [sub_resource type="Resource" id="Resource_l8imr"]

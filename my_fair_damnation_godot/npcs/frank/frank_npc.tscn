@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://b1aluneqea42g"]
+[gd_scene load_steps=34 format=3 uid="uid://b1aluneqea42g"]
 
 [ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_2dx5o"]
 [ext_resource type="PackedScene" uid="uid://dkqfew7ssu6mm" path="res://npcs/npc_instance.tscn" id="2_8g5fp"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dvi64yvc4ll8k" path="res://npcs/frank/frank_model.tscn" id="8_8g5fp"]
 [ext_resource type="Resource" uid="uid://bbfh3kognhcun" path="res://events/events_resources/quests/frank_tells_truth_tobias.tres" id="10_1jk8c"]
 [ext_resource type="Script" uid="uid://cvlnlhk3l8nla" path="res://npcs/player_catcher.gd" id="11_bq1e1"]
+[ext_resource type="Resource" uid="uid://r0w5rh6x7l6c" path="res://events/events_resources/achivement_events/meet_frank.tres" id="16_nu5sg"]
 
 [sub_resource type="Resource" id="Resource_2dx5o"]
 script = ExtResource("3_lxggu")
@@ -120,6 +121,7 @@ dialog_text = Array[String](["FRANK_BASEMENT_BYE_001", "FRANK_BASEMENT_BYE_002",
 finish_conversation = true
 one_time_dialog = false
 dialogs_to_unlock = Array[ExtResource("3_lxggu")]([SubResource("Resource_klx64")])
+events_to_push = Array[ExtResource("5_klx64")]([ExtResource("16_nu5sg")])
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
 
 [sub_resource type="Resource" id="Resource_geoyh"]

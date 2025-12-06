@@ -1,11 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://duxmp2c2f3g5b"]
+[gd_scene load_steps=13 format=3 uid="uid://duxmp2c2f3g5b"]
 
 [ext_resource type="Script" uid="uid://dukxx8hq7icds" path="res://scripts/achivement_caster.gd" id="1_yq2rl"]
 [ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="2_mmruu"]
 [ext_resource type="Resource" uid="uid://cqhv6gtncihm4" path="res://events/events_resources/achivement_events/meet_lynda.tres" id="3_4oy51"]
+[ext_resource type="Resource" uid="uid://dbqmj0dy4sa3f" path="res://events/events_resources/achivement_events/meet_amelia.tres" id="4_d7jnk"]
+[ext_resource type="Resource" uid="uid://b3prvtij8v40g" path="res://events/events_resources/achivement_events/meet_sarah.tres" id="5_mhmxy"]
+[ext_resource type="Resource" uid="uid://bd1jry2tc8vxx" path="res://events/events_resources/achivement_events/meet_jeremiah.tres" id="6_esexe"]
+[ext_resource type="Resource" uid="uid://c6ntfgiiygg6m" path="res://events/events_resources/achivement_events/meet_thomas.tres" id="7_8b3ea"]
+[ext_resource type="Resource" uid="uid://b3unl0h6e616p" path="res://events/events_resources/achivement_events/meet_skyler.tres" id="8_c47a3"]
+[ext_resource type="Resource" uid="uid://dikjwrbp080sd" path="res://events/events_resources/achivement_events/meet_tomy.tres" id="9_qeqel"]
+[ext_resource type="Resource" uid="uid://r0w5rh6x7l6c" path="res://events/events_resources/achivement_events/meet_frank.tres" id="10_kaj3a"]
+[ext_resource type="Resource" uid="uid://dwppycbyryvwy" path="res://events/events_resources/achivement_events/meet_nameless.tres" id="11_c47a3"]
+[ext_resource type="Resource" uid="uid://cqkjr67bpttcv" path="res://events/events_resources/achivement_events/wellcome_to_the_asylum.tres" id="12_qeqel"]
 
 [node name="AchivementCaster" type="Node"]
 script = ExtResource("1_yq2rl")
 events_to_achivements = Dictionary[ExtResource("2_mmruu"), String]({
-ExtResource("3_4oy51"): "ACH_MEET_LYNDA"
+ExtResource("3_4oy51"): "ACH_MEET_LYNDA",
+ExtResource("4_d7jnk"): "ACH_MEET_AMELIA",
+ExtResource("5_mhmxy"): "ACH_MEET_SARAH",
+ExtResource("6_esexe"): "ACH_MEET_JEREMIAH",
+ExtResource("7_8b3ea"): "ACH_MEET_THOMAS",
+ExtResource("8_c47a3"): "ACH_MEET_SKYLER",
+ExtResource("9_qeqel"): "ACH_MEET_TOMY",
+ExtResource("10_kaj3a"): "ACH_MEET_FRANK",
+ExtResource("11_c47a3"): "ACH_MEET_LOST_ONE",
+ExtResource("12_qeqel"): "ACH_WELLCOME"
 })

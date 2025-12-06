@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://cglp3gexwaoyi"]
+[gd_scene load_steps=112 format=3 uid="uid://cglp3gexwaoyi"]
 
 [ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_hii17"]
 [ext_resource type="Resource" uid="uid://0kf21qit4mwp" path="res://npcs/ids/grandpa_id.tres" id="2_tuita"]
@@ -18,6 +18,7 @@
 [ext_resource type="Texture2D" uid="uid://cvl7k86yxd8ye" path="res://assets/environment_props/wheelchair/wheelchair.png" id="9_kkggq"]
 [ext_resource type="Script" uid="uid://7l1ps0yokllm" path="res://conversations/conversation.gd" id="9_l2aow"]
 [ext_resource type="Resource" uid="uid://bfvop75ghqdf7" path="res://items/item_vault/pills.tres" id="11_8p7ry"]
+[ext_resource type="Resource" uid="uid://bd1jry2tc8vxx" path="res://events/events_resources/achivement_events/meet_jeremiah.tres" id="12_qqr8q"]
 [ext_resource type="Resource" uid="uid://dinh3m8d8ts83" path="res://events/events_resources/quests/granpda_request_asked.tres" id="13_2ncqk"]
 [ext_resource type="Resource" uid="uid://567nywdinxh1" path="res://items/item_vault/quest_items/knife.tres" id="14_072kq"]
 [ext_resource type="Resource" uid="uid://bep2sok5h22wc" path="res://events/events_resources/quests/tommy_request.tres" id="15_pffgi"]
@@ -89,6 +90,7 @@ dialog_description = "Presentación"
 dialog_id = "GRANDPA_01_A_Q1"
 player_dialog_option = "GRANDPA_01_A_Q1"
 dialog_text = Array[String](["GRANDPA_01_A_Q1_001"])
+events_to_push = Array[ExtResource("5_7edsa")]([ExtResource("12_qqr8q")])
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
 
 [sub_resource type="Resource" id="Resource_j1fdq"]

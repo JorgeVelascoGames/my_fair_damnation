@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://ckqfb7a0gd0l7"]
+[gd_scene load_steps=61 format=3 uid="uid://ckqfb7a0gd0l7"]
 
 [ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_lsnyt"]
 [ext_resource type="Resource" uid="uid://chox7uevt5twx" path="res://npcs/ids/skyler_id.tres" id="2_b0txx"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://d134hdcr31jrd" path="res://npcs/skyler/skyler_model.tscn" id="8_rgg25"]
 [ext_resource type="PackedScene" uid="uid://g171uylpps6r" path="res://npcs/skyler/skyler_enemy.tscn" id="9_lr8qj"]
 [ext_resource type="Resource" uid="uid://cmcjbgoypvlaq" path="res://events/events_resources/quests/scarecrow_first_time_meet.tres" id="9_v2gyh"]
+[ext_resource type="Resource" uid="uid://b3unl0h6e616p" path="res://events/events_resources/achivement_events/meet_skyler.tres" id="10_4rky8"]
 [ext_resource type="Resource" uid="uid://btnglwxpgb1ik" path="res://items/item_vault/quest_items/body.tres" id="10_v2gyh"]
 [ext_resource type="Resource" uid="uid://dvaucdir0il84" path="res://events/events_resources/quests/scarecorw_doesnt_want_to_meet.tres" id="11_1y8ed"]
 [ext_resource type="Resource" uid="uid://boxkg7w3jbycv" path="res://events/events_resources/quests/skyler_needs_help.tres" id="11_wwye0"]
@@ -36,6 +37,7 @@ player_dialog_option = "SKYLER_01_B_Q1"
 dialog_text = Array[String](["SKYLER_01_B_Q1_001", "SKYLER_01_B_Q1_002", "SKYLER_01_B_Q1_003", "SKYLER_01_B_Q1_004"])
 madness_cost = 20.0
 go_back_nested_conversation = true
+events_to_push = Array[ExtResource("3_ej21g")]([ExtResource("10_4rky8")])
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
 
 [sub_resource type="Resource" id="Resource_lr8qj"]

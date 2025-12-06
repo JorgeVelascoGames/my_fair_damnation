@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://dwppycbyryvwy"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_d4ep4"]
+
+[resource]
+script = ExtResource("1_d4ep4")
+event_name = "Meet nameless one"
+event_description = "Triggers the achivement \"Meet the nameless one\""
+event_is_trigger = true
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

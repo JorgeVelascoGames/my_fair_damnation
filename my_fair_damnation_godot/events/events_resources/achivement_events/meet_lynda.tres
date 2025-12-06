@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_0atq4")
-event_name = "meet_lynda"
+event_name = "Meet Lynda"
 event_description = "Triggers the achivement \"Meet Lynda\""
 event_is_trigger = true
 metadata/_custom_type_script = "uid://bh4hn3j70tt6x"
