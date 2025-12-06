@@ -1,4 +1,5 @@
 extends Control
+
 class_name OptionMenu
 
 signal open_options_menu
@@ -8,11 +9,13 @@ signal close_options_menu
 @onready var default: Button = %Default
 @onready var close: Button = %Close
 @onready var lenguage_button: Button = %LenguageButton
+@onready var headbob_check_box: CheckBox = $OptionsCenterContainer/PanelContainer/MarginContainer/VBoxContainer/HeadbobCheckBox
 
 
 func _ready() -> void:
 	hide()
 	volume_h_slider.value = AppManager.volume
+	headbob_check_box.button_pressed = AppManager.use_head_bob
 
 
 func open_options() -> void:
@@ -29,15 +32,10 @@ func close_options() -> void:
 	close_options_menu.emit()
 
 
-func change_volume(value : float) -> void:
+func change_volume(value: float) -> void:
 	AppManager.volume = value
 	SaveDataServer.save_volume(value)
 	AudioServer.set_bus_volume_db(AudioServer.get_bus_index("Master"), value)
-
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_cancel") and visible:
-		close_options()
 
 
 func _on_close_pressed() -> void:
@@ -54,21 +52,27 @@ func _on_volume_h_slider_value_changed(value: float) -> void:
 
 
 func _on_lenguage_button_pressed() -> void:
-	var screen_flow : ScreenFlowManager
+	var screen_flow: ScreenFlowManager
 	screen_flow = get_tree().get_first_node_in_group("screen_flow_manager")
 	screen_flow.load_lenguage_screen()
 
 
-func _load(data : SavedData) -> void:
+func _load(data: SavedData) -> void:
 	volume_h_slider.value = data.volume
 
 
 func _on_back_to_main_menu_pressed() -> void:
 	close_options()
-	var screen_flow : ScreenFlowManager
+	var screen_flow: ScreenFlowManager
 	screen_flow = get_tree().get_first_node_in_group("screen_flow_manager")
 	screen_flow.load_main_menu()
 
 
 func _on_exit_game_button_pressed() -> void:
 	get_tree().quit()
+
+
+func _on_headbob_check_box_pressed() -> void:
+	AppManager.use_head_bob = headbob_check_box.button_pressed
+	SaveDataServer.save_use_head_bob(AppManager.use_head_bob)
+	print("Headbob set to: ", AppManager.use_head_bob)

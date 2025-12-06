@@ -1541,6 +1541,7 @@ furniture_clothes_girl,It is filled with little girls’ clothes,Está repleto d
 furniture_dark_crawl,"Something seems to crawl in the distance, in the dark","Algo parece arrastrarse a lo lejos, en la oscuridad",,,,,,
 furniture_dark_crawl,This one doesn’t work...,Este no funciona...,,,,,,
 options_lenguage,Select lenguage,Elegir idioma,,,,,,
+use_headbob,Headbob when running,Movimiento de cabeza al esprintar,,,,,,
 options_volume,Volume,Volumen,,,,,,
 back,Resume,Continuar,,,,,,
 def,Default,Predeterminado,,,,,,

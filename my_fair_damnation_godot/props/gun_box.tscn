@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://db0omdxo15tyr"]
+[gd_scene load_steps=25 format=3 uid="uid://db0omdxo15tyr"]
 
 [ext_resource type="PackedScene" uid="uid://k3ltyvt2u11x" path="res://assets/environment_props/player_items.glb" id="1_yvu5r"]
 [ext_resource type="Script" uid="uid://bspt178yxt4lx" path="res://props/gun_box.gd" id="2_b4wls"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://7l1ps0yokllm" path="res://conversations/conversation.gd" id="10_1nm7v"]
 [ext_resource type="Resource" uid="uid://disj0tsesscyo" path="res://items/item_vault/gun.tres" id="10_dubjr"]
 [ext_resource type="Resource" uid="uid://b7cmr2k0pnb51" path="res://items/item_vault/bullet.tres" id="11_kg41w"]
+[ext_resource type="AudioStream" uid="uid://dwf5co1vacrxs" path="res://assets/audio/unlock_door.wav" id="14_qx3oe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwexi"]
 albedo_texture = ExtResource("2_i4i3x")
@@ -103,6 +104,10 @@ interactable_hint = "FREEZER_A_Q1"
 [node name="CollisionShape3D" parent="EnvironmentConversation/Interactable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0137634, 0.759995, -0.0263214)
 shape = SubResource("BoxShape3D_y3mr6")
+
+[node name="InteractedAudioStreamPlayer3D" parent="EnvironmentConversation/Interactable" index="1"]
+stream = ExtResource("14_qx3oe")
+pitch_scale = 1.76
 
 [editable path="EnvironmentConversation"]
 [editable path="EnvironmentConversation/Interactable"]

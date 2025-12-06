@@ -25,8 +25,6 @@ func _ready():
 func _on_event_occurred(event: Event) -> void:
 	if events_to_achivements.keys().has(event):
 		var achievement_id = events_to_achivements[event]
-		if not Steam.getAchievement(achievement_id)["achieved"]:
-			Steam.setAchievement(achievement_id)
-			prints("Achievement unlocked: ", achievement_id)
-		else:
-			prints("Achievement already unlocked: ", achievement_id)
+		Steam.setAchievement(achievement_id)
+		Steam.storeStats()
+		prints("Achievement unlocked: ", achievement_id)

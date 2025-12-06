@@ -71,6 +71,12 @@ min_value = -20.0
 max_value = 5.0
 ticks_position = 3
 
+[node name="HeadbobCheckBox" type="CheckBox" parent="OptionsCenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("2_1dw4v")
+text = "use_headbob"
+
 [node name="MarginContainer2" type="MarginContainer" parent="OptionsCenterContainer/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/margin_left = 60
@@ -124,6 +130,7 @@ theme = ExtResource("2_1dw4v")
 text = "exit_ game"
 
 [connection signal="value_changed" from="OptionsCenterContainer/PanelContainer/MarginContainer/VBoxContainer/VolumeSliderHBoxContainer/VolumeHSlider" to="." method="_on_volume_h_slider_value_changed"]
+[connection signal="pressed" from="OptionsCenterContainer/PanelContainer/MarginContainer/VBoxContainer/HeadbobCheckBox" to="." method="_on_headbob_check_box_pressed"]
 [connection signal="pressed" from="OptionsCenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/LenguageButton" to="." method="_on_lenguage_button_pressed"]
 [connection signal="pressed" from="OptionsCenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/Default" to="." method="_on_default_pressed"]
 [connection signal="pressed" from="OptionsCenterContainer/PanelContainer/MarginContainer/VBoxContainer/MarginContainer/VBoxContainer/Close" to="." method="_on_close_pressed"]
