@@ -6,6 +6,7 @@ var opened := false
 
 
 func enter(_msg: = { }) -> void:
+	player.player_audio.close_inventory()
 	player.velocity = Vector3.ZERO
 	player.player_ui.options.close_options_menu.connect(close_menu)
 	player.player_ui.options.open_options()

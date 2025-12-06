@@ -1,13 +1,15 @@
 extends PlayerState
+
 class_name PlayerOpenInventory
 
 @onready var camera_pivot: Node3D = %CameraPivot
 
-var tween : Tween
+var tween: Tween
 var opened := false
 
 
-func enter(_msg : ={}) -> void:
+func enter(_msg: = { }) -> void:
+	player.player_audio.open_inventory()
 	SaveDataServer.save_game()
 	player.velocity = Vector3.ZERO
 	tween = create_tween()
@@ -17,20 +19,21 @@ func enter(_msg : ={}) -> void:
 	player.player_audio.open_inventory()
 	%PlayerUI.open_inventory()
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	await get_tree().create_timer(0.4).timeout
 	opened = true
 
 
-func _handle_input(event : InputEvent) -> void:
+func _handle_input(event: InputEvent) -> void:
 	if not opened:
 		return
 	if event.is_action_pressed("ui_cancel") or event.is_action_pressed("ui_focus_next"):
-		state_machine.transition_to("PlayerIdle", {})
+		state_machine.transition_to("PlayerIdle", { })
 
 
 func exit() -> void:
+	opened = false
 	if tween:
 		tween.kill()
 	%PlayerUI.close_inventory()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	opened = false
 	player.player_audio.close_inventory()
