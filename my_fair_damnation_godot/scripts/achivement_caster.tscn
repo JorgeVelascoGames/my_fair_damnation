@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://duxmp2c2f3g5b"]
+
+[ext_resource type="Script" uid="uid://dukxx8hq7icds" path="res://scripts/achivement_caster.gd" id="1_yq2rl"]
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="2_mmruu"]
+[ext_resource type="Resource" uid="uid://cqhv6gtncihm4" path="res://events/events_resources/achivement_events/meet_lynda.tres" id="3_4oy51"]
+
+[node name="AchivementCaster" type="Node"]
+script = ExtResource("1_yq2rl")
+events_to_achivements = Dictionary[ExtResource("2_mmruu"), String]({
+ExtResource("3_4oy51"): "ACH_MEET_LYNDA"
+})

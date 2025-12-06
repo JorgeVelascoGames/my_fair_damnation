@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://c2ol34gl06iqb"]
+[gd_scene load_steps=96 format=3 uid="uid://c2ol34gl06iqb"]
 
 [ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_inr4i"]
 [ext_resource type="Resource" uid="uid://1h6u8i4m330e" path="res://npcs/ids/nurse_id.tres" id="2_awmxy"]
@@ -40,6 +40,7 @@
 [ext_resource type="AudioStream" uid="uid://bo7e5s3llblf0" path="res://assets/audio/npcs/nurse/nurse_talk_07.wav" id="33_tausq"]
 [ext_resource type="AudioStream" uid="uid://d3seyuqi5sheq" path="res://assets/audio/npcs/nurse/nurse_talk_08.wav" id="34_ukixw"]
 [ext_resource type="AudioStream" uid="uid://vomxaoo8v6oj" path="res://assets/audio/npcs/nurse/nurse_talk_09.wav" id="35_pd6g0"]
+[ext_resource type="Resource" uid="uid://cqhv6gtncihm4" path="res://events/events_resources/achivement_events/meet_lynda.tres" id="37_7rj18"]
 [ext_resource type="AudioStream" uid="uid://d4jjocgwryoyk" path="res://assets/audio/npcs/celestial.wav" id="39_lr8nt"]
 
 [sub_resource type="Resource" id="Resource_awmxy"]
@@ -480,7 +481,7 @@ player_dialog_option = "NURSE_01_B_Q6"
 dialog_text = Array[String](["NURSE_01_B_Q6_001", "NURSE_01_B_Q6_002", "NURSE_01_B_Q6_003", "NURSE_01_B_Q6_004", "NURSE_01_B_Q6_005", "NURSE_01_B_Q6_006", "NURSE_01_B_Q6_007", "NURSE_01_B_Q6_008", "NURSE_01_B_Q6_009", "NURSE_01_B_Q6_010"])
 finish_conversation = true
 dialogs_to_unlock = Array[ExtResource("3_sy47k")]([SubResource("Resource_ooat1")])
-events_to_push = Array[ExtResource("4_nu1ad")]([ExtResource("25_i3vot")])
+events_to_push = Array[ExtResource("4_nu1ad")]([ExtResource("25_i3vot"), ExtResource("37_7rj18")])
 gained_item = ExtResource("9_hia2r")
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
 

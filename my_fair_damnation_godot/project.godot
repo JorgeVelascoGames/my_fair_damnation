@@ -34,6 +34,11 @@ NpcVault="*res://npcs/npc_vault.tscn"
 SaveDataServer="*res://save_system/save_data_server.tscn"
 EventShooter="*res://scripts/event_shooter/event_shooter.tscn"
 AppManager="*res://scripts/app_manager.gd"
+AchivementCaster="*res://scripts/achivement_caster.tscn"
+
+[debug]
+
+file_logging/enable_file_logging=true
 
 [display]
 
@@ -137,3 +142,4 @@ locale/translations=PackedStringArray("res://localization_template.es.translatio
 [steam]
 
 initialization/app_id=2881170
+initialization/initialize_on_startup=true
