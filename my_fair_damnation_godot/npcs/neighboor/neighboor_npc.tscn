@@ -1,4 +1,4 @@
-[gd_scene load_steps=106 format=3 uid="uid://bk7ejvoblj6yv"]
+[gd_scene load_steps=112 format=3 uid="uid://bk7ejvoblj6yv"]
 
 [ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_cgkc7"]
 [ext_resource type="Resource" uid="uid://dgcxpw5fber7m" path="res://npcs/ids/neighboor.tres" id="2_figll"]
@@ -53,6 +53,7 @@
 [ext_resource type="AudioStream" uid="uid://fbf1fk40mdqi" path="res://assets/audio/npcs/neighboor/neighboor_talk_depraved_02.wav" id="51_y8vrv"]
 [ext_resource type="AudioStream" uid="uid://cwr12kuvp0bhn" path="res://assets/audio/npcs/neighboor/neighboor_talk_depraved_03.wav" id="52_jg4s3"]
 [ext_resource type="AudioStream" uid="uid://w41nx25sps02" path="res://assets/audio/npcs/neighboor/neighboor_talk_depraved_04.wav" id="53_7bhvw"]
+[ext_resource type="Material" uid="uid://dwd813uomkge2" path="res://npcs/disolve_mats/neighboor_disolve_mat.tres" id="53_awr2w"]
 [ext_resource type="AudioStream" uid="uid://ba15g2m12vy5d" path="res://assets/audio/npcs/neighboor/neighboor_depraved.wav" id="54_u4wb5"]
 
 [sub_resource type="Resource" id="Resource_iifja"]
@@ -525,12 +526,45 @@ finish_conversation = true
 one_time_dialog = false
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
 
+[sub_resource type="Resource" id="Resource_qctx4"]
+script = ExtResource("3_tr737")
+dialog_description = "no se puso malo por accidente"
+dialog_id = "VECINO_01_A_Q17_003"
+player_dialog_option = "VECINO_01_A_Q17_003"
+dialog_text = Array[String](["VECINO_01_A_Q17_004"])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_jnqyy"]
+script = ExtResource("3_tr737")
+dialog_description = "Él envenenó sus medicinas"
+dialog_id = "VECINO_01_A_Q17_005"
+player_dialog_option = "VECINO_01_A_Q17_005"
+dialog_text = Array[String](["VECINO_01_A_Q17_008", "VECINO_01_A_Q17_009", "VECINO_01_A_Q17_010"])
+dialogs_to_unlock = Array[ExtResource("3_tr737")]([SubResource("Resource_qctx4")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_s8ro5"]
+script = ExtResource("3_tr737")
+dialog_description = "Si..."
+dialog_id = "VECINO_01_A_Q17_011"
+player_dialog_option = "VECINO_01_A_Q17_011"
+dialog_text = Array[String](["VECINO_01_A_Q17_012", "VECINO_01_A_Q17_013", "VECINO_01_A_Q17_014", "VECINO_01_A_Q17_015", "VECINO_01_A_Q17_016", "VECINO_01_A_Q17_017", "VECINO_01_A_Q17_018"])
+finish_conversation = true
+dialogs_to_unlock = Array[ExtResource("3_tr737")]([SubResource("Resource_jnqyy")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_oj2b6"]
+script = ExtResource("7_g5828")
+dialog_options = Array[ExtResource("3_tr737")]([SubResource("Resource_qctx4"), SubResource("Resource_jnqyy"), SubResource("Resource_s8ro5")])
+metadata/_custom_type_script = "uid://7l1ps0yokllm"
+
 [sub_resource type="Resource" id="Resource_iab8a"]
 script = ExtResource("3_tr737")
 dialog_description = "Cuando le dices que frank mato a Tobías"
 dialog_id = "VECINO_01_A_Q17_"
 player_dialog_option = "VECINO_01_A_Q17_"
-dialog_text = Array[String](["VECINO_01_A_Q17_001", "VECINO_01_A_Q17_002", "VECINO_01_A_Q17_003", "VECINO_01_A_Q17_004", "VECINO_01_A_Q17_005", "VECINO_01_A_Q17_006", "VECINO_01_A_Q17_007", "VECINO_01_A_Q17_008", "VECINO_01_A_Q17_009", "VECINO_01_A_Q17_010", "VECINO_01_A_Q17_011", "VECINO_01_A_Q17_012", "VECINO_01_A_Q17_013", "VECINO_01_A_Q17_014", "VECINO_01_A_Q17_015", "VECINO_01_A_Q17_016", "VECINO_01_A_Q17_017", "VECINO_01_A_Q17_018"])
+dialog_text = Array[String](["VECINO_01_A_Q17_001", "VECINO_01_A_Q17_002"])
+response_conversation = SubResource("Resource_oj2b6")
 events_to_push = Array[ExtResource("4_quhco")]([ExtResource("27_if5e5")])
 current_event_to_trigger_conversation = ExtResource("20_kitnj")
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
@@ -546,6 +580,7 @@ dialog_description = "Rezando el ave maria"
 dialog_id = "VECINO_01_A_Q16_"
 player_dialog_option = "VECINO_01_A_Q16_"
 dialog_text = Array[String](["VECINO_01_A_Q16_", "VECINO_01_A_Q16_001", "VECINO_01_A_Q16_002"])
+one_time_dialog = false
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qqlo8"]
@@ -561,8 +596,21 @@ stream_5/stream = ExtResource("45_oj2b6")
 script = ExtResource("3_tr737")
 dialog_description = "VECINO_FINAL_
 "
-dialog_id = "VECINO_FINAL_"
+dialog_id = "VECINO_FINAL"
 dialog_text = Array[String](["dialog_neighbor_final_001", "dialog_neighbor_final_002", "dialog_neighbor_final_003", "dialog_neighbor_final_004", "dialog_neighbor_final_005", "dialog_neighbor_final_006", "dialog_neighbor_final_007", "dialog_neighbor_final_008", "dialog_neighbor_final_009", "dialog_neighbor_final_010", "dialog_neighbor_final_011"])
+finish_conversation = true
+one_time_dialog = false
+events_to_push = Array[ExtResource("4_quhco")]([ExtResource("28_lcq2t")])
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="Resource" id="Resource_oomwh"]
+script = ExtResource("3_tr737")
+dialog_description = "VECINO_FINAL_ OTRA COPIA PARA EVITAR BUGS
+"
+dialog_id = "VECINO_FINAL_OVERRIDE"
+dialog_text = Array[String](["dialog_neighbor_final_001", "dialog_neighbor_final_002", "dialog_neighbor_final_003", "dialog_neighbor_final_004", "dialog_neighbor_final_005", "dialog_neighbor_final_006", "dialog_neighbor_final_007", "dialog_neighbor_final_008", "dialog_neighbor_final_009", "dialog_neighbor_final_010", "dialog_neighbor_final_011"])
+finish_conversation = true
+one_time_dialog = false
 events_to_push = Array[ExtResource("4_quhco")]([ExtResource("28_lcq2t")])
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
 
@@ -959,9 +1007,10 @@ volume_db = 2.0
 unit_size = 12.0
 max_distance = 18.0
 
-[node name="NeighboorChapelInstance" parent="NpcInstanceController" index="1" instance=ExtResource("2_iqveq")]
+[node name="NeighboorChapelInstance" parent="NpcInstanceController" index="1" node_paths=PackedStringArray("look_at_position") instance=ExtResource("2_iqveq")]
 top_level = true
 instance_id = 1
+look_at_position = NodePath("ModelContainer/NeighboorModel/rig/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
 
 [node name="NpcConversation" parent="NpcInstanceController/NeighboorChapelInstance" index="0" node_paths=PackedStringArray("npc_instance")]
 npc_instance = NodePath("..")
@@ -1299,6 +1348,9 @@ transform = Transform3D(0.9995854, -0.0060520256, -0.028150167, -0.026111275, 0.
 [node name="AnimationPlayer" parent="NpcInstanceController/NeighboorChapelInstance/ModelContainer/NeighboorModel" index="1"]
 autoplay = "idle_praying"
 
+[node name="Interactable" parent="NpcInstanceController/NeighboorChapelInstance" index="2"]
+interactable_hint = "INTERACTABLE_001"
+
 [node name="DialogAudioStreamPlayer3D" parent="NpcInstanceController/NeighboorChapelInstance/NpcInstanceAudioController" index="1"]
 stream = SubResource("AudioStreamRandomizer_qqlo8")
 
@@ -1307,10 +1359,12 @@ top_level = true
 instance_id = 2
 look_at_position = NodePath("ModelContainer/NeighboorModel/rig/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
 look_at_modifier = NodePath("ModelContainer/NeighboorModel/rig/Skeleton3D/LookAtModifier3D")
+materials_to_dislove = Array[Material]([ExtResource("53_awr2w")])
 
 [node name="NpcConversation" parent="NpcInstanceController/NeighboorFinalInstance" index="0" node_paths=PackedStringArray("npc_instance")]
 npc_instance = NodePath("..")
 neutral_wellcome_dialog = SubResource("Resource_awr2w")
+override_wellcome_dialog = SubResource("Resource_oomwh")
 
 [node name="NeighboorModel" parent="NpcInstanceController/NeighboorFinalInstance/ModelContainer" index="0" instance=ExtResource("3_leevk")]
 
@@ -1621,6 +1675,9 @@ bones/404/rotation = Quaternion(0.961249, 5.84961e-08, -2.03964e-07, -0.275683)
 bones/407/rotation = Quaternion(-4.54828e-08, -3.08203e-28, 1, -1.61587e-22)
 bones/408/position = Vector3(-0.423594, 0.477333, 0.978537)
 bones/408/rotation = Quaternion(-0.700031, 0, 0, 0.714112)
+
+[node name="Corpse" parent="NpcInstanceController/NeighboorFinalInstance/ModelContainer/NeighboorModel/rig/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("53_awr2w")
 
 [node name="BoneAttachment3D" parent="NpcInstanceController/NeighboorFinalInstance/ModelContainer/NeighboorModel/rig/Skeleton3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 0.9479153, -0.3185168, 0, 0.31851667, 0.94791734, 0, 1.6355406, 0.120508604)

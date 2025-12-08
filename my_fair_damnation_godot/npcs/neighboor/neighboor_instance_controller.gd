@@ -1,15 +1,16 @@
 extends NpcInstanceController
+
 class_name NeighboorInstanceController
 
-@export var chapel_instance : NpcInstance
-@export var condemnted_instance : NpcInstance
-@export var final_instance : NpcInstance
+@export var chapel_instance: NpcInstance
+@export var condemnted_instance: NpcInstance
+@export var final_instance: NpcInstance
 
-@export var sorry_to_untie : Event
-@export var paternity_test_given : Event
-@export var goes_after_frank_unprepared : Event
-@export var goes_after_frank_ready : Event
-@export var confronted_about_photos : Event
+@export var sorry_to_untie: Event
+@export var paternity_test_given: Event
+@export var goes_after_frank_unprepared: Event
+@export var goes_after_frank_ready: Event
+@export var confronted_about_photos: Event
 
 
 ## Triggers once daytime starts. This should be override

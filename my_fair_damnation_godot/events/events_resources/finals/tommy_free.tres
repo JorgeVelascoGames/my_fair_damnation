@@ -4,8 +4,6 @@
 
 [resource]
 script = ExtResource("1_cs38p")
-event_name = "Skyler and tobias free"
-event_description = "Se lanza cuando Tobías y su hijo se han liberado del asilo"
-event_is_trigger = false
-is_one_day_only = false
+event_name = "Tomy free"
+event_description = "Se lanza cuando tomy se han liberado del asilo"
 metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

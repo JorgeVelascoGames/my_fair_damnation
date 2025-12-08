@@ -1,4 +1,4 @@
-[gd_scene load_steps=112 format=3 uid="uid://cglp3gexwaoyi"]
+[gd_scene load_steps=113 format=3 uid="uid://cglp3gexwaoyi"]
 
 [ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_hii17"]
 [ext_resource type="Resource" uid="uid://0kf21qit4mwp" path="res://npcs/ids/grandpa_id.tres" id="2_tuita"]
@@ -52,6 +52,7 @@
 [ext_resource type="AudioStream" uid="uid://bkndi3b31yc8e" path="res://assets/audio/npcs/grandpa/grandpa_talk_04.wav" id="39_0eqwr"]
 [ext_resource type="AudioStream" uid="uid://d4e366cxpifcg" path="res://assets/audio/npcs/grandpa/grandpa_talk_05.wav" id="40_k2rm7"]
 [ext_resource type="AudioStream" uid="uid://d0wcwgbl00fjj" path="res://assets/audio/npcs/grandpa/grandpa_talk_06.wav" id="41_qn33v"]
+[ext_resource type="Material" uid="uid://brx01vjgdwn7f" path="res://npcs/disolve_mats/grandpa_disolve_mat.tres" id="46_0eqwr"]
 [ext_resource type="AudioStream" uid="uid://d4jjocgwryoyk" path="res://assets/audio/npcs/celestial.wav" id="51_7kjbu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5qd6j"]
@@ -483,9 +484,10 @@ stream_5/stream = ExtResource("41_qn33v")
 [sub_resource type="Resource" id="Resource_qk5lo"]
 script = ExtResource("4_dsfbc")
 dialog_description = "Adiós"
-dialog_id = "nurse_bye_grandpa"
+dialog_id = "bye_grandpa"
 player_dialog_option = "nurse_bye"
 finish_conversation = true
+one_time_dialog = false
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
 
 [sub_resource type="Resource" id="Resource_l2aow"]
@@ -579,6 +581,7 @@ id = ExtResource("2_tuita")
 main_instance = NodePath("GandpaMainInstance")
 meds_event = ExtResource("7_pffgi")
 missing_meds_message = "medication_jeremiah_missing"
+behaviour_at_night = 1
 enemy_instance = NodePath("../GrandpaEnemy")
 sleeping_instance = NodePath("GrandpaSleepInstance")
 use_current_event_instance_array = true
@@ -586,6 +589,7 @@ instance_by_current_event = {
 ExtResource("4_8cjpw"): NodePath("GrandpaWithGrandson"),
 ExtResource("5_pn4fg"): NodePath("GrandpaChapellInstance")
 }
+free_event = ExtResource("36_lxvpx")
 
 [node name="GandpaMainInstance" parent="NpcInstanceController" index="0" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("3_kbefj")]
 look_at_position = NodePath("ModelContainer/GrandpaModel/granpda-rig/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
@@ -636,7 +640,7 @@ instance_id = 1
 look_at_position = NodePath("ModelContainer/GrandpaModel/granpda-rig/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
 look_at_modifier = NodePath("ModelContainer/GrandpaModel/granpda-rig/Skeleton3D/LookAtModifier3D")
 need_meds = false
-materials_to_dislove = Array[Material]([SubResource("ShaderMaterial_5qd6j")])
+materials_to_dislove = Array[Material]([ExtResource("46_0eqwr")])
 
 [node name="NpcConversation" parent="NpcInstanceController/GrandpaChapellInstance" index="0" node_paths=PackedStringArray("npc_instance")]
 npc_instance = NodePath("..")
@@ -1081,11 +1085,17 @@ bones/674/rotation = Quaternion(-0.105326, 0.199968, 0.972211, -0.061029)
 bones/676/position = Vector3(-0.788839, 1.39614, -0.760404)
 bones/676/rotation = Quaternion(-0.699371, -0.104309, -0.104309, 0.699371)
 
+[node name="grandpa" parent="NpcInstanceController/GrandpaChapellInstance/ModelContainer/GrandpaModel/granpda-rig/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("46_0eqwr")
+
 [node name="BoneAttachment3D" parent="NpcInstanceController/GrandpaChapellInstance/ModelContainer/GrandpaModel/granpda-rig/Skeleton3D" index="2"]
 transform = Transform3D(1.0000001, -1.1038992e-10, -3.092282e-11, 9.679013e-11, 0.8845651, 0.46383256, -1.8880542e-10, -0.47337174, 0.88231015, -1.212738e-10, 1.7319747, 0.0023702737)
 
 [node name="AnimationPlayer" parent="NpcInstanceController/GrandpaChapellInstance/ModelContainer/GrandpaModel" index="1"]
 autoplay = "Idle_grandpa_holy"
+
+[node name="Interactable" parent="NpcInstanceController/GrandpaChapellInstance" index="2"]
+interactable_hint = "INTERACTABLE_001"
 
 [node name="CollisionShape3D" parent="NpcInstanceController/GrandpaChapellInstance/Interactable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00866699, 1.60148, 0.104004)
@@ -1450,6 +1460,9 @@ bones/676/position = Vector3(-0.997152, 1.39264, -0.548445)
 
 [node name="BoneAttachment3D" parent="NpcInstanceController/GrandpaWithGrandson/ModelContainer/GrandpaModel/granpda-rig/Skeleton3D" index="2"]
 transform = Transform3D(0.9651829, -0.08938498, 0.24581349, 0.24649216, 0.6218189, -0.741736, -0.08910577, 0.7724892, 0.630772, -0.0025301748, 1.6987519, 0.028602233)
+
+[node name="Interactable" parent="NpcInstanceController/GrandpaWithGrandson" index="2"]
+interactable_hint = "INTERACTABLE_001"
 
 [node name="CollisionShape3D" parent="NpcInstanceController/GrandpaWithGrandson/Interactable" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0403595, 1.05804, 0)

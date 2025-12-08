@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://bub5c73ky0qrd"]
+[gd_scene load_steps=41 format=3 uid="uid://bub5c73ky0qrd"]
 
 [ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_acklk"]
 [ext_resource type="Resource" uid="uid://cgt2sxeq3iqxt" path="res://npcs/ids/tomy_id.tres" id="2_6raq7"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dkqfew7ssu6mm" path="res://npcs/npc_instance.tscn" id="3_d1qlw"]
 [ext_resource type="PackedScene" uid="uid://b7evkupfryad" path="res://npcs/tomy/tomy_model.tscn" id="4_633dm"]
 [ext_resource type="Script" uid="uid://c00m8ojonc6s4" path="res://conversations/dialog.gd" id="4_l8imr"]
+[ext_resource type="Resource" uid="uid://diqk7i7nbjeny" path="res://events/events_resources/finals/tommy_free.tres" id="5_36cx2"]
 [ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="5_416md"]
 [ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="6_0xj2q"]
 [ext_resource type="Script" uid="uid://bdfriqua1vdjs" path="res://npcs/npc_id.gd" id="7_n5lrc"]
@@ -21,6 +22,7 @@
 [ext_resource type="Script" uid="uid://ducygnsxn03i4" path="res://npcs/tomy/tomy_instance_animator_controller.gd" id="15_kv4o1"]
 [ext_resource type="Script" uid="uid://cvlnlhk3l8nla" path="res://npcs/player_catcher.gd" id="16_b4kjd"]
 [ext_resource type="AudioStream" uid="uid://b7nsniwclrwr3" path="res://assets/audio/npcs/tomy/tomy_idle.wav" id="20_84tq0"]
+[ext_resource type="Material" uid="uid://cbv83santco6f" path="res://npcs/disolve_mats/tomy_disolve_mat.tres" id="23_o00yl"]
 
 [sub_resource type="Resource" id="Resource_641uk"]
 script = ExtResource("4_l8imr")
@@ -173,6 +175,7 @@ use_current_event_instance_array = true
 instance_by_current_event = {
 ExtResource("11_641uk"): NodePath("FinalInstance")
 }
+free_event = ExtResource("5_36cx2")
 
 [node name="MainInstance" parent="NpcInstanceController" index="0" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("3_d1qlw")]
 look_at_position = NodePath("ModelContainer/TomyModel/Tomy_001/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
@@ -421,6 +424,7 @@ volume_db = -3.0
 instance_id = 1
 look_at_position = NodePath("ModelContainer/TomyModel/Tomy_001/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
 look_at_modifier = NodePath("ModelContainer/TomyModel/Tomy_001/Skeleton3D/LookAtModifier3D")
+materials_to_dislove = Array[Material]([ExtResource("23_o00yl")])
 
 [node name="NpcConversation" parent="NpcInstanceController/FinalInstance" index="0" node_paths=PackedStringArray("npc_instance")]
 npc_instance = NodePath("..")
@@ -432,6 +436,9 @@ override_wellcome_dialog = SubResource("Resource_ummwc")
 
 [node name="TomyModel" parent="NpcInstanceController/FinalInstance/ModelContainer" index="0" instance=ExtResource("4_633dm")]
 transform = Transform3D(1.2, 0, 0, 0, 1.2, 0, 0, 0, 1.2, 0, 0, 0)
+
+[node name="Tomy" parent="NpcInstanceController/FinalInstance/ModelContainer/TomyModel/Tomy_001/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("23_o00yl")
 
 [node name="AnimationPlayer" parent="NpcInstanceController/FinalInstance/ModelContainer/TomyModel" index="1"]
 autoplay = "tommy_jumpscare_idle"

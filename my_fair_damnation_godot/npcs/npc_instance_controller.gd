@@ -1,48 +1,49 @@
 extends NpcComponent
+
 class_name NpcInstanceController
 
 ## Controlls which instance of the npc to show
 
 signal instance_change(int)
 
-enum night_behaviour{
+enum night_behaviour {
 	SLEEP,
 	VANISH,
-	NONE
+	NONE,
 }
 
 const ENEMY_ID := 300
 const SLEEP_ID := 400
 const NULL_ID := 500
 
-@export var main_instance : NpcInstance
-@export var meds_event : Event
-@export var missing_meds_message : String
+@export var main_instance: NpcInstance
+@export var meds_event: Event
+@export var missing_meds_message: String
 @export_category("Night")
-@export var behaviour_at_night : night_behaviour
-@export var enemy_instance : Enemy
-@export var sleeping_instance : NpcInstance
+@export var behaviour_at_night: night_behaviour
+@export var enemy_instance: Enemy
+@export var sleeping_instance: NpcInstance
 @export_category("Instance controll")
 ##If this is true and there is no match for instance at day, the [member main_instance]
 ##wil be activated. Otherwise, there will be no instance
 @export var main_instance_as_default := true
 @export var use_current_event_instance_array := false
 @export var use_passed_event_instance_array := false
-##If the key event is on the current events array on the event manager, 
+##If the key event is on the current events array on the event manager,
 ##the pair instance will be activated at the beginning of the day. The first event
 ##to match will be only to count, and the code will not check more events after that one
-@export var instance_by_current_event : Dictionary[Event, NpcInstance] = {}
-##If the key event is on the passed events array on the event manager, 
+@export var instance_by_current_event: Dictionary[Event, NpcInstance] = { }
+##If the key event is on the passed events array on the event manager,
 ##the pair instance will be activated at the beginning of the day. The first event
 ##to match will be only to count, and the code will not check more events after that one
-@export var instance_by_passed_event : Dictionary[Event, NpcInstance] = {}
-@export var free_event : Event
+@export var instance_by_passed_event: Dictionary[Event, NpcInstance] = { }
+@export var free_event: Event
 
 ## The total ammount of different npc instances of this particular npc.
 var current_instance_id := 0
-var npc_instances : Array[NpcInstance]
-var active_instance : NpcInstance
-var last_daylight_instance : NpcInstance
+var npc_instances: Array[NpcInstance]
+var active_instance: NpcInstance
+var last_daylight_instance: NpcInstance
 var is_saved := false
 
 
@@ -54,7 +55,7 @@ func _ready() -> void:
 		instance.npc = npc
 	DayNightCycleController.player_sleeps_all_night.connect(manage_behaviour_sleep_all_night)
 	await get_tree().process_frame
-	
+
 	if enemy_instance:
 		enemy_instance.disable_instance()
 	disable_all_instances()
@@ -62,7 +63,7 @@ func _ready() -> void:
 
 ##Manages which instance is activated. Pass nothing to set it to
 ##activate the null instance (character not existing)
-func _activate_instance(instance : NpcInstance) -> void:
+func _activate_instance(instance: NpcInstance) -> void:
 	if is_saved:
 		print("%s is saved. Disabling all instances..." % npc.id.npc_name)
 		disable_all_instances()
@@ -74,7 +75,7 @@ func _activate_instance(instance : NpcInstance) -> void:
 		enemy_instance.disable_instance()
 	for inst in npc_instances:
 		inst.disable_instance()
-	
+
 	current_instance_id = instance.instance_id
 	active_instance = instance
 	if instance == enemy_instance:
@@ -112,19 +113,19 @@ func manage_instances_on_day() -> void:
 				_activate_instance(instance_by_current_event[event])
 				last_daylight_instance = instance_by_current_event[event] #Esto se hace así para evitar problemas de carrera
 				return
-	
+
 	if use_passed_event_instance_array:
 		for event in instance_by_passed_event.keys():
 			if EventManager.passed_events.has(event):
 				_activate_instance(instance_by_passed_event[event])
 				last_daylight_instance = instance_by_passed_event[event]
 				return
-	
+
 	if main_instance_as_default:
 		_activate_instance(main_instance)
 		last_daylight_instance = main_instance
 		return
-	
+
 	disable_all_instances()
 
 
@@ -164,8 +165,8 @@ func calculate_meds_reputation_change() -> void:
 		return
 	npc.npc_reputation.reputation_change(-15)
 	print_rich("[color=red]%s didn't get meds last day: reputation has changed[/color]" % npc.id.npc_name)
-	var player : Player = await PathfindingManager.get_player()
-	var player_ui : PlayerUI = player.player_ui
+	var player: Player = await PathfindingManager.get_player()
+	var player_ui: PlayerUI = player.player_ui
 	player_ui.display_gameplay_text(tr(missing_meds_message), 8.5)
 
 
@@ -174,14 +175,14 @@ func activate_sleeping_instance() -> void:
 		_activate_instance(sleeping_instance)
 
 
-func activate_instance_by_id(id : int) -> void:
+func activate_instance_by_id(id: int) -> void:
 	if is_saved:
 		disable_all_instances()
 		return
 	if id == ENEMY_ID:
 		_activate_enemy()
 		return
-	
+
 	for inst in npc_instances:
 		if inst.instance_id == id:
 			_activate_instance(inst)
@@ -192,9 +193,10 @@ func manage_behaviour_sleep_all_night() -> void:
 	pass
 
 
-func on_event_pushed(event : Event) -> void:
+func on_event_pushed(event: Event) -> void:
 	if event == free_event:
 		is_saved = true
+		active_instance.interactable.interaction_cd_timer.start(1000) #Long cd to avoid interaction
 		save()
 		dissolve_and_disapear_character()
 
@@ -227,7 +229,7 @@ func disable_all_instances() -> void:
 	save()
 
 
-func _load(data : SavedData) -> void:
+func _load(data: SavedData) -> void:
 	await get_tree().create_timer(1).timeout #Esto es para que de tiempo a cargar otras cosas necesarias como los eventos de los arrays y demas
 	for id in data.npcs_current_instance.keys():
 		if id == npc.id.npc_name:

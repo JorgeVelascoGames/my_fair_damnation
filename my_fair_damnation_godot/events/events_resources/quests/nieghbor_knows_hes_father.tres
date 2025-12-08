@@ -6,6 +6,4 @@
 script = ExtResource("1_qgkw6")
 event_name = "Neighbor knows hes father"
 event_description = "Salta cuando le has dicho al vecino que es el padre"
-event_is_trigger = false
-is_one_day_only = true
 metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

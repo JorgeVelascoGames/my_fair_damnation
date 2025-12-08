@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://dfn5t6vog06e4"]
+[gd_scene load_steps=65 format=3 uid="uid://dfn5t6vog06e4"]
 
 [ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_rk3pf"]
 [ext_resource type="Resource" uid="uid://njqmbf3r2y5q" path="res://npcs/ids/untie_id.tres" id="2_a1mwp"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dkxp1onnn6je4" path="res://npcs/untie/untie_model.tscn" id="3_p3o51"]
 [ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="4_cn3xv"]
 [ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="5_1n11j"]
+[ext_resource type="Resource" uid="uid://cvpr7oexdoi05" path="res://events/events_resources/quests/mother_and_auntie_are_in_peace.tres" id="5_wrs58"]
 [ext_resource type="Script" uid="uid://bdfriqua1vdjs" path="res://npcs/npc_id.gd" id="6_hm8un"]
 [ext_resource type="Script" uid="uid://7l1ps0yokllm" path="res://conversations/conversation.gd" id="7_42xmc"]
 [ext_resource type="Resource" uid="uid://bfvop75ghqdf7" path="res://items/item_vault/pills.tres" id="7_hm8un"]
@@ -35,6 +36,7 @@
 [ext_resource type="AudioStream" uid="uid://dqxwaso4kkk73" path="res://assets/audio/npcs/untie/untie_talk_07.wav" id="28_55j3s"]
 [ext_resource type="AudioStream" uid="uid://b6eu56qwd3rkc" path="res://assets/audio/npcs/untie/untie_talk_08.wav" id="29_d2v3s"]
 [ext_resource type="AudioStream" uid="uid://d4jjocgwryoyk" path="res://assets/audio/npcs/celestial.wav" id="33_8vjk0"]
+[ext_resource type="Material" uid="uid://fxab0hn6b20n" path="res://npcs/disolve_mats/untie_disolve_mat.tres" id="34_xaf57"]
 
 [sub_resource type="Resource" id="Resource_weifw"]
 script = ExtResource("3_0ufi5")
@@ -273,7 +275,8 @@ behaviour_at_night = 1
 enemy_instance = NodePath("../UntieEnemy")
 use_current_event_instance_array = true
 instance_by_current_event = {
-ExtResource("3_k4b5a"): NodePath("SurpriseInstance")
+ExtResource("3_k4b5a"): NodePath("SurpriseInstance"),
+ExtResource("5_wrs58"): NodePath("FinalInstance")
 }
 free_event = ExtResource("20_emcsc")
 
@@ -515,6 +518,7 @@ stream = SubResource("AudioStreamRandomizer_1wwtu")
 instance_id = 2
 look_at_position = NodePath("ModelContainer/UntieModel/Armature_001/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
 look_at_modifier = NodePath("ModelContainer/UntieModel/Armature_001/Skeleton3D/LookAtModifier3D")
+materials_to_dislove = Array[Material]([ExtResource("34_xaf57")])
 
 [node name="NpcConversation" parent="NpcInstanceController/FinalInstance" index="0" node_paths=PackedStringArray("npc_instance")]
 npc_instance = NodePath("..")
@@ -602,6 +606,9 @@ bones/73/position = Vector3(0.29052153, 0.6647427, 0.15134086)
 bones/73/rotation = Quaternion(-0.63035685, -0.34025243, -0.380395, 0.58496)
 bones/74/rotation = Quaternion(0.019637289, 0.030303113, -0.4823717, 0.8752221)
 bones/75/rotation = Quaternion(0.030405553, 0.004232674, -0.4295515, 0.9025204)
+
+[node name="untie" parent="NpcInstanceController/FinalInstance/ModelContainer/UntieModel/Armature_001/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("34_xaf57")
 
 [node name="BoneAttachment3D" parent="NpcInstanceController/FinalInstance/ModelContainer/UntieModel/Armature_001/Skeleton3D" index="2"]
 transform = Transform3D(1, 2.842171e-14, 2.3841852e-07, 2.3800709e-07, 0.05872211, -0.9982742, -1.4000365e-08, 0.99827427, 0.05872169, -1.2460979e-08, 4.6683946, -0.64012265)

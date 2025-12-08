@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://bo8skdwgushde" path="res://items/item.gd" id="5_346np"]
 [ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="5_v68yv"]
 [ext_resource type="Script" uid="uid://bdfriqua1vdjs" path="res://npcs/npc_id.gd" id="6_hkg7u"]
+[ext_resource type="Resource" uid="uid://fgux0h2hf0qu" path="res://events/events_resources/finals/skyler_tobias_free.tres" id="6_tclpq"]
 [ext_resource type="Script" uid="uid://7l1ps0yokllm" path="res://conversations/conversation.gd" id="7_upuxj"]
 [ext_resource type="Resource" uid="uid://btnglwxpgb1ik" path="res://items/item_vault/quest_items/body.tres" id="8_346np"]
 [ext_resource type="Resource" uid="uid://dvaucdir0il84" path="res://events/events_resources/quests/scarecorw_doesnt_want_to_meet.tres" id="8_m4gnq"]
@@ -18,10 +19,9 @@
 [ext_resource type="Resource" uid="uid://ceqbkfgqfcerh" path="res://events/events_resources/quests/grandpa_asks_for_grandson.tres" id="11_v68yv"]
 [ext_resource type="Resource" uid="uid://cxdv033rlomo6" path="res://events/events_resources/quests/scarecrow_wants_to_meet_mom.tres" id="14_v4flx"]
 [ext_resource type="Resource" uid="uid://266f6kl0b8pc" path="res://events/events_resources/quests/scarecorw_reunites_with_skyler.tres" id="15_v68yv"]
-[ext_resource type="Shader" uid="uid://lhmt1ugdk0qn" path="res://shaders/dissolve.gdshader" id="17_mxua4"]
 [ext_resource type="Resource" uid="uid://dwppycbyryvwy" path="res://events/events_resources/achivement_events/meet_nameless.tres" id="17_tclpq"]
-[ext_resource type="Texture2D" uid="uid://bivf0w6vcgd67" path="res://assets/npcs/scarecrow_scarecrow.png" id="18_1m2wu"]
 [ext_resource type="AudioStream" uid="uid://b7nsniwclrwr3" path="res://assets/audio/npcs/tomy/tomy_idle.wav" id="18_mse15"]
+[ext_resource type="Material" uid="uid://vk37jj6vyxqf" path="res://npcs/disolve_mats/scarecrow_disolve_mat.tres" id="22_tsdms"]
 
 [sub_resource type="Resource" id="Resource_m4gnq"]
 script = ExtResource("3_2b01f")
@@ -317,21 +317,6 @@ script = ExtResource("7_upuxj")
 dialog_options = Array[ExtResource("3_2b01f")]([SubResource("Resource_pee12"), SubResource("Resource_3i12k"), SubResource("Resource_lmyqe"), SubResource("Resource_013gb")])
 metadata/_custom_type_script = "uid://7l1ps0yokllm"
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_m5ibb"]
-render_priority = 0
-shader = ExtResource("17_mxua4")
-shader_parameter/baseColor = Color(1, 1, 1, 1)
-shader_parameter/baseColorTexture = ExtResource("18_1m2wu")
-shader_parameter/dissolveSlider = 0.0
-shader_parameter/dissolveNoiseScale = 2.0
-shader_parameter/edgeNoiseScale = 0.0
-shader_parameter/edgesThickness = 0.0210000009975
-shader_parameter/edgeColor = Color(0.7107048, 0.62008995, 0.41088966, 1)
-shader_parameter/edgeEmissionSlider = 1.6899999622251198
-shader_parameter/enable_dissolve_animation = false
-shader_parameter/animation_speed = 1.0
-shader_parameter/animation_intensity = 0.2
-
 [sub_resource type="Resource" id="Resource_euky6"]
 script = ExtResource("3_2b01f")
 dialog_description = "Mami... mami..."
@@ -340,6 +325,10 @@ dialog_text = Array[String](["SCARECROW_FINAL"])
 finish_conversation = true
 one_time_dialog = false
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tclpq"]
+radius = 0.55859375
+height = 2.4467773
 
 [node name="ScarecrowNpc" instance=ExtResource("1_y3w1r")]
 id = ExtResource("2_1m2wu")
@@ -354,6 +343,7 @@ ExtResource("11_v4flx"): NodePath("GrandpaInstance"),
 ExtResource("3_gnqxn"): NodePath("MainInstance"),
 ExtResource("15_v68yv"): NodePath("FinalInstance")
 }
+free_event = ExtResource("6_tclpq")
 
 [node name="MainInstance" parent="NpcInstanceController" index="0" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("2_xs00e")]
 look_at_position = NodePath("ModelContainer/ScarecrowModel/Armature_002/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
@@ -438,7 +428,7 @@ instance_id = 2
 look_at_position = NodePath("ModelContainer/ScarecrowModel/Armature_002/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
 look_at_modifier = NodePath("ModelContainer/ScarecrowModel/Armature_002/Skeleton3D/LookAtModifier3D")
 need_meds = false
-materials_to_dislove = Array[Material]([SubResource("ShaderMaterial_m5ibb")])
+materials_to_dislove = Array[Material]([ExtResource("22_tsdms")])
 
 [node name="NpcConversation" parent="NpcInstanceController/FinalInstance" index="0" node_paths=PackedStringArray("npc_instance")]
 npc_instance = NodePath("..")
@@ -461,8 +451,15 @@ bones/9/rotation = Quaternion(-0.000185703, 0.0615756, 0.998067, -0.00837542)
 bones/10/rotation = Quaternion(-0.0792871, 0.0006451, 0.00409019, 0.996843)
 bones/11/rotation = Quaternion(0.3626, 0.116192, 0.0840601, 0.920844)
 
+[node name="scarecrow" parent="NpcInstanceController/FinalInstance/ModelContainer/ScarecrowModel/Armature_002/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("22_tsdms")
+
 [node name="BoneAttachment3D" parent="NpcInstanceController/FinalInstance/ModelContainer/ScarecrowModel/Armature_002/Skeleton3D" index="2"]
 transform = Transform3D(0.9519398, 0.22840986, -0.20405763, -0.23259772, 0.9725663, 0.0035517998, 0.19927089, 0.04408223, 0.97895235, -8.271806e-24, 5.367161, -0.19884884)
+
+[node name="CollisionShape3D" parent="NpcInstanceController/FinalInstance/Interactable" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22338867, 0)
+shape = SubResource("CapsuleShape3D_tclpq")
 
 [node name="NpcInstanceAudioController" parent="NpcInstanceController/FinalInstance" index="5"]
 idle_sound_during_conversation = true
@@ -477,3 +474,4 @@ volume_db = 7.0
 [editable path="NpcInstanceController/GrandpaInstance/ModelContainer/ScarecrowModel"]
 [editable path="NpcInstanceController/FinalInstance"]
 [editable path="NpcInstanceController/FinalInstance/ModelContainer/ScarecrowModel"]
+[editable path="NpcInstanceController/FinalInstance/Interactable"]

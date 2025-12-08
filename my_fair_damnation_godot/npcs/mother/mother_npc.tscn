@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cld6geaee54c"]
+[gd_scene load_steps=58 format=3 uid="uid://cld6geaee54c"]
 
 [ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_alp1m"]
 [ext_resource type="Resource" uid="uid://cag0803yvtwoy" path="res://npcs/ids/mother_id.tres" id="2_ly0fg"]
@@ -24,12 +24,12 @@
 [ext_resource type="PackedScene" uid="uid://bohm0tfnu2igo" path="res://npcs/mother/mother_enemy.tscn" id="17_gliu6"]
 [ext_resource type="Resource" uid="uid://ciwk70bxfnjh5" path="res://items/item_vault/tranquilizer_pills.tres" id="19_7p55u"]
 [ext_resource type="AudioStream" uid="uid://c2nkjhb7nwfim" path="res://assets/audio/npcs/mother/mom_talk_01.wav" id="21_4mta5"]
-[ext_resource type="Shader" uid="uid://lhmt1ugdk0qn" path="res://shaders/dissolve.gdshader" id="21_rnnjh"]
-[ext_resource type="Texture2D" uid="uid://bc15rkjlmtti" path="res://assets/npcs/mother_mother.png" id="22_hjqrl"]
 [ext_resource type="AudioStream" uid="uid://dav3abb2ehrxa" path="res://assets/audio/npcs/mother/mom_talk_02.wav" id="22_t26vf"]
 [ext_resource type="AudioStream" uid="uid://but7m0xsahbon" path="res://assets/audio/npcs/mother/mom_talk_03.wav" id="23_ml71i"]
 [ext_resource type="AudioStream" uid="uid://v7g4rkdluo14" path="res://assets/audio/npcs/mother/mom_talk_04.wav" id="24_6bsg3"]
 [ext_resource type="AudioStream" uid="uid://bp6lmtcnsn4vs" path="res://assets/audio/npcs/mother/mom_talk_05.wav" id="25_1gmpr"]
+[ext_resource type="Material" uid="uid://dirgfvc42w4mv" path="res://npcs/disolve_mats/mom_disolve_mat.tres" id="27_t26vf"]
+[ext_resource type="Resource" uid="uid://diqk7i7nbjeny" path="res://events/events_resources/finals/tommy_free.tres" id="29_ml71i"]
 [ext_resource type="AudioStream" uid="uid://d4jjocgwryoyk" path="res://assets/audio/npcs/celestial.wav" id="29_t26vf"]
 
 [sub_resource type="Resource" id="Resource_0tynl"]
@@ -228,30 +228,17 @@ stream_2/stream = ExtResource("23_ml71i")
 stream_3/stream = ExtResource("24_6bsg3")
 stream_4/stream = ExtResource("25_1gmpr")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1xcji"]
-render_priority = 0
-shader = ExtResource("21_rnnjh")
-shader_parameter/baseColor = Color(1, 1, 1, 1)
-shader_parameter/baseColorTexture = ExtResource("22_hjqrl")
-shader_parameter/dissolveSlider = 0.0
-shader_parameter/dissolveNoiseScale = 2.0
-shader_parameter/edgeNoiseScale = 0.0
-shader_parameter/edgesThickness = 0.0210000009975
-shader_parameter/edgeColor = Color(0.7107048, 0.62008995, 0.41088966, 1)
-shader_parameter/edgeEmissionSlider = 1.6899999622251198
-shader_parameter/enable_dissolve_animation = false
-shader_parameter/animation_speed = 1.0
-shader_parameter/animation_intensity = 0.2
-
 [sub_resource type="Resource" id="Resource_4mta5"]
 script = ExtResource("4_o43ut")
 dialog_id = "MOTHER_WELLCOME_FINAL_01"
 dialog_text = Array[String](["MOTHER_WELLCOME_FINAL_01", "MOTHER_WELLCOME_FINAL_02", "MOTHER_WELLCOME_FINAL_03", "MOTHER_WELLCOME_FINAL_04", "MOTHER_WELLCOME_FINAL_05", "MOTHER_WELLCOME_FINAL_06", "MOTHER_WELLCOME_FINAL_07", "MOTHER_WELLCOME_FINAL_08"])
 finish_conversation = true
-events_to_push = Array[ExtResource("6_ke6ky")]([ExtResource("15_dfa7d")])
+one_time_dialog = false
+events_to_push = Array[ExtResource("6_ke6ky")]([ExtResource("15_dfa7d"), ExtResource("29_ml71i")])
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t26vf"]
+size = Vector3(1.752388, 3.4331055, 1)
 
 [node name="MotherNpc" instance=ExtResource("1_alp1m")]
 id = ExtResource("2_ly0fg")
@@ -266,6 +253,7 @@ use_current_event_instance_array = true
 instance_by_current_event = {
 ExtResource("4_pd8jw"): NodePath("MotherFinalInstance")
 }
+free_event = ExtResource("15_dfa7d")
 
 [node name="NpcInstance" parent="NpcInstanceController" index="0" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("3_jrg2v")]
 look_at_position = NodePath("ModelContainer/MotherModel/Armature-mother/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
@@ -320,13 +308,16 @@ instance_id = 1
 look_at_position = NodePath("ModelContainer/MotherModel/Armature-mother/Skeleton3D/BoneAttachment3D/LookAtMarker3D")
 look_at_modifier = NodePath("ModelContainer/MotherModel/Armature-mother/Skeleton3D/LookAtModifier3D")
 need_meds = false
-materials_to_dislove = Array[Material]([SubResource("ShaderMaterial_1xcji")])
+materials_to_dislove = Array[Material]([ExtResource("27_t26vf")])
 
 [node name="NpcConversation" parent="NpcInstanceController/MotherFinalInstance" index="0" node_paths=PackedStringArray("npc_instance")]
 npc_instance = NodePath("..")
 override_wellcome_dialog = SubResource("Resource_4mta5")
 
 [node name="MotherModel" parent="NpcInstanceController/MotherFinalInstance/ModelContainer" index="0" instance=ExtResource("6_o43ut")]
+
+[node name="mother" parent="NpcInstanceController/MotherFinalInstance/ModelContainer/MotherModel/Armature-mother/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("27_t26vf")
 
 [node name="CollisionShape3D" parent="NpcInstanceController/MotherFinalInstance/Interactable" index="0"]
 shape = SubResource("BoxShape3D_t26vf")

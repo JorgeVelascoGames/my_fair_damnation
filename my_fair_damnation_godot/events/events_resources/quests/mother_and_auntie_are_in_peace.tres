@@ -4,8 +4,6 @@
 
 [resource]
 script = ExtResource("1_yc7nv")
-event_name = "grandpa needs to help women"
-event_description = "salta cuando tenemos que pedirle al abuelo que intervenga entre la tía y la madre"
-event_is_trigger = false
-is_one_day_only = true
+event_name = "mom and untie in peace"
+event_description = "Cuando la tia y la madre hacen las paces"
 metadata/_custom_type_script = "uid://bh4hn3j70tt6x"
