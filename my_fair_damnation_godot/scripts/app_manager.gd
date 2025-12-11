@@ -12,6 +12,8 @@ var discord_link := "https://discord.gg/ngvHvhWx"
 
 var game_match_running := false
 
+const SHOW_ALL_DIALOGS_CHEAT := preload("uid://d0e832gnlqgg6")
+
 
 func load_settings(data: SavedData) -> void:
 	volume = data.volume

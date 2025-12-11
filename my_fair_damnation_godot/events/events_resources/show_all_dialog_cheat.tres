@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Event" load_steps=2 format=3 uid="uid://d0e832gnlqgg6"]
+
+[ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="1_6c36y"]
+
+[resource]
+script = ExtResource("1_6c36y")
+event_name = "Show all dialogs"
+event_description = "Un cheat que hace que aparezcan todos los dialogos siempre. Puede tener efectos no previstos"
+metadata/_custom_type_script = "uid://bh4hn3j70tt6x"

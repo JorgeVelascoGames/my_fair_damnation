@@ -49,7 +49,6 @@
 [ext_resource type="AudioStream" uid="uid://d4k2xi7v7gld0" path="res://assets/audio/npcs/neighboor/neighboor_talk_09.wav" id="48_y47kp"]
 [ext_resource type="AudioStream" uid="uid://o366i7r5rs3p" path="res://assets/audio/npcs/neighboor/neighboor_talk_10.wav" id="49_x4fvj"]
 [ext_resource type="AudioStream" uid="uid://j4k1xg6x36h" path="res://assets/audio/npcs/neighboor/neighboor_talk_depraved_01.wav" id="50_nwja0"]
-[ext_resource type="AudioStream" uid="uid://d4jjocgwryoyk" path="res://assets/audio/npcs/celestial.wav" id="50_wkejt"]
 [ext_resource type="AudioStream" uid="uid://fbf1fk40mdqi" path="res://assets/audio/npcs/neighboor/neighboor_talk_depraved_02.wav" id="51_y8vrv"]
 [ext_resource type="AudioStream" uid="uid://cwr12kuvp0bhn" path="res://assets/audio/npcs/neighboor/neighboor_talk_depraved_03.wav" id="52_jg4s3"]
 [ext_resource type="AudioStream" uid="uid://w41nx25sps02" path="res://assets/audio/npcs/neighboor/neighboor_talk_depraved_04.wav" id="53_7bhvw"]
@@ -583,6 +582,15 @@ dialog_text = Array[String](["VECINO_01_A_Q16_", "VECINO_01_A_Q16_001", "VECINO_
 one_time_dialog = false
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
 
+[sub_resource type="Resource" id="Resource_du5r8"]
+script = ExtResource("3_tr737")
+dialog_description = "Rezando el ave maria en override para asegurar que salga"
+dialog_id = "VECINO_01_A_Q16_"
+player_dialog_option = "VECINO_01_A_Q16_"
+dialog_text = Array[String](["VECINO_01_A_Q16_", "VECINO_01_A_Q16_001", "VECINO_01_A_Q16_002"])
+one_time_dialog = false
+metadata/_custom_type_script = "uid://c00m8ojonc6s4"
+
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qqlo8"]
 streams_count = 6
 stream_0/stream = ExtResource("36_euliv")
@@ -1016,6 +1024,7 @@ look_at_position = NodePath("ModelContainer/NeighboorModel/rig/Skeleton3D/BoneAt
 npc_instance = NodePath("..")
 conversation = SubResource("Resource_6i28i")
 neutral_wellcome_dialog = SubResource("Resource_wkejt")
+override_wellcome_dialog = SubResource("Resource_du5r8")
 
 [node name="NeighboorModel" parent="NpcInstanceController/NeighboorChapelInstance/ModelContainer" index="0" instance=ExtResource("3_leevk")]
 
@@ -1686,8 +1695,8 @@ transform = Transform3D(1, 0, 0, 0, 0.9479153, -0.3185168, 0, 0.31851667, 0.9479
 autoplay = "Idle_trimp"
 
 [node name="DialogAudioStreamPlayer3D" parent="NpcInstanceController/NeighboorFinalInstance/NpcInstanceAudioController" index="1"]
-stream = ExtResource("50_wkejt")
-volume_db = -6.0
+stream = SubResource("AudioStreamRandomizer_mqujp")
+volume_db = 3.0
 
 [node name="NeighboorLostInstance" parent="NpcInstanceController" index="3" instance=ExtResource("2_iqveq")]
 top_level = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://cglp3gexwaoyi"]
+[gd_scene load_steps=112 format=3 uid="uid://cglp3gexwaoyi"]
 
 [ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_hii17"]
 [ext_resource type="Resource" uid="uid://0kf21qit4mwp" path="res://npcs/ids/grandpa_id.tres" id="2_tuita"]
@@ -53,7 +53,6 @@
 [ext_resource type="AudioStream" uid="uid://d4e366cxpifcg" path="res://assets/audio/npcs/grandpa/grandpa_talk_05.wav" id="40_k2rm7"]
 [ext_resource type="AudioStream" uid="uid://d0wcwgbl00fjj" path="res://assets/audio/npcs/grandpa/grandpa_talk_06.wav" id="41_qn33v"]
 [ext_resource type="Material" uid="uid://brx01vjgdwn7f" path="res://npcs/disolve_mats/grandpa_disolve_mat.tres" id="46_0eqwr"]
-[ext_resource type="AudioStream" uid="uid://d4jjocgwryoyk" path="res://assets/audio/npcs/celestial.wav" id="51_7kjbu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5qd6j"]
 render_priority = 0
@@ -1101,8 +1100,11 @@ interactable_hint = "INTERACTABLE_001"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00866699, 1.60148, 0.104004)
 shape = SubResource("BoxShape3D_072kq")
 
+[node name="NpcInstanceAudioController" parent="NpcInstanceController/GrandpaChapellInstance" index="5"]
+idle_sound_during_conversation = true
+
 [node name="DialogAudioStreamPlayer3D" parent="NpcInstanceController/GrandpaChapellInstance/NpcInstanceAudioController" index="1"]
-stream = ExtResource("51_7kjbu")
+stream = ExtResource("38_ejkqr")
 
 [node name="GrandpaWithGrandson" parent="NpcInstanceController" index="2" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("3_kbefj")]
 instance_id = 2

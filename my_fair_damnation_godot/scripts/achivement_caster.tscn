@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://duxmp2c2f3g5b"]
+[gd_scene load_steps=16 format=3 uid="uid://duxmp2c2f3g5b"]
 
 [ext_resource type="Script" uid="uid://dukxx8hq7icds" path="res://scripts/achivement_caster.gd" id="1_yq2rl"]
 [ext_resource type="Script" uid="uid://bh4hn3j70tt6x" path="res://events/event.gd" id="2_mmruu"]
@@ -12,6 +12,9 @@
 [ext_resource type="Resource" uid="uid://r0w5rh6x7l6c" path="res://events/events_resources/achivement_events/meet_frank.tres" id="10_kaj3a"]
 [ext_resource type="Resource" uid="uid://dwppycbyryvwy" path="res://events/events_resources/achivement_events/meet_nameless.tres" id="11_c47a3"]
 [ext_resource type="Resource" uid="uid://cqkjr67bpttcv" path="res://events/events_resources/achivement_events/wellcome_to_the_asylum.tres" id="12_qeqel"]
+[ext_resource type="Resource" uid="uid://c366j5d2i4jc2" path="res://events/events_resources/game_flow_events/bad_ending.tres" id="13_65c4w"]
+[ext_resource type="Resource" uid="uid://4dy5qypdyr01" path="res://events/events_resources/game_flow_events/scape_with_nurse.tres" id="14_5k4rp"]
+[ext_resource type="Resource" uid="uid://dp37jpcob8wrw" path="res://events/events_resources/finals/grandpa_free.tres" id="15_2i587"]
 
 [node name="AchivementCaster" type="Node"]
 script = ExtResource("1_yq2rl")
@@ -25,5 +28,8 @@ ExtResource("8_c47a3"): "ACH_MEET_SKYLER",
 ExtResource("9_qeqel"): "ACH_MEET_TOMY",
 ExtResource("10_kaj3a"): "ACH_MEET_FRANK",
 ExtResource("11_c47a3"): "ACH_MEET_LOST_ONE",
-ExtResource("12_qeqel"): "ACH_WELLCOME"
+ExtResource("12_qeqel"): "ACH_WELLCOME",
+ExtResource("13_65c4w"): "ACH_BAD_ENDING",
+ExtResource("14_5k4rp"): "ACH_NEUTRAL_ENDING",
+ExtResource("15_2i587"): "ACH_GOOD_ENDING"
 })

@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://c2ol34gl06iqb"]
+[gd_scene load_steps=95 format=3 uid="uid://c2ol34gl06iqb"]
 
 [ext_resource type="PackedScene" uid="uid://cala81ixy7ose" path="res://npcs/npc.tscn" id="1_inr4i"]
 [ext_resource type="Resource" uid="uid://1h6u8i4m330e" path="res://npcs/ids/nurse_id.tres" id="2_awmxy"]
@@ -41,7 +41,6 @@
 [ext_resource type="AudioStream" uid="uid://d3seyuqi5sheq" path="res://assets/audio/npcs/nurse/nurse_talk_08.wav" id="34_ukixw"]
 [ext_resource type="AudioStream" uid="uid://vomxaoo8v6oj" path="res://assets/audio/npcs/nurse/nurse_talk_09.wav" id="35_pd6g0"]
 [ext_resource type="Resource" uid="uid://cqhv6gtncihm4" path="res://events/events_resources/achivement_events/meet_lynda.tres" id="37_7rj18"]
-[ext_resource type="AudioStream" uid="uid://d4jjocgwryoyk" path="res://assets/audio/npcs/celestial.wav" id="39_lr8nt"]
 
 [sub_resource type="Resource" id="Resource_awmxy"]
 script = ExtResource("3_sy47k")
@@ -551,7 +550,7 @@ main_instance = NodePath("MainInstance")
 behaviour_at_night = 1
 use_passed_event_instance_array = true
 instance_by_passed_event = {
-ExtResource("19_4x07n"): null
+ExtResource("19_4x07n"): NodePath("FinalInstance")
 }
 
 [node name="MainInstance" parent="NpcInstanceController" index="0" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("2_dxg7u")]
@@ -1831,12 +1830,11 @@ bones/408/rotation = Quaternion(-0.707026, 0.0107148, -0.0107148, 0.707026)
 [node name="BoneAttachment3D" parent="NpcInstanceController/FinalInstance/ModelContainer/NurseModel/rig/Skeleton3D" index="2"]
 transform = Transform3D(1.000002, -2.020441e-08, 1.9273912e-08, 2.2485507e-08, 0.9013178, -0.4331575, -2.0489395e-08, 0.43315554, 0.9013146, -0.006218755, 1.7608285, 0.058359176)
 
+[node name="LookAtMarker3D" parent="NpcInstanceController/FinalInstance/ModelContainer/NurseModel/rig/Skeleton3D/BoneAttachment3D" index="0"]
+transform = Transform3D(1, 1.69407e-21, 0, 0, 1, 0, 1.42109e-14, 0, 1, 0, 0, 0)
+
 [node name="AnimationPlayer" parent="NpcInstanceController/FinalInstance/ModelContainer/NurseModel" index="1"]
 autoplay = "idle_normal"
-
-[node name="DialogAudioStreamPlayer3D" parent="NpcInstanceController/FinalInstance/NpcInstanceAudioController" index="1"]
-stream = ExtResource("39_lr8nt")
-volume_db = -9.0
 
 [node name="NpcReputation" parent="." index="1"]
 reputation_with_player = 12.0

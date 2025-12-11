@@ -181,6 +181,7 @@ func force_end_timer() -> void:
 
 
 func _load(data: SavedData) -> void:
+	exhausted = false
 	day_count = data.day_count
 	current_period = data.day_night_period as period
 	if environment == null:

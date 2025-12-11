@@ -1,13 +1,14 @@
 extends Node
+
 class_name GameFlowController
 
 ## This node can be added to control the game flow (end screens, game over, etc.).
 
 ## Events
-@export var game_over_event : Event
-@export var neutral_ending_event : Event
-@export var good_ending_event : Event
-@export var bad_ending_event : Event
+@export var game_over_event: Event
+@export var neutral_ending_event: Event
+@export var good_ending_event: Event
+@export var bad_ending_event: Event
 
 ## Timings (seconds) — customize each ending's feel
 @export_category("Timings - Game Over")
@@ -61,18 +62,17 @@ class_name GameFlowController
 @onready var game_over_ending_screen_background: ColorRect = $CanvasLayer/GameEndingScreens/GameOverEndingScreen/GameOverEndingScreenBackground
 @onready var game_over_overlay: ColorRect = $CanvasLayer/GameEndingScreens/GameOverEndingScreen/GameOverOverlay
 
+var player: Player
 
-var player : Player
-
-const GAME_OVER_TEXT : Array[String] = [
+const GAME_OVER_TEXT: Array[String] = [
 	"ending_gameover_001",
 	"ending_gameover_002",
-	"ending_gameover_003"
+	"ending_gameover_003",
 ]
-const END_GAME_TEXT : Array[String] = [
+const END_GAME_TEXT: Array[String] = [
 	"ending_victory_001",
 	"ending_victory_002",
-	"ending_victory_003"
+	"ending_victory_003",
 ]
 
 
@@ -81,11 +81,11 @@ func _ready() -> void:
 	game_over_button.pressed.connect(load_from_savepoint)
 	good_ending_screen_button.pressed.connect(go_back_to_menu)
 	bad_ending_screen_button.pressed.connect(go_back_to_menu)
-	
+
 	EventManager.new_event_pushed.connect(_event_pushed)
-	
+
 	player = await PathfindingManager.get_player()
-	
+
 	game_ending_screens.hide()
 
 	# Hide legacy single screens if they exist
@@ -97,7 +97,8 @@ func _ready() -> void:
 	_reset_all_endings_visibility()
 
 
-func _event_pushed(event : Event) -> void:
+func _event_pushed(event: Event) -> void:
+	await get_tree().create_timer(1.0).timeout # Small delay to ensure smooth transition
 	match event:
 		game_over_event:
 			await _show_game_over()
@@ -110,8 +111,8 @@ func _event_pushed(event : Event) -> void:
 		_:
 			pass
 
-
 # ---- Helpers ----
+
 
 func _reset_all_endings_visibility() -> void:
 	# Good
@@ -180,7 +181,7 @@ func _run_overlay_sequence(overlay: ColorRect, background: CanvasItem, fade_in: 
 
 # ---- Endings ----
 func _show_good() -> void:
-	player.player_state_machine.transition_to("PlayerParalize", {})
+	player.player_state_machine.transition_to("PlayerParalize", { })
 	_hide_all_container_screens_except(good_ending_screen_background)
 	good_ending_screen_label.text = tr(END_GAME_TEXT.pick_random())
 	await _run_overlay_sequence(good_ending_overlay, good_ending_screen_background, good_fade_in_time, good_hold_time, good_fade_out_time)
@@ -188,7 +189,7 @@ func _show_good() -> void:
 
 
 func _show_bad() -> void:
-	player.player_state_machine.transition_to("PlayerParalize", {})
+	player.player_state_machine.transition_to("PlayerParalize", { })
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	_hide_all_container_screens_except(bad_ending_screen_background)
 	bad_ending_screen_label.text = tr(END_GAME_TEXT.pick_random())
@@ -197,14 +198,15 @@ func _show_bad() -> void:
 
 
 func _show_neutral() -> void:
-	player.player_state_machine.transition_to("PlayerParalize", {})
+	player.player_state_machine.transition_to("PlayerParalize", { })
 	_hide_all_container_screens_except(neutral_ending_screen_background)
 	neutral_ending_label.text = tr(END_GAME_TEXT.pick_random())
 	await _run_overlay_sequence(neutral_ending_overlay, neutral_ending_screen_background, neutral_fade_in_time, neutral_hold_time, neutral_fade_out_time)
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 
+
 func _show_game_over() -> void:
-	player.player_state_machine.transition_to("PlayerParalize", {})
+	player.player_state_machine.transition_to("PlayerParalize", { })
 	_hide_all_container_screens_except(game_over_ending_screen_background)
 	game_over_label.text = tr(GAME_OVER_TEXT.pick_random())
 	await _run_overlay_sequence(game_over_overlay, game_over_ending_screen_background, go_fade_in_time, go_hold_time, go_fade_out_time)
@@ -223,7 +225,7 @@ func go_back_to_menu() -> void:
 	bad_ending_screen_button.disabled = true
 	neutral_ending_button.disabled = true
 	game_over_button.disabled = true
-	
-	var screen_flow_manager : ScreenFlowManager
+
+	var screen_flow_manager: ScreenFlowManager
 	screen_flow_manager = get_tree().get_first_node_in_group("screen_flow_manager")
 	screen_flow_manager.load_main_menu()

@@ -98,6 +98,15 @@ size_flags_vertical = 4
 theme = ExtResource("4_gvbmq")
 text = "MENU_02"
 
+[node name="GoodEndingScreenLabel2" type="Label" parent="CanvasLayer/GameEndingScreens/GoodEndingScreen/GoodEndingScreenBackground/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "good_ending"
+label_settings = SubResource("LabelSettings_3fq5o")
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="GoodEndingOverlay" type="ColorRect" parent="CanvasLayer/GameEndingScreens/GoodEndingScreen"]
 visible = false
 layout_mode = 1
@@ -176,6 +185,15 @@ size_flags_vertical = 4
 theme = ExtResource("4_gvbmq")
 text = "MENU_02"
 
+[node name="BadEndingScreenLabel2" type="Label" parent="CanvasLayer/GameEndingScreens/BadEndingScreen/BadEndingScreenBackground/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+text = "bad_ending"
+label_settings = SubResource("LabelSettings_3fq5o")
+horizontal_alignment = 1
+autowrap_mode = 3
+
 [node name="BadEndingOverlay" type="ColorRect" parent="CanvasLayer/GameEndingScreens/BadEndingScreen"]
 visible = false
 layout_mode = 1
@@ -253,6 +271,15 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("4_gvbmq")
 text = "MENU_02"
+
+[node name="NeutralEndingLabel2" type="Label" parent="CanvasLayer/GameEndingScreens/NeutralEndingScreen/NeutralEndingScreenBackground/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "neutral_ending"
+label_settings = SubResource("LabelSettings_3fq5o")
+horizontal_alignment = 1
+autowrap_mode = 3
 
 [node name="NeutralEndingOverlay" type="ColorRect" parent="CanvasLayer/GameEndingScreens/NeutralEndingScreen"]
 visible = false

@@ -6,5 +6,5 @@
 script = ExtResource("1_p2uas")
 item_name = "Chapel key"
 ui_item_name = "item_chapel_key_name"
-ui_item_description = "item_basement_key_desc"
+ui_item_description = "item_chapel_key_desc"
 metadata/_custom_type_script = "uid://bo8skdwgushde"
