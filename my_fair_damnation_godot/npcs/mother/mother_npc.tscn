@@ -301,7 +301,7 @@ shape = SubResource("BoxShape3D_jk25q")
 
 [node name="DialogAudioStreamPlayer3D" parent="NpcInstanceController/NpcInstance/NpcInstanceAudioController" index="1"]
 stream = SubResource("AudioStreamRandomizer_2ityi")
-volume_db = -8.0
+volume_db = -11.0
 
 [node name="MotherFinalInstance" parent="NpcInstanceController" index="1" node_paths=PackedStringArray("look_at_position", "look_at_modifier") instance=ExtResource("3_jrg2v")]
 instance_id = 1

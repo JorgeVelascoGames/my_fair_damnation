@@ -217,3 +217,8 @@ func save_new_player_area(area_name: String) -> void:
 func save_use_head_bob(use_head_bob: bool) -> void:
 	local_saved_data.use_head_bob = use_head_bob
 	save_game()
+
+
+func save_camera_sensibility(sensibility: float) -> void:
+	local_saved_data.camera_sensibility = sensibility
+	save_game()

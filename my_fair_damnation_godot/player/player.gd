@@ -1,11 +1,10 @@
 extends CharacterBody3D
+
 class_name Player
 
-
-@export var fall_multiplier : = 2.5
-@export var camera_sensibility := 1.2
+@export var fall_multiplier: = 2.5
 ## To teleport to the room
-@export var get_inside_room_door : TransitionDoor
+@export var get_inside_room_door: TransitionDoor
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -13,7 +12,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 var mouse_motion := Vector2.ZERO
 
 ## While equiped, the flashlight can be turned on
-@export var flashlight_item : Item
+@export var flashlight_item: Item
 
 #Components
 @onready var player_ui: PlayerUI = %PlayerUI
@@ -57,7 +56,7 @@ func direction(delta) -> Vector3:
 
 func process_gravity(delta):
 	if not is_on_floor():
-		if velocity.y >=0:
+		if velocity.y >= 0:
 			velocity.y -= gravity * delta
 		else:
 			velocity.y -= gravity * delta * fall_multiplier
@@ -65,18 +64,18 @@ func process_gravity(delta):
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("test") and OS.is_debug_build():
-		player_state_machine.transition_to("PlayerGodmode", {})
+		player_state_machine.transition_to("PlayerGodmode", { })
 	if event is InputEventMouseMotion:
 		#print(event.relative)
 		mouse_motion = -event.relative * 0.001
 		#if Input.is_action_pressed("aim"):
-			#mouse_motion *= aim_multiplier / 2
+		#mouse_motion *= aim_multiplier / 2
 
 
-func start_conversation(conversation : NpcConversation, look_target : Node3D = null) -> void:
+func start_conversation(conversation: NpcConversation, look_target: Node3D = null) -> void:
 	var conversation_dicctionary = {
-		"conversation" : conversation,
-		"position" : look_target
+		"conversation": conversation,
+		"position": look_target,
 	}
 	player_state_machine.transition_to("PlayerConversation", conversation_dicctionary)
 
@@ -95,7 +94,7 @@ func _on_health_health_minimun_reached() -> void:
 	pass
 
 
-func _load(data : SavedData) -> void:
+func _load(data: SavedData) -> void:
 	if data.loaded_from_checkpoint:
 		player_ui.display_gameplay_text("%s %d" % [tr("morning_of"), DayNightCycleController.day_count])
 	global_position = data.player_position

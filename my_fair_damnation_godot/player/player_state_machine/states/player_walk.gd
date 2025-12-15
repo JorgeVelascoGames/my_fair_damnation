@@ -40,8 +40,8 @@ func physics_update(delta: float) -> void:
 
 
 func handle_camera_rotation(_delta: float) -> void:
-	player.rotate_y(player.mouse_motion.x * player.camera_sensibility)
-	player.camera_pivot.rotate_x(player.mouse_motion.y * player.camera_sensibility)
+	player.rotate_y(player.mouse_motion.x * AppManager.camera_sensibility)
+	player.camera_pivot.rotate_x(player.mouse_motion.y * AppManager.camera_sensibility)
 	player.camera_pivot.rotation_degrees.x = clampf(
 		player.camera_pivot.rotation_degrees.x,
 		-90.0,

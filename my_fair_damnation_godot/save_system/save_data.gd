@@ -50,5 +50,7 @@ class_name SavedData
 # Settings
 @export var volume := 75.00
 @export var use_head_bob := true
+@export var camera_sensibility := 1.2
+@export var invert_mouse := false
 # In game sound
 @export var day_music_playback_position := 0.0
