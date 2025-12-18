@@ -177,6 +177,7 @@ script = ExtResource("4_rgg25")
 dialog_id = "SKYLER_01_E_Q4"
 player_dialog_option = "SKYLER_01_E_Q4"
 dialog_text = Array[String](["SKYLER_01_E_Q4_001", "SKYLER_01_E_Q4_002", "SKYLER_01_E_Q4_003", "SKYLER_01_E_Q4_004", "SKYLER_01_E_Q4_005", "SKYLER_01_E_Q4_006"])
+go_back_nested_conversation = true
 dialogs_to_unlock = Array[ExtResource("4_rgg25")]([SubResource("Resource_ulik0")])
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
 

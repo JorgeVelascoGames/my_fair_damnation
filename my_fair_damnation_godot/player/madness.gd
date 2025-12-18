@@ -1,9 +1,9 @@
 extends PlayerComponent
+
 class_name Madness
 
 signal madness_increased
 signal madness_decreased
-
 
 ## The max amount of madness
 @export var max_madness := 1000.00
@@ -12,12 +12,12 @@ signal madness_decreased
 
 ## Tween animation time
 @export var bar_animatino_time := 3.0
-@export var game_over_event : Event
+@export var game_over_event: Event
 
-@onready var madness_bar : ProgressBar = %MadnessBar
+@onready var madness_bar: ProgressBar = %MadnessBar
 @onready var madness_animation_player: AnimationPlayer = $MadnessAnimationPlayer
 
-var madness_bar_tween : Tween
+var madness_bar_tween: Tween
 
 
 func _ready() -> void:
@@ -36,7 +36,7 @@ func _process(delta: float) -> void:
 		player_dies()
 
 
-func add_madness(amount : float) -> void:
+func add_madness(amount: float) -> void:
 	if amount == 0:
 		return
 	current_madness = clamp(current_madness + amount, 0, max_madness)
@@ -44,7 +44,7 @@ func add_madness(amount : float) -> void:
 	save_madness()
 
 
-func substract_madness(amount : float) -> void:
+func substract_madness(amount: float) -> void:
 	if current_madness == 0:
 		return ## So the madness bar doesnt animate when there is no change
 	current_madness = clamp(current_madness - amount, 0, max_madness)
@@ -52,7 +52,7 @@ func substract_madness(amount : float) -> void:
 	save_madness()
 
 
-func add_madness_raw(amount : float) -> void:
+func add_madness_raw(amount: float) -> void:
 	if amount == 0:
 		return
 	current_madness = clamp(current_madness + amount, 0, max_madness)
@@ -62,7 +62,7 @@ func add_madness_raw(amount : float) -> void:
 		madness_animation_player.play("show_madness_bar")
 
 
-func substract_madness_raw(amount : float) -> void:
+func substract_madness_raw(amount: float) -> void:
 	if amount == 0:
 		return
 	current_madness = clamp(current_madness - amount, 0, max_madness)
@@ -98,7 +98,7 @@ func _on_madness_animation_player_animation_finished(anim_name: StringName) -> v
 
 
 func on_day_start() -> void:
-	player.madness.substract_madness(100)
+	player.madness.substract_madness(150)
 
 
 func on_night_start() -> void:
@@ -113,6 +113,6 @@ func save_madness() -> void:
 	SaveDataServer.save_madness(current_madness)
 
 
-func _load(data : SavedData) -> void:
+func _load(data: SavedData) -> void:
 	current_madness = data.player_madness
 	madness_bar.value = current_madness

@@ -180,7 +180,6 @@ player_dialog_option = "SCARECROW_A1_Q8"
 dialog_text = Array[String](["SCARECROW_A1_Q8_001", "SCARECROW_A1_Q8_002", "SCARECROW_A1_Q8_003", "SCARECROW_A1_Q8_004", "SCARECROW_A1_Q8_005", "SCARECROW_A1_Q8_006", "SCARECROW_A1_Q8_007", "SCARECROW_A1_Q8_008"])
 response_conversation = SubResource("Resource_xoqb2")
 dialogs_to_unlock = Array[ExtResource("3_2b01f")]([SubResource("Resource_mse15")])
-events_to_push = Array[ExtResource("5_v68yv")]([null])
 current_event_to_trigger_conversation = ExtResource("9_upuxj")
 metadata/_custom_type_script = "uid://c00m8ojonc6s4"
 

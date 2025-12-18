@@ -1,13 +1,13 @@
 extends PlayerComponent
-class_name PlayerStamina
 
+class_name PlayerStamina
 
 @export var max_stamina := 160.00
 @export var stamina := 160.00
 ## The amount of stamina drained per second
 @export var stamina_cost_per_second := 1.0
 ## Madness cost per second if stamina is exhausted
-@export var madness_cost_per_second := 5.0
+@export var madness_cost_per_second := 3.0
 
 const PLAYER_REST_TO_DAY = preload("res://events/events_resources/game_flow_events/player_rest_to_day.tres")
 const PLAYER_REST_TO_MIDNIGHT = preload("res://events/events_resources/game_flow_events/player_rest_to_midnight.tres")
@@ -20,7 +20,7 @@ var running_exhaustion_messages = [
 	"run_exhaustion_002",
 	"run_exhaustion_003",
 	"run_exhaustion_004",
-	"run_exhaustion_005"
+	"run_exhaustion_005",
 ]
 
 
@@ -50,17 +50,16 @@ func stop_spending_stamina() -> void:
 	spending = false
 
 
-
 func save_stamina() -> void:
 	SaveDataServer.save_stamina(stamina, exhaustion_message_shown)
 
 
-func on_event_pushed(event : Event) -> void:
+func on_event_pushed(event: Event) -> void:
 	if event == PLAYER_REST_TO_DAY or event == PLAYER_REST_TO_MIDNIGHT:
 		stamina = max_stamina
 		exhaustion_message_shown = false
 
 
-func _load(data : SavedData) -> void:
+func _load(data: SavedData) -> void:
 	stamina = data.stamina
 	exhaustion_message_shown = data.exhaustion_message_shown
